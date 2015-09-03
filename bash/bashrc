@@ -113,7 +113,7 @@ if ! shopt -oq posix; then
   fi
 fi
 
-source ~/.shell_prompt.sh
+source ~/dotfiles/prompt/.shell_prompt.sh
 
 alias fuck='eval $(thefuck $(fc -ln -1)); history -r'
 
