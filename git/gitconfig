@@ -7,6 +7,8 @@
   st = status
   amend = commit --amend
   aa = add --all
+  gpghm = git push github master
+  gpglm = git push gitlab master
 [color]
 	ui = true
 [help]
