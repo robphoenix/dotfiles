@@ -5,10 +5,10 @@
 	tool = vimdiff
 [alias]
   st = status
-  amend = commit --amend
+  cam = commit -am
   aa = add --all
-  gpghm = git push github master
-  gpglm = git push gitlab master
+  pghm = push github master
+  pglm = push gitlab master
 [color]
 	ui = true
 [help]
