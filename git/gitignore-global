@@ -12,3 +12,8 @@ _site/
 .sass-cache/
 .bundle/
 .env
+.vagrant/
+*.pyc
+*/migrations/*
+*/old_migrations/*
+__pycache__

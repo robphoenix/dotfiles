@@ -5,7 +5,19 @@ filetype plugin indent on
 set t_Co=256
 let g:airline_powerline_fonts = 1
 let g:airline_theme='luna'
+let g:airline#extensions#virtualenv#enabled = 1
+let g:virtualenv_auto_activate = 1
 set laststatus=2
+
+let g:promptline_theme = 'airline'
+let g:promptline_preset = {
+                \'b' : [ promptline#slices#python_virtualenv() ],
+                \'a' : [ promptline#slices#vcs_branch() ],
+                \'c' : [ promptline#slices#cwd({'dir_limit': 2}) ],
+                \'options': {
+                \'left_sections' : [ 'b', 'a', 'c' ],
+                \'left_only_sections' : [ 'b', 'a', 'c' ]}}                             
+
 
 set cursorline             " have a line indicate the cursor location
 set title                  " show title in console title bar
