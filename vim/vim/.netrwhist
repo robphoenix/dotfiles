@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/home/willem/Vagrant-Django-PostgreSQL'
+let g:netrw_dirhist_2='/home/willem/Vagrant-Django-PostgreSQL/provision'
+let g:netrw_dirhist_3='/home/willem/Vagrant-Django-PostgreSQL'
+let g:netrw_dirhist_4='/home/willem/Vagrant-Django-PostgreSQL/provision'

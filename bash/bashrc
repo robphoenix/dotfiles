@@ -121,3 +121,10 @@ alias chrome='google-chrome'
 export WORKON_HOME=$HOME/.virtualenvs
 
 source /usr/local/bin/virtualenvwrapper.sh
+
+alias atom='sudo atom'
+
+export PATH="/opt/LightTable:$PATH"
+alias lightt='LightTable'
+
+export PATH=$HOME/bin:$PATH
