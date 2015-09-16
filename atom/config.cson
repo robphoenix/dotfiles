@@ -1,0 +1,39 @@
+"*":
+  "exception-reporting":
+    userId: "21ce0040-a4cd-de27-4c18-7f6eea33b6f8"
+  welcome:
+    showOnStartup: false
+  core:
+    themes: [
+      "atom-dark-ui"
+      "atom-monokai"
+    ]
+    ignoredNames: [
+      ".git"
+      ".pyc"
+      ".vagrant"
+    ]
+    disabledPackages: [
+      "autohide-tree-view"
+      "markdown-format"
+    ]
+    audioBeep: false
+  editor:
+    invisibles: {}
+    showIndentGuide: true
+    tabLength: 4
+    fontSize: 13
+    fontFamily: "monospace"
+  linter: {}
+  "tree-view":
+    hideIgnoredNames: true
+    hideVcsIgnoredFiles: true
+  "tool-bar":
+    iconSize: "16px"
+    position: "Left"
+    visible: false
+  "autocomplete-plus": {}
+  "linter-flake8":
+    executableDir: "/usr/local/bin/"
+  "markdown-preview":
+    useGitHubStyle: true

@@ -1,0 +1,2 @@
+[4999:0916/092733:ERROR:browser_main_loop.cc(170)] Running without the SUID sandbox! See https://code.google.com/p/chromium/wiki/LinuxSUIDSandboxDevelopment for more information on developing with the sandbox on.
+App load time: 3860ms

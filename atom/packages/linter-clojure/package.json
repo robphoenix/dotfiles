@@ -1,0 +1,105 @@
+{
+  "name": "linter-clojure",
+  "main": "./lib/init",
+  "version": "1.0.0",
+  "description": "Lint Clojure on the fly, using clojure-x.x.x.jar",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AtomLinter/linter-clojure"
+  },
+  "license": "MIT",
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  },
+  "providedServices": {
+    "linter": {
+      "versions": {
+        "1.0.0": "provideLinter"
+      }
+    }
+  },
+  "dependencies": {
+    "atom-linter": "^3.2.0"
+  },
+  "readme": "linter-clojure\n===========\n\nThis linter plugin for [Linter](https://github.com/AtomLinter/Linter) provides an interface to [clojure-x.x.x.jar](http://clojure.org/). It will be used with files that have the “Clojure” syntax.\n\n## Installation\nLinter package must be installed in order to use this plugin. If Linter is not installed, please follow the instructions [here](https://github.com/AtomLinter/Linter).\n\n## Settings\nYou can configure linter-clojure by editing ~/.atom/config.cson (choose Open Your Config in Atom menu):\n```\n'linter-clojure':\n  'clojureExecutablePath': 'D:\\\\downloads\\\\clojure-1.6.0\\\\clojure-1.6.0.jar' # <- point directly to the jar file\n  'javaExecutablePath': 'C:\\\\Program Files (x86)\\\\Java\\\\jdk1.7.0\\\\bin' # to find java in this directory\n```\n## Donation\n[![Share the love!](https://chewbacco-stuff.s3.amazonaws.com/donate.png)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=KXUYS4ARNHCN8)\n",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/AtomLinter/linter-clojure/issues"
+  },
+  "homepage": "https://github.com/AtomLinter/linter-clojure",
+  "_id": "linter-clojure@1.0.0",
+  "_shasum": "1b04fa48f63235f853ef9cca75b1883b04a7ac2f",
+  "_resolved": "file:../d-11586-3957-2s0znj/package.tgz",
+  "_from": "../d-11586-3957-2s0znj/package.tgz",
+  "_atomModuleCache": {
+    "version": 1,
+    "dependencies": [
+      {
+        "name": "tmp",
+        "version": "0.0.27",
+        "path": "node_modules/atom-linter/node_modules/tmp/lib/tmp.js"
+      },
+      {
+        "name": "os-tmpdir",
+        "version": "1.0.1",
+        "path": "node_modules/atom-linter/node_modules/tmp/node_modules/os-tmpdir/index.js"
+      },
+      {
+        "name": "xregexp",
+        "version": "2.0.0",
+        "path": "node_modules/atom-linter/node_modules/xregexp/xregexp-all.js"
+      }
+    ],
+    "extensions": {
+      ".coffee": [
+        "lib/init.coffee",
+        "node_modules/atom-linter/lib/helpers.coffee"
+      ],
+      ".js": [
+        "node_modules/atom-linter/node_modules/tmp/lib/tmp.js",
+        "node_modules/atom-linter/node_modules/tmp/node_modules/os-tmpdir/index.js",
+        "node_modules/atom-linter/node_modules/xregexp/xregexp-all.js"
+      ],
+      ".json": [
+        "node_modules/atom-linter/node_modules/tmp/node_modules/os-tmpdir/package.json",
+        "node_modules/atom-linter/node_modules/tmp/package.json",
+        "node_modules/atom-linter/node_modules/xregexp/package.json",
+        "node_modules/atom-linter/package.json",
+        "package.json"
+      ]
+    },
+    "folders": [
+      {
+        "paths": [
+          "lib",
+          ""
+        ],
+        "dependencies": {
+          "atom-linter": "^3.2.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/atom-linter/lib",
+          "node_modules/atom-linter",
+          "node_modules/atom-linter/spec/fixtures",
+          "node_modules/atom-linter/spec"
+        ],
+        "dependencies": {
+          "xregexp": "^2.0.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/atom-linter/node_modules/tmp/lib",
+          "node_modules/atom-linter/node_modules/tmp",
+          "node_modules/atom-linter/node_modules/tmp/test",
+          "node_modules/atom-linter/node_modules/tmp/test/symlinkme"
+        ],
+        "dependencies": {
+          "os-tmpdir": "~1.0.0"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,10 @@
+"django-btmw":
+  title: "django-BTMW"
+  paths: [
+    "/home/willem/vagrant-machines/django-LLD-dev-02"
+  ]
+"django-recoveries":
+  title: "django-recoveries"
+  paths: [
+    "/home/willem/vagrant-machines/django-LLD-dev-02"
+  ]
