@@ -30,8 +30,8 @@
     hideVcsIgnoredFiles: true
   "tool-bar":
     iconSize: "16px"
-    position: "Left"
     visible: false
+    position: "Left"
   "autocomplete-plus": {}
   "linter-flake8":
     executableDir: "/usr/local/bin/"

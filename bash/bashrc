@@ -124,7 +124,9 @@ source /usr/local/bin/virtualenvwrapper.sh
 
 alias atom='sudo atom'
 
-export PATH="/opt/LightTable:$PATH"
-alias lightt='LightTable'
+alias del101='sudo ip route del 10.101.0.0/16'
 
 export PATH=$HOME/bin:$PATH
+
+export NVM_DIR="/home/willem/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
