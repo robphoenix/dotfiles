@@ -113,20 +113,30 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# promptline
 source ~/.shell_prompt.sh
 
+# the fuck
 alias fuck='eval $(thefuck $(fc -ln -1)); history -r'
 
+# google chrome
 alias chrome='google-chrome'
-export WORKON_HOME=$HOME/.virtualenvs
 
+# virtualenvwrapper
+export WORKON_HOME=$HOME/.virtualenvs
 source /usr/local/bin/virtualenvwrapper.sh
 
+# atom
 alias atom='sudo atom'
 
+# vagrant
 alias del101='sudo ip route del 10.101.0.0/16'
+
+# jekyll
+alias killjekyll='kill -9 $(lsof -t -i:4000)'
 
 export PATH=$HOME/bin:$PATH
 
+# nvm
 export NVM_DIR="/home/willem/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
