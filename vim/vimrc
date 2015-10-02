@@ -16,7 +16,7 @@ let g:promptline_preset = {
                 \'c' : [ promptline#slices#cwd({'dir_limit': 2}) ],
                 \'options': {
                 \'left_sections' : [ 'b', 'a', 'c' ],
-                \'left_only_sections' : [ 'b', 'a', 'c' ]}}                             
+                \'left_only_sections' : [ 'b', 'a', 'c' ]}}
 
 
 set cursorline             " have a line indicate the cursor location

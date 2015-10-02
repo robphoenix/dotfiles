@@ -5,8 +5,8 @@
     showOnStartup: false
   core:
     themes: [
-      "atom-dark-ui"
-      "atom-monokai"
+      "one-dark-ui"
+      "monokai"
     ]
     ignoredNames: [
       ".git"
@@ -18,12 +18,13 @@
       "markdown-format"
     ]
     audioBeep: false
+    autoHideMenuBar: true
   editor:
     invisibles: {}
     showIndentGuide: true
     tabLength: 4
-    fontSize: 13
-    fontFamily: "monospace"
+    fontFamily: "Source Code Pro for Powerline"
+    backUpBeforeSaving: true
   linter: {}
   "tree-view":
     hideIgnoredNames: true
@@ -35,5 +36,13 @@
   "autocomplete-plus": {}
   "linter-flake8":
     executableDir: "/usr/local/bin/"
-  "markdown-preview":
-    useGitHubStyle: true
+  "markdown-preview": {}
+  "markdown-writer":
+    fileExtension: ".md"
+    siteImagesDir: "images/"
+    siteEngine: "jekyll"
+    siteUrl: "https://bordeltabernacle.github.io/"
+    sitePostsDir: "_posts/"
+    siteLocalDir: "/home/willem/bordeltabernacle.github.io"
+  "highlight-line":
+    enableUnderline: true

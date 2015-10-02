@@ -140,3 +140,9 @@ export PATH=$HOME/bin:$PATH
 # nvm
 export NVM_DIR="/home/willem/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+# ipython
+alias ipy='ipython'
+
+# light table
+alias light="/opt/LightTable/LightTable"
