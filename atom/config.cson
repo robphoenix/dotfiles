@@ -28,7 +28,6 @@
   linter: {}
   "tree-view":
     hideIgnoredNames: true
-    hideVcsIgnoredFiles: true
   "tool-bar":
     iconSize: "16px"
     visible: false
