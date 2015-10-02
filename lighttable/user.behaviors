@@ -42,4 +42,3 @@
  ;;; highlight current line
  [:editor :lt.objs.editor/highlight-current-line]
 ]
-

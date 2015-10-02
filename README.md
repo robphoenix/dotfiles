@@ -12,6 +12,6 @@
 ~/.tmux.conf -> ~/dotfiles/tmux/tmux.conf
 ~/.vim -> ~/dotfiles/vim/vim/
 ~/.vimrc -> ~/dotfiles/vim/vimrc
-~/.config/LightTable/User/user.behaviours -> ~/dotfiles/lighttable/user.behaviors
+~/.config/LightTable/User/user.behaviors -> ~/dotfiles/lighttable/user.behaviors
 ~/.config/LightTable/User/user.keymap -> ~/dotfiles/lighttable/user.keymap
 ```
