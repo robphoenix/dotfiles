@@ -1,3 +1,19 @@
+## 2.29.0
+
+* Really 2.28.0 again, can't seem to delete failed releases on atom.io
+
+## 2.28.0
+* Add Nim support
+* Add Pandoc Markdown support
+* Upgrade strip ANSI
+
+## 2.27.0
+* Crystal Language support
+* LaTeX support
+* NSIS support
+* Scrolls down in a polling loop to catch the reflow!
+* No more grandparent bottom panel
+
 ## 2.26.4
 * Fix Babel support
 * Now with TypeScript!

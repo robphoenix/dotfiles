@@ -8,7 +8,6 @@
 ~/.lein -> ~/dotfiles/leiningen/
 ~/.shell_prompt.sh -> dotfiles/prompt/promptline
 ~/.spacemacs -> ~/dotfiles/emacs/.spacemacs
-~/.thefuck -> ~/dotfiles/thefuck/
 ~/tmuxconf -> ~/dotfiles/tmux/tmuxconf
 ~/.tmux.conf -> ~/dotfiles/tmux/tmux.conf
 ~/.vim -> ~/dotfiles/vim/vim/

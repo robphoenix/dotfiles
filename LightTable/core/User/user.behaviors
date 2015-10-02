@@ -17,7 +17,7 @@
 
  ;; The editor tag is applied to all editors
  [:editor :lt.objs.editor/no-wrap]
- [:editor :lt.objs.style/set-theme "monokai"]
+ [:editor :lt.objs.style/set-theme "tomorrow-night"]
 
  ;; Here we can add behaviors to just clojure editors
  [:editor.clojure :lt.plugins.clojure/print-length 1000]
@@ -34,7 +34,7 @@
  [:app :-lt.objs.menu/set-menu]
  [:window :-lt.objs.menu/set-menu]
  ;;; set font
- [:app :lt.objs.style/font-settings "Source Code Pro for Powerline" "10" "1.4"]
+ [:app :lt.objs.style/font-settings "Source Code Pro for Powerline" "11" "1.4"]
  ;;; show line numbers
  [:editor :lt.objs.editor/line-numbers]
  ;;; wrap lines

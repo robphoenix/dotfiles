@@ -62,6 +62,14 @@ module.exports =
       command: "coffee"
       args: (context) -> [context.filepath]
 
+  Crystal:
+    "Selection Based":
+      command: "crystal"
+      args: (context)  -> ['eval', context.getCode()]
+    "File Based":
+      command: "crystal"
+      args: (context) -> [context.filepath]
+
   D:
     "File Based":
       command: "rdmd"
@@ -180,6 +188,11 @@ module.exports =
         args = ['-c', "kotlinc #{context.filepath} -include-runtime -d /tmp/#{jarName} && java -jar /tmp/#{jarName}"]
         return args
 
+  LaTeX:
+    "File Based":
+      command: "latexmk"
+      args: (context) -> ['-pv', '-quiet', '-pdf', '-shell-escape', context.filepath]
+
   LilyPond:
     "File Based":
       command: "lilypond"
@@ -250,13 +263,17 @@ module.exports =
       command: "ncl"
       args: (context) -> [context.filepath]
 
-
   newLISP:
     "Selection Based":
       command: "newlisp"
       args: (context) -> ['-e', context.getCode()]
     "File Based":
       command: "newlisp"
+      args: (context) -> [context.filepath]
+
+  NSIS:
+    "File Based":
+      command: "makensis"
       args: (context) -> [context.filepath]
 
   'Objective-C':
@@ -275,6 +292,11 @@ module.exports =
     "File Based":
       command: "ocaml"
       args: (context) -> [context.filepath]
+
+  'Pandoc Markdown':
+    "File Based":
+      command: "panzer"
+      args: (context) -> [context.filepath, "--output=" + context.filepath + ".pdf"]
 
   PHP:
     "Selection Based":
@@ -426,6 +448,14 @@ module.exports =
     "File Based":
       command: "sml"
       args: (context) -> [context.filepath]
+
+  Nim:
+    "File Based":
+      command: "nim"
+      args: (context) ->
+        file = GrammarUtils.Nim.findNimProjectFile(context.filepath)
+        ['c', '--colors:off', '--verbosity:0', '--parallelBuild:1',
+          '-r', '"' + file + '"']
 
   Swift:
     "File Based":

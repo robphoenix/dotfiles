@@ -3,20 +3,11 @@ module.exports =
     executablePath:
       type: 'string'
       default: 'flake8'
-      description: 'You might need a different binary name for python2 ' +
-        '(e.g. flake8-python2)'
-    configFileNames:
-      type: 'array'
-      default: []
-      items:
-        type: 'string'
-      description: 'Use configuration for flake8 in this file (search is ' +
-        'from CWD up until the file is found or the root is ' +
-        'reached). If this is empty, or the file is not found, ' +
-        'the configuration options from this settings panel will ' +
-        'be used. Can be a comma-separated list, in which case ' +
-        'filenames are searched left to right and the first one ' +
-        'found is used.'
+      description: 'Full path to binary (e.g. /usr/local/bin/flake8)'
+    projectConfigFile:
+      type: 'string'
+      default: ''
+      description: 'flake config file relative path from project (e.g. tox.ini or .flake8rc)'
     maxLineLength:
       type: 'integer'
       default: 0
@@ -38,10 +29,15 @@ module.exports =
       items:
         type: 'string'
 
+  activate: ->
+    require('atom-package-deps').install('linter-flake8')
+
   provideLinter: ->
     helpers = require('atom-linter')
+    path = require('path')
 
     provider =
+      name: 'Flake8'
       grammarScopes: ['source.python', 'source.python.django']
       scope: 'file' # or 'project'
       lintOnFly: true # must be false for scope: 'project'
@@ -60,11 +56,13 @@ module.exports =
           parameters.push('--hang-closing')
         if (selectErrors = atom.config.get('linter-flake8.selectErrors')).length
           parameters.push('--select', selectErrors.join(','))
+        if (projectConfigFile = atom.config.get('linter-flake8.projectConfigFile'))
+          parameters.push('--config', path.join(atom.project.getPaths()[0], projectConfigFile))
         parameters.push('-')
 
         return helpers.exec(atom.config.get('linter-flake8.executablePath'), parameters, stdin: fileText).then (result) ->
           toReturn = []
-          regex = /(\d+):(\d+):\s((E|W|F|C|N)\d{2,3})\s(.*)/g
+          regex = /(\d+):(\d+):\s((E|W|F|C|N|H|D)\d{2,3})\s+(.*)/g
 
           while (match = regex.exec(result)) isnt null
             line = parseInt(match[1]) or 0
