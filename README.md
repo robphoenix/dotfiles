@@ -13,4 +13,6 @@
 ~/.tmux.conf -> ~/dotfiles/tmux/tmux.conf
 ~/.vim -> ~/dotfiles/vim/vim/
 ~/.vimrc -> ~/dotfiles/vim/vimrc
+/opt/LightTable -> /home/willem/dotfiles/LightTable/
+~/.config/LightTable/User -> ~/dotfiles/LightTable/core/User/
 ```
