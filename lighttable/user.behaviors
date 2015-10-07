@@ -41,4 +41,6 @@
  [:editor :lt.objs.editor/wrap]
  ;;; highlight current line
  [:editor :lt.objs.editor/highlight-current-line]
+ ;;; auto-close parens/brackets/quotes/pairs
+ [:app :lt.objs.settings/pair-keymap-diffs]
 ]

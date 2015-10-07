@@ -25,6 +25,8 @@
     tabLength: 4
     fontFamily: "Source Code Pro for Powerline"
     backUpBeforeSaving: true
+    softWrap: true
+    softWrapAtPreferredLineLength: true
   linter: {}
   "tree-view":
     hideIgnoredNames: true
@@ -45,3 +47,4 @@
     siteLocalDir: "/home/willem/bordeltabernacle.github.io"
   "highlight-line":
     enableUnderline: true
+  "git-plus": {}
