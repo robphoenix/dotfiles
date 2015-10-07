@@ -146,3 +146,6 @@ alias ipy='ipython'
 
 # light table
 alias light="/opt/LightTable/LightTable"
+
+# nightcode
+alias night="java -jar ~/nightcode/nightcode-0.4.7-standalone.jar"

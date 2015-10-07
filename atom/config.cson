@@ -48,3 +48,10 @@
   "highlight-line":
     enableUnderline: true
   "git-plus": {}
+  "lisp-paredit": {}
+  "color-tabs":
+    backgroundStyle: "none"
+    borderSize: 2
+    borderStyle: "bottom"
+  "linter-clojure":
+    clojureExecutablePath: "/home/willem/clojure-1.7.0/clojure-1.7.0.jar"
