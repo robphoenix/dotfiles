@@ -1,5 +1,5 @@
 [user]
-	email = rob.phoenix@bt.com
+	email = robertphoenix@gmail.com
 	name = Rob Phoenix
 [diff]
 	tool = vimdiff
@@ -14,4 +14,4 @@
 [help]
 	autocorrect = 1
 [core]
-	excludesfile = /Users/jackfranklin/.gitignore_global
+	excludesfile = /home/willem/dotfiles/git/gitignore-global
