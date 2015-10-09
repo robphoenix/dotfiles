@@ -129,6 +129,9 @@ source /usr/local/bin/virtualenvwrapper.sh
 # atom
 alias atom='sudo atom'
 
+# spacemacs
+alias space='emacs'
+
 # vagrant
 alias del101='sudo ip route del 10.101.0.0/16'
 
