@@ -26,7 +26,8 @@
     fontFamily: "Source Code Pro for Powerline"
     backUpBeforeSaving: true
     softWrap: true
-  linter: {}
+  linter:
+    errorPanelHeight: 47
   "tree-view":
     hideIgnoredNames: true
   "tool-bar":
