@@ -1,5 +1,4 @@
 ```bash
-~/.atom/config.cson -> ~/dotfiles/atom/config.cson
 ~/.bash_profile -> ~/dotfiles/bash/bashprofile
 ~/.bashrc -> ~/dotfiles/bash/bashrc
 ~/.gitconfig -> ~/dotfiles/git/gitconfig
