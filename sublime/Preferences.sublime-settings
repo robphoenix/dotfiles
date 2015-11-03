@@ -11,7 +11,7 @@
 		"*.git"
 	],
 	"font_face": "Source Code Pro for Powerline",
-	"font_size": 12,
+	"font_size": 14,
 	"highlight_line": true,
 	"highlight_modified_tabs": true,
 	"ignored_packages":
@@ -31,7 +31,8 @@
 		"status_bar_visible": true
 	},
 	"sublimelinter": true,
-	"tab_size": 4,
+	"tab_size": 2,
+	"translate_tabs_to_spaces": true,
 	"theme": "Centurion.sublime-theme",
 	"trim_trailing_white_space_on_save": true,
 	"word_wrap": true
