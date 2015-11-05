@@ -13,4 +13,6 @@
 ~/.config/LightTable/User/user.behaviors -> ~/dotfiles/lighttable/user.behaviors
 ~/.config/LightTable/User/user.keymap -> ~/dotfiles/lighttable/user.keymap
 ~/.config/sublime-text-3/Packages/User/Preferences.sublime-settings -> ~/dotfiles/sublime/Preferences.sublime-settings
+~/.config/sublime-text-3/Packages/User/Python.sublime-settings -> ~/dotfiles/sublime/Python.sublime-settings
+
 ```
