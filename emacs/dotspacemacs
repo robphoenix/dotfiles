@@ -17,7 +17,10 @@
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-     colors
+		 erlang
+		 elixir
+		 company-mode
+		 colors
      auto-completion
      better-defaults
      clojure
@@ -173,7 +176,8 @@ before layers configuration."
   (global-linum-mode) ; Show line numbers by default
   (setq clojure-enable-fancify-symbols t) ; enable clojure to use pretty symbols
   (setq-default indent-tabs-mode t) ; use tabs for indentation
-  (setq tab-width 4)
+  (setq tab-width 4) ; set tab-width
+	(add-hook 'alchemist-mode-hook 'company-mode) ; set alchemist mode for elixir
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
