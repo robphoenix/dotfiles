@@ -129,8 +129,8 @@ source /usr/local/bin/virtualenvwrapper.sh
 # atom
 alias atom='sudo atom'
 
-# spacemacs
-alias space='emacs'
+# emacs
+alias emacs='emacs -nw'
 
 # vagrant
 alias del101='sudo ip route del 10.101.0.0/16'
@@ -152,3 +152,5 @@ alias light="/opt/LightTable/LightTable"
 
 # nightcode
 alias night="java -jar ~/nightcode/nightcode-0.4.7-standalone.jar"
+
+
