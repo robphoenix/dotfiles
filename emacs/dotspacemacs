@@ -18,8 +18,9 @@
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
 		 erlang
-		 elixir
 		 company-mode
+		 elixir
+		 elm
 		 colors
      auto-completion
      better-defaults
@@ -33,6 +34,8 @@
      git
      markdown
      org
+		 vagrant
+		 eyebrowse
      (shell :variables
             shell-default-height 20
             shell-default-position 'bottom)
@@ -159,6 +162,9 @@ before layers configuration."
    dotspacemacs-default-package-repository nil
    )
   ;; User initialization goes here
+	(defun dotspacemacs/user-init ()
+		(setq-default git-magit-status-fullscreen t) ;; display the magit status buffer in fullscreen
+		)
   )
 
 (defun helm-clojure-headlines ()
@@ -169,7 +175,7 @@ before layers configuration."
                     (volatile)
                     (headline "^[;(]")))))
 
-(defun dotspacemacs/config ()
+(defun dotspacemacs/user-config ()
   "Configuration function.
   This function is called at the very end of Spacemacs initialization after
   layers configuration."
