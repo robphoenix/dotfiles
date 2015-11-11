@@ -185,6 +185,7 @@ before layers configuration."
   (setq-default indent-tabs-mode t) ; use tabs for indentation
   (setq tab-width 4) ; set tab-width
 	(add-hook 'alchemist-mode-hook 'company-mode) ; set alchemist mode for elixir
+	(add-hook 'python-mode 'run-python) ; Completion needs an inferior Python process running
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
