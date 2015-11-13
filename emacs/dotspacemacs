@@ -36,6 +36,7 @@
      org
 		 vagrant
 		 eyebrowse
+     deft
      (shell :variables
             shell-default-height 20
             shell-default-position 'bottom)
@@ -186,6 +187,8 @@ before layers configuration."
   (setq tab-width 4) ; set tab-width
 	(add-hook 'alchemist-mode-hook 'company-mode) ; set alchemist mode for elixir
 	(add-hook 'python-mode 'run-python) ; Completion needs an inferior Python process running
+  (eval-after-load 'flycheck
+    '(add-hook 'flycheck-mode-hook #'flycheck-elm-setup))
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
