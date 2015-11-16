@@ -183,9 +183,8 @@ before layers configuration."
   (global-hl-line-mode 1) ; Enable current line highlight
   (global-linum-mode) ; Show line numbers by default
   (setq clojure-enable-fancify-symbols t) ; enable clojure to use pretty symbols
-  (setq-default indent-tabs-mode t) ; use tabs for indentation
-  (setq tab-width 4) ; set tab-width
 	(add-hook 'alchemist-mode-hook 'company-mode) ; set alchemist mode for elixir
+  (setq tab-width 4) ; set tab-width
 	(add-hook 'python-mode 'run-python) ; Completion needs an inferior Python process running
   (eval-after-load 'flycheck
     '(add-hook 'flycheck-mode-hook #'flycheck-elm-setup))
