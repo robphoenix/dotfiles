@@ -17,11 +17,10 @@
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-		 erlang
-		 company-mode
-		 elixir
-		 elm
-		 colors
+     colors
+     erlang
+     elixir
+     elm
      auto-completion
      better-defaults
      clojure
@@ -182,9 +181,17 @@ before layers configuration."
   layers configuration."
   (global-hl-line-mode 1) ; Enable current line highlight
   (global-linum-mode) ; Show line numbers by default
+  (setq rainbow-delimiters-mode) ; enable rainbow delimiters
+  (setq-default default-fill-column 74)
+  (fci-mode 1)
+  (setq fci-rule-width 1)
+  (setq fci-rule-color "yellow")
+  (global-vi-tilde-fringe-mode -1) ; disable fringe ~
+  (setq powerline-default-separator 'arrow) ; arrowed powerline
   (setq clojure-enable-fancify-symbols t) ; enable clojure to use pretty symbols
-	(add-hook 'alchemist-mode-hook 'company-mode) ; set alchemist mode for elixir
-  (setq tab-width 4) ; set tab-width
+  (add-hook 'alchemist-mode-hook 'company-mode) ; set alchemist mode for elixir
+  (setq elixir-indent-level 2) ; set elixir indentation
+  (setq python-indent-level 4) ; set python indentation
 	(add-hook 'python-mode 'run-python) ; Completion needs an inferior Python process running
   (eval-after-load 'flycheck
     '(add-hook 'flycheck-mode-hook #'flycheck-elm-setup))
