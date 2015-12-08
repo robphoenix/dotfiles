@@ -1,5 +1,5 @@
 ```bash
-~/.bash_profile -> ~/dotfiles/bash/bashprofile
+~/.profile -> ~/dotfiles/bash/dotprofile
 ~/.bashrc -> ~/dotfiles/bash/bashrc
 ~/.gitconfig -> ~/dotfiles/git/gitconfig
 ~/.gitignore-global -> ~/dotfiles/git/gitignore-global
@@ -10,9 +10,6 @@
 ~/.tmux.conf -> ~/dotfiles/tmux/tmux.conf
 ~/.vim -> ~/dotfiles/vim/vim/
 ~/.vimrc -> ~/dotfiles/vim/vimrc
-~/.config/LightTable/User/user.behaviors -> ~/dotfiles/lighttable/user.behaviors
-~/.config/LightTable/User/user.keymap -> ~/dotfiles/lighttable/user.keymap
 ~/.config/sublime-text-3/Packages/User/Preferences.sublime-settings -> ~/dotfiles/sublime/Preferences.sublime-settings
 ~/.config/sublime-text-3/Packages/User/Python.sublime-settings -> ~/dotfiles/sublime/Python.sublime-settings
-
 ```

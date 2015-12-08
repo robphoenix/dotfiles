@@ -15,6 +15,6 @@
 	autocorrect = 1
 [core]
 	excludesfile = /home/willem/dotfiles/git/gitignore-global
-	editor = subl -n -w
+  editor = vim
 [github]
 	user = bordeltabernacle

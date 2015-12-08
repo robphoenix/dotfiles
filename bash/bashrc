@@ -138,7 +138,6 @@ alias del101='sudo ip route del 10.101.0.0/16'
 # jekyll
 alias killjekyll='kill -9 $(lsof -t -i:4000)'
 
-export PATH=$HOME/bin:$PATH
 
 # nvm
 export NVM_DIR="/home/willem/.nvm"
@@ -149,8 +148,3 @@ alias ipy='ipython'
 
 # light table
 alias light="/opt/LightTable/LightTable"
-
-# nightcode
-alias night="java -jar ~/nightcode/nightcode-0.4.7-standalone.jar"
-
-
