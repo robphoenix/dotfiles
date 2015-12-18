@@ -35,8 +35,14 @@
      vagrant
      eyebrowse
      deft
+     ibuffer
+     ranger
+     semantic
+     smex
+     unimpaired
      (shell :variables
-            shell-default-height 20
+            shell-default-shell 'eshell
+            shell-default-height 30
             shell-default-position 'bottom)
      syntax-checking
      version-control
@@ -74,7 +80,7 @@ before layers configuration."
    dotspacemacs-startup-banner nil
    ;; List of items to show in the startup buffer. If nil it is disabled.
    ;; Possible values are: `recents' `bookmarks' `projects'."
-   dotspacemacs-startup-lists '(projects)
+   dotspacemacs-startup-lists '(recents projects)
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
@@ -140,7 +146,7 @@ before layers configuration."
    ;; Transparency can be toggled through `toggle-transparency'.
    dotspacemacs-inactive-transparency 60
    ;; If non nil unicode symbols are displayed in the mode line.
-   dotspacemacs-mode-line-unicode-symbols t
+   dotspacemacs-mode-line-unicode-symbols nil
    ;; If non nil smooth scrolling (native-scrolling) is enabled. Smooth
    ;; scrolling overrides the default behavior of Emacs which recenters the
    ;; point when it reaches the top or bottom of the screen.
@@ -161,9 +167,9 @@ before layers configuration."
    dotspacemacs-default-package-repository nil
    )
   ;; User initialization goes here
-	(defun dotspacemacs/user-init ()
-		(setq-default git-magit-status-fullscreen t) ;; display the magit status buffer in fullscreen
-		)
+  (defun dotspacemacs/user-init ()
+    (setq-default git-magit-status-fullscreen t) ;; display the magit status buffer in fullscreen
+    )
   )
 
 (defun helm-clojure-headlines ()
@@ -178,7 +184,10 @@ before layers configuration."
   "Configuration function.
   This function is called at the very end of Spacemacs initialization after
   layers configuration."
-  (setq-default tab-width 2)
+  (setq-default tab-width 2) ; default indent
+  (setq-default web-mode-markup-indent-offset 2) ; html indent
+  (setq-default web-mode-css-indent-offset 2) ; css indent
+  (setq python-indent-level 4) ; python indent
   (setq indent-tabs-mode nil) ; set indentation to use spaces instead of tabs
   (setq-default tab-always-indent 'complete) ; make tab key do indent first then completion
   (setq elixir-indent-level 2) ; set elixir indentation
@@ -190,9 +199,29 @@ before layers configuration."
   (setq clojure-enable-fancify-symbols t) ; enable clojure to use pretty symbols
   (add-hook 'alchemist-mode-hook 'company-mode) ; set alchemist mode for elixir
   (add-hook 'python-mode 'run-python) ; Completion needs an inferior Python process running
-  (eval-after-load 'flycheck
-    '(add-hook 'flycheck-mode-hook #'flycheck-elm-setup))
-)
+  (add-hook 'text-mode-hook 'auto-fill-mode) ; line wrap in text mode
+  (add-hook 'dired-mode-hook 'deer) ; replace dired with deer
+  ;; remove highlight line mode from shells
+  (let ((comint-hooks '(eshell-mode-hook
+                        term-mode-hook
+                        erc-mode-hook
+                        messages-buffer-mode-hook
+                        inferior-emacs-lisp-mode-hook
+                        inferior-python-mode-hook
+                        alchemist-iex-mode-hook)))
+    (spacemacs/add-to-hooks (defun bb/no-hi-line-mode ()
+                              (setq-local global-hl-line-mode nil))
+                            comint-hooks)
+    (spacemacs/add-to-hooks (defun bb/no-scroll-margin ()
+                              (setq-local scroll-margin 0))
+                            comint-hooks))
+  ;; Elm setup
+  (add-hook 'flycheck-mode-hook 'flycheck-elm-setup)
+  (add-hook 'after-init-hook #'global-flycheck-mode)
+  (add-hook 'elm-mode-hook
+            (lambda ()
+              (setq company-backends '(company-elm))))
+  )
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
