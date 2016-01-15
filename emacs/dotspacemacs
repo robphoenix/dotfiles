@@ -41,11 +41,12 @@
      ranger
      semantic
      smex
+     themes-megapack
      unimpaired
      (shell :variables
-            shell-default-shell 'eshell
-            shell-default-height 30
-            shell-default-position 'bottom)
+            shell-default-shell 'shell
+            shell-default-position 'bottom
+            shell-default-height 40)
      syntax-checking
      version-control
      )
@@ -86,7 +87,8 @@ before layers configuration."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(monokai
+   dotspacemacs-themes '(gruvbox
+                         monokai
                          leuven)
    ;; If non nil the cursor color matches the state color.
    dotspacemacs-colorize-cursor-according-to-state t
@@ -211,7 +213,7 @@ before layers configuration."
   (global-linum-mode) ; Show line numbers by default
   (setq rainbow-delimiters-mode) ; enable rainbow delimiters
   (global-vi-tilde-fringe-mode -1) ; disable fringe ~
-  (setq powerline-default-separator 'arrow) ; arrowed powerline
+  (setq powerline-default-separator 'nil) ; arrowed powerline
   (setq clojure-enable-fancify-symbols t) ; enable clojure to use pretty symbols
   (add-hook 'alchemist-mode-hook 'company-mode) ; set alchemist mode for elixir
   (add-hook 'python-mode 'run-python) ; Completion needs an inferior Python process running
