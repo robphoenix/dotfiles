@@ -41,6 +41,8 @@
      ranger
      semantic
      smex
+     yaml
+     dockerfile
      themes-megapack
      unimpaired
      (shell :variables
@@ -213,7 +215,7 @@ before layers configuration."
   (global-linum-mode) ; Show line numbers by default
   (setq rainbow-delimiters-mode) ; enable rainbow delimiters
   (global-vi-tilde-fringe-mode -1) ; disable fringe ~
-  (setq powerline-default-separator 'nil) ; arrowed powerline
+  (setq powerline-default-separator 'nil) ; powerline seperator
   (setq clojure-enable-fancify-symbols t) ; enable clojure to use pretty symbols
   (add-hook 'alchemist-mode-hook 'company-mode) ; set alchemist mode for elixir
   (add-hook 'python-mode 'run-python) ; Completion needs an inferior Python process running
