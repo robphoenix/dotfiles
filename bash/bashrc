@@ -126,9 +126,6 @@ alias chrome='google-chrome'
 export WORKON_HOME=$HOME/.virtualenvs
 source /usr/local/bin/virtualenvwrapper.sh
 
-# atom
-alias atom='sudo atom'
-
 # emacs
 alias emacs='emacs -nw'
 
@@ -137,7 +134,7 @@ alias del101='sudo ip route del 10.101.0.0/16'
 
 # jekyll
 alias killjekyll='kill -9 $(lsof -t -i:4000)'
-
+alias jekyllup='jekyll build && jekyll serve'
 
 # nvm
 export NVM_DIR="/home/willem/.nvm"
@@ -146,5 +143,7 @@ export NVM_DIR="/home/willem/.nvm"
 # ipython
 alias ipy='ipython'
 
-# light table
-alias light="/opt/LightTable/LightTable"
+# vi mode
+set -o vi
+export VISUAL=/usr/bin/vim
+export EDITOR=/usr/bin/vim
