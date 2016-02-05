@@ -7,6 +7,7 @@
   st = status
   cam = commit -am
   aa = add --all
+  pom = push origin master
   pghm = push github master
   pglm = push gitlab master
 [color]

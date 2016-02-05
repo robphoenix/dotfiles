@@ -1,19 +1,13 @@
 {
 	"auto_complete": true,
-	"color_scheme": "Packages/Gruvbox Dark/gruvbox.tmTheme",
+	"bold_folder_labels": true,
 	"caret_style": "phase",
+	"color_inactive_tabs": true,
+	"color_scheme": "Packages/Gruvbox Dark/gruvbox.tmTheme",
 	"detect_indentation": true,
 	"drafts_path": "/home/willem/bordeltabernacle.github.io/_drafts",
 	"draw_indent_guides": true,
 	"ensure_newline_at_eof_on_save": true,
-	"tabs_medium": true,
-	"sidebar_size_13": true,
-	"line_padding_bottom": 1,
-  "line_padding_top": 1,
-  "bold_folder_labels": true,
-  "wide_caret": true,
-	"sidebar_no_icon": false,
-	"color_inactive_tabs": true,
 	"file_exclude_patterns":
 	[
 		"*.DS_Store",
@@ -24,8 +18,8 @@
 	],
 	"folder_exclude_patterns":
 	[
-	  ".cache",
-	  "__pycache__"
+		".cache",
+		"__pycache__"
 	],
 	"font_face": "Source Code Pro for Powerline",
 	"font_size": 13,
@@ -35,6 +29,8 @@
 	[
 		"Vintage"
 	],
+	"line_padding_bottom": 1,
+	"line_padding_top": 1,
 	"match_brackets": false,
 	"match_brackets_angle": false,
 	"match_brackets_braces": true,
@@ -48,10 +44,14 @@
 		"status_bar_visible": false
 	},
 	"posts_path": "/home/willem/bordeltabernacle.github.io/_posts",
+	"sidebar_no_icon": false,
+	"sidebar_size_13": true,
 	"sublimelinter": true,
 	"tab_size": 2,
+	"tabs_medium": true,
 	"theme": "Afterglow-orange.sublime-theme",
 	"translate_tabs_to_spaces": true,
 	"trim_trailing_white_space_on_save": true,
+	"wide_caret": true,
 	"word_wrap": true
 }
