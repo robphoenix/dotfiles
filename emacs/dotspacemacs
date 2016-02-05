@@ -190,6 +190,7 @@ before layers configuration."
   This function is called at the very end of Spacemacs initialization after
   layers configuration."
   (require 'evil-mc)
+  (global-git-commit-mode t)
   (global-evil-mc-mode)
   (setq-default tab-width 2) ; default indent
   (setq-default
