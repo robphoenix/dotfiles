@@ -147,3 +147,4 @@ alias ipy='ipython'
 set -o vi
 export VISUAL=/usr/bin/vim
 export EDITOR=/usr/bin/vim
+

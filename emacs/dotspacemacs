@@ -189,6 +189,7 @@ before layers configuration."
   "Configuration function.
   This function is called at the very end of Spacemacs initialization after
   layers configuration."
+  (setq-default dotspacemacs-configuration-layers '((colors :variables colors-enable-rainbow-identifiers t)))
   (require 'evil-mc)
   (global-git-commit-mode t)
   (global-evil-mc-mode)

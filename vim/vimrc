@@ -13,7 +13,7 @@ let g:promptline_theme = 'airline'
 let g:promptline_preset = {
                 \'b' : [ promptline#slices#python_virtualenv() ],
                 \'a' : [ promptline#slices#vcs_branch() ],
-                \'c' : [ promptline#slices#cwd({'dir_limit': 2}) ],
+                \'c' : [ promptline#slices#cwd({'dir_limit': 1}) ],
                 \'options': {
                 \'left_sections' : [ 'b', 'a', 'c' ],
                 \'left_only_sections' : [ 'b', 'a', 'c' ]}}

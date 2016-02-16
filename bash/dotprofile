@@ -28,3 +28,8 @@ export PATH=$HOME/bin:$PATH
 # (for a system-wide installation) or $HOME/.profile:
 export PATH=$PATH:/usr/local/go/bin
 # https://golang.org/doc/install?download=go1.5.1.linux-amd64.tar.gz
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
