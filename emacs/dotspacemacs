@@ -39,6 +39,7 @@
      ibuffer
      ranger
      semantic
+     erc
      smex
      yaml
      dockerfile
@@ -47,7 +48,7 @@
      (shell :variables
             shell-default-shell 'shell
             shell-default-position 'bottom
-            shell-default-height 40)
+            shell-default-height 50)
      syntax-checking
      version-control
      )
