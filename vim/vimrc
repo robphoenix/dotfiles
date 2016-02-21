@@ -4,7 +4,7 @@ filetype plugin indent on
 
 set t_Co=256
 let g:airline_powerline_fonts = 1
-let g:airline_theme='luna'
+let g:airline_theme='raven'
 let g:airline#extensions#virtualenv#enabled = 1
 let g:virtualenv_auto_activate = 1
 set laststatus=2
