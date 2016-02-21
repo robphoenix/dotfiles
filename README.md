@@ -13,4 +13,5 @@ ln -s ~/dotfiles/vim/vimrc ~/.vimrc
 ln -s ~/dotfiles/hexchat/colors.conf ~/.config/hexchat/colors.conf
 ln -s ~/dotfiles/hexchat/hexchat.conf ~/.config/hexchat/hexchat.conf
 ln -s ~/dotfiles/sublime/Preferences.sublime-settings ~/.config/sublime-text-3/Packages/User/Preferences.sublime-settings
+ln -s ~/dotfiles/zsh/dotzshrc ~/.zshrc
 ```
