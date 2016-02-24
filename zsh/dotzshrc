@@ -100,7 +100,7 @@ export WORKON_HOME=$HOME/.virtualenvs
 source /usr/local/bin/virtualenvwrapper.sh
 
 # emacs
-alias emacs='emacs -nw'
+# alias emacs='emacs -nw'
 
 # vagrant
 alias del101='sudo ip route del 10.101.0.0/16'
