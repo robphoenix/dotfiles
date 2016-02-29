@@ -18,6 +18,7 @@
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
      colors
+     haskell
      erlang
      elixir
      eyebrowse
@@ -34,7 +35,6 @@
      markdown
      org
      vagrant
-     haskell
      deft
      ibuffer
      ranger

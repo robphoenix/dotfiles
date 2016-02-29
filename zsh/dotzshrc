@@ -53,7 +53,7 @@ plugins=(git extract colorize)
 
 # User configuration
 
-  export PATH="/home/willem/bin:/home/willem/bin:/home/willem/.rvm/gems/ruby-2.1.4/bin:/home/willem/.rvm/gems/ruby-2.1.4@global/bin:/home/willem/.rvm/rubies/ruby-2.1.4/bin:/home/willem/bin:/home/willem/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/jvm/java-7-oracle/bin:/usr/lib/jvm/java-7-oracle/db/bin:/usr/lib/jvm/java-7-oracle/jre/bin:/usr/local/go/bin:/home/willem/.rvm/bin:/usr/lib/jvm/java-7-oracle/bin:/usr/lib/jvm/java-7-oracle/db/bin:/usr/lib/jvm/java-7-oracle/jre/bin:/usr/local/go/bin:/home/willem/.rvm/bin"
+  export PATH="/home/willem/bin:/home/willem/bin:/home/willem/.rvm/gems/ruby-2.1.4/bin:/home/willem/.rvm/gems/ruby-2.1.4@global/bin:/home/willem/.rvm/rubies/ruby-2.1.4/bin:/home/willem/bin:/home/willem/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/jvm/java-7-oracle/bin:/usr/lib/jvm/java-7-oracle/db/bin:/usr/lib/jvm/java-7-oracle/jre/bin:/usr/local/go/bin:/home/willem/.rvm/bin:/usr/lib/jvm/java-7-oracle/bin:/usr/lib/jvm/java-7-oracle/db/bin:/usr/lib/jvm/java-7-oracle/jre/bin:/usr/local/go/bin:/home/willem/.rvm/bin:/home/willem/.bake/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh

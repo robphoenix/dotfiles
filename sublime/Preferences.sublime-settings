@@ -21,7 +21,7 @@
 		".cache",
 		"__pycache__"
 	],
-	"font_face": "Source Code Pro for Powerline",
+	"font_face": "Source Code Pro",
 	"font_size": 12,
 	"highlight_line": true,
 	"highlight_modified_tabs": true,
