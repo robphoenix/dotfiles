@@ -16,4 +16,5 @@ ln -s ~/dotfiles/sublime/Preferences.sublime-settings ~/.config/sublime-text-3/P
 ln -s ~/dotfiles/zsh/dotzshrc ~/.zshrc
 ln -s ~/dotfiles/zsh/z.sh ~/z.sh
 ln -s ~/dotfiles/js/dotjsbeautifyrc ~/.jsbeautifyrc
+ln -s ~/dotfiles/zsh/bordeltabernacle.zsh-theme ~/.oh-my-zsh/themes/bordeltabernacle.zsh-theme
 ```
