@@ -19,3 +19,5 @@
     editor = vim
 [github]
 	user = bordeltabernacle
+[credential]
+	helper = cache --timeout=3600

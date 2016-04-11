@@ -26,6 +26,7 @@ aptdaemon					install
 aptdaemon-data					install
 aptitude					install
 aptitude-common					install
+ar3011-dkms					install
 aspell						install
 aspell-en					install
 at-spi2-core					install
@@ -205,6 +206,7 @@ file-roller					install
 findutils					install
 firefox						install
 firefox-locale-en				install
+fluxgui						install
 fontconfig					install
 fontconfig-config				install
 fonts-dejavu-core				install
@@ -300,6 +302,7 @@ git						install
 git-core					install
 git-doc						install
 git-man						install
+gitkraken					install
 glib-networking:amd64				install
 glib-networking-common				install
 glib-networking-services			install
@@ -454,6 +457,7 @@ libappindicator3-1				install
 libapt-inst1.5:amd64				install
 libapt-pkg-perl					install
 libapt-pkg4.12:amd64				install
+libarchive-dev:amd64				install
 libarchive-extract-perl				install
 libarchive-zip-perl				install
 libarchive13:amd64				install
@@ -1226,6 +1230,7 @@ libsane-hpaio					install
 libsasl2-2:amd64				install
 libsasl2-modules:amd64				install
 libsasl2-modules-db:amd64			install
+libsbc1:amd64					install
 libschroedinger-1.0-0:amd64			install
 libscsynth1					install
 libsdl-image1.2:amd64				install
@@ -1255,6 +1260,8 @@ libsndfile1-dev					install
 libsnmp-base					install
 libsnmp30:amd64					install
 libsocket6-perl					install
+libsodium-dev:amd64				install
+libsodium13:amd64				install
 libsonic0:amd64					install
 libsoup-gnome2.4-1:amd64			install
 libsoup2.4-1:amd64				install
@@ -1740,6 +1747,7 @@ postgresql-common				install
 postgresql-contrib				install
 postgresql-contrib-9.3				install
 powermgmt-base					install
+ppa-purge					install
 ppp						install
 pppconfig					install
 pppoeconf					install
@@ -1759,6 +1767,7 @@ printer-driver-splix				install
 procps						install
 psmisc						install
 pulseaudio					install
+pulseaudio-module-bluetooth			install
 pulseaudio-module-x11				install
 pulseaudio-utils				install
 pycharm-community				install
@@ -1978,10 +1987,12 @@ sound-theme-freedesktop				install
 speech-dispatcher				install
 speech-dispatcher-audio-plugins:amd64		install
 sqlite3						install
+squashfs-tools					install
 ssh-askpass-gnome				install
 ssh-import-id					install
 ssl-cert					install
 strace						install
+stream2ip-gtk3					install
 sublime-text					deinstall
 sublime-text-installer				install
 sudo						install
