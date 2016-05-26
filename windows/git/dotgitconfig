@@ -1,6 +1,21 @@
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	required = true
 [user]
-	email = robertphoenix@gmail.com
 	name = Rob Phoenix
+	email = rob.phoenix@bt.com
+[core]
+  excludesfile = ~/gitignore-global
+  editor = subl -n -w
+[color]
+  ui = true
+[help]
+  autocorrect = 1
+[github]
+  user = bordeltabernacle
+[credential]
+  helper = cache --timeout=3600
 [alias]
   i = status
   memo = commit -am
@@ -15,14 +30,3 @@
   amend = commit --amend
   unmerged = diff --name-only --diff-filter=U
   remotes = remote -v
-[color]
-	ui = true
-[help]
-	autocorrect = 1
-[core]
-	excludesfile = ~/gitignore-global
-	editor = subl -n -w
-[github]
-	user = bordeltabernacle
-[credential]
-	helper = cache --timeout=3600
