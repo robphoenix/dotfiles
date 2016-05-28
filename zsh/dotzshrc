@@ -59,7 +59,7 @@ plugins=(extract colorize cp debian)
 source $ZSH/oh-my-zsh.sh
 
 # include z
-. ~/z.sh
+. ~/src/dotfiles/zsh/z.sh
 
 # start in ~/code
 cd ~/src/code

@@ -57,4 +57,4 @@ ${hg_info}\
 ${git_info}\
  \
 %{$fg[white]%}[%*] $exit_code
-%{$terminfo[bold]$fg[red]%}λ  %{$reset_color%}"
+%{$terminfo[bold]$fg[red]%}λ %{$reset_color%}"
