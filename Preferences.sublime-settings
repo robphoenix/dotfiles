@@ -1,4 +1,5 @@
 {
+	"always_show_minimap_viewport": false,
 	"auto_complete": true,
 	"bold_folder_labels": true,
 	"caret_style": "phase",
