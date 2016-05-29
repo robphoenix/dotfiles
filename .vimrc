@@ -1,23 +1,10 @@
-execute pathogen#infect()
 syntax on
 filetype plugin indent on
 
 set t_Co=256
 let g:airline_powerline_fonts = 1
 let g:airline_theme='raven'
-" let g:airline#extensions#virtualenv#enabled = 1
-let g:virtualenv_auto_activate = 1
-let g:airline#extensions#tmuxline#enabled = 0
 set laststatus=2
-
-" let g:promptline_theme = 'airline'
-" let g:promptline_preset = {
-"                 \'b' : [ promptline#slices#python_virtualenv() ],
-"                 \'a' : [ promptline#slices#vcs_branch() ],
-"                 \'c' : [ promptline#slices#cwd({'dir_limit': 1}) ],
-"                 \'options': {
-"                 \'left_sections' : [ 'b', 'a', 'c' ],
-"                 \'left_only_sections' : [ 'b', 'a', 'c' ]}}
 
 
 set cursorline             " have a line indicate the cursor location
@@ -65,15 +52,6 @@ set tw=500
 
 """ specify syntax highlighting for specific files
 autocmd Bufread,BufNewFile *.md set filetype=markdown " Vim interprets .md as 'modula2' otherwise, see :set filetype?
-
-" Highlight words to avoid in tech writing
-""" http://css-tricks.com/words-avoid-educational-writing/
-highlight TechWordsToAvoid ctermbg=red ctermfg=white
-match TechWordsToAvoid /\cobviously\|basically\|simply\|of\scourse\|clearly\|just\|everyone\sknows\|however\|so,\|easy/
-autocmd BufWinEnter * match TechWordsToAvoid /\cobviously\|basically\|simply\|of\scourse\|clearly\|just\|everyone\sknows\|however,\|so,\|easy/
-autocmd InsertEnter * match TechWordsToAvoid /\cobviously\|basically\|simply\|of\scourse\|clearly\|just\|everyone\sknows\|however,\|so,\|easy/
-autocmd InsertLeave * match TechWordsToAvoid /\cobviously\|basically\|simply\|of\scourse\|clearly\|just\|everyone\sknows\|however,\|so,\|easy/
-autocmd BufWinLeave * call clearmatches()
 
 " Rainbow parenthesis always on!
 if exists(':RainbowParenthesesToggle')

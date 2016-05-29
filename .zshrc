@@ -5,7 +5,7 @@
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="bordeltabernacle"
+ZSH_THEME="ys-lambda"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -49,7 +49,7 @@ ZSH_THEME="bordeltabernacle"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(extract colorize cp debian)
+plugins=(extract colorize cp)
 
 # User configuration
 
@@ -59,7 +59,7 @@ plugins=(extract colorize cp debian)
 source $ZSH/oh-my-zsh.sh
 
 # include z
-. ~/src/dotfiles/zsh/z.sh
+. ~/src/dotfiles/z.sh
 
 # start in ~/code
 cd ~/src/code
@@ -97,3 +97,4 @@ alias vim="nvim"
 alias relo="source ~/.zshrc"
 alias open="xdg-open"
 alias zshconf="vim ~/.zshrc"
+alias ll="ls -al"
