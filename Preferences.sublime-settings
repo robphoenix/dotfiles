@@ -3,10 +3,11 @@
 	"bold_folder_labels": true,
 	"caret_style": "phase",
 	"color_inactive_tabs": true,
-	"color_scheme": "Packages/Gruvbox Dark/gruvbox.tmTheme",
+	"color_scheme": "Packages/Material Theme/schemes/Material-Theme-Darker.tmTheme",
+	"default_line_ending": "unix",
 	"detect_indentation": true,
-	"drafts_path": "/home/willem/bordeltabernacle.github.io/_drafts",
 	"draw_indent_guides": true,
+	"draw_white_space": "all",
 	"ensure_newline_at_eof_on_save": true,
 	"file_exclude_patterns":
 	[
@@ -19,23 +20,40 @@
 	"folder_exclude_patterns":
 	[
 		".cache",
-		"__pycache__"
+		"__pycache__",
+		".git",
+		".vagrant",
+		"node_modules"
 	],
-	"font_face": "Source Code Pro",
-	"font_size": 12,
+	"font_face": "Source Code Pro Light",
+	"font_options":
+	[
+		"gray_antialias",
+		"subpixel_antialias"
+	],
+	"font_size": 16,
 	"highlight_line": true,
 	"highlight_modified_tabs": true,
+	"hot_exit": false,
 	"ignored_packages":
 	[
 		"Vintage"
 	],
-	"line_padding_bottom": 1,
-	"line_padding_top": 1,
-	"match_brackets": false,
-	"match_brackets_angle": false,
+	"indent_guide_options":
+	[
+		"draw_normal",
+		"draw_active"
+	],
+	"line_padding_bottom": 3,
+	"line_padding_top": 3,
+	"match_brackets": true,
+	"match_brackets_angle": true,
 	"match_brackets_braces": true,
 	"match_brackets_content": true,
 	"match_brackets_square": true,
+	"material_theme_compact_sidebar": false,
+	"material_theme_panel_separator": true,
+	"material_theme_tabs_autowidth": true,
 	"new_window_settings":
 	{
 		"hide_open_files": true,
@@ -43,13 +61,19 @@
 		"side_bar_visible": true,
 		"status_bar_visible": false
 	},
-	"posts_path": "/home/willem/bordeltabernacle.github.io/_posts",
+	"overlay_scroll_bars": "enabled",
+	"remember_open_files": false,
+	"rulers":
+	[
+		80,
+		120
+	],
 	"sidebar_no_icon": false,
 	"sidebar_size_13": true,
 	"sublimelinter": true,
 	"tab_size": 2,
 	"tabs_medium": true,
-	"theme": "Afterglow-orange.sublime-theme",
+	"theme": "Material-Theme-Darker.sublime-theme",
 	"translate_tabs_to_spaces": true,
 	"trim_trailing_white_space_on_save": true,
 	"wide_caret": true,
