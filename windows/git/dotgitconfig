@@ -17,7 +17,7 @@
 [credential]
   helper = cache --timeout=3600
 [alias]
-  i = status
+  i = status -s
   memo = commit -am
   sum = add --all
   sync = push origin master
