@@ -30,13 +30,8 @@
      javascript
      react
      python
-     lua
      go
-     fsharp
      racket
-     rust
-     swift
-     typescript
      sql
      emacs-lisp
      git
@@ -97,7 +92,8 @@ before layers configuration."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(gruvbox
+   dotspacemacs-themes '(material
+   			 gruvbox
                          monokai
                          leuven)
    ;; If non nil the cursor color matches the state color.
