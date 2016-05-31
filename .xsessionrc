@@ -4,6 +4,3 @@
 
 # scale dpi
 xrandr --dpi 184
-
-# start ssh-agent
-eval $(ssh-agent)
