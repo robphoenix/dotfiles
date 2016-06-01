@@ -116,6 +116,8 @@ if ! shopt -oq posix; then
   fi
 fi
 
+xrandr --dpi 184
+
 # Shell prompt based on the Solarized Dark theme.
 # Screenshot: http://i.imgur.com/EkEtphC.png
 # Heavily inspired by @necolas’s prompt: https://github.com/necolas/dotfiles
