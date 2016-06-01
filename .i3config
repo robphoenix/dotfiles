@@ -92,9 +92,9 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
-set $ws1 "λ"
-set $ws2 ""
-set $ws3 ""
+set $ws1 "1: "
+set $ws2 "2: "
+set $ws3 "3: "
 
 assign [class="Gnome-terminal"] $ws1
 assign [class="google-chrome"] $ws2
@@ -174,11 +174,10 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute s
 
 # load terminal on start
 exec i3-sensible-terminal
-exec subl
-exec google-chrome
 
 # load wallpaper
 exec_always feh --bg-scale /home/rob/src/dotfiles/images/Mountainous_View_by_Sven_Scheuermeier-1600.jpg
 
 # screen resolution & scaling
-exec_always xrandr --output HDMI-1 --off --output eDP-1 --primary --mode 3200x1800 --pos 0x0 --rotate normal --dpi 184
+exec_always xrandr --dpi 184
+
