@@ -1,0 +1,6 @@
+#!/bin/sh
+#
+# ~/.xsessionrc
+
+# scale dpi
+xrandr --dpi 184

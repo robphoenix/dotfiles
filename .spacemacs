@@ -22,7 +22,6 @@
      erlang
      elixir
      eyebrowse
-     elm
      auto-completion
      better-defaults
      clojure
@@ -31,7 +30,6 @@
      react
      python
      go
-     racket
      sql
      emacs-lisp
      git
@@ -93,15 +91,15 @@ before layers configuration."
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(material
-   			 gruvbox
+   			                 gruvbox
                          monokai
                          leuven)
    ;; If non nil the cursor color matches the state color.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
-   dotspacemacs-default-font '("Source Code Pro for Powerline"
-                               :size 18
+   dotspacemacs-default-font '("Source Code Pro Light"
+                               :size 34
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -110,8 +108,6 @@ before layers configuration."
    ;; The leader key accessible in `emacs state' and `insert state'
    dotspacemacs-emacs-leader-key "M-m"
    ;; Major mode leader key is a shortcut key which is the equivalent of
-   ;; pressing `<leader> m`. Set it to `nil` to disable it.
-   dotspacemacs-major-mode-leader-key ","
    ;; Major mode leader key accessible in `emacs state' and `insert state'
    dotspacemacs-major-mode-emacs-leader-key "C-M-m"
    ;; The command key used for Evil commands (ex-commands) and
