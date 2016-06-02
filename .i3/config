@@ -177,7 +177,7 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute s
 exec_always feh --bg-scale /home/rob/src/dotfiles/images/Mountainous_View_by_Sven_Scheuermeier-1600.jpg
 
 # load terminal on start
-exec i3-sensible-terminal
-exec google-chrome
-exec emacs
+exec --no-startup-id i3-sensible-terminal
+exec --no-startup-id google-chrome
+exec --no-startup-id emacs
 
