@@ -83,7 +83,7 @@ URxvt*background:       [90]S_base04
 *saveLines:             999999
 
 !-- Xft settings -- !
-Xft.dpi:        144
+Xft.dpi:        184
 Xft.rgba:       rgb
 Xft.autohint:   0
 Xft.lcdfilter:  lcddefault
@@ -118,12 +118,6 @@ URxvt*termName:         rxvt
 !! copy paste
 URxvt*clipboard.copycmd:    xclip -i -selection clipboard
 URxvt*clipboard.pastecmd:   xclip -o -selection clipboard
-
-!! clickable urls
-URxvt.perl-ext-common:      default,matcher,selection-to-clipboard
-URxvt.url-launcher:         /usr/local/bin/browser-exec
-URxvt.matcher.button:       1
-URxvt.url-select.underline: true
 
 !! get option over to work
 URxvt.keysym.M-Left:        \033[1;5D
