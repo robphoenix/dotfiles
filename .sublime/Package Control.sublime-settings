@@ -1,0 +1,18 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"BracketHighlighter",
+		"GitGutter",
+		"Golang Build",
+		"GoOracle",
+		"GoSublime",
+		"Material Theme",
+		"Package Control",
+		"PackageResourceViewer",
+		"Vintageous"
+	]
+}

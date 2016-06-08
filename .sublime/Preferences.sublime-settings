@@ -7,7 +7,7 @@
 	"color_scheme": "Packages/Material Theme/schemes/Material-Theme.tmTheme",
 	"default_line_ending": "unix",
 	"detect_indentation": true,
-	"dpi_scale": 1.8,
+	"dpi_scale": 2,
 	"draw_indent_guides": true,
 	"draw_white_space": "all",
 	"ensure_newline_at_eof_on_save": true,
@@ -33,7 +33,7 @@
 		"gray_antialias",
 		"subpixel_antialias"
 	],
-	"font_size": 18,
+	"font_size": 16,
 	"highlight_line": true,
 	"highlight_modified_tabs": true,
 	"hot_exit": false,
