@@ -104,3 +104,5 @@ alias vpndown="nmcli con down id 'PIA - UK London'"
 alias tack="chsh -s /bin/bash && sudo reboot"
 alias bass="web 'http://www.bassdrive.com/pop-up/'"
 alias bye="sudo shutdown now"
+
+export TERM=xterm-256color

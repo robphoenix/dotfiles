@@ -1,13 +1,32 @@
 execute pathogen#infect()
+call pathogen#helptags()
+
+set nocompatible
+
 syntax on
-filetype plugin indent on
+filetype off " plugin indent on
+
+" Enable autocompletion
+" set omnifunc=go#complete#Complete
+" Select keyword as you type
+" :set completeopt=longest,menuone
 
 " Solarized Colours
 syntax enable
 set background=dark
 colorscheme solarized
 
-set t_Co=256
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#sources#go#gocode_binary="$GOPATH.'/bin/gocode'"
+let g:deoplete#sources#go#pointer=1
+
+if !has('gui_running')
+  set t_Co=256
+endif
+
+" leader key
+let mapleader = ","
+let g:mapleader = ","
 
 :let g:netrw_dirhistmax = 0 " save no history or bookmarks in netrw
 
@@ -48,20 +67,41 @@ set linebreak
 set tw=500
 
 " don't bell or blink
-set visualbell
 set noerrorbells
-set vb t_vb=
 
-""" specify syntax highlighting for specific files
+" specify syntax highlighting for specific files
 autocmd Bufread,BufNewFile *.md set filetype=markdown " Vim interprets .md as 'modula2' otherwise, see :set filetype?
 
+" Go settings
+au BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4
+
+let g:rbpt_colorpairs = [
+    \ ['brown',       'RoyalBlue3'],
+    \ ['Darkblue',    'SeaGreen3'],
+    \ ['darkgray',    'DarkOrchid3'],
+    \ ['darkgreen',   'firebrick3'],
+    \ ['darkcyan',    'RoyalBlue3'],
+    \ ['darkred',     'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['brown',       'firebrick3'],
+    \ ['gray',        'RoyalBlue3'],
+    \ ['black',       'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['Darkblue',    'firebrick3'],
+    \ ['darkgreen',   'RoyalBlue3'],
+    \ ['darkcyan',    'SeaGreen3'],
+    \ ['darkred',     'DarkOrchid3'],
+    \ ['red',         'firebrick3'],
+    \ ]
+
+let g:rbpt_max = 16
+let g:rbpt_loadcmd_toggle = 0
+
 " Rainbow parenthesis always on!
-if exists(':RainbowParenthesesToggle')
-"   autocmd VimEnter * RainbowParenthesesToggle
-    autocmd Syntax * RainbowParenthesesLoadRound
-    autocmd Syntax * RainbowParenthesesLoadSquare
-    autocmd Syntax * RainbowParenthesesLoadBraces
-endif
+autocmd VimEnter * RainbowParenthesesToggle
+autocmd Syntax * RainbowParenthesesLoadRound
+autocmd Syntax * RainbowParenthesesLoadSquare
+autocmd Syntax * RainbowParenthesesLoadBraces
 
 " Change colourscheme when diffing
 fun! SetDiffColors()
@@ -75,11 +115,157 @@ autocmd FilterWritePre * call SetDiffColors()
 " enable all Python syntax highlighting features
 let python_highlight_all = 1
 
-" NERDTree
+" ==================== NerdTree ====================
+" For toggling
+nmap <C-n> :NERDTreeToggle<CR>
+noremap <Leader>n :NERDTreeToggle<cr>
+noremap <Leader>f :NERDTreeFind<cr>
+
+let NERDTreeShowHidden=1
+
+let NERDTreeIgnore=['\.vim$', '\~$', '\.git$', '.DS_Store']
+
+" Close nerdtree and vim on close file
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
 " open automatically if no files specified
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-" toggle
-map <C-n> :NERDTreeToggle<CR>
-" show hidden files
-let NERDTreeShowHidden=1
+
+" ==================== Vim-go ====================
+let g:go_fmt_fail_silently = 0
+let g:go_fmt_command = "goimports"
+let g:go_autodetect_gopath = 1
+let g:go_term_enabled = 1
+let g:go_snippet_engine = "neosnippet"
+let g:go_highlight_space_tab_error = 0
+let g:go_highlight_array_whitespace_error = 0
+let g:go_highlight_trailing_whitespace_error = 0
+let g:go_highlight_extra_types = 0
+let g:go_highlight_operators = 0
+let g:go_highlight_build_constraints = 1
+
+
+au FileType go nmap <Leader>s <Plug>(go-def-split)
+au FileType go nmap <Leader>v <Plug>(go-def-vertical)
+au FileType go nmap <Leader>i <Plug>(go-info)
+au FileType go nmap <Leader>l <Plug>(go-metalinter)
+
+au FileType go nmap <leader>r  <Plug>(go-run)
+
+au FileType go nmap <leader>b  <Plug>(go-build)
+au FileType go nmap <leader>t  <Plug>(go-test)
+au FileType go nmap <leader>dt  <Plug>(go-test-compile)
+au FileType go nmap <Leader>d <Plug>(go-doc)
+
+" I like these more!
+augroup go
+    autocmd!
+    autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
+    autocmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
+    autocmd Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
+augroup END
+
+" ==================== delimitMate ====================
+let g:delimitMate_expand_cr = 1
+let g:delimitMate_expand_space = 1
+let g:delimitMate_smart_quotes = 1
+let g:delimitMate_expand_inside_quotes = 0
+let g:delimitMate_smart_matchpairs = '^\%(\w\|\$\)'
+
+" ==================== Lightline ====================
+"
+let g:lightline = {
+      \ 'colorscheme': 'solarized',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste'],
+      \             [ 'fugitive', 'filename', 'modified', 'ctrlpmark' ],
+      \             [ 'go'] ],
+      \   'right': [ [ 'lineinfo' ],
+      \              [ 'percent' ],
+      \              [ 'fileformat', 'fileencoding', 'filetype' ] ]
+      \ },
+      \ 'inactive': {
+      \   'left': [ [ 'go'] ],
+      \ },
+      \ 'component_function': {
+      \   'lineinfo': 'LightLineInfo',
+      \   'percent': 'LightLinePercent',
+      \   'modified': 'LightLineModified',
+      \   'filename': 'LightLineFilename',
+      \   'go': 'LightLineGo',
+      \   'fileformat': 'LightLineFileformat',
+      \   'filetype': 'LightLineFiletype',
+      \   'fileencoding': 'LightLineFileencoding',
+      \   'mode': 'LightLineMode',
+      \   'fugitive': 'LightLineFugitive',
+      \   'ctrlpmark': 'CtrlPMark',
+      \ },
+      \ }
+
+function! LightLineModified()
+  if &filetype == "help"
+    return ""
+  elseif &modified
+    return "+"
+  elseif &modifiable
+    return ""
+  else
+    return ""
+  endif
+endfunction
+
+function! LightLineFileformat()
+  return winwidth(0) > 70 ? &fileformat : ''
+endfunction
+
+function! LightLineFiletype()
+  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
+endfunction
+
+function! LightLineFileencoding()
+  return winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
+endfunction
+
+function! LightLineInfo()
+  return winwidth(0) > 60 ? printf("%3d:%-2d", line('.'), col('.')) : ''
+endfunction
+
+function! LightLinePercent()
+  return &ft =~? 'vimfiler' ? '' : (100 * line('.') / line('$')) . '%'
+endfunction
+
+function! LightLineFugitive()
+  return exists('*fugitive#head') ? fugitive#head() : ''
+endfunction
+
+function! LightLineGo()
+  " return ''
+  return exists('*go#jobcontrol#Statusline') ? go#jobcontrol#Statusline() : ''
+endfunction
+
+function! LightLineMode()
+  let fname = expand('%:t')
+  return fname == 'ControlP' ? 'CtrlP' :
+        \ &ft == 'vimfiler' ? 'VimFiler' :
+        \ winwidth(0) > 60 ? lightline#mode() : ''
+endfunction
+
+function! LightLineFilename()
+  let fname = expand('%:t')
+  if mode() == 't'
+    return ''
+  endif
+
+  return fname == 'ControlP' ? g:lightline.ctrlp_item :
+        \ &ft == 'vimfiler' ? vimfiler#get_status_string() :
+        \ ('' != LightLineReadonly() ? LightLineReadonly() . ' ' : '') .
+        \ ('' != fname ? fname : '[No Name]')
+endfunction
+
+function! LightLineReadonly()
+  return &ft !~? 'help' && &readonly ? 'RO' : ''
+endfunction
+
+" Mapping to minibuffer
+nmap <leader>m :bn<CR>
