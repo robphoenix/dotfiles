@@ -1,14 +1,18 @@
+execute pathogen#infect()
 syntax on
 filetype plugin indent on
 
-set t_Co=256
-let g:airline_powerline_fonts = 1
-let g:airline_theme='raven'
-set laststatus=2
+" Solarized Colours
+syntax enable
+set background=dark
+colorscheme solarized
 
+set t_Co=256
+
+:let g:netrw_dirhistmax = 0 " save no history or bookmarks in netrw
 
 set cursorline             " have a line indicate the cursor location
-set title                  " show title in console title bar
+" set title                  " show title in console title bar
 set ruler                  " show the cursor position all the time
 set noshowcmd              " don't display incomplete commands
 set nolazyredraw           " turn off lazy redraw
@@ -21,19 +25,12 @@ set whichwrap+=<,>,h,l,[,] " backspace and cursor keys wrap to
 set shortmess=filtIoOA     " shorten messages
 set report=0               " tell us about changes
 set nostartofline          " don't jump to the start of line when scrolling
-
 set showmatch              " brackets/braces that is
 set mat=5                  " duration to show matching brace (1/10 sec)
 set incsearch              " do incremental searching
 set laststatus=2           " always show the status line
 set ignorecase             " ignore case when searching
 set hlsearch               " don't highlight searches
-set visualbell
-
-" don't bell or blink
-set noerrorbells
-set vb t_vb=
-
 set autoindent             " automatic indent new lines
 set smartindent            " be smart about it
 set wrap                   " wrap lines
@@ -49,6 +46,11 @@ set formatoptions+=n       " support for numbered/bullet lists
 set virtualedit=block      " allow virtual edit in visual block ..
 set linebreak
 set tw=500
+
+" don't bell or blink
+set visualbell
+set noerrorbells
+set vb t_vb=
 
 """ specify syntax highlighting for specific files
 autocmd Bufread,BufNewFile *.md set filetype=markdown " Vim interprets .md as 'modula2' otherwise, see :set filetype?
@@ -70,8 +72,14 @@ fun! SetDiffColors()
 endfun
 autocmd FilterWritePre * call SetDiffColors()
 
-" show a visual line under the cursor's current line
-set cursorline
-
 " enable all Python syntax highlighting features
 let python_highlight_all = 1
+
+" NERDTree
+" open automatically if no files specified
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+" toggle
+map <C-n> :NERDTreeToggle<CR>
+" show hidden files
+let NERDTreeShowHidden=1
