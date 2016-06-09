@@ -4,12 +4,12 @@ call pathogen#helptags()
 set nocompatible
 
 syntax on
-filetype off " plugin indent on
+filetype plugin indent on
 
 " Enable autocompletion
 " set omnifunc=go#complete#Complete
 " Select keyword as you type
-" :set completeopt=longest,menuone
+:set completeopt=longest,menuone
 
 " Solarized Colours
 syntax enable
@@ -65,9 +65,7 @@ set formatoptions+=n       " support for numbered/bullet lists
 set virtualedit=block      " allow virtual edit in visual block ..
 set linebreak
 set tw=500
-
-" don't bell or blink
-set noerrorbells
+set noerrorbells           " don't bell or blink
 
 " specify syntax highlighting for specific files
 autocmd Bufread,BufNewFile *.md set filetype=markdown " Vim interprets .md as 'modula2' otherwise, see :set filetype?
@@ -157,14 +155,6 @@ au FileType go nmap <leader>b  <Plug>(go-build)
 au FileType go nmap <leader>t  <Plug>(go-test)
 au FileType go nmap <leader>dt  <Plug>(go-test-compile)
 au FileType go nmap <Leader>d <Plug>(go-doc)
-
-" I like these more!
-augroup go
-    autocmd!
-    autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
-    autocmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
-    autocmd Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
-augroup END
 
 " ==================== delimitMate ====================
 let g:delimitMate_expand_cr = 1
@@ -269,3 +259,20 @@ endfunction
 
 " Mapping to minibuffer
 nmap <leader>m :bn<CR>
+
+" ==================== Neosnippets ====================
+" Plugin key-mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+" SuperTab like snippets behavior.
+imap <expr><TAB>
+\ pumvisible() ? "\<C-n>" :
+\ neosnippet#expandable_or_jumpable() ?
+\   "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+smap <expr><TAB>
+\ neosnippet#expandable_or_jumpable() ?
+\   "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+let g:neosnippet#snippets_directory='~/src/dotfiles/.vim/bundle/vim-snippets/snippets'
