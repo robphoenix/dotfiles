@@ -3,6 +3,8 @@ set $mod Mod4
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 font pango:sourcecodepro 12
+# no window titles on new windows
+new_window none
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -173,9 +175,9 @@ bar {
 
 # Window Colours
 #                         border  background text    indicator
-  client.focused          $base02 $base02    $base06 $base02
-  client.focused_inactive $base03 $base02    $base05 $base02
-  client.unfocused        $base03 $base03    $base05 $base03
+  client.focused          $base03 $base03    $base06 $base02
+  client.focused_inactive $base03 $base02    $base06 $base02
+  client.unfocused        $base02 $base02    $base05 $base03
   client.urgent           $base06 $base06    $base03 $base06
 
 # i3lock
