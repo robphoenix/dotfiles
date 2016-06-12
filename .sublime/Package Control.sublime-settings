@@ -5,6 +5,8 @@
 	],
 	"installed_packages":
 	[
+		"AdvancedNewFile",
+		"Anaconda",
 		"BracketHighlighter",
 		"GitGutter",
 		"Golang Build",
@@ -13,6 +15,10 @@
 		"Material Theme",
 		"Package Control",
 		"PackageResourceViewer",
+		"Pylinter",
+		"SublimeCodeIntel",
+		"SublimeLinter",
+		"SublimeREPL",
 		"Vintageous"
 	]
 }

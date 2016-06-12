@@ -90,13 +90,13 @@ export LANG=en_GB.UTF-8
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Personal aliases
-alias saggy="sudo apt -y"
-alias saggy-repo="sudo add-apt-repository"
+alias say="sudo apt -y"
 alias web="google-chrome"
 alias vim="nvim"
 alias relo="source ~/.zshrc"
 alias open="xdg-open"
 alias zshconf="vim ~/.zshrc"
+alias vimconf="vim ~/src/dotfiles/.vimrc"
 alias ll="ls -al"
 alias sudo="sudo "
 alias vpnup="nmcli --ask con up id 'PIA - UK London'"
@@ -104,5 +104,7 @@ alias vpndown="nmcli con down id 'PIA - UK London'"
 alias tack="chsh -s /bin/bash && sudo reboot"
 alias bass="web 'http://www.bassdrive.com/pop-up/'"
 alias bye="sudo shutdown now"
+alias pi="ipython"
+alias py="python"
 
 export TERM=xterm-256color

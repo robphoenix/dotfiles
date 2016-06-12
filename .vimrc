@@ -1,7 +1,10 @@
+filetype off
+
 execute pathogen#infect()
 call pathogen#helptags()
 
 set nocompatible
+set encoding=utf-8
 
 syntax on
 filetype plugin indent on
@@ -27,6 +30,12 @@ endif
 " leader key
 let mapleader = ","
 let g:mapleader = ","
+
+"split navigations
+nnoremap <C-J> <C-W><C-J> " Ctrl-j move to the split below
+nnoremap <C-K> <C-W><C-K> " Ctrl-k move to the split above
+nnoremap <C-L> <C-W><C-L> " Ctrl-l move to the split right
+nnoremap <C-H> <C-W><C-H> " Ctrl-h move to the split left
 
 :let g:netrw_dirhistmax = 0 " save no history or bookmarks in netrw
 
@@ -73,6 +82,17 @@ autocmd Bufread,BufNewFile *.md set filetype=markdown " Vim interprets .md as 'm
 " Go settings
 au BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4
 
+" Python settings
+autocmd BufNewFile,BufRead *.py setlocal tabstop=4 softtabstop=4 shiftwidth=4 textwidth=80 smarttab expandtab autoindent fileformat=unix
+
+let python_highlight_all=1
+
+" js/html/css settings
+au BufNewFile,BufRead *.js, *.html, *.css
+    \ set tabstop=2
+    \ set softtabstop=2
+    \ set shiftwidth=2
+
 let g:rbpt_colorpairs = [
     \ ['brown',       'RoyalBlue3'],
     \ ['Darkblue',    'SeaGreen3'],
@@ -110,9 +130,6 @@ fun! SetDiffColors()
 endfun
 autocmd FilterWritePre * call SetDiffColors()
 
-" enable all Python syntax highlighting features
-let python_highlight_all = 1
-
 " ==================== NerdTree ====================
 " For toggling
 nmap <C-n> :NERDTreeToggle<CR>
@@ -121,7 +138,7 @@ noremap <Leader>f :NERDTreeFind<cr>
 
 let NERDTreeShowHidden=1
 
-let NERDTreeIgnore=['\.vim$', '\~$', '\.git$', '.DS_Store']
+let NERDTreeIgnore=['\.pyc$', '\.vim$', '\~$', '\.git$', '.DS_Store']
 
 " Close nerdtree and vim on close file
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
@@ -169,11 +186,10 @@ let g:lightline = {
       \ 'colorscheme': 'solarized',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste'],
-      \             [ 'fugitive', 'filename', 'modified', 'ctrlpmark' ],
+      \             [ 'lineinfo' ],
+      \             [ 'fugitive', 'modified' ],
       \             [ 'go'] ],
-      \   'right': [ [ 'lineinfo' ],
-      \              [ 'percent' ],
-      \              [ 'fileformat', 'fileencoding', 'filetype' ] ]
+      \   'right': [ [ 'filename', 'fileformat', 'fileencoding' ] ]
       \ },
       \ 'inactive': {
       \   'left': [ [ 'go'] ],
@@ -189,7 +205,6 @@ let g:lightline = {
       \   'fileencoding': 'LightLineFileencoding',
       \   'mode': 'LightLineMode',
       \   'fugitive': 'LightLineFugitive',
-      \   'ctrlpmark': 'CtrlPMark',
       \ },
       \ }
 
@@ -218,11 +233,7 @@ function! LightLineFileencoding()
 endfunction
 
 function! LightLineInfo()
-  return winwidth(0) > 60 ? printf("%3d:%-2d", line('.'), col('.')) : ''
-endfunction
-
-function! LightLinePercent()
-  return &ft =~? 'vimfiler' ? '' : (100 * line('.') / line('$')) . '%'
+  return winwidth(0) > 60 ? printf("%-2d", col('.')) : ''
 endfunction
 
 function! LightLineFugitive()
@@ -257,8 +268,15 @@ function! LightLineReadonly()
   return &ft !~? 'help' && &readonly ? 'RO' : ''
 endfunction
 
+" ============== MiniBufExpl =====================
+
+let g:miniBufExplMapWindowNavVim = 1
+let g:miniBufExplMapWindowNavArrows = 1
+let g:miniBufExplMapCTabSwitchBufs = 1
+let g:miniBufExplModSelTarget = 1
+
 " Mapping to minibuffer
-nmap <leader>m :bn<CR>
+nmap <C-t> :bn<CR>
 
 " ==================== Neosnippets ====================
 " Plugin key-mappings.
