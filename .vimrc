@@ -130,6 +130,12 @@ fun! SetDiffColors()
 endfun
 autocmd FilterWritePre * call SetDiffColors()
 
+" ==================== Bufferline ====================
+let g:bufferline_active_buffer_left = '['
+let g:bufferline_active_buffer_right = ']'
+let g:bufferline_show_bufnr = 1
+let g:bufferline_echo = 0
+
 " ==================== NerdTree ====================
 " For toggling
 nmap <C-n> :NERDTreeToggle<CR>
@@ -188,7 +194,8 @@ let g:lightline = {
       \   'left': [ [ 'mode', 'paste'],
       \             [ 'lineinfo' ],
       \             [ 'fugitive', 'modified' ],
-      \             [ 'go'] ],
+      \             [ 'go' ],
+      \             [ 'bufferline' ]],
       \   'right': [ [ 'filename', 'fileformat', 'fileencoding' ] ]
       \ },
       \ 'inactive': {
@@ -205,6 +212,7 @@ let g:lightline = {
       \   'fileencoding': 'LightLineFileencoding',
       \   'mode': 'LightLineMode',
       \   'fugitive': 'LightLineFugitive',
+      \   'bufferline': 'LightLineBufferline',
       \ },
       \ }
 
@@ -268,15 +276,10 @@ function! LightLineReadonly()
   return &ft !~? 'help' && &readonly ? 'RO' : ''
 endfunction
 
-" ============== MiniBufExpl =====================
-
-let g:miniBufExplMapWindowNavVim = 1
-let g:miniBufExplMapWindowNavArrows = 1
-let g:miniBufExplMapCTabSwitchBufs = 1
-let g:miniBufExplModSelTarget = 1
-
-" Mapping to minibuffer
-nmap <C-t> :bn<CR>
+function! LightLineBufferline()
+  let st=g:bufferline#refresh_status()
+  return g:bufferline_status_info.before . g:bufferline_status_info.current . g:bufferline_status_info.after
+endfunction
 
 " ==================== Neosnippets ====================
 " Plugin key-mappings.
