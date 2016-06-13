@@ -26,8 +26,8 @@ if !has('gui_running')
 endif
 
 " leader key
-let mapleader = ","
-let g:mapleader = ","
+let mapleader = "\<Space>"
+let g:mapleader = "\<Space>"
 
 "split navigations
 nnoremap <C-J> <C-W><C-J> " Ctrl-j move to the split below
@@ -37,6 +37,8 @@ nnoremap <C-H> <C-W><C-H> " Ctrl-h move to the split left
 
 " Fast saving
 nmap <leader>w :w!<cr>
+" Enter visual line mode
+nmap <Leader><Leader> V
 
 :let g:netrw_dirhistmax = 0 " save no history or bookmarks in netrw
 
@@ -310,9 +312,9 @@ let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
 " ==================== Neosnippets ====================
 " Plugin key-mappings.
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
+imap <leader>e     <Plug>(neosnippet_expand_or_jump)
+smap <leader>e     <Plug>(neosnippet_expand_or_jump)
+xmap <leader>e     <Plug>(neosnippet_expand_target)
 
 " SuperTab like snippets behavior.
 imap <expr><TAB>
@@ -326,6 +328,7 @@ smap <expr><TAB>
 let g:neosnippet#snippets_directory='~/src/dotfiles/.vim/bundle/vim-snippets/snippets'
 
 " ==================== CtrlP ====================
+let g:ctrlp_map = '<leader>f'
 let g:ctrlp_cmd = 'CtrlPMRU'
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_max_height = 10		" maxiumum height of match window
@@ -347,7 +350,6 @@ func! MyCtrlPTag()
 endfunc
 command! MyCtrlPTag call MyCtrlPTag()
 
-nmap <leader>f :CtrlP<cr>
 nmap <C-g> :MyCtrlPTag<cr>
 imap <C-g> <esc>:MyCtrlPTag<cr>
 
