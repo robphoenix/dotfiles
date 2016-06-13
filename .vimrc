@@ -39,6 +39,8 @@ nnoremap <C-H> <C-W><C-H> " Ctrl-h move to the split left
 nmap <leader>w :w!<cr>
 " Enter visual line mode
 nmap <Leader><Leader> V
+" Close quickfix easily
+nnoremap <leader>a :cclose<CR>
 
 :let g:netrw_dirhistmax = 0 " save no history or bookmarks in netrw
 
@@ -373,4 +375,38 @@ if has('nvim')
   call deoplete#custom#set('_', 'converters', ['converter_remove_paren'])
   call deoplete#custom#set('_', 'disabled_syntaxes', ['Comment', 'String'])
 endif
+
+" ==================== Python-Mode =========================
+let g:pymode = 1
+let g:pymode_trim_whitespaces = 1
+let g:pymode_options = 1
+let g:pymode_options_max_line_length = 79
+let g:pymode_options_colorcolumn = 1
+let g:pymode_python = 'python3'
+let g:pymode_indent = 1
+let g:pymode_folding = 1
+" [[                Jump to previous class or function (normal, visual, operator modes)
+" ]]                Jump to next class or function  (normal, visual, operator modes)
+let g:pymode_motion = 1
+let g:pymode_doc = 1
+let g:pymode_doc_bind = 'D'
+let g:pymode_virtualenv = 1
+let g:pymode_run = 1
+let g:pymode_run_bind = '<leader>r'
+let g:pymode_lint = 1
+let g:pymode_lint_on_write = 1
+let g:pymode_lint_message = 1
+let g:pymode_lint_checkers = ['pyflakes', 'pep8', 'mccabe', 'pylint']
+let g:pymode_lint_ignore = "E501"
+let g:pymode_lint_cwindow = 1
+let g:pymode_rope = 0
+let g:pymode_rope_rename_bind = '<C-c>rr'
+let g:pymode_syntax_all = 1
+let g:pymode_syntax_print_as_function = 1
+let g:pymode_syntax_indent_errors = g:pymode_syntax_all
+let g:pymode_syntax_space_errors = g:pymode_syntax_all
+let g:pymode_syntax_string_formatting = g:pymode_syntax_all
+let g:pymode_syntax_string_format = g:pymode_syntax_all
+let g:pymode_syntax_string_templates = g:pymode_syntax_all
+let g:pymode_syntax_doctests = g:pymode_syntax_all
 
