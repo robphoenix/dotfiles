@@ -1,12 +1,14 @@
-filetype off
-
 execute pathogen#infect()
+
 call pathogen#helptags()
 
 set nocompatible
 set encoding=utf-8
 
+filetype off
+
 syntax on
+
 filetype plugin indent on
 
 " Enable autocompletion
@@ -18,10 +20,6 @@ filetype plugin indent on
 syntax enable
 set background=dark
 colorscheme solarized
-
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#sources#go#gocode_binary="$GOPATH.'/bin/gocode'"
-let g:deoplete#sources#go#pointer=1
 
 if !has('gui_running')
   set t_Co=256
@@ -36,6 +34,9 @@ nnoremap <C-J> <C-W><C-J> " Ctrl-j move to the split below
 nnoremap <C-K> <C-W><C-K> " Ctrl-k move to the split above
 nnoremap <C-L> <C-W><C-L> " Ctrl-l move to the split right
 nnoremap <C-H> <C-W><C-H> " Ctrl-h move to the split left
+
+" Fast saving
+nmap <leader>w :w!<cr>
 
 :let g:netrw_dirhistmax = 0 " save no history or bookmarks in netrw
 
@@ -131,16 +132,14 @@ endfun
 autocmd FilterWritePre * call SetDiffColors()
 
 " ==================== Bufferline ====================
-let g:bufferline_active_buffer_left = '['
-let g:bufferline_active_buffer_right = ']'
+let g:bufferline_active_buffer_left = '( '
+let g:bufferline_active_buffer_right = ')'
 let g:bufferline_show_bufnr = 1
 let g:bufferline_echo = 0
 
 " ==================== NerdTree ====================
 " For toggling
-nmap <C-n> :NERDTreeToggle<CR>
 noremap <Leader>n :NERDTreeToggle<cr>
-noremap <Leader>f :NERDTreeFind<cr>
 
 let NERDTreeShowHidden=1
 
@@ -166,14 +165,11 @@ let g:go_highlight_extra_types = 0
 let g:go_highlight_operators = 0
 let g:go_highlight_build_constraints = 1
 
-
 au FileType go nmap <Leader>s <Plug>(go-def-split)
 au FileType go nmap <Leader>v <Plug>(go-def-vertical)
 au FileType go nmap <Leader>i <Plug>(go-info)
 au FileType go nmap <Leader>l <Plug>(go-metalinter)
-
 au FileType go nmap <leader>r  <Plug>(go-run)
-
 au FileType go nmap <leader>b  <Plug>(go-build)
 au FileType go nmap <leader>t  <Plug>(go-test)
 au FileType go nmap <leader>dt  <Plug>(go-test-compile)
@@ -281,6 +277,37 @@ function! LightLineBufferline()
   return g:bufferline_status_info.before . g:bufferline_status_info.current . g:bufferline_status_info.after
 endfunction
 
+function! CtrlPMark()
+  if expand('%:t') =~ 'ControlP'
+    call lightline#link('iR'[g:lightline.ctrlp_regex])
+    return lightline#concatenate([g:lightline.ctrlp_prev, g:lightline.ctrlp_item
+          \ , g:lightline.ctrlp_next], 0)
+  else
+    return ''
+  endif
+endfunction
+
+let g:ctrlp_status_func = {
+      \ 'main': 'CtrlPStatusFunc_1',
+      \ 'prog': 'CtrlPStatusFunc_2',
+      \ }
+
+function! CtrlPStatusFunc_1(focus, byfname, regex, prev, item, next, marked)
+  let g:lightline.ctrlp_regex = a:regex
+  let g:lightline.ctrlp_prev = a:prev
+  let g:lightline.ctrlp_item = a:item
+  let g:lightline.ctrlp_next = a:next
+  return lightline#statusline(0)
+endfunction
+
+function! CtrlPStatusFunc_2(str)
+  return lightline#statusline(0)
+endfunction
+
+
+" Trigger a highlight in the appropriate direction when pressing these keys:
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+
 " ==================== Neosnippets ====================
 " Plugin key-mappings.
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
@@ -297,3 +324,51 @@ smap <expr><TAB>
 \   "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 
 let g:neosnippet#snippets_directory='~/src/dotfiles/.vim/bundle/vim-snippets/snippets'
+
+" ==================== CtrlP ====================
+let g:ctrlp_cmd = 'CtrlPMRU'
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_max_height = 10		" maxiumum height of match window
+let g:ctrlp_switch_buffer = 'et'	" jump to a file if it's open already
+let g:ctrlp_mruf_max=450 		" number of recently opened files
+let g:ctrlp_max_files=0  		" do not limit the number of searchable files
+let g:ctrlp_use_caching = 1
+let g:ctrlp_clear_cache_on_exit = 0
+let g:ctrlp_cache_dir = $HOME.'/.cache/ctrlp'
+
+let g:ctrlp_buftag_types = {'go' : '--language-force=go --golang-types=ftv'}
+
+func! MyCtrlPTag()
+  let g:ctrlp_prompt_mappings = {
+        \ 'AcceptSelection("e")': ['<cr>', '<2-LeftMouse>'],
+        \ 'AcceptSelection("t")': ['<c-t>'],
+        \ }
+  CtrlPBufTag
+endfunc
+command! MyCtrlPTag call MyCtrlPTag()
+
+nmap <leader>f :CtrlP<cr>
+nmap <C-g> :MyCtrlPTag<cr>
+imap <C-g> <esc>:MyCtrlPTag<cr>
+
+nmap <C-b> :CtrlPCurWD<cr>
+imap <C-b> <esc>:CtrlPCurWD<cr>
+
+" ==================== Completion =========================
+" use deoplete for Neovim.
+if has('nvim')
+  let g:deoplete#enable_at_startup = 1
+  let g:deoplete#sources#go#gocode_binary="$GOPATH.'/bin/gocode'"
+  let g:deoplete#sources#go#pointer=1
+  let g:deoplete#ignore_sources = {}
+  let g:deoplete#ignore_sources._ = ['buffer', 'member', 'tag', 'file', 'neosnippet']
+  let g:deoplete#sources#go#sort_class = ['func', 'type', 'var', 'const']
+  let g:deoplete#sources#go#align_class = 1
+
+
+  " Use partial fuzzy matches like YouCompleteMe
+  call deoplete#custom#set('_', 'matchers', ['matcher_fuzzy'])
+  call deoplete#custom#set('_', 'converters', ['converter_remove_paren'])
+  call deoplete#custom#set('_', 'disabled_syntaxes', ['Comment', 'String'])
+endif
+
