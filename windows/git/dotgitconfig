@@ -20,7 +20,8 @@
   i = status -s
   memo = commit -am
   sum = add --all
-  sync = push origin master
+  syncm = push origin master
+  syncd = push origin develop
   branches = branch -a
   tags = tag
   stashes = stash list
