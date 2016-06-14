@@ -41,6 +41,8 @@ nmap <leader>w :w!<cr>
 nmap <Leader><Leader> V
 " Close quickfix easily
 nnoremap <leader>a :cclose<CR>
+" Buffer switching
+nmap <leader>bb :bn<CR>
 
 :let g:netrw_dirhistmax = 0 " save no history or bookmarks in netrw
 
@@ -163,21 +165,26 @@ let g:go_autodetect_gopath = 1
 let g:go_term_enabled = 1
 let g:go_snippet_engine = "neosnippet"
 let g:go_highlight_space_tab_error = 0
-let g:go_highlight_array_whitespace_error = 0
-let g:go_highlight_trailing_whitespace_error = 0
+let g:go_highlight_array_whitespace_error = 1
+let g:go_highlight_trailing_whitespace_error = 1
 let g:go_highlight_extra_types = 0
-let g:go_highlight_operators = 0
+let g:go_highlight_operators = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_structs = 1
+let g:go_term_width = 30
+let g:go_term_enabled = 1
 let g:go_highlight_build_constraints = 1
+let g:go_auto_type_info = 1
 
-au FileType go nmap <Leader>s <Plug>(go-def-split)
-au FileType go nmap <Leader>v <Plug>(go-def-vertical)
-au FileType go nmap <Leader>i <Plug>(go-info)
-au FileType go nmap <Leader>l <Plug>(go-metalinter)
+au FileType go nmap <Leader>s  <Plug>(go-def-split)
+au FileType go nmap <Leader>v  <Plug>(go-def-vertical)
+au FileType go nmap <Leader>i  <Plug>(go-info)
+au FileType go nmap <Leader>l  <Plug>(go-metalinter)
 au FileType go nmap <leader>r  <Plug>(go-run)
 au FileType go nmap <leader>b  <Plug>(go-build)
 au FileType go nmap <leader>t  <Plug>(go-test)
-au FileType go nmap <leader>dt  <Plug>(go-test-compile)
-au FileType go nmap <Leader>d <Plug>(go-doc)
+au FileType go nmap <leader>dt <Plug>(go-test-compile)
+au FileType go nmap <Leader>d  <Plug>(go-doc)
 
 " ==================== delimitMate ====================
 let g:delimitMate_expand_cr = 1
@@ -193,26 +200,24 @@ let g:lightline = {
       \ 'active': {
       \   'left': [ [ 'mode', 'paste'],
       \             [ 'lineinfo' ],
-      \             [ 'fugitive', 'modified' ],
-      \             [ 'go' ],
+      \             [ 'fugitive', 'modified', 'ctrlpmark' ],
       \             [ 'bufferline' ]],
       \   'right': [ [ 'filename', 'fileformat', 'fileencoding' ] ]
       \ },
       \ 'inactive': {
-      \   'left': [ [ 'go'] ],
       \ },
       \ 'component_function': {
       \   'lineinfo': 'LightLineInfo',
       \   'percent': 'LightLinePercent',
       \   'modified': 'LightLineModified',
       \   'filename': 'LightLineFilename',
-      \   'go': 'LightLineGo',
       \   'fileformat': 'LightLineFileformat',
       \   'filetype': 'LightLineFiletype',
       \   'fileencoding': 'LightLineFileencoding',
       \   'mode': 'LightLineMode',
       \   'fugitive': 'LightLineFugitive',
       \   'bufferline': 'LightLineBufferline',
+      \   'ctrlpmark': 'CtrlPMark',
       \ },
       \ }
 
@@ -246,11 +251,6 @@ endfunction
 
 function! LightLineFugitive()
   return exists('*fugitive#head') ? fugitive#head() : ''
-endfunction
-
-function! LightLineGo()
-  " return ''
-  return exists('*go#jobcontrol#Statusline') ? go#jobcontrol#Statusline() : ''
 endfunction
 
 function! LightLineMode()
@@ -410,3 +410,8 @@ let g:pymode_syntax_string_format = g:pymode_syntax_all
 let g:pymode_syntax_string_templates = g:pymode_syntax_all
 let g:pymode_syntax_doctests = g:pymode_syntax_all
 
+" ==================== Fugitive ====================
+nnoremap <leader>ga :Git add --all<CR><CR>
+nnoremap <leader>gs :Gstatus<CR>
+nnoremap <leader>gp :Gpush<CR>
+nnoremap <leader>gc :Gcommit<CR>
