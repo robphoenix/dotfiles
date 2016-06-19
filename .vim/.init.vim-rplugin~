@@ -1,12 +1,1 @@
-" python3 plugins
-call remote#host#RegisterPlugin('python3', '/home/rob/.config/nvim/bundle/deoplete.nvim/rplugin/python3/deoplete', [
-      \ {'sync': v:true, 'name': '_deoplete', 'type': 'function', 'opts': {}},
-     \ ])
-
-
-" ruby plugins
-
-
-" python plugins
-
-
+/home/rob/src/dotfiles/.init.vim-rplugin~

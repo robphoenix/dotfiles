@@ -1,0 +1,19 @@
+~
+.zshenv -> /home/rob/src/dotfiles/.zshenv
+.zshrc -> /home/rob/src/dotfiles/.zshrc
+.xsessionrc -> src/dotfiles/.xsessionrc
+.Xresources -> /home/rob/src/dotfiles/.Xresources
+.gitconfig -> /home/rob/src/dotfiles/.gitconfig
+.fonts -> /home/rob/src/dotfiles/.fonts
+.bashrc -> /home/rob/src/dotfiles/.bashrc
+
+~/.config
+nvim -> /home/rob/src/dotfiles/.vim
+init.vim -> /home/rob/src/dotfiles/.vimrc
+.init.vim-rplugin~ -> /home/rob/src/dotfiles/.init.vim-rplugin~
+
+mkdir
+~/src/code
+~/src/code/go
+~/src/dotfiles
+
