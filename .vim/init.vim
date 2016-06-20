@@ -1,1 +1,1 @@
-/home/rob/src/dotfiles/.vimrc
+/home/rob/dotfiles/.vimrc

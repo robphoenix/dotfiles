@@ -62,7 +62,7 @@ source $ZSH/oh-my-zsh.sh
 . ~/src/dotfiles/z.sh
 
 # start in ~/code
-cd ~/src/code
+cd ~/code
 
 # You may need to manually set your language environment
 export LANG=en_GB.UTF-8

@@ -34,7 +34,6 @@ apt install -y \
     apt-transport-https \
     ca-certificates \
     neovim \
-    i3 \
     feh \
     libxss1 \
     libappindicator1 \
@@ -52,6 +51,7 @@ apt install -y \
 
 apt install -y \
     zsh \
+    i3 \
     google-chrome-stable \
     tlp tlp-rdw
 
@@ -80,7 +80,7 @@ go get -u golang.org/x/tools/cmd/godoc
 go get -u github.com/golang/lint/golint
 
 # Python
-sudo apt install python-pip python-dev build-essential
+sudo apt -y install python-pip python-dev build-essential
 sudo pip install --upgrade pip
 sudo apt -y install pip3
 sudo apt -y install python3-pip
@@ -104,4 +104,3 @@ apt clean
 
 # change shell to zsh & reboot
 chsh -s `which zsh`
-sudo shutdown -r 0
