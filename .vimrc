@@ -308,7 +308,6 @@ function! CtrlPStatusFunc_2(str)
   return lightline#statusline(0)
 endfunction
 
-
 " Trigger a highlight in the appropriate direction when pressing these keys:
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
@@ -318,16 +317,16 @@ imap <leader>e     <Plug>(neosnippet_expand_or_jump)
 smap <leader>e     <Plug>(neosnippet_expand_or_jump)
 xmap <leader>e     <Plug>(neosnippet_expand_target)
 
+let g:neosnippet#snippets_directory='~/.config/nvim/bundle/vim-snippets/snippets'
+
 " SuperTab like snippets behavior.
 imap <expr><TAB>
 \ pumvisible() ? "\<C-n>" :
 \ neosnippet#expandable_or_jumpable() ?
-\   "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+\    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 smap <expr><TAB>
 \ neosnippet#expandable_or_jumpable() ?
-\   "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-
-let g:neosnippet#snippets_directory='~/src/dotfiles/.vim/bundle/vim-snippets/snippets'
+\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 
 " ==================== CtrlP ====================
 let g:ctrlp_map = '<leader>f'
