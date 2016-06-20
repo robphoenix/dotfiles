@@ -7,5 +7,5 @@ export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/g
 export PATH=$HOME/bin:$PATH
 
 # GOPATH
-export GOPATH=$HOME/src/code/go
+export GOPATH=$HOME/code/go
 export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
