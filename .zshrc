@@ -59,7 +59,7 @@ plugins=(extract colorize cp ssh-agent)
 source $ZSH/oh-my-zsh.sh
 
 # include z
-. ~/src/dotfiles/z.sh
+. ~/z.sh
 
 # start in ~/code
 cd ~/code
