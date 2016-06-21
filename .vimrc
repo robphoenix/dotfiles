@@ -1,15 +1,45 @@
-execute pathogen#infect()
+set nocompatible              " be iMproved, required
+filetype off                  " required
 
-call pathogen#helptags()
+" set the runtime path to include Vundle and initialize
+set rtp+=~/dotfiles/.vim/bundle/Vundle.vim
+call vundle#begin('~/dotfiles/.vim/bundle')
 
-set nocompatible
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+Plugin 'tpope/vim-fugitive'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'ntpeters/vim-better-whitespace'
+Plugin 'Raimondi/delimitMate'
+Plugin 'Shougo/deoplete.nvim'
+Plugin 'itchyny/lightline.vim'
+Plugin 'Shougo/neosnippet.vim'
+Plugin 'Shougo/neosnippet-snippets'
+Plugin 'scrooloose/nerdtree'
+Plugin 'klen/python-mode'
+Plugin 'kien/rainbow_parentheses.vim'
+Plugin 'scrooloose/syntastic'
+Plugin 'bling/vim-bufferline'
+Plugin 'fatih/vim-go'
+Plugin 'honza/vim-snippets'
+Plugin 'zchee/deoplete-go'
+Plugin 'Konfekt/FastFold'
+Plugin 'davidhalter/jedi-vim'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'godlygeek/tabular'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'majutsushi/tagbar'
+
+" Themes
+Plugin 'altercation/vim-colors-solarized'
+
+call vundle#end()            " required
+filetype plugin indent on    " required
+
 set encoding=utf-8
 
-filetype off
-
 syntax on
-
-filetype plugin indent on
 
 " Solarized Colours
 syntax enable
@@ -32,6 +62,9 @@ nnoremap <C-H> <C-W><C-H> " Ctrl-h move to the split left
 
 " Fast saving
 nmap <leader>w :w!<cr>
+nmap <leader>W :wq<cr>
+nmap <leader>q :q<cr>
+nmap <leader>Q :q!<cr>
 " Enter visual line mode
 nmap <Leader><Leader> V
 " Close quickfix easily
@@ -94,6 +127,7 @@ set smartindent            " be smart about it
 set wrap                   " wrap lines
 set textwidth=80           " lines are automatically wrapped after 80 columns
 set nofoldenable           " turn off folding
+set autochdir " automatically change window's cwd to file's dir
 set shiftwidth=4
 set tabstop=4
 set expandtab
@@ -176,7 +210,7 @@ let g:bufferline_echo = 0
 
 " ==================== NerdTree ====================
 " For toggling
-noremap <Leader>n :NERDTreeToggle<cr>
+noremap <Leader>nn :NERDTreeToggle<cr>
 
 let NERDTreeShowHidden=1
 
@@ -415,10 +449,9 @@ let g:pymode_lint = 1
 let g:pymode_lint_on_write = 1
 let g:pymode_lint_message = 1
 let g:pymode_lint_checkers = ['pyflakes', 'pep8', 'mccabe', 'pylint']
-let g:pymode_lint_ignore = "E501"
+let g:pymode_lint_ignore = "E501,F0002"
 let g:pymode_lint_cwindow = 1
 let g:pymode_rope = 0
-let g:pymode_rope_rename_bind = '<C-c>rr'
 let g:pymode_syntax_all = 1
 let g:pymode_syntax_print_as_function = 1
 let g:pymode_syntax_indent_errors = g:pymode_syntax_all

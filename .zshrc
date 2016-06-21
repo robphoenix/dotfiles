@@ -106,5 +106,7 @@ alias bass="web 'http://www.bassdrive.com/pop-up/'"
 alias bye="sudo shutdown now"
 alias by="bpython"
 alias py="python"
+alias exf="exercism fetch"
+alias exs="exercism submit"
 
 export TERM=xterm-256color

@@ -85,6 +85,10 @@ go get -u golang.org/x/tools/cmd/oracle
 go get -u golang.org/x/tools/cmd/godoc
 go get -u github.com/golang/lint/golint
 
+# Exercism
+go get -u github.com/exercism/cli/exercism
+exercism configure --dir=~/code/exercism
+
 # Python
 sudo apt -y install python-pip python-dev build-essential
 sudo pip install --upgrade pip
