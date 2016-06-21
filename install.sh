@@ -96,30 +96,6 @@ sudo pip install jedi
 sudo pip install yapf
 sudo pip3 install bpython
 
-# Vim plugins
-git clone https://github.com/ctrlpvim/ctrlp.vim ~/.config/nvim/bundle/ctrlp.vim
-git clone https://github.com/Raimondi/delimitMate.git ~/.config/nvim/bundle/delimitMate
-git clone https://github.com/Shougo/deoplete.nvim.git ~/.config/nvim/bundle/deoplete.nvim
-git clone https://github.com/itchyny/lightline.vim.git ~/.config/nvim/bundle/lightline.vim
-git clone https://github.com/Shougo/neosnippet.vim.git ~/.config/nvim/bundle/neosnippet.vim
-git clone https://github.com/Shougo/neosnippet-snippets.git ~/.config/nvim/bundle/neosnippet-snippets
-git clone https://github.com/scrooloose/nerdtree.git ~/.config/nvim/bundle/nerdtree.git
-git clone https://github.com/klen/python-mode.git ~/.config/nvim/bundle/python-mode
-git clone https://github.com/kien/rainbow_parentheses.vim ~/.config/nvim/bundle/rainbow-parentheses.vim
-git clone https://github.com/scrooloose/syntastic.git ~/.config/nvim/bundle/syntastic
-git clone https://github.com/bling/vim-bufferline.git ~/.config/nvim/bundle/vim-bufferline
-git clone https://github.com/altercation/vim-colors-solarized.git ~/.config/nvim/bundle/vim-colors-solarized
-git clone https://github.com/tpope/vim-fugitive.git ~/.config/nvim/bundle/vim-fugitive
-git clone https://github.com/fatih/vim-go.git ~/.config/nvim/bundle/vim-go
-git clone https://github.com/honza/vim-snippets.git ~/.config/nvim/bundle/vim-snippets
-git clone https://github.com/zchee/deoplete-go.git ~/.config/nvim/bundle/deoplete-go
-git clone https://github.com/Konfekt/FastFold.git ~/.config/nvim/bundle/FastFold
-git clone --recursive https://github.com/davidhalter/jedi-vim.git ~/.config/nvim/bundle/jedi-vim
-git clone https://github.com/scrooloose/nerdcommenter.git ~/.config/nvim/bundle/nerdcommenter
-git clone https://github.com/godlygeek/tabular.git ~/.config/nvim/bundle/tabular
-git clone git://github.com/airblade/vim-gitgutter.git ~/.config/nvim/bundle/vim-gitgutter
-git clone https://github.com/majutsushi/tagbar.git ~/.config/nvim/bundle/tagbar
-
 # Personal repos
 git clone git@github.com:bordeltabernacle/exercism.git ~/code/exercism
 
