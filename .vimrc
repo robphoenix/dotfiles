@@ -14,7 +14,7 @@ filetype plugin indent on
 " Enable autocompletion
 " set omnifunc=go#complete#Complete
 " Select keyword as you type
-:set completeopt=longest,menuone
+" :set completeopt=longest,menuone
 
 " Solarized Colours
 syntax enable
@@ -44,9 +44,13 @@ nnoremap <leader>a :cclose<CR>
 " Buffer switching
 nmap <leader>bb :bn<CR>
 
-:let g:netrw_dirhistmax = 0 " save no history or bookmarks in netrw
+" save no history or bookmarks in netrw
+:let g:netrw_dirhistmax = 0
+" toggle cursorline & cursorcolumn
+:nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
 
-set cursorline             " have a line indicate the cursor location
+" set cursorline             " have a line indicate the cursor location
+" set cursorcolumn
 " set title                  " show title in console title bar
 set ruler                  " show the cursor position all the time
 set noshowcmd              " don't display incomplete commands
@@ -71,7 +75,7 @@ set smartindent            " be smart about it
 set wrap                   " wrap lines
 set textwidth=80           " lines are automatically wrapped after 80 columns
 set nofoldenable           " turn off folding
-set colorcolumn=80         " highlight column 80 (where words will wrap)
+" set colorcolumn=80         " highlight column 80 (where words will wrap)
 set shiftwidth=4
 set tabstop=4
 set expandtab
@@ -83,6 +87,13 @@ set linebreak
 set tw=500
 set noerrorbells           " don't bell or blink
 
+" highlight column only in INSERT mode
+augroup ColorcolumnOnlyInInsertMode
+  autocmd!
+  autocmd InsertEnter * setlocal colorcolumn=80,120
+  autocmd InsertLeave * setlocal colorcolumn=0
+augroup END
+
 " specify syntax highlighting for specific files
 autocmd Bufread,BufNewFile *.md set filetype=markdown " Vim interprets .md as 'modula2' otherwise, see :set filetype?
 
@@ -91,7 +102,7 @@ au BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4
 
 " Python settings
 autocmd BufNewFile,BufRead *.py setlocal tabstop=4 softtabstop=4 shiftwidth=4 textwidth=80 smarttab expandtab autoindent fileformat=unix
-
+let g:python3_host_prog = '/usr/bin/python3'
 let python_highlight_all=1
 
 " js/html/css settings
@@ -353,10 +364,8 @@ if has('nvim')
   let g:deoplete#sources#go#gocode_binary="$GOPATH.'/bin/gocode'"
   let g:deoplete#sources#go#pointer=1
   let g:deoplete#ignore_sources = {}
-  let g:deoplete#ignore_sources._ = ['buffer', 'member', 'tag', 'file', 'neosnippet']
   let g:deoplete#sources#go#sort_class = ['func', 'type', 'var', 'const']
   let g:deoplete#sources#go#align_class = 1
-
 
   " Use partial fuzzy matches like YouCompleteMe
   call deoplete#custom#set('_', 'matchers', ['matcher_fuzzy'])
