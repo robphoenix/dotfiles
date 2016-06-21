@@ -48,18 +48,12 @@ nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 :nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
 
 " relative line numbers off in insert mode
-augroup AbsoluteLineNumbersOnlyInInsertMode
-  autocmd!
-  autocmd InsertEnter * set number
-  autocmd InsertLeave * set relativenumber
-augroup END
+autocmd InsertEnter * :set number norelativenumber
+autocmd InsertLeave * :set nonumber relativenumber
 
 " highlight column only in INSERT mode
-augroup ColorcolumnOnlyInInsertMode
-  autocmd!
-  autocmd InsertEnter * setlocal colorcolumn=80,120
-  autocmd InsertLeave * setlocal colorcolumn=0
-augroup END
+autocmd InsertEnter * setlocal colorcolumn=80,120
+autocmd InsertLeave * setlocal colorcolumn=0
 
 set ruler                  " show the cursor position all the time
 set showcmd              " show me what I'm typing
