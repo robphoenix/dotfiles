@@ -115,7 +115,6 @@ git clone https://github.com/honza/vim-snippets.git ~/.config/nvim/bundle/vim-sn
 git clone https://github.com/zchee/deoplete-go.git ~/.config/nvim/bundle/deoplete-go
 git clone https://github.com/Konfekt/FastFold.git ~/.config/nvim/bundle/FastFold
 git clone --recursive https://github.com/davidhalter/jedi-vim.git ~/.config/nvim/bundle/jedi-vim
-git clone https://github.com/Yggdroot/indentLine.git ~/.config/nvim/bundle/indentLine
 git clone https://github.com/scrooloose/nerdcommenter.git ~/.config/nvim/bundle/nerdcommenter
 git clone https://github.com/godlygeek/tabular.git ~/.config/nvim/bundle/tabular
 git clone git://github.com/airblade/vim-gitgutter.git ~/.config/nvim/bundle/vim-gitgutter
@@ -133,6 +132,7 @@ ln -sf /home/rob/dotfiles/.gitconfig /home/rob/.gitconfig
 ln -sf /home/rob/dotfiles/.fonts /home/rob/.fonts
 ln -sf /home/rob/dotfiles/.bashrc /home/rob/.bashrc
 ln -sf /home/rob/dotfiles/.i3/config /home/rob/.config/i3/config
+ln -sf ~/dotfiles/.gitignore ~/.gitignore
 ln -snf /home/rob/dotfiles/.vim /home/rob/.config/nvim
 ln -snf /home/rob/dotfiles/.vimrc /home/rob/.config/nvim/init.vim
 
