@@ -121,6 +121,9 @@ git clone https://github.com/godlygeek/tabular.git ~/.config/nvim/bundle/tabular
 git clone git://github.com/airblade/vim-gitgutter.git ~/.config/nvim/bundle/vim-gitgutter
 git clone https://github.com/majutsushi/tagbar.git ~/.config/nvim/bundle/tagbar
 
+# Personal repos
+git clone git@github.com:bordeltabernacle/exercism.git ~/code/exercism
+
 # symlinks
 ln -sf /home/rob/dotfiles/.zshenv /home/rob/.zshenv
 ln -sf /home/rob/dotfiles/.zshrc /home/rob/.zshrc
