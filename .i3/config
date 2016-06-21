@@ -194,4 +194,3 @@ exec --no-startup-id rxvt-unicode
 hide_edge_borders both
 
 bindsym $mod+c exec google-chrome-stable
-bindsym $mod+Shift+p exec subl

@@ -364,6 +364,7 @@ if has('nvim')
   let g:deoplete#sources#go#gocode_binary="$GOPATH.'/bin/gocode'"
   let g:deoplete#sources#go#pointer=1
   let g:deoplete#ignore_sources = {}
+  let g:deoplete#ignore_sources._ = ['buffer', 'member', 'tag', 'file']
   let g:deoplete#sources#go#sort_class = ['func', 'type', 'var', 'const']
   let g:deoplete#sources#go#align_class = 1
 
@@ -406,6 +407,10 @@ let g:pymode_syntax_string_formatting = g:pymode_syntax_all
 let g:pymode_syntax_string_format = g:pymode_syntax_all
 let g:pymode_syntax_string_templates = g:pymode_syntax_all
 let g:pymode_syntax_doctests = g:pymode_syntax_all
+
+" ==================== Jedi ====================
+let g:jedi#use_splits_not_buffers = "right"
+let g:jedi#force_py_version = 3
 
 " ==================== Fugitive ====================
 nnoremap <leader>ga :Git add --all<CR><CR>

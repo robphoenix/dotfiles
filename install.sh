@@ -11,6 +11,7 @@ mkdir ~/code/go/pkg
 mkdir ~/code/go/bin
 mkdir ~/code/python
 mkdir ~/code/elixir
+mkdir -p ${XDG_CONFIG_HOME:=$HOME/.config}
 
 # turn off translations, speed up apt-get update
 mkdir -p /etc/apt/apt.conf.d
@@ -21,7 +22,7 @@ sudo add-apt-repository ppa:neovim-ppa/unstable
 
 # Chrome
 wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+# sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
 
 # tlp repo
 sudo add-apt-repository ppa:linrunner/tlp
@@ -90,7 +91,10 @@ sudo apt -y install python-pip python-dev build-essential
 sudo pip install --upgrade pip
 sudo apt -y install pip3
 sudo apt -y install python3-pip
-sudo pip3 install neovim
+sudo pip3 install neovim --upgrade
+sudo pip3 install jedi
+sudo pip install jedi
+sudo pip install yapf
 sudo pip3 install bpython
 
 # Vim plugins
@@ -109,7 +113,11 @@ git clone https://github.com/altercation/vim-colors-solarized.git ~/.config/nvim
 git clone https://github.com/tpope/vim-fugitive.git ~/.config/nvim/bundle/vim-fugitive
 git clone https://github.com/fatih/vim-go.git ~/.config/nvim/bundle/vim-go
 git clone https://github.com/honza/vim-snippets.git ~/.config/nvim/bundle/vim-snippets
+git clone https://github.com/zchee/deoplete-go.git ~/.config/nvim/bundle/deoplete-go
+git clone https://github.com/Konfekt/FastFold.git ~/.config/nvim/bundle/FastFold
+git clone --recursive https://github.com/davidhalter/jedi-vim.git ~/.config/nvim/bundle/jedi-vim
 
+# symlinks
 ln -sf /home/rob/dotfiles/.zshenv /home/rob/.zshenv
 ln -sf /home/rob/dotfiles/.zshrc /home/rob/.zshrc
 ln -sf /home/rob/dotfiles/.xsessionrc /home/rob/.xsessionrc
@@ -121,9 +129,9 @@ ln -sf /home/rob/dotfiles/.i3/config /home/rob/.config/i3/config
 ln -snf /home/rob/dotfiles/.vim /home/rob/.config/nvim
 ln -snf /home/rob/dotfiles/.vimrc /home/rob/.config/nvim/init.vim
 
-apt autoremove
-apt autoclean
-apt clean
+sudo apt autoremove
+sudo apt autoclean
+sudo apt clean
 
-# change shell to zsh & reboot
+# change shell to zsh
 chsh -s `which zsh`
