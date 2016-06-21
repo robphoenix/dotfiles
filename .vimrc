@@ -11,11 +11,6 @@ syntax on
 
 filetype plugin indent on
 
-" Enable autocompletion
-" set omnifunc=go#complete#Complete
-" Select keyword as you type
-" :set completeopt=longest,menuone
-
 " Solarized Colours
 syntax enable
 set background=dark
@@ -43,21 +38,50 @@ nmap <Leader><Leader> V
 nnoremap <leader>a :cclose<CR>
 " Buffer switching
 nmap <leader>bb :bn<CR>
+" trim all whitespaces away
+nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 
 " save no history or bookmarks in netrw
 :let g:netrw_dirhistmax = 0
+
 " toggle cursorline & cursorcolumn
 :nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
 
-" set cursorline             " have a line indicate the cursor location
-" set cursorcolumn
-" set title                  " show title in console title bar
+" relative line numbers off in insert mode
+augroup AbsoluteLineNumbersOnlyInInsertMode
+  autocmd!
+  autocmd InsertEnter * set number
+  autocmd InsertLeave * set relativenumber
+augroup END
+
+" highlight column only in INSERT mode
+augroup ColorcolumnOnlyInInsertMode
+  autocmd!
+  autocmd InsertEnter * setlocal colorcolumn=80,120
+  autocmd InsertLeave * setlocal colorcolumn=0
+augroup END
+
 set ruler                  " show the cursor position all the time
-set noshowcmd              " don't display incomplete commands
+set showcmd              " show me what I'm typing
 set nolazyredraw           " turn off lazy redraw
-set number                 " relative line numbers
+set noswapfile                  " Don't use swapfile
+set nobackup					          " Don't create annoying backup files
+set nowritebackup
+set splitright                  " Split vertical windows right to the current windows
+set splitbelow                  " Split horizontal windows below to the current windows
+set encoding=utf-8              " Set default encoding to UTF-8
+set autowrite                   " Automatically save before :next, :make etc.
+set autoread                    " Automatically reread changed files without asking me anything
+set number                 " line numbers
+set relativenumber         " relative line numbers
 set wildmenu               " turn on wild menu
 set wildmode=list:longest,full
+au FocusLost * :wa              " Set vim to save the file on focus out.
+set fileformats=unix,dos,mac    " Prefer Unix over Windows over OS 9 formats
+set noshowmatch                 " Do not show matching brackets by flickering
+set noshowmode                  " We show the mode with airlien or lightline
+set incsearch                   " Shows the match while typing
+set hlsearch                    " Highlight found searches
 set ch=2                   " command line height
 set backspace=2            " allow backspacing over everything in insert mode
 set whichwrap+=<,>,h,l,[,] " backspace and cursor keys wrap to
@@ -75,7 +99,6 @@ set smartindent            " be smart about it
 set wrap                   " wrap lines
 set textwidth=80           " lines are automatically wrapped after 80 columns
 set nofoldenable           " turn off folding
-" set colorcolumn=80         " highlight column 80 (where words will wrap)
 set shiftwidth=4
 set tabstop=4
 set expandtab
@@ -86,13 +109,15 @@ set virtualedit=block      " allow virtual edit in visual block ..
 set linebreak
 set tw=500
 set noerrorbells           " don't bell or blink
+" Time out on key codes but not mappings.
+" Basically this makes terminal Vim work sanely.
+set notimeout
+set ttimeout
+set ttimeoutlen=10
 
-" highlight column only in INSERT mode
-augroup ColorcolumnOnlyInInsertMode
-  autocmd!
-  autocmd InsertEnter * setlocal colorcolumn=80,120
-  autocmd InsertLeave * setlocal colorcolumn=0
-augroup END
+" Better Completion
+set complete=.,w,b,u,t
+set completeopt=longest,menuone
 
 " specify syntax highlighting for specific files
 autocmd Bufread,BufNewFile *.md set filetype=markdown " Vim interprets .md as 'modula2' otherwise, see :set filetype?
@@ -257,7 +282,7 @@ function! LightLineFileencoding()
 endfunction
 
 function! LightLineInfo()
-  return winwidth(0) > 60 ? printf("%-2d", col('.')) : ''
+    return winwidth(0) > 60 ? printf("%3d:%-2d", line('.'), col('.')) : ''
 endfunction
 
 function! LightLineFugitive()
@@ -418,3 +443,9 @@ nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gp :Gpush<CR>
 nnoremap <leader>gc :Gcommit<CR>
 
+" ==================== nerdcommenter ====================
+let g:NERDSpaceDelims = 1
+let g:NERDCompactSexyComs = 1
+let g:NERDDefaultAlign = 'left'
+let g:NERDCommentEmptyLines = 1
+let g:NERDTrimTrailingWhitespace = 1

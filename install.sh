@@ -116,6 +116,10 @@ git clone https://github.com/honza/vim-snippets.git ~/.config/nvim/bundle/vim-sn
 git clone https://github.com/zchee/deoplete-go.git ~/.config/nvim/bundle/deoplete-go
 git clone https://github.com/Konfekt/FastFold.git ~/.config/nvim/bundle/FastFold
 git clone --recursive https://github.com/davidhalter/jedi-vim.git ~/.config/nvim/bundle/jedi-vim
+git clone https://github.com/Yggdroot/indentLine.git ~/.config/nvim/bundle/indentLine
+git clone https://github.com/scrooloose/nerdcommenter.git ~/.config/nvim/bundle/nerdcommenter
+git clone https://github.com/godlygeek/tabular.git ~/.config/nvim/bundle/tabular
+git clone git://github.com/airblade/vim-gitgutter.git ~/.config/nvim/bundle/vim-gitgutter
 
 # symlinks
 ln -sf /home/rob/dotfiles/.zshenv /home/rob/.zshenv
