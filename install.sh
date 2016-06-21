@@ -51,13 +51,12 @@ apt install -y \
     poppler-utils \
     mediainfo \
     xclip \
-    --no-install-recommends
-
-apt install -y \
+    exuberant-ctags \
     zsh \
     i3 \
     google-chrome-stable \
-    tlp tlp-rdw
+    tlp \
+    tlp-rdw
 
 # oh-my-zsh
 wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
@@ -120,6 +119,7 @@ git clone https://github.com/Yggdroot/indentLine.git ~/.config/nvim/bundle/inden
 git clone https://github.com/scrooloose/nerdcommenter.git ~/.config/nvim/bundle/nerdcommenter
 git clone https://github.com/godlygeek/tabular.git ~/.config/nvim/bundle/tabular
 git clone git://github.com/airblade/vim-gitgutter.git ~/.config/nvim/bundle/vim-gitgutter
+git clone https://github.com/majutsushi/tagbar.git ~/.config/nvim/bundle/tagbar
 
 # symlinks
 ln -sf /home/rob/dotfiles/.zshenv /home/rob/.zshenv

@@ -40,7 +40,8 @@ nnoremap <leader>a :cclose<CR>
 nmap <leader>bb :bn<CR>
 " trim all whitespaces away
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
-
+" tagbar
+nmap <F8> :TagbarToggle<CR>
 " save no history or bookmarks in netrw
 :let g:netrw_dirhistmax = 0
 
@@ -443,3 +444,9 @@ let g:NERDCompactSexyComs = 1
 let g:NERDDefaultAlign = 'left'
 let g:NERDCommentEmptyLines = 1
 let g:NERDTrimTrailingWhitespace = 1
+
+" ========= vim-better-whitespace ==================
+" auto strip whitespace except for file with extention blacklisted
+let blacklist = ['markdown', 'md']
+autocmd BufWritePre * StripWhitespace
+highlight ExtraWhitespace ctermbg=DarkGreen
