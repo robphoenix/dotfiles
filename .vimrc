@@ -151,11 +151,15 @@ set virtualedit=block      " allow virtual edit in visual block ..
 set linebreak
 set tw=500
 set noerrorbells           " don't bell or blink
+set hidden                  " hide buffers, don't close
+set hlsearch                " highlight search terms
+set incsearch               " show search matches as you type
+set pastetoggle=<F2>        " toggle paste mode
 " Time out on key codes but not mappings.
 " Basically this makes terminal Vim work sanely.
 set notimeout
 set ttimeout
-set ttimeoutlen=10
+" set ttimeoutlen=10
 
 " Better Completion
 set complete=.,w,b,u,t
