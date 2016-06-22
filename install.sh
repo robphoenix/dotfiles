@@ -56,7 +56,8 @@ apt install -y \
     i3 \
     google-chrome-stable \
     tlp \
-    tlp-rdw
+    tlp-rdw \
+    tree
 
 # oh-my-zsh
 wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh

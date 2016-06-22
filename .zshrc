@@ -92,7 +92,7 @@ export LANG=en_GB.UTF-8
 # Personal aliases
 alias say="sudo apt -y"
 alias web="google-chrome"
-alias vim="nvim"
+alias v="nvim"
 alias relo="source ~/.zshrc"
 alias open="xdg-open"
 alias zshconf="vim ~/.zshrc"
