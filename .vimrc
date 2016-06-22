@@ -71,19 +71,19 @@ nmap <Leader><Leader> V
 nnoremap <leader>a :cclose<CR>
 " Buffer switching
 nmap <leader>bb :bn<CR>
+" Go to buffer by number
+noremap <leader>1 :bn1<CR>
+noremap <leader>2 :bn2<CR>
+noremap <leader>3 :bn3<CR>
+noremap <leader>4 :bn4<CR>
+noremap <leader>5 :bn5<CR>
+noremap <leader>6 :bn6<CR>
+noremap <leader>7 :bn7<CR>
+noremap <leader>8 :bn8<CR>
+noremap <leader>9 :bn9<CR>
+noremap <leader>0 :bn0<CR>
 " Tab switching
 nmap <leader>tt gt<CR>
-" Go to tab by number
-noremap <leader>1 1gt
-noremap <leader>2 2gt
-noremap <leader>3 3gt
-noremap <leader>4 4gt
-noremap <leader>5 5gt
-noremap <leader>6 6gt
-noremap <leader>7 7gt
-noremap <leader>8 8gt
-noremap <leader>9 9gt
-noremap <leader>0 :tablast<cr>
 " trim all whitespaces away
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 " tagbar
@@ -391,9 +391,9 @@ let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
 " ==================== Neosnippets ====================
 " Plugin key-mappings.
-imap <CR>     <Plug>(neosnippet_expand_or_jump)
-smap <CR>     <Plug>(neosnippet_expand_or_jump)
-xmap <CR>     <Plug>(neosnippet_expand_target)
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
 
 let g:neosnippet#snippets_directory='~/.config/nvim/bundle/vim-snippets/snippets'
 
@@ -483,7 +483,6 @@ nnoremap <leader>ga :Git add --all<CR>
 nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gp :Gpush<CR>
 nnoremap <leader>gc :Gcommit<CR>
-nnoremap <leader>gca :Git add --all<CR>:Gcommit<CR>
 
 " ==================== nerdcommenter ====================
 let g:NERDSpaceDelims = 1

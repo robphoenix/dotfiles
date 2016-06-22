@@ -110,3 +110,5 @@ alias exf="exercism fetch"
 alias exs="exercism submit"
 
 export TERM=xterm-256color
+
+set -o vi
