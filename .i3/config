@@ -172,7 +172,7 @@ bar {
 
 # Window Colours
 #                         border  background text    indicator
-  client.focused          $base03 $base03    $base06 $base02
+  client.focused          $base06 $base03    $base06 $base02
   client.focused_inactive $base02 $base02    $base06 $base02
   client.unfocused        $base02 $base02    $base05 $base03
   client.urgent           $base03 $base06    $base03 $base06
@@ -192,6 +192,6 @@ exec_always feh --bg-scale /home/rob/dotfiles/images/Mountainous_View_by_Sven_Sc
 exec --no-startup-id rxvt-unicode
 
 hide_edge_borders none
-new_window pixel 3
+new_window pixel 2
 
 bindsym $mod+c exec google-chrome-stable
