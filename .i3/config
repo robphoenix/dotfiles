@@ -123,7 +123,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'F'real? -b 'Aye' 'i3-msg exit'"
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Au revoir?' -b 'Aye' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode " " {
@@ -173,9 +173,9 @@ bar {
 # Window Colours
 #                         border  background text    indicator
   client.focused          $base03 $base03    $base06 $base02
-  client.focused_inactive $base03 $base02    $base06 $base02
+  client.focused_inactive $base02 $base02    $base06 $base02
   client.unfocused        $base02 $base02    $base05 $base03
-  client.urgent           $base06 $base06    $base03 $base06
+  client.urgent           $base03 $base06    $base03 $base06
 
 # i3lock
 bindsym $mod+semicolon exec i3lock --color '$base_cyan'
@@ -191,6 +191,7 @@ exec_always feh --bg-scale /home/rob/dotfiles/images/Mountainous_View_by_Sven_Sc
 # load terminal on start
 exec --no-startup-id rxvt-unicode
 
-hide_edge_borders both
+hide_edge_borders none
+new_window pixel 3
 
 bindsym $mod+c exec google-chrome-stable

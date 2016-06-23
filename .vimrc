@@ -30,6 +30,7 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'godlygeek/tabular'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'majutsushi/tagbar'
+Plugin 'ervandew/supertab'
 
 " Themes
 Plugin 'altercation/vim-colors-solarized'
