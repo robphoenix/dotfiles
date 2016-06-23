@@ -435,7 +435,7 @@ if has('nvim')
   let g:deoplete#sources#go#gocode_binary="$GOPATH.'/bin/gocode'"
   let g:deoplete#sources#go#pointer=1
   let g:deoplete#ignore_sources = {}
-  let g:deoplete#ignore_sources._ = ['buffer', 'member', 'tag', 'file']
+  let g:deoplete#ignore_sources._ = ['buffer', 'member', 'tag']
   let g:deoplete#sources#go#sort_class = ['func', 'type', 'var', 'const']
   let g:deoplete#sources#go#align_class = 1
 
