@@ -63,7 +63,7 @@ nnoremap <C-H> <C-W><C-H> " Ctrl-h move to the split left
 " Fast saving
 nmap <leader>w :w!<cr>
 nmap <leader>W :wq<cr>
-nmap <leader>q :q<cr>
+nmap <leader>q :qa<cr>
 nmap <leader>Q :q!<cr>
 " Enter visual line mode
 nmap <Leader><Leader> V
@@ -115,7 +115,6 @@ set nowritebackup
 set splitright                  " Split vertical windows right to the current windows
 set splitbelow                  " Split horizontal windows below to the current windows
 set encoding=utf-8              " Set default encoding to UTF-8
-set autowrite                   " Automatically save before :next, :make etc.
 set autoread                    " Automatically reread changed files without asking me anything
 set number                 " line numbers
 set relativenumber         " relative line numbers
@@ -156,6 +155,7 @@ set linebreak
 set tw=500
 set noerrorbells           " don't bell or blink
 set hidden                  " hide buffers, don't close
+set autowrite               " Automatically save before :next, :make etc.
 set hlsearch                " highlight search terms
 set incsearch               " show search matches as you type
 set pastetoggle=<F2>        " toggle paste mode
