@@ -395,9 +395,9 @@ let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
 " ==================== Neosnippets ====================
 " Plugin key-mappings.
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
+imap <C-l>     <Plug>(neosnippet_expand_or_jump)
+smap <C-l>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-l>     <Plug>(neosnippet_expand_target)
 
 let g:neosnippet#snippets_directory='~/.config/nvim/bundle/vim-snippets/snippets'
 
@@ -491,7 +491,7 @@ nnoremap <leader>gc :Gcommit<CR>
 " ==================== nerdcommenter ====================
 let g:NERDSpaceDelims = 1
 let g:NERDCompactSexyComs = 1
-" let g:NERDDefaultAlign = 'left'
+let g:NERDDefaultAlign = 'left'
 let g:NERDCommentEmptyLines = 1
 let g:NERDTrimTrailingWhitespace = 1
 
