@@ -109,7 +109,7 @@ alias tack="chsh -s /bin/bash && sudo reboot"
 alias bass="web 'http://www.bassdrive.com/pop-up/' &"
 alias bye="sudo shutdown now"
 alias by="bpython"
-alias py="python"
+alias py="python3"
 alias exf="exercism fetch"
 alias exs="exercism submit"
 
