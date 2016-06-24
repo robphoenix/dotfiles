@@ -23,6 +23,8 @@ set $base_green    #859900
 font pango:sourcecodepro 12
 # no window titles on new windows
 new_window none
+# no borders on new windows
+hide_edge_borders both
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -123,7 +125,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Au revoir?' -b 'Aye' 'i3-msg exit'"
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Hwyl?' -b 'ie!' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode " " {
@@ -190,8 +192,5 @@ exec_always feh --bg-scale /home/rob/dotfiles/images/Mountainous_View_by_Sven_Sc
 
 # load terminal on start
 exec --no-startup-id rxvt-unicode
-
-hide_edge_borders none
-new_window pixel 2
 
 bindsym $mod+c exec google-chrome-stable
