@@ -71,23 +71,27 @@ nmap <Leader><Leader> V
 nnoremap <leader>a :cclose<CR>
 " Buffer switching
 nmap <leader>bb :bn<CR>
+" Buffer closing
+nmap <leader>bd :bd<CR>
+" Buffer closing
+nnoremap <leader>bm :buffers<CR>:buffer<Space>
 " Go to buffer by number
-noremap <leader>1 :bn1<CR>
-noremap <leader>2 :bn2<CR>
-noremap <leader>3 :bn3<CR>
-noremap <leader>4 :bn4<CR>
-noremap <leader>5 :bn5<CR>
-noremap <leader>6 :bn6<CR>
-noremap <leader>7 :bn7<CR>
-noremap <leader>8 :bn8<CR>
-noremap <leader>9 :bn9<CR>
-noremap <leader>0 :bn0<CR>
+noremap <leader>1 :buffer 1<CR>
+noremap <leader>2 :buffer 2<CR>
+noremap <leader>3 :buffer 3<CR>
+noremap <leader>4 :buffer 4<CR>
+noremap <leader>5 :buffer 5<CR>
+noremap <leader>6 :buffer 6<CR>
+noremap <leader>7 :buffer 7<CR>
+noremap <leader>8 :buffer 8<CR>
+noremap <leader>9 :buffer 9<CR>
+noremap <leader>0 :buffer 0<CR>
 " Tab switching
-nmap <leader>tt gt<CR>
+" nmap <leader>tt gt<CR>
 " trim all whitespaces away
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 " tagbar
-nmap <F8> :TagbarToggle<CR>
+nmap <leader>tg :TagbarToggle<CR>
 " save no history or bookmarks in netrw
 :let g:netrw_dirhistmax = 0
 
