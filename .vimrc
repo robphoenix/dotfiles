@@ -92,8 +92,9 @@ noremap <leader>0 :buffer 0<CR>
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 " tagbar
 nmap <leader>tg :TagbarToggle<CR>
-" terminal
+" open terminal
 noremap <leader>tt :terminal<CR>
+" enter normal mode in terminal
 tnoremap <C-n> <C-\><C-n>
 " save no history or bookmarks in netrw
 :let g:netrw_dirhistmax = 0
