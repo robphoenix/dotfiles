@@ -94,7 +94,7 @@ nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 nmap <leader>tg :TagbarToggle<CR>
 " terminal
 noremap <leader>tt :terminal<CR>
-tnoremap <leader>n <C-\><C-n>
+tnoremap <C-n> <C-\><C-n>
 " save no history or bookmarks in netrw
 :let g:netrw_dirhistmax = 0
 
