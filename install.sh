@@ -107,7 +107,6 @@ sudo pip3 install jedi
 git clone git@github.com:bordeltabernacle/exercism.git ~/code/exercism
 git clone git@github.com:bordeltabernacle/python_koans.git ~/code/python/python_koans
 git clone git@github.com:bordeltabernacle/gopl.git ~/code/go/src/gopl
-git clone git@github.com:bordeltabernacle/clerk.git ~/code/js/clerk
 
 
 # symlinks
