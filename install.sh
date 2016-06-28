@@ -96,7 +96,6 @@ sudo pip install --upgrade pip
 sudo pip install jedi
 sudo pip install yapf
 sudo pip3 install bpython
-sudo pip3 install mypy-lang
 sudo pip3 install neovim --upgrade
 sudo pip3 install jedi
 
