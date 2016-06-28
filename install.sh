@@ -31,6 +31,9 @@ sudo add-apt-repository ppa:linrunner/tlp
 sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
 echo "deb https://apt.dockerproject.org/repo ubuntu-xenial main" | sudo tee /etc/apt/sources.list.d/docker.list
 
+# NodeJS
+curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+
 apt update
 apt -y upgrade
 
@@ -57,7 +60,8 @@ apt install -y \
     google-chrome-stable \
     tlp \
     tlp-rdw \
-    tree
+    tree \
+    nodejs
 
 # oh-my-zsh
 wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
