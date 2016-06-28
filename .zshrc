@@ -116,3 +116,5 @@ alias exs="exercism submit"
 export TERM=rxvt-unicode-256color
 
 set -o vi
+
+eval `dircolors ~/.dircolors`
