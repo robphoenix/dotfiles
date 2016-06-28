@@ -91,18 +91,21 @@ go get -u github.com/exercism/cli/exercism
 exercism configure --dir=~/code/exercism
 
 # Python
-sudo apt -y install python-pip python-dev build-essential
+sudo apt -y install python-pip python-dev build-essential pip3 python3-pip
 sudo pip install --upgrade pip
-sudo apt -y install pip3
-sudo apt -y install python3-pip
-sudo pip3 install neovim --upgrade
-sudo pip3 install jedi
 sudo pip install jedi
 sudo pip install yapf
 sudo pip3 install bpython
+sudo pip3 install mypy-lang
+sudo pip3 install neovim --upgrade
+sudo pip3 install jedi
 
 # Personal repos
 git clone git@github.com:bordeltabernacle/exercism.git ~/code/exercism
+git clone git@github.com:bordeltabernacle/python_koans.git ~/code/python/python_koans
+git clone git@github.com:bordeltabernacle/gopl.git ~/code/go/src/gopl
+git clone git@github.com:bordeltabernacle/clerk.git ~/code/js/clerk
+
 
 # symlinks
 ln -sf /home/rob/dotfiles/.zshenv /home/rob/.zshenv
