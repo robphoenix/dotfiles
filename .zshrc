@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/rob/.oh-my-zsh
+export ZSH=/home/rob/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -113,6 +113,6 @@ alias py="python3"
 alias exf="exercism fetch"
 alias exs="exercism submit"
 
-export TERM=xterm-256color
+export TERM=rxvt-unicode-256color
 
 set -o vi
