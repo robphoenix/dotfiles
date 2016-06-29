@@ -34,6 +34,9 @@ echo "deb https://apt.dockerproject.org/repo ubuntu-xenial main" | sudo tee /etc
 # NodeJS
 curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
 
+# Elixir/Erlang
+wget https://packages.erlang-solutions.com/erlang-solutions_1.0_all.deb && sudo dpkg -i erlang-solutions_1.0_all.deb
+
 apt update
 apt -y upgrade
 
@@ -63,7 +66,9 @@ apt install -y \
     tree \
     nodejs \
     htop \
-    zeal
+    zeal \
+    erlang \
+    elixir
 
 # oh-my-zsh
 wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
@@ -109,6 +114,7 @@ sudo pip3 install jedi
 git clone git@github.com:bordeltabernacle/exercism.git ~/code/exercism
 git clone git@github.com:bordeltabernacle/python_koans.git ~/code/python/python_koans
 git clone git@github.com:bordeltabernacle/gopl.git ~/code/go/src/gopl
+git clone git@github.com:bordeltabernacle/IPA.git ~/code/elixir/IPA
 
 
 # symlinks
