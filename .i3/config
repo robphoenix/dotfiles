@@ -92,9 +92,11 @@ bindsym $mod+a focus parent
 
 set $ws1 ""
 set $ws2 ""
+set $ws3 ""
 
 assign [class="URxvt"] $ws1
 assign [class="google-chrome"] $ws2
+assign [class="Zeal"] $ws3
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -188,9 +190,10 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #d
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 
 # load wallpaper
-exec_always feh --bg-scale /home/rob/dotfiles/images/Mountainous_View_by_Sven_Scheuermeier-1600.jpg
+exec_always feh --bg-scale /home/rob/dotfiles/images/kaydendmello_cloudbreaker.jpg
 
 # load terminal on start
 exec --no-startup-id rxvt-unicode
 
 bindsym $mod+c exec google-chrome-stable
+bindsym $mod+z exec zeal
