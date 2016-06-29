@@ -30,6 +30,8 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'godlygeek/tabular'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'majutsushi/tagbar'
+Plugin 'slashmili/alchemist.vim'
+Plugin 'elixir-lang/vim-elixir'
 
 " Themes
 Plugin 'altercation/vim-colors-solarized'
@@ -403,9 +405,9 @@ let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
 " ==================== Neosnippets ====================
 " Plugin key-mappings.
-imap <C-o>     <Plug>(neosnippet_expand_or_jump)
-smap <C-o>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-o>     <Plug>(neosnippet_expand_target)
+imap <C-l>     <Plug>(neosnippet_expand_or_jump)
+smap <C-l>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-l>     <Plug>(neosnippet_expand_target)
 
 let g:neosnippet#snippets_directory='~/.config/nvim/bundle/vim-snippets/snippets'
 

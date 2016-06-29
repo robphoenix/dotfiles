@@ -109,6 +109,7 @@ sudo pip install yapf
 sudo pip3 install bpython
 sudo pip3 install neovim --upgrade
 sudo pip3 install jedi
+sudo pip3 install netmiko
 
 # Personal repos
 git clone git@github.com:bordeltabernacle/exercism.git ~/code/exercism
