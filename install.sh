@@ -116,6 +116,7 @@ git clone git@github.com:bordeltabernacle/exercism.git ~/code/exercism
 git clone git@github.com:bordeltabernacle/python_koans.git ~/code/python/python_koans
 git clone git@github.com:bordeltabernacle/gopl.git ~/code/go/src/gopl
 git clone git@github.com:bordeltabernacle/IPA.git ~/code/elixir/IPA
+git clone git@github.com:bordeltabernacle/project-euler.git ~/code/project-euler
 
 
 # symlinks
