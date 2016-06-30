@@ -117,6 +117,7 @@ git clone git@github.com:bordeltabernacle/python_koans.git ~/code/python/python_
 git clone git@github.com:bordeltabernacle/gopl.git ~/code/go/src/gopl
 git clone git@github.com:bordeltabernacle/IPA.git ~/code/elixir/IPA
 git clone git@github.com:bordeltabernacle/project-euler.git ~/code/project-euler
+git clone git@github.com:bordeltabernacle/pyshowfileparse.git ~/code/python/pyshowfileparse
 
 
 # symlinks
