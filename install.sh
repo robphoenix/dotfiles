@@ -11,6 +11,7 @@ mkdir ~/code/go/pkg
 mkdir ~/code/go/bin
 mkdir ~/code/python
 mkdir ~/code/elixir
+mkdir ~/code/ansible
 mkdir -p ${XDG_CONFIG_HOME:=$HOME/.config}
 
 # turn off translations, speed up apt-get update
@@ -119,6 +120,7 @@ git clone git@github.com:bordeltabernacle/gopl.git ~/code/go/src/gopl
 git clone git@github.com:bordeltabernacle/IPA.git ~/code/elixir/IPA
 git clone git@github.com:bordeltabernacle/project-euler.git ~/code/project-euler
 git clone git@github.com:bordeltabernacle/pyshowfileparse.git ~/code/python/pyshowfileparse
+git clone git@github.com:bordeltabernacle/ansible_playground.git ~/code/ansible/ansible_playground
 
 
 # symlinks
