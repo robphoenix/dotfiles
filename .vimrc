@@ -273,7 +273,7 @@ let g:lightline = {
       \ 'active': {
       \   'left': [ [ 'mode', 'paste'],
       \             [ 'lineinfo' ],
-      \             [ 'fugitive', 'modified', 'ctrlpmark' ]],
+      \             [ 'fugitive', 'modified', 'ctrlpmark']],
       \   'right': [ [ 'filename', 'fileformat', 'fileencoding' ] ]
       \ },
       \ 'inactive': {
