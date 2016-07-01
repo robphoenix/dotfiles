@@ -20,7 +20,6 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'klen/python-mode'
 Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'scrooloose/syntastic'
-Plugin 'bling/vim-bufferline'
 Plugin 'fatih/vim-go'
 Plugin 'honza/vim-snippets'
 Plugin 'zchee/deoplete-go'
@@ -32,6 +31,7 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'majutsushi/tagbar'
 Plugin 'slashmili/alchemist.vim'
 Plugin 'elixir-lang/vim-elixir'
+Plugin 'fholgado/minibufexpl.vim'
 
 " Themes
 Plugin 'altercation/vim-colors-solarized'
@@ -71,25 +71,6 @@ nmap <leader>Q :q!<cr>
 nmap <Leader><Leader> V
 " Close quickfix easily
 nnoremap <leader>a :cclose<CR>
-" Buffer switching
-nmap <leader>bb :bn<CR>
-" Buffer closing
-nmap <leader>bd :bd<CR>
-" Buffer closing
-nnoremap <leader>bm :buffers<CR>:buffer<Space>
-" Go to buffer by number
-noremap <leader>1 :buffer 1<CR>
-noremap <leader>2 :buffer 2<CR>
-noremap <leader>3 :buffer 3<CR>
-noremap <leader>4 :buffer 4<CR>
-noremap <leader>5 :buffer 5<CR>
-noremap <leader>6 :buffer 6<CR>
-noremap <leader>7 :buffer 7<CR>
-noremap <leader>8 :buffer 8<CR>
-noremap <leader>9 :buffer 9<CR>
-noremap <leader>0 :buffer 0<CR>
-" Tab switching
-" nmap <leader>tt gt<CR>
 " trim all whitespaces away
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 " tagbar
@@ -292,8 +273,7 @@ let g:lightline = {
       \ 'active': {
       \   'left': [ [ 'mode', 'paste'],
       \             [ 'lineinfo' ],
-      \             [ 'fugitive', 'modified', 'ctrlpmark' ],
-      \             [ 'bufferline' ]],
+      \             [ 'fugitive', 'modified', 'ctrlpmark' ]],
       \   'right': [ [ 'filename', 'fileformat', 'fileencoding' ] ]
       \ },
       \ 'inactive': {
@@ -308,7 +288,6 @@ let g:lightline = {
       \   'fileencoding': 'LightLineFileencoding',
       \   'mode': 'LightLineMode',
       \   'fugitive': 'LightLineFugitive',
-      \   'bufferline': 'LightLineBufferline',
       \   'ctrlpmark': 'CtrlPMark',
       \ },
       \ }
@@ -366,11 +345,6 @@ endfunction
 
 function! LightLineReadonly()
   return &ft !~? 'help' && &readonly ? 'RO' : ''
-endfunction
-
-function! LightLineBufferline()
-  let st=g:bufferline#refresh_status()
-  return g:bufferline_status_info.before . g:bufferline_status_info.current . g:bufferline_status_info.after
 endfunction
 
 function! CtrlPMark()
@@ -510,3 +484,27 @@ let g:NERDTrimTrailingWhitespace = 1
 let blacklist = ['markdown', 'md']
 autocmd BufWritePre * StripWhitespace
 highlight ExtraWhitespace ctermbg=DarkGreen
+
+" ========= minibufexpl ==================
+map <leader>bt :MBEToggle<cr>
+map <leader>tr :MBEToggleMRU<cr>
+map <leader>bn :MBEbn<CR>
+map <leader>bp :MBEbp<CR>
+map <Tab> :MBEbf<CR>
+map <leader>bb :MBEbb<CR>
+" Buffer closing
+nmap <leader>bd :bd<CR>
+" Buffer menu
+nnoremap <leader>bm :buffers<CR>:buffer<Space>
+
+let g:miniBufExplAutoStart = 1
+let g:miniBufExplStatusLineText = "buffers"
+let g:miniBufExplShowBufNumbers = 0
+let g:miniBufExplCycleArround = 1
+
+" hi MBENormal               guifg=#808080 guibg=fg
+" hi MBEChanged              guifg=#CD5907 guibg=fg
+" hi MBEVisibleNormal        guifg=#5DC2D6 guibg=fg
+" hi MBEVisibleChanged       guifg=#F1266F guibg=fg
+" hi MBEVisibleActiveNormal  guifg=#A6DB29 guibg=fg
+" hi MBEVisibleActiveChanged guifg=#F1266F guibg=fg
