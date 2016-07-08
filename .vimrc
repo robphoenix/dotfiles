@@ -78,7 +78,7 @@ nmap <leader>tg :TagbarToggle<CR>
 " open terminal
 noremap <leader>tt :terminal<CR>
 " enter normal mode in terminal
-tnoremap <C-n> <C-\><C-n>
+noremap <C-n> <C-\><C-n>
 " save no history or bookmarks in netrw
 :let g:netrw_dirhistmax = 0
 
