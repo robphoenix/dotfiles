@@ -18,6 +18,7 @@
 	uncommit = reset --mixed HEAD~
 	amend = commit --amend
 	unmerged = diff --name-only --diff-filter=U
+    unmerge = reset --merge
 	remotes = remote -v
 
 [color]
