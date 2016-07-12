@@ -70,7 +70,8 @@ apt install -y \
     zeal \
     erlang \
     elixir \
-    screen
+    screen \
+    virtualenvwrapper
 
 # oh-my-zsh
 wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
@@ -112,6 +113,8 @@ sudo pip3 install bpython
 sudo pip3 install neovim --upgrade
 sudo pip3 install jedi
 sudo pip3 install netmiko
+sudo pip3 install virtualenv
+sudo pip3 install virtualenvwrapper
 
 # Personal repos
 git clone git@github.com:bordeltabernacle/exercism.git ~/code/exercism

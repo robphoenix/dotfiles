@@ -119,3 +119,7 @@ export TERM=rxvt-unicode-256color
 set -o vi
 
 eval `dircolors ~/.dircolors`
+
+# Python virtualenv
+export WORKON_HOME="$HOME/.virtualenvs"
+source /usr/local/bin/virtualenvwrapper.sh
