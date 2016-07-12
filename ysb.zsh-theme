@@ -6,7 +6,7 @@
 # Mar 2013 Yad Smood
 
 # VCS
-YS_VCS_PROMPT_PREFIX1=" %{$fg[white]%}on%{$reset_color%} "
+YS_VCS_PROMPT_PREFIX1="%{$fg[yellow]%} > %{$reset_color%}"
 YS_VCS_PROMPT_PREFIX2=":%{$fg[cyan]%}"
 YS_VCS_PROMPT_SUFFIX="%{$reset_color%}"
 YS_VCS_PROMPT_DIRTY=" %{$fg[red]%}x"
@@ -46,15 +46,16 @@ local exit_code="%(?,,C:%{$fg[red]%}%?%{$reset_color%})"
 #
 # % ys @ ys-mbp in ~/.oh-my-zsh on git:master x [21:47:42] C:0
 # $
+
+# %{$terminfo[bold]$fg[blue]%}#%{$reset_color%} \
+# %(#,%{$bg[yellow]%}%{$fg[black]%}%n%{$reset_color%},%{$fg[cyan]%}%n) \
+# %{$fg[white]%}@ \
+# %{$fg[green]%}%m \
+# %{$fg[white]%}in \
+#
+
 PROMPT="
-%{$terminfo[bold]$fg[blue]%}#%{$reset_color%} \
-%(#,%{$bg[yellow]%}%{$fg[black]%}%n%{$reset_color%},%{$fg[cyan]%}%n) \
-%{$fg[white]%}@ \
-%{$fg[green]%}%m \
-%{$fg[white]%}in \
-%{$terminfo[bold]$fg[yellow]%}%~%{$reset_color%}\
-${hg_info}\
+ %{$fg[green]%}%~%{$reset_color%}\
 ${git_info}\
- \
-%{$fg[white]%}[%*] $exit_code
-%{$terminfo[bold]$fg[red]%}$ %{$reset_color%}"
+ $exit_code
+%{$fg[red]%} > %{$reset_color%}"

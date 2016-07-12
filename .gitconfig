@@ -14,7 +14,7 @@
 	tags = tag
 	stashes = stash list
 	unstage = reset -q HEAD --
-	discard = checkout --
+	discard = checkout -- .
 	uncommit = reset --mixed HEAD~
 	amend = commit --amend
 	unmerged = diff --name-only --diff-filter=U
