@@ -26,7 +26,7 @@ local exit_code="%(?,,C:%{$fg[red]%}%?%{$reset_color%})"
 # %
 
 PROMPT="
-%{$fg[green]%}%~\
+%{$fg[white]%}%~\
 ${git_info} \
 %{$fg[yellow]%}%T \
 %{$fg[green]%}%n@%m \
@@ -34,4 +34,4 @@ ${git_info} \
 %{$fg[magenta]%}%# \
 %{$reset_color%}"
 
-RPROMPT=""
+RPROMPT="%{$fg[magenta]%}<%{$reset_color%}"
