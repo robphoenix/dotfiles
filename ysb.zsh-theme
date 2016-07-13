@@ -7,9 +7,9 @@
 # Adapted June 2016 Rob Phoenix
 
 # VCS
-YS_VCS_PROMPT_PREFIX1="%{$fg[yellow]%} > %{$reset_color%}"
-YS_VCS_PROMPT_PREFIX2=":%{$fg[cyan]%}"
-YS_VCS_PROMPT_SUFFIX="%{$reset_color%}"
+YS_VCS_PROMPT_PREFIX1="%{$fg[yellow]%} (%{$fg[cyan]%}"
+YS_VCS_PROMPT_PREFIX2="%{$fg[yellow]%}:%{$fg[green]%}"
+YS_VCS_PROMPT_SUFFIX="%{$fg[yellow]%})%{$reset_color%}"
 YS_VCS_PROMPT_DIRTY=" %{$fg[red]%}x"
 YS_VCS_PROMPT_CLEAN=" %{$fg[green]%}o"
 
@@ -32,9 +32,11 @@ local exit_code="%(?,,C:%{$fg[red]%}%?%{$reset_color%})"
 # ~/.oh-my-zsh > git:master x C:0
 # >
 
-
 PROMPT="
- %{$fg[green]%}%~%{$reset_color%}\
-${git_info}\
+ %(#,%{$bg[yellow]%}%{$fg[black]%}%n%{$reset_color%},%{$fg[yellow]%}{%{$fg[cyan]%}%n)\
+%{$fg[yellow]%}:\
+%{$fg[green]%}%m%{$fg[yellow]%}}\
+${git_info} \
+%{$fg[cyan]%}%~%{$reset_color%}\
  $exit_code
-%{$fg[red]%} > %{$reset_color%}"
+%{$fg[magenta]%} > %{$reset_color%}"
