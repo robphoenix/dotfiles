@@ -96,7 +96,7 @@ alias v="nvim"
 alias factoryvim="vim -u ~/dotfiles/.vim/essential.vim"
 alias relo="source ~/.zshrc"
 alias open="xdg-open"
-alias zshconf="nvim ~/.zshrc"
+alias zshconf="nvim ~/dotfiles/.zshrc"
 alias vimconf="nvim ~/dotfiles/.vimrc"
 alias i3conf="nvim ~/dotfiles/.i3/config"
 alias dot="nvim ~/dotfiles"
@@ -105,8 +105,6 @@ alias ll="ls -al"
 alias sudo="sudo "
 alias vpnup="nmcli --ask con up id 'PIA - UK London'"
 alias vpndown="nmcli con down id 'PIA - UK London'"
-alias tack="chsh -s /bin/bash && sudo reboot"
-alias bass="web 'http://www.bassdrive.com/pop-up/' &"
 alias bye="sudo shutdown now"
 alias by="bpython"
 alias py="python3"
@@ -116,10 +114,10 @@ alias cscon="sudo screen /dev/ttyUSB0 9600"
 
 export TERM=rxvt-unicode-256color
 
-set -o vi
-
-eval `dircolors ~/.dircolors`
-
 # Python virtualenv
 export WORKON_HOME="$HOME/.virtualenvs"
 source /usr/local/bin/virtualenvwrapper.sh
+# solarized dir colours
+eval `dircolors ~/.dircolors`
+# vi mode in the terminal
+set -o vi
