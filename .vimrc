@@ -32,6 +32,7 @@ Plugin 'majutsushi/tagbar'
 Plugin 'slashmili/alchemist.vim'
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'fholgado/minibufexpl.vim'
+Plugin 'mhinz/vim-startify'
 
 " Themes
 Plugin 'altercation/vim-colors-solarized'
@@ -228,8 +229,8 @@ let NERDTreeIgnore=['\.pyc$', '\.vim$', '\~$', '\.git$', '.DS_Store']
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 " open automatically if no files specified
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+" autocmd StdinReadPre * let s:std_in=1
+" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 " ==================== Vim-go ====================
 let g:go_fmt_fail_silently = 0
@@ -508,3 +509,11 @@ let g:miniBufExplCycleArround = 1
 " hi MBEVisibleChanged       guifg=#F1266F guibg=fg
 " hi MBEVisibleActiveNormal  guifg=#A6DB29 guibg=fg
 " hi MBEVisibleActiveChanged guifg=#F1266F guibg=fg
+
+" ========= Startify =====================
+let g:startify_custom_header = [
+    \ '    GREETINGS PROFESSOR FALKEN.',
+    \ '',
+    \ '    SHALL WE PLAY A GAME?',
+    \ ''
+    \ ]
