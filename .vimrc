@@ -267,15 +267,14 @@ let g:lightline = {
       \ 'colorscheme': 'solarized',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste'],
-      \             [ 'lineinfo' ],
+      \             [ 'filename', 'lineinfo' ],
       \             [ 'fugitive', 'modified', 'ctrlpmark']],
-      \   'right': [ [ 'filename', 'fileformat', 'fileencoding' ] ]
+      \   'right': [ [ 'fileformat', 'fileencoding' ] ]
       \ },
       \ 'inactive': {
       \ },
       \ 'component_function': {
       \   'lineinfo': 'LightLineInfo',
-      \   'percent': 'LightLinePercent',
       \   'modified': 'LightLineModified',
       \   'filename': 'LightLineFilename',
       \   'fileformat': 'LightLineFileformat',
@@ -369,9 +368,6 @@ function! CtrlPStatusFunc_2(str)
   return lightline#statusline(0)
 endfunction
 
-" Trigger a highlight in the appropriate direction when pressing these keys:
-let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
-"
 " ==================== Neosnippets ====================
 " Plugin key-mappings.
 imap <C-l>     <Plug>(neosnippet_expand_or_jump)
@@ -496,7 +492,7 @@ let g:miniBufExplBuffersNeeded = 1
 let g:miniBufExplStatusLineText = "buffers"
 let g:miniBufExplShowBufNumbers = 0
 let g:miniBufExplCycleArround = 1
-let g:did_minibufexplorer_syntax_inits = 1
+" let g:did_minibufexplorer_syntax_inits = 1
 let g:miniBufExplUseSingleClick = 1
 
 " hi MBENormal               guifg=red guibg=white
