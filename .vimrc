@@ -211,12 +211,6 @@ fun! SetDiffColors()
 endfun
 autocmd FilterWritePre * call SetDiffColors()
 
-" ==================== Bufferline ====================
-let g:bufferline_active_buffer_left = '( '
-let g:bufferline_active_buffer_right = ')'
-let g:bufferline_show_bufnr = 1
-let g:bufferline_echo = 0
-
 " ==================== NerdTree ====================
 " For toggling
 noremap <Leader>nn :NERDTreeToggle<cr>
@@ -377,7 +371,7 @@ endfunction
 
 " Trigger a highlight in the appropriate direction when pressing these keys:
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
-
+"
 " ==================== Neosnippets ====================
 " Plugin key-mappings.
 imap <C-l>     <Plug>(neosnippet_expand_or_jump)
@@ -498,15 +492,17 @@ nmap <leader>bd :bd<CR>
 " Buffer menu
 nnoremap <leader>bm :buffers<CR>:buffer<Space>
 
-let g:miniBufExplAutoStart = 1
+let g:miniBufExplBuffersNeeded = 1
 let g:miniBufExplStatusLineText = "buffers"
 let g:miniBufExplShowBufNumbers = 0
 let g:miniBufExplCycleArround = 1
+let g:did_minibufexplorer_syntax_inits = 1
+let g:miniBufExplUseSingleClick = 1
 
-" hi MBENormal               guifg=#808080 guibg=fg
-" hi MBEChanged              guifg=#CD5907 guibg=fg
-" hi MBEVisibleNormal        guifg=#5DC2D6 guibg=fg
-" hi MBEVisibleChanged       guifg=#F1266F guibg=fg
+" hi MBENormal               guifg=red guibg=white
+" hi MBEChanged              guifg=white guibg=fg
+" hi MBEVisibleNormal        guifg=white guibg=fg
+" hi MBEVisibleChanged       guifg=red guibg=fg
 " hi MBEVisibleActiveNormal  guifg=#A6DB29 guibg=fg
 " hi MBEVisibleActiveChanged guifg=#F1266F guibg=fg
 
@@ -517,3 +513,4 @@ let g:startify_custom_header = [
     \ '    SHALL WE PLAY A GAME?',
     \ ''
     \ ]
+
