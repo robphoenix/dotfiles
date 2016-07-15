@@ -71,7 +71,8 @@ nmap <leader>Q :q!<cr>
 " Enter visual line mode
 nmap <Leader><Leader> V
 " Close quickfix easily
-nnoremap <leader>a :cclose<CR>
+nnoremap <leader>cc :cclose<CR>
+nnoremap <leader>lc :lclose<CR>
 " trim all whitespaces away
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 " tagbar
@@ -161,7 +162,7 @@ set completeopt=longest,menuone
 autocmd Bufread,BufNewFile *.md set filetype=markdown " Vim interprets .md as 'modula2' otherwise, see :set filetype?
 
 " Go settings
-au BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4
+autocmd BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4
 
 " Python settings
 autocmd BufNewFile,BufRead *.py setlocal tabstop=4 softtabstop=4 shiftwidth=4 textwidth=80 smarttab expandtab autoindent fileformat=unix
@@ -212,27 +213,26 @@ endfun
 autocmd FilterWritePre * call SetDiffColors()
 
 " ==================== NerdTree ====================
-" For toggling
 noremap <Leader>nn :NERDTreeToggle<cr>
 
 let NERDTreeShowHidden=1
-
 let NERDTreeIgnore=['\.pyc$', '\.vim$', '\~$', '\.git$', '.DS_Store']
 
 " Close nerdtree and vim on close file
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 " open automatically if no files specified
 " autocmd StdinReadPre * let s:std_in=1
 " autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 " ==================== Vim-go ====================
-let g:go_fmt_fail_silently = 0
+let g:go_fmt_fail_silently = 1
+let g:go_list_type = "quickfix"
 let g:go_fmt_command = "goimports"
 let g:go_autodetect_gopath = 1
 let g:go_term_enabled = 1
 let g:go_snippet_engine = "neosnippet"
-let g:go_highlight_space_tab_error = 0
+let g:go_highlight_space_tab_error = 1
 let g:go_highlight_array_whitespace_error = 1
 let g:go_highlight_trailing_whitespace_error = 1
 let g:go_highlight_extra_types = 0
@@ -267,9 +267,9 @@ let g:lightline = {
       \ 'colorscheme': 'solarized',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste'],
-      \             [ 'filename', 'lineinfo' ],
+      \             [ 'filename' ],
       \             [ 'fugitive', 'modified', 'ctrlpmark']],
-      \   'right': [ [ 'fileformat', 'fileencoding' ] ]
+      \   'right': [ [ 'lineinfo' ], [ 'fileformat', 'fileencoding' ], [ 'syntastic' ]]
       \ },
       \ 'inactive': {
       \ },
@@ -283,6 +283,12 @@ let g:lightline = {
       \   'mode': 'LightLineMode',
       \   'fugitive': 'LightLineFugitive',
       \   'ctrlpmark': 'CtrlPMark',
+      \ },
+      \ 'component_expand': {
+      \   'syntastic': 'SyntasticStatuslineFlag',
+      \ },
+      \ 'component_type': {
+      \   'syntastic': 'error',
       \ },
       \ }
 
@@ -368,6 +374,29 @@ function! CtrlPStatusFunc_2(str)
   return lightline#statusline(0)
 endfunction
 
+augroup AutoSyntastic
+  autocmd!
+  autocmd BufWritePost *.go,*.py call s:syntastic()
+augroup END
+function! s:syntastic()
+  SyntasticCheck
+  call lightline#update()
+endfunction
+
+" ==================== Syntastic =====================
+let g:syntastic_go_checkers = ['golint']
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+nmap <leader>ee :Errors<cr>
+let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
+let g:syntastic_auto_jump = 3
+let g:syntastic_loc_list_height = 5
+
 " ==================== Neosnippets ====================
 " Plugin key-mappings.
 imap <C-l>     <Plug>(neosnippet_expand_or_jump)
@@ -421,7 +450,7 @@ if has('nvim')
 endif
 
 " ==================== Python-Mode =========================
-let g:pymode = 1
+let g:pymode = 0
 let g:pymode_trim_whitespaces = 1
 let g:pymode_options = 1
 let g:pymode_options_max_line_length = 79
@@ -437,9 +466,9 @@ let g:pymode_doc_bind = 'D'
 let g:pymode_virtualenv = 1
 let g:pymode_run = 1
 let g:pymode_run_bind = '<leader>rr'
-let g:pymode_lint = 1
-let g:pymode_lint_on_write = 1
-let g:pymode_lint_message = 1
+let g:pymode_lint = 0
+let g:pymode_lint_on_write = 0
+let g:pymode_lint_message = 0
 let g:pymode_lint_checkers = ['pyflakes', 'pep8', 'mccabe', 'pylint']
 let g:pymode_lint_ignore = "E501,F0002"
 let g:pymode_lint_cwindow = 1
@@ -454,7 +483,7 @@ let g:pymode_syntax_string_templates = g:pymode_syntax_all
 let g:pymode_syntax_doctests = g:pymode_syntax_all
 
 " ==================== Jedi ====================
-let g:jedi#use_splits_not_buffers = "right"
+" let g:jedi#use_splits_not_buffers = "right"
 let g:jedi#force_py_version = 3
 
 " ==================== Fugitive ====================
@@ -509,4 +538,3 @@ let g:startify_custom_header = [
     \ '    SHALL WE PLAY A GAME?',
     \ ''
     \ ]
-
