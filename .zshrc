@@ -111,6 +111,7 @@ alias py="python3"
 alias exf="exercism fetch"
 alias exs="exercism submit"
 alias cscon="sudo screen /dev/ttyUSB0 9600"
+alias jekyllup="jekyll build && jekyll serve"
 
 export TERM=rxvt-unicode-256color
 
