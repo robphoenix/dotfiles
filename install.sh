@@ -72,6 +72,10 @@ apt install -y \
     elixir \
     screen \
     virtualenvwrapper
+    ruby \
+    ruby-dev \
+    make \
+    gcc
 
 # oh-my-zsh
 wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
@@ -116,6 +120,9 @@ sudo pip3 install netmiko
 sudo pip3 install virtualenv
 sudo pip3 install virtualenvwrapper
 
+# Ruby gems
+sudo gem install jekyll --no-rdoc --no-ri
+
 # Personal repos
 git clone git@github.com:bordeltabernacle/exercism.git ~/code/exercism
 git clone git@github.com:bordeltabernacle/python_koans.git ~/code/python/python_koans
@@ -125,7 +132,7 @@ git clone git@github.com:bordeltabernacle/project-euler.git ~/code/project-euler
 git clone git@github.com:bordeltabernacle/pyshowfileparse.git ~/code/python/pyshowfileparse
 git clone git@github.com:bordeltabernacle/ansible_cisco_playground.git ~/code/ansible/ansible_cisco_playground
 git clone git@github.com:bordeltabernacle/btutils.git ~/code/python/btutils
-
+git clone https://github.com/bordeltabernacle/bordeltabernacle.github.io ~/bordeltabernacle.github.io
 
 # symlinks
 ln -sf /home/rob/dotfiles/.zshenv /home/rob/.zshenv

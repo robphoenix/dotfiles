@@ -6,10 +6,10 @@
 [alias]
 
 	i = status -s
-	memo = commit -am
-	sum = add --all
-	syncm = push origin master
-	syncd = push origin develop
+	cam = commit -am
+	aa = add --all
+	pom = push origin master
+	pod = push origin develop
 	branches = branch -a
 	tags = tag
 	stashes = stash list
@@ -20,6 +20,7 @@
 	unmerged = diff --name-only --diff-filter=U
     unmerge = reset --merge
 	remotes = remote -v
+	dsf = "!f() { [ -z \"$GIT_PREFIX\" ] || cd \"$GIT_PREFIX\" && git diff --color \"$@\" | diff-so-fancy  | less --tabs=4 -RFX; }; f"
 
 [color]
 

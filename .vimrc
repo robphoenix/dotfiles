@@ -27,6 +27,7 @@ Plugin 'Konfekt/FastFold'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'majutsushi/tagbar'
 Plugin 'slashmili/alchemist.vim'
@@ -159,13 +160,13 @@ set complete=.,w,b,u,t
 set completeopt=longest,menuone
 
 " specify syntax highlighting for specific files
-autocmd Bufread,BufNewFile *.md set filetype=markdown " Vim interprets .md as 'modula2' otherwise, see :set filetype?
+au Bufread,BufNewFile *.md set filetype=markdown " Vim interprets .md as 'modula2' otherwise, see :set filetype?
 
 " Go settings
-autocmd BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4
+au BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4
 
 " Python settings
-autocmd BufNewFile,BufRead *.py setlocal tabstop=4 softtabstop=4 shiftwidth=4 textwidth=80 smarttab expandtab autoindent fileformat=unix
+au BufNewFile,BufRead *.py setlocal tabstop=4 softtabstop=4 shiftwidth=4 textwidth=80 smarttab expandtab autoindent fileformat=unix
 let g:python3_host_prog = '/usr/bin/python3'
 let python_highlight_all=1
 
@@ -344,7 +345,7 @@ function! LightLineFilename()
 endfunction
 
 function! LightLineReadonly()
-  return &ft !~? 'help' && &readonly ? 'RO' : ''
+  return &ft !~? 'help' && &readonly ? '' : ''
 endfunction
 
 function! CtrlPMark()
@@ -538,3 +539,7 @@ let g:startify_custom_header = [
     \ '    SHALL WE PLAY A GAME?',
     \ ''
     \ ]
+
+" ========= vim-markdown =============
+let g:vim_markdown_frontmatter = 1
+
