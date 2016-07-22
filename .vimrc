@@ -45,6 +45,10 @@ set encoding=utf-8
 
 syntax on
 
+" set design of vertical split divider
+set fillchars+=vert:│
+autocmd ColorScheme * highlight VertSplit cterm=NONE ctermfg=NONE ctermbg=NONE
+
 " Solarized Colours
 syntax enable
 set background=dark
@@ -78,6 +82,8 @@ nnoremap <leader>lc :lclose<CR>
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 " tagbar
 nmap <leader>tg :TagbarToggle<CR>
+" split window for terminal
+nmap <leader>vs :50vsp<CR>
 " open terminal
 noremap <leader>tt :terminal<CR>
 " enter normal mode in terminal
@@ -515,6 +521,7 @@ map <Tab> :MBEbf<CR>
 map <leader>bb :MBEbb<CR>
 " Buffer closing
 nmap <leader>bd :bd<CR>
+nmap <leader>bdd :bd!<CR>
 " Buffer menu
 nnoremap <leader>bm :buffers<CR>:buffer<Space>
 
