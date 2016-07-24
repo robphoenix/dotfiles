@@ -8,6 +8,9 @@ call vundle#begin('~/dotfiles/.vim/bundle')
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
+" Themes
+Plugin 'altercation/vim-colors-solarized'
+
 Plugin 'tpope/vim-fugitive'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'ntpeters/vim-better-whitespace'
@@ -25,7 +28,7 @@ Plugin 'honza/vim-snippets'
 Plugin 'zchee/deoplete-go'
 Plugin 'Konfekt/FastFold'
 Plugin 'davidhalter/jedi-vim'
-Plugin 'scrooloose/nerdcommenter'
+Plugin 'tpope/vim-commentary'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'airblade/vim-gitgutter'
@@ -34,9 +37,7 @@ Plugin 'slashmili/alchemist.vim'
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'fholgado/minibufexpl.vim'
 Plugin 'mhinz/vim-startify'
-
-" Themes
-Plugin 'altercation/vim-colors-solarized'
+Plugin 'terryma/vim-expand-region'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -68,6 +69,14 @@ nnoremap <C-K> <C-W><C-K> " Ctrl-k move to the split above
 nnoremap <C-L> <C-W><C-L> " Ctrl-l move to the split right
 nnoremap <C-H> <C-W><C-H> " Ctrl-h move to the split left
 
+" copy & paste to system clipboard
+vmap <Leader>y "+y
+vmap <Leader>d "+d
+nmap <Leader>p "+p
+nmap <Leader>P "+P
+vmap <Leader>p "+p
+vmap <Leader>P "+P
+
 " Fast saving
 nmap <leader>w :w!<cr>
 nmap <leader>W :wq<cr>
@@ -82,7 +91,7 @@ nnoremap <leader>lc :lclose<CR>
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 " tagbar
 nmap <leader>tg :TagbarToggle<CR>
-" split window for terminal
+" open vsplit window
 nmap <leader>vs :50vsp<CR>
 " open terminal
 noremap <leader>tt :terminal<CR>
@@ -92,7 +101,7 @@ tnoremap <C-n> <C-\><C-n>
 :let g:netrw_dirhistmax = 0
 
 " toggle cursorline & cursorcolumn
-:nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
+:nnoremap <Leader>cc :set cursorline! cursorcolumn!<CR>
 
 " relative line numbers off in insert mode
 autocmd InsertEnter * :set number norelativenumber
@@ -101,6 +110,11 @@ autocmd InsertLeave * :set nonumber relativenumber
 " highlight column only in INSERT mode
 autocmd InsertEnter * setlocal colorcolumn=80,120
 autocmd InsertLeave * setlocal colorcolumn=0
+
+" improved search & replace
+vnoremap <silent> s //e<C-r>=&selection=='exclusive'?'+1':''<CR><CR>
+    \:<C-u>call histdel('search',-1)<Bar>let @/=histget('search',-1)<CR>gv
+omap s :normal vs<CR>
 
 set ruler                  " show the cursor position all the time
 set showcmd              " show me what I'm typing
@@ -218,6 +232,10 @@ fun! SetDiffColors()
     highlight DiffText   cterm=bold ctermfg=white ctermbg=DarkRed
 endfun
 autocmd FilterWritePre * call SetDiffColors()
+
+" ========= vim-expand-region ================
+vmap v <Plug>(expand_region_expand)
+vmap <C-v> <Plug>(expand_region_shrink)
 
 " ==================== NerdTree ====================
 noremap <Leader>nn :NERDTreeToggle<cr>
@@ -499,13 +517,6 @@ nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gp :Gpush<CR>
 nnoremap <leader>gc :Gcommit<CR>
 
-" ==================== nerdcommenter ====================
-let g:NERDSpaceDelims = 1
-let g:NERDCompactSexyComs = 1
-let g:NERDDefaultAlign = 'left'
-let g:NERDCommentEmptyLines = 1
-let g:NERDTrimTrailingWhitespace = 1
-
 " ========= vim-better-whitespace ==================
 " auto strip whitespace except for file with extention blacklisted
 let blacklist = ['markdown', 'md']
@@ -520,14 +531,15 @@ map <leader>bp :MBEbp<CR>
 map <Tab> :MBEbf<CR>
 map <leader>bb :MBEbb<CR>
 " Buffer closing
-nmap <leader>bd :bd<CR>
-nmap <leader>bdd :bd!<CR>
+nnoremap <leader>bq :bd!<CR>
+nnoremap <leader>bd :bd<CR>
 " Buffer menu
 nnoremap <leader>bm :buffers<CR>:buffer<Space>
+nnoremap <leader>bs :vert sb<Space>
 
 let g:miniBufExplBuffersNeeded = 1
 let g:miniBufExplStatusLineText = "buffers"
-let g:miniBufExplShowBufNumbers = 0
+" let g:miniBufExplShowBufNumbers = 0
 let g:miniBufExplCycleArround = 1
 " let g:did_minibufexplorer_syntax_inits = 1
 let g:miniBufExplUseSingleClick = 1

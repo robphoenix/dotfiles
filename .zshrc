@@ -123,3 +123,16 @@ source /usr/local/bin/virtualenvwrapper.sh
 eval `dircolors ~/.dircolors`
 # vi mode in the terminal
 set -o vi
+
+# switch back to vim using Ctrl-z
+fancy-ctrl-z () {
+  if [[ $#BUFFER -eq 0 ]]; then
+    BUFFER="fg"
+    zle accept-line
+  else
+    zle push-input
+    zle clear-screen
+  fi
+}
+zle -N fancy-ctrl-z
+bindkey '^Z' fancy-ctrl-z
