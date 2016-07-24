@@ -11,6 +11,7 @@ Plugin 'VundleVim/Vundle.vim'
 " Themes
 Plugin 'altercation/vim-colors-solarized'
 
+Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-fugitive'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'ntpeters/vim-better-whitespace'
@@ -440,8 +441,9 @@ smap <expr><TAB>
 \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 
 " ==================== CtrlP ====================
-let g:ctrlp_map = '<leader>f'
-let g:ctrlp_cmd = 'CtrlPMRU'
+nnoremap <leader>f :CtrlP<CR>
+nnoremap <leader>m :CtrlPMRU<CR>
+nnoremap <leader>bb :CtrlPBuffer<CR>
 let g:ctrlp_by_filename = 1
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_working_path_mode = 'ra'
@@ -453,7 +455,7 @@ let g:ctrlp_use_caching = 1
 let g:ctrlp_clear_cache_on_exit = 0
 let g:ctrlp_cache_dir = $HOME.'/.cache/ctrlp'
 let g:ctrlp_follow_symlinks = 1
-let g:ctrlp_line_prefix = '> '
+let g:ctrlp_line_prefix = '→'
 
 let g:ctrlp_buftag_types = {'go' : '--language-force=go --golang-types=ftv'}
 
@@ -526,15 +528,12 @@ highlight ExtraWhitespace ctermbg=DarkGreen
 " ========= minibufexpl ==================
 map <leader>bt :MBEToggle<cr>
 map <leader>tr :MBEToggleMRU<cr>
-map <leader>bn :MBEbn<CR>
-map <leader>bp :MBEbp<CR>
 map <Tab> :MBEbf<CR>
-map <leader>bb :MBEbb<CR>
+map <leader><Tab> :MBEbp<CR>
 " Buffer closing
 nnoremap <leader>bq :bd!<CR>
 nnoremap <leader>bd :bd<CR>
 " Buffer menu
-nnoremap <leader>bm :buffers<CR>:buffer<Space>
 nnoremap <leader>bs :vert sb<Space>
 
 let g:miniBufExplBuffersNeeded = 1
