@@ -91,6 +91,7 @@ export LANG=en_GB.UTF-8
 
 # Personal aliases
 alias say="sudo apt -y"
+alias sarepo="sudo add-apt-repository"
 alias web="google-chrome"
 alias v="nvim"
 alias factoryvim="vim -u ~/dotfiles/.vim/essential.vim"
@@ -113,6 +114,7 @@ alias exf="exercism fetch"
 alias exs="exercism submit"
 alias cscon="sudo screen /dev/ttyUSB0 9600"
 alias jekyllup="jekyll build && jekyll serve"
+alias rng="ranger"
 
 export TERM=rxvt-unicode-256color
 
