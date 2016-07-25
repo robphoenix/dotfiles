@@ -517,6 +517,8 @@ let g:jedi#force_py_version = 3
 nnoremap <leader>ga :Git add --all<CR>
 nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gp :Gpush<CR>
+nnoremap <leader>gpm :Gpush master<CR>
+nnoremap <leader>gpd :Gpush develop<CR>
 nnoremap <leader>gc :Gcommit<CR>
 
 " ========= vim-better-whitespace ==================
