@@ -145,6 +145,7 @@ ln -sf /home/rob/dotfiles/.bashrc /home/rob/.bashrc
 ln -sf /home/rob/dotfiles/.i3/config /home/rob/.config/i3/config
 ln -sf /home/rob/dotfiles/.gitignore ~/.gitignore
 ln -sf /home/rob/dotfiles/.dircolors ~/.dircolors
+ln -sf /home/rob/dotfiles/.alias.zsh ~/.oh-my-zsh/custom/alias.zsh
 ln -snf /home/rob/dotfiles/.vim /home/rob/.config/nvim
 ln -snf /home/rob/dotfiles/.vimrc /home/rob/.config/nvim/init.vim
 
