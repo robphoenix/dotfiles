@@ -152,6 +152,7 @@ set hlsearch               " don't highlight searches
 set autoindent             " automatic indent new lines
 set smartindent            " be smart about it
 set wrap                   " wrap lines
+set showbreak=↪
 set textwidth=80           " lines are automatically wrapped after 80 columns
 set nofoldenable           " turn off folding
 set autochdir " automatically change window's cwd to file's dir
@@ -553,11 +554,18 @@ let g:miniBufExplUseSingleClick = 1
 " hi MBEVisibleActiveChanged guifg=#F1266F guibg=fg
 
 " ========= Startify =====================
+" start vim with startify & nerdtree
+autocmd VimEnter *
+            \   if !argc()
+            \ |   Startify
+            \ |   NERDTree
+            \ |   wincmd w
+            \ | endif
+
 let g:startify_custom_header = [
     \ '    GREETINGS PROFESSOR FALKEN.',
     \ '',
     \ '    SHALL WE PLAY A GAME?',
-    \ ''
     \ ]
 
 " ========= vim-markdown =============

@@ -80,9 +80,6 @@ apt install -y \
 # oh-my-zsh
 wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
 
-# z
-curl -sSL https://raw.githubusercontent.com/rupa/z/master/z.sh > ~/z.sh
-
 # Docker
 apt-cache policy docker-engine
 sudo apt -y install linux-image-extra-$(uname -r)

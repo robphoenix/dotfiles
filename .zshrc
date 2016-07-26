@@ -24,10 +24,9 @@ HIST_STAMPS="dd.mm.yyyy"
 # export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
 # export MANPATH="/usr/local/man:$MANPATH"
 
-plugins=(extract cp ssh-agent)
+plugins=(z extract cp ssh-agent command-not-found thefuck)
+
 source $ZSH/oh-my-zsh.sh
-# include z
-. ~/z.sh
 # start in ~/code
 cd ~/code
 
@@ -42,6 +41,8 @@ source /usr/local/bin/virtualenvwrapper.sh
 eval `dircolors ~/.dircolors`
 # vi mode in the terminal
 set -o vi
+# thefuck
+eval $(thefuck --alias)
 
 # switch back to vim using Ctrl-z
 fancy-ctrl-z () {
@@ -55,3 +56,19 @@ fancy-ctrl-z () {
 }
 zle -N fancy-ctrl-z
 bindkey '^Z' fancy-ctrl-z
+
+# colorful man pages
+man() {
+    env \
+        LESS_TERMCAP_mb=$(printf "\e[33m") \
+        LESS_TERMCAP_md=$(printf "\e[33m") \
+        LESS_TERMCAP_me=$(printf "\e[0m") \
+        LESS_TERMCAP_se=$(printf "\e[0m") \
+        LESS_TERMCAP_so=$(printf "\e[0;37;102m") \
+        LESS_TERMCAP_ue=$(printf "\e[0m") \
+        LESS_TERMCAP_us=$(printf "\e[4;36m") \
+        PAGER=/usr/bin/less \
+        _NROFF_U=1 \
+        PATH=${HOME}/bin:${PATH} \
+    man "$@"
+}
