@@ -563,9 +563,14 @@ autocmd VimEnter *
             \ | endif
 
 let g:startify_custom_header = [
-    \ '    GREETINGS PROFESSOR FALKEN.',
     \ '',
-    \ '    SHALL WE PLAY A GAME?',
+    \ '    , __            _                          _   _',
+    \ '   /|/  \       o  | |    |      ()           | | | |',
+    \ '    | __/          | |  __|      /\_|_        | | | |',
+    \ '    |   \|   |  |  |/  /  |     /  \|  |   |  |/  |/',
+    \ '    |(__/ \_/|_/|_/|__/\_/|_/  /(__/|_/ \_/|_/|__/|__/',
+    \ '                                              |\  |\',
+    \ '                                              |/  |/',
     \ ]
 
 " ========= vim-markdown =============
