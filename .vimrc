@@ -63,6 +63,8 @@ endif
 " leader key
 let mapleader = "\<Space>"
 let g:mapleader = "\<Space>"
+" remap Esc
+inoremap jj <Esc>
 
 "split navigations
 nnoremap <C-J> <C-W><C-J> " Ctrl-j move to the split below
