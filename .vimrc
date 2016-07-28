@@ -166,7 +166,6 @@ set smarttab
 set formatoptions+=n       " support for numbered/bullet lists
 set virtualedit=block      " allow virtual edit in visual block ..
 set linebreak
-set tw=500
 set noerrorbells           " don't bell or blink
 set hidden                  " hide buffers, don't close
 set autowrite               " Automatically save before :next, :make etc.
