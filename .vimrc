@@ -518,10 +518,13 @@ let g:jedi#force_py_version = 3
 " ==================== Fugitive ====================
 nnoremap <leader>ga :Git add --all<CR>
 nnoremap <leader>gs :Gstatus<CR>
-nnoremap <leader>gp :Gpush<CR>
+nnoremap <leader>gb :Gbrowse<CR>
+nnoremap <leader>gcb :Git checkout
+nnoremap <leader>gpp :Gpush<CR>
 nnoremap <leader>gpm :Gpush origin master<CR>
 nnoremap <leader>gpd :Gpush origin develop<CR>
-nnoremap <leader>gc :Gcommit<CR>
+nnoremap <leader>gcc :Gcommit<CR>
+
 
 " ========= vim-better-whitespace ==================
 " auto strip whitespace except for file with extention blacklisted
