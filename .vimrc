@@ -524,6 +524,8 @@ nnoremap <leader>gpp :Gpush<CR>
 nnoremap <leader>gpm :Gpush origin master<CR>
 nnoremap <leader>gpd :Gpush origin develop<CR>
 nnoremap <leader>gcc :Gcommit<CR>
+nnoremap <leader>gdsf :Git dsf<CR>
+nnoremap <leader>gldsf :Git ldsf<CR>
 
 
 " ========= vim-better-whitespace ==================
@@ -533,6 +535,7 @@ autocmd BufWritePre * StripWhitespace
 highlight ExtraWhitespace ctermbg=DarkGreen
 
 " ========= minibufexpl ==================
+nnoremap <leader>bl :ls<cr>
 map <leader>bt :MBEToggle<cr>
 map <leader>tr :MBEToggleMRU<cr>
 map <Tab> :MBEbf<CR>
