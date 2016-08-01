@@ -540,7 +540,7 @@ map <leader><Tab> :MBEbp<CR>
 " Buffer closing
 nnoremap <leader>bq :bd!<CR>
 nnoremap <leader>bd :bd<CR>
-" Buffer menu
+" open buffer in vertical split
 nnoremap <leader>bs :vert sb<Space>
 
 let g:miniBufExplBuffersNeeded = 1
