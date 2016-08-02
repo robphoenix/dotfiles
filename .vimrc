@@ -525,7 +525,7 @@ nnoremap <leader>gpm :Gpush origin master<CR>
 nnoremap <leader>gpd :Gpush origin develop<CR>
 nnoremap <leader>gcc :Gcommit<CR>
 nnoremap <leader>gdsf :Git dsf<CR>
-nnoremap <leader>gldsf :Git ldsf<CR>
+nnoremap <leader>gl :Git l<CR>
 
 
 " ========= vim-better-whitespace ==================

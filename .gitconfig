@@ -10,6 +10,7 @@
 	aa = add --all
 	pom = push origin master
 	pod = push origin develop
+	pum = push upstream master
     co = checkout
     con = checkout -b
     cl = clone
