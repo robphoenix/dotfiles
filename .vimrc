@@ -276,9 +276,9 @@ au FileType go nmap <Leader>s  <Plug>(go-def-split)
 au FileType go nmap <Leader>v  <Plug>(go-def-vertical)
 au FileType go nmap <Leader>i  <Plug>(go-info)
 au FileType go nmap <Leader>l  <Plug>(go-metalinter)
-au FileType go nmap <leader>r  <Plug>(go-run)
+au FileType go nmap <leader>r  :GoRun<CR>
 au FileType go nmap <leader>b  <Plug>(go-build)
-au FileType go nmap <leader>t  <Plug>(go-test)
+au FileType go nmap <leader>t  :GoTest<CR>
 au FileType go nmap <leader>dt <Plug>(go-test-compile)
 au FileType go nmap <Leader>d  <Plug>(go-doc)
 
@@ -537,7 +537,7 @@ highlight ExtraWhitespace ctermbg=DarkGreen
 " ========= minibufexpl ==================
 nnoremap <leader>bl :ls<cr>
 map <leader>bt :MBEToggle<cr>
-map <leader>tr :MBEToggleMRU<cr>
+map <leader>mt :MBEToggleMRU<cr>
 map <Tab> :MBEbf<CR>
 map <leader><Tab> :MBEbp<CR>
 " Buffer closing

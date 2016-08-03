@@ -11,6 +11,8 @@
 	pom = push origin master
 	pod = push origin develop
 	pum = push upstream master
+	fom = fetch origin master
+	fod = fetch origin develop
     co = checkout
     con = checkout -b
     cl = clone
