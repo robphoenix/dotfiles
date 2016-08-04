@@ -96,8 +96,6 @@ nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 nmap <leader>tg :TagbarToggle<CR>
 " open vsplit window
 nmap <leader>vs :50vsp<CR>
-" open terminal
-noremap <leader>tt :terminal<CR>
 " enter normal mode in terminal
 tnoremap <C-n> <C-\><C-n>
 " save no history or bookmarks in netrw
@@ -278,7 +276,7 @@ au FileType go nmap <Leader>i  <Plug>(go-info)
 au FileType go nmap <Leader>l  <Plug>(go-metalinter)
 au FileType go nmap <leader>r  :GoRun<CR>
 au FileType go nmap <leader>b  <Plug>(go-build)
-au FileType go nmap <leader>t  :GoTest<CR>
+au FileType go nmap <leader>tt  :GoTest<CR>
 au FileType go nmap <leader>dt <Plug>(go-test-compile)
 au FileType go nmap <Leader>d  <Plug>(go-doc)
 
@@ -443,8 +441,8 @@ smap <expr><TAB>
 \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 
 " ==================== CtrlP ====================
-nnoremap <leader>f :CtrlP<CR>
-nnoremap <leader>m :CtrlPMRU<CR>
+nnoremap <leader>ff :CtrlP<CR>
+nnoremap <leader>fm :CtrlPMRU<CR>
 nnoremap <leader>bb :CtrlPBuffer<CR>
 let g:ctrlp_by_filename = 1
 let g:ctrlp_show_hidden = 1
