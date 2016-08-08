@@ -93,9 +93,6 @@ nmap <C-t> :TagbarToggle<CR>
 " open vsplit window
 nmap <leader>vs :50vsp<CR>
 
-" enter normal mode in terminal
-tnoremap <C-n> <C-\><C-n>
-
 " save no history or bookmarks in netrw
 :let g:netrw_dirhistmax = 0
 
@@ -448,29 +445,27 @@ if has('nvim')
 endif
 
 " ==================== Python-Mode =========================
-let g:pymode = 0
+let g:pymode = 1
 let g:pymode_trim_whitespaces = 1
-let g:pymode_options = 1
 let g:pymode_options_max_line_length = 79
-let g:pymode_options_colorcolumn = 1
 let g:pymode_python = 'python3'
 let g:pymode_indent = 1
 let g:pymode_folding = 1
-" [[                Jump to previous class or function (normal, visual, operator modes)
-" ]]                Jump to next class or function  (normal, visual, operator modes)
 let g:pymode_motion = 1
 let g:pymode_doc = 1
 let g:pymode_doc_bind = 'D'
 let g:pymode_virtualenv = 1
 let g:pymode_run = 1
-let g:pymode_run_bind = '<leader>r'
-let g:pymode_lint = 0
-let g:pymode_lint_on_write = 0
-let g:pymode_lint_message = 0
+let g:pymode_run_bind = '<leader>rr'
+let g:pymode_lint = 1
+let g:pymode_lint_on_write = 1
+let g:pymode_lint_message = 1
 let g:pymode_lint_checkers = ['pyflakes', 'pep8', 'mccabe', 'pylint']
 let g:pymode_lint_ignore = "E501,F0002"
-let g:pymode_lint_cwindow = 1
+let g:pymode_lint_cwindow = 0
+let g:pymode_lint_signs = 1
 let g:pymode_rope = 0
+let g:pymode_syntax = 1
 let g:pymode_syntax_all = 1
 let g:pymode_syntax_print_as_function = 1
 let g:pymode_syntax_indent_errors = g:pymode_syntax_all
@@ -481,7 +476,6 @@ let g:pymode_syntax_string_templates = g:pymode_syntax_all
 let g:pymode_syntax_doctests = g:pymode_syntax_all
 
 " ==================== Jedi ====================
-" let g:jedi#use_splits_not_buffers = "right"
 let g:jedi#force_py_version = 3
 
 " ==================== Fugitive ====================
@@ -495,7 +489,6 @@ nnoremap <leader>gpd :Gpush origin develop<CR>
 nnoremap <leader>gcc :Gcommit<CR>
 nnoremap <leader>gdsf :Git dsf<CR>
 nnoremap <leader>gl :Git l<CR>
-
 
 " ========= vim-better-whitespace ==================
 " auto strip whitespace except for file with extention blacklisted
