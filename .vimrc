@@ -97,7 +97,7 @@ nmap <leader>vs :50vsp<CR>
 :let g:netrw_dirhistmax = 0
 
 " SuperTab
-let g:SuperTabDefaultCompletionType = "<tab>"
+" let g:SuperTabDefaultCompletionType = "<tab>"
 
 " toggle cursorline & cursorcolumn
 :nnoremap <Leader>cc :set cursorline! cursorcolumn!<CR>
@@ -406,7 +406,7 @@ let g:syntastic_auto_jump = 3
 let g:syntastic_loc_list_height = 5
 
 " ====================== UltiSnips ===================
-let g:UltiSnipsExpandTrigger="<c-l>"
+" let g:UltiSnipsExpandTrigger="<C-l>"
 let g:UltiSnipsUsePythonVersion = 3
 
 " ==================== CtrlP ====================
