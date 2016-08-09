@@ -224,7 +224,7 @@ vmap <C-v> <Plug>(expand_region_shrink)
 noremap <Leader>n :NERDTreeToggle<cr>
 
 let NERDTreeShowHidden=1
-let NERDTreeIgnore=['\.pyc$', '\.vim$', '\~$', '\.git$', '.DS_Store']
+let NERDTreeIgnore=['\.pyc$', '\.vagrant$', '\~$', '\.git$', '.DS_Store']
 
 " Close nerdtree and vim on close file
 " autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
@@ -406,7 +406,8 @@ let g:syntastic_auto_jump = 3
 let g:syntastic_loc_list_height = 5
 
 " ====================== UltiSnips ===================
-let g:UltiSnipsExpandTrigger="<c-b>"
+let g:UltiSnipsExpandTrigger="<c-l>"
+let g:UltiSnipsUsePythonVersion = 3
 
 " ==================== CtrlP ====================
 nnoremap <leader>cp :CtrlP<CR>
