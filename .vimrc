@@ -45,7 +45,7 @@ autocmd ColorScheme * highlight VertSplit cterm=NONE ctermfg=NONE ctermbg=NONE
 
 " Solarized Colours
 syntax enable
-set background=dark
+set background=light
 colorscheme solarized
 
 if !has('gui_running')
@@ -97,7 +97,7 @@ nmap <leader>vs :50vsp<CR>
 :let g:netrw_dirhistmax = 0
 
 " SuperTab
-" let g:SuperTabDefaultCompletionType = "<tab>"
+let g:SuperTabDefaultCompletionType = "<tab>"
 
 " toggle cursorline & cursorcolumn
 :nnoremap <Leader>cc :set cursorline! cursorcolumn!<CR>
@@ -221,7 +221,7 @@ vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 
 " ==================== NerdTree ====================
-noremap <Leader>n :NERDTreeToggle<cr>
+noremap <Leader>nn :NERDTreeToggle<cr>
 
 let NERDTreeShowHidden=1
 let NERDTreeIgnore=['\.pyc$', '\.vagrant$', '\~$', '\.git$', '.DS_Store']
@@ -233,7 +233,7 @@ let NERDTreeIgnore=['\.pyc$', '\.vagrant$', '\~$', '\.git$', '.DS_Store']
 " let g:go_fmt_fail_silently = 1
 let g:go_list_type = "quickfix"
 let g:go_fmt_command = "goimports"
-let g:go_metalinter_autosave = 1
+let g:go_metalinter_autosave = 0
 let g:go_autodetect_gopath = 1
 let g:go_term_enabled = 1
 let g:go_highlight_types = 1
