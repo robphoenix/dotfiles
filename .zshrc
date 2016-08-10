@@ -24,7 +24,7 @@ HIST_STAMPS="dd.mm.yyyy"
 # export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
 # export MANPATH="/usr/local/man:$MANPATH"
 
-plugins=(z extract cp ssh-agent command-not-found thefuck)
+plugins=(z extract cp ssh-agent thefuck)
 
 source $ZSH/oh-my-zsh.sh
 # start in ~/code
