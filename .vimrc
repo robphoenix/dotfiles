@@ -45,7 +45,7 @@ autocmd ColorScheme * highlight VertSplit cterm=NONE ctermfg=NONE ctermbg=NONE
 
 " Solarized Colours
 syntax enable
-set background=light
+set background=dark
 colorscheme solarized
 
 if !has('gui_running')
