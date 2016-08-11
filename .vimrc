@@ -145,8 +145,8 @@ set hlsearch                    " don't highlight searches
 set autoindent                  " automatic indent new lines
 set smartindent                 " be smart about it
 set wrap                        " wrap lines
-set showbreak=↪
 set textwidth=80                " lines are automatically wrapped after 80 columns
+set showbreak=↪
 set nofoldenable                " turn off folding
 set autochdir                   " automatically change window's cwd to file's dir
 set shiftwidth=4
@@ -172,13 +172,13 @@ set completeopt=longest,menuone
 
 " specify syntax highlighting for specific files
 " Vim interprets .md as 'modula2' otherwise, see :set filetype?
-au Bufread,BufNewFile *.md set filetype=markdown
+au Bufread,BufNewFile *.md setlocal filetype=markdown textwidth=80
 
 " Go settings
 au BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4
 
 " Python settings
-au BufNewFile,BufRead *.py setlocal tabstop=4 softtabstop=4 shiftwidth=4 textwidth=80 smarttab expandtab autoindent fileformat=unix
+au BufNewFile,BufRead *.py setlocal tabstop=4 softtabstop=4 shiftwidth=4 textwidth=79 smarttab expandtab autoindent fileformat=unix
 let g:python3_host_prog = '/usr/bin/python3'
 let python_highlight_all=1
 
