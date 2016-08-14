@@ -33,8 +33,7 @@ Plug 'SirVer/ultisnips'
 Plug 'ervandew/supertab'
 call plug#end()
 
-filetype plugin indent on    " required
-
+filetype plugin indent on   " Automatically detect file types
 set encoding=utf-8
 
 syntax on
@@ -51,6 +50,107 @@ colorscheme solarized
 if !has('gui_running')
   set t_Co=256
 endif
+
+set ruler                       " show the cursor position all the time
+set showcmd                     " show partial commands in status line and
+                                " selected characters/lines in visual mode
+set nolazyredraw                " turn off lazy redraw
+set noswapfile                  " Don't use swapfile
+set nobackup                    " Don't create annoying backup files
+set nowritebackup
+set splitright                  " Split vertical windows right to the current windows
+set splitbelow                  " Split horizontal windows below to the current windows
+set encoding=utf-8              " Set default encoding to UTF-8
+set autoread                    " Automatically reread changed files without asking me anything
+set number                      " line numbers
+set relativenumber              " relative line numbers
+set wildmenu                    " show list instead of just completing
+set wildmode=list:longest,full  " list matches, then longest common part, then all
+au FocusLost * :wa              " Set vim to save the file on focus out.
+set fileformats=unix,dos,mac    " Prefer Unix over Windows over OS 9 formats
+set noshowmatch                 " Do not show matching brackets by flickering
+set noshowmode                  " We show the mode with lightline
+set incsearch                   " Shows the match while typing
+set hlsearch                    " Highlight found searches
+set ch=2                        " command line height
+set backspace=2                 " allow backspacing over everything in insert mode
+set whichwrap+=<,>,h,l,[,]      " backspace and cursor keys wrap to
+set shortmess+=filmnrxoOtT      " abbrev. of messages (avoids 'hit enter')
+set report=0                    " tell us about changes
+set nostartofline               " don't jump to the start of line when scrolling
+" set showmatch                   " brackets/braces that is
+" set mat=5                       " duration to show matching brace (1/10 sec)
+set incsearch                   " show search matches as you type
+set laststatus=2                " always show the status line
+set ignorecase                  " ignore case when searching
+set hlsearch                    " don't highlight searches
+set autoindent                  " automatic indent new lines
+set smartindent                 " be smart about it
+set nowrap                        " dont't wrap lines
+set textwidth=80                " lines are automatically wrapped after 80 columns
+set showbreak=↪
+" set nofoldenable                " turn off folding
+set scrolljump=5                " lines to scroll when cursor leaves screen
+set scrolloff=3                 " minimum lines to keep above and below cursor
+set foldenable                  " auto fold code
+set gdefault                    " the /g flag on :s substitutions by default
+set autochdir                   " automatically change window's cwd to file's dir
+set shiftwidth=4                " use indents of 4 spaces
+set tabstop=4                   " an indentation every four columns
+set expandtab                   " tabs are spaces, not tabs
+set softtabstop=4               " let backspace delete indent
+set pastetoggle=<F2>            " pastetoggle (sane indentation on pastes)
+set smarttab
+set formatoptions+=n            " support for numbered/bullet lists
+set virtualedit=block           " allow virtual edit in visual block ..
+set linebreak
+set noerrorbells                " don't bell or blink
+set hidden                      " hide buffers, don't close
+set autowrite                   " Automatically save before :next, :make etc.
+set virtualedit=onemore         " allow for cursor beyond last character
+set history=1000                " Store a ton of history (default is 20)
+set spell                       " spell checking on
+set list
+set listchars=tab:>.,trail:.,extends:\#,nbsp:. " Highlight problematic whitespace
+
+" Time out on key codes but not mappings.
+" Basically this makes terminal Vim work sanely.
+set notimeout
+set ttimeout
+set ttimeoutlen=10
+
+" Better Completion
+set complete=.,w,b,u,t
+set completeopt=longest,menuone
+
+" save no history or bookmarks in netrw
+:let g:netrw_dirhistmax = 0
+
+" relative line numbers off in insert mode
+autocmd InsertEnter * :set number norelativenumber
+autocmd InsertLeave * :set nonumber relativenumber
+
+" highlight column only in INSERT mode
+autocmd InsertEnter * setlocal colorcolumn=80,120
+autocmd InsertLeave * setlocal colorcolumn=0
+
+" Vim interprets .md as 'modula2' otherwise, see :set filetype?
+au Bufread,BufNewFile *.md setlocal filetype=markdown textwidth=80 wrap
+
+" Go settings
+au BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4
+
+" Python settings
+au BufNewFile,BufRead *.py setlocal ts=4 sts=4 sw=4 tw=79
+let g:python3_host_prog = '/usr/bin/python3'
+let python_highlight_all=1
+
+" js/html/css settings
+au BufNewFile,BufRead *.js, *.html, *.css setlocal ts=2 sts=2 sw=2
+
+" ==========================================
+" ============= Key (re)Mappings ===========
+" ==========================================
 
 " leader key
 let mapleader = "\<Space>"
@@ -78,6 +178,12 @@ nmap <leader>Q :q!<cr>
 
 " Enter visual line mode
 nmap <Leader><Leader> V
+" visual shifting (does not exit Visual mode)
+vnoremap < <gv
+vnoremap > >gv
+
+"clearing highlighted search
+nmap <silent> <leader>/ :nohlsearch<CR>
 
 " deal with quickfix easily
 map <C-n> :cnext<CR>
@@ -88,133 +194,32 @@ nnoremap <leader>a :cclose<CR>
 nnoremap <leader>lc :lclose<CR>
 
 " tagbar
-nmap <C-t> :TagbarToggle<CR>
+nmap <leader>tt :TagbarToggle<CR>
 
 " open vsplit window
 nmap <leader>vs :50vsp<CR>
 
-" save no history or bookmarks in netrw
-:let g:netrw_dirhistmax = 0
-
-" SuperTab
-let g:SuperTabDefaultCompletionType = "<tab>"
-
 " toggle cursorline & cursorcolumn
 :nnoremap <Leader>cc :set cursorline! cursorcolumn!<CR>
 
-" relative line numbers off in insert mode
-autocmd InsertEnter * :set number norelativenumber
-autocmd InsertLeave * :set nonumber relativenumber
+" Some helpers to edit mode
+" http://vimcasts.org/e/14
+cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
+map <leader>ew :e %%
+map <leader>es :sp %%
+map <leader>ev :vsp %%
+map <leader>et :tabe %%
 
-" highlight column only in INSERT mode
-autocmd InsertEnter * setlocal colorcolumn=80,120
-autocmd InsertLeave * setlocal colorcolumn=0
+" Allow using the repeat operator with a visual selection (!)
+" http://stackoverflow.com/a/8064607/127816
+vnoremap . :normal .<CR>
 
-set ruler                       " show the cursor position all the time
-set showcmd                     " show me what I'm typing
-set nolazyredraw                " turn off lazy redraw
-set noswapfile                  " Don't use swapfile
-set nobackup                    " Don't create annoying backup files
-set nowritebackup
-set splitright                  " Split vertical windows right to the current windows
-set splitbelow                  " Split horizontal windows below to the current windows
-set encoding=utf-8              " Set default encoding to UTF-8
-set autoread                    " Automatically reread changed files without asking me anything
-set number                      " line numbers
-set relativenumber              " relative line numbers
-set wildmenu                    " turn on wild menu
-set wildmode=list:longest,full
-au FocusLost * :wa              " Set vim to save the file on focus out.
-set fileformats=unix,dos,mac    " Prefer Unix over Windows over OS 9 formats
-set noshowmatch                 " Do not show matching brackets by flickering
-set noshowmode                  " We show the mode with lightline
-set incsearch                   " Shows the match while typing
-set hlsearch                    " Highlight found searches
-set ch=2                        " command line height
-set backspace=2                 " allow backspacing over everything in insert mode
-set whichwrap+=<,>,h,l,[,]      " backspace and cursor keys wrap to
-set shortmess=filtIoOA          " shorten messages
-set report=0                    " tell us about changes
-set nostartofline               " don't jump to the start of line when scrolling
-" set showmatch                   " brackets/braces that is
-" set mat=5                       " duration to show matching brace (1/10 sec)
-set incsearch                   " show search matches as you type
-set laststatus=2                " always show the status line
-set ignorecase                  " ignore case when searching
-set hlsearch                    " don't highlight searches
-set autoindent                  " automatic indent new lines
-set smartindent                 " be smart about it
-set wrap                        " wrap lines
-set textwidth=80                " lines are automatically wrapped after 80 columns
-set showbreak=↪
-set nofoldenable                " turn off folding
-set autochdir                   " automatically change window's cwd to file's dir
-set shiftwidth=4
-set tabstop=4
-set expandtab
-set softtabstop=4
-set smarttab
-set formatoptions+=n            " support for numbered/bullet lists
-set virtualedit=block           " allow virtual edit in visual block ..
-set linebreak
-set noerrorbells                " don't bell or blink
-set hidden                      " hide buffers, don't close
-set autowrite                   " Automatically save before :next, :make etc.
-" Time out on key codes but not mappings.
-" Basically this makes terminal Vim work sanely.
-set notimeout
-set ttimeout
-" set ttimeoutlen=10
+" ===========================================
+" =============== PLUGINS ===================
+" ===========================================
 
-" Better Completion
-set complete=.,w,b,u,t
-set completeopt=longest,menuone
-
-" specify syntax highlighting for specific files
-" Vim interprets .md as 'modula2' otherwise, see :set filetype?
-au Bufread,BufNewFile *.md setlocal filetype=markdown textwidth=80
-
-" Go settings
-au BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4
-
-" Python settings
-au BufNewFile,BufRead *.py setlocal tabstop=4 softtabstop=4 shiftwidth=4 textwidth=79 smarttab expandtab autoindent fileformat=unix
-let g:python3_host_prog = '/usr/bin/python3'
-let python_highlight_all=1
-
-" js/html/css settings
-au BufNewFile,BufRead *.js, *.html, *.css
-    \ set tabstop=2
-    \ set softtabstop=2
-    \ set shiftwidth=2
-
-let g:rbpt_colorpairs = [
-    \ ['brown',       'RoyalBlue3'],
-    \ ['Darkblue',    'SeaGreen3'],
-    \ ['darkgray',    'DarkOrchid3'],
-    \ ['darkgreen',   'firebrick3'],
-    \ ['darkcyan',    'RoyalBlue3'],
-    \ ['darkred',     'SeaGreen3'],
-    \ ['darkmagenta', 'DarkOrchid3'],
-    \ ['brown',       'firebrick3'],
-    \ ['gray',        'RoyalBlue3'],
-    \ ['black',       'SeaGreen3'],
-    \ ['darkmagenta', 'DarkOrchid3'],
-    \ ['Darkblue',    'firebrick3'],
-    \ ['darkgreen',   'RoyalBlue3'],
-    \ ['darkcyan',    'SeaGreen3'],
-    \ ['darkred',     'DarkOrchid3'],
-    \ ['red',         'firebrick3'],
-    \ ]
-
-let g:rbpt_max = 16
-let g:rbpt_loadcmd_toggle = 0
-
-" Rainbow parenthesis always on!
-autocmd VimEnter * RainbowParenthesesToggle
-autocmd Syntax * RainbowParenthesesLoadRound
-autocmd Syntax * RainbowParenthesesLoadSquare
-autocmd Syntax * RainbowParenthesesLoadBraces
+" ========= SuperTab ========================
+let g:SuperTabDefaultCompletionType = "<tab>"
 
 " ========= vim-expand-region ================
 vmap v <Plug>(expand_region_expand)
@@ -225,6 +230,7 @@ noremap <Leader>nn :NERDTreeToggle<cr>
 
 let NERDTreeShowHidden=1
 let NERDTreeIgnore=['\.pyc$', '\.vagrant$', '\~$', '\.git$', '.DS_Store']
+let NERDTreeQuitOnOpen=1
 
 " Close nerdtree and vim on close file
 " autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
@@ -268,6 +274,150 @@ let g:delimitMate_expand_space = 1
 let g:delimitMate_smart_quotes = 1
 let g:delimitMate_expand_inside_quotes = 0
 let g:delimitMate_smart_matchpairs = '^\%(\w\|\$\)'
+
+" ==================== Syntastic =====================
+let g:syntastic_go_checkers = ['golint']
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+nmap <leader>ee :Errors<cr>
+let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
+let g:syntastic_auto_jump = 3
+let g:syntastic_loc_list_height = 5
+
+" ====================== UltiSnips ===================
+" let g:UltiSnipsExpandTrigger="<C-l>"
+let g:UltiSnipsUsePythonVersion = 3
+
+" ==================== CtrlP ====================
+nnoremap <leader>cp :CtrlP<CR>
+nnoremap <leader>cm :CtrlPMRU<CR>
+nnoremap <leader>cb :CtrlPBuffer<CR>
+
+let g:ctrlp_by_filename = 1
+let g:ctrlp_show_hidden = 1
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_max_height = 10         " maxiumum height of match window
+let g:ctrlp_switch_buffer = 'et'    " jump to a file if it's open already
+let g:ctrlp_mruf_max=450            " number of recently opened files
+let g:ctrlp_max_files=0             " do not limit the number of searchable files
+let g:ctrlp_use_caching = 1
+let g:ctrlp_clear_cache_on_exit = 0
+let g:ctrlp_cache_dir = $HOME.'/.cache/ctrlp'
+let g:ctrlp_follow_symlinks = 1
+let g:ctrlp_line_prefix = '→'
+let g:ctrlp_buftag_types = {'go' : '--language-force=go --golang-types=ftv'}
+
+" ==================== Completion =========================
+" use deoplete for Neovim.
+if has('nvim')
+  let g:deoplete#enable_at_startup = 1
+  let g:deoplete#sources#go#gocode_binary="$GOPATH.'/bin/gocode'"
+  let g:deoplete#sources#go#pointer=1
+  let g:deoplete#ignore_sources = {}
+  let g:deoplete#ignore_sources._ = []
+  let g:deoplete#sources#go#sort_class = ['func', 'type', 'var', 'const']
+  let g:deoplete#sources#go#align_class = 1
+
+  " Use partial fuzzy matches like YouCompleteMe
+  call deoplete#custom#set('_', 'matchers', ['matcher_fuzzy'])
+  call deoplete#custom#set('_', 'converters', ['converter_remove_paren'])
+  call deoplete#custom#set('_', 'disabled_syntaxes', ['Comment', 'String'])
+endif
+
+" ==================== Python-Mode =========================
+let g:pymode = 1
+let g:pymode_trim_whitespaces = 1
+let g:pymode_options_max_line_length = 79
+let g:pymode_python = 'python3'
+let g:pymode_indent = 1
+let g:pymode_folding = 1
+let g:pymode_motion = 1
+let g:pymode_doc = 1
+let g:pymode_doc_bind = 'D'
+let g:pymode_virtualenv = 1
+let g:pymode_run = 1
+let g:pymode_run_bind = '<leader>rr'
+let g:pymode_lint = 1
+let g:pymode_lint_on_write = 1
+let g:pymode_lint_message = 1
+let g:pymode_lint_checkers = ['pyflakes', 'pep8', 'mccabe', 'pylint']
+let g:pymode_lint_ignore = "E501,F0002"
+let g:pymode_lint_cwindow = 0
+let g:pymode_lint_signs = 1
+let g:pymode_rope = 0
+let g:pymode_syntax = 1
+let g:pymode_syntax_all = 1
+let g:pymode_syntax_print_as_function = 1
+let g:pymode_syntax_indent_errors = g:pymode_syntax_all
+let g:pymode_syntax_space_errors = g:pymode_syntax_all
+let g:pymode_syntax_string_formatting = g:pymode_syntax_all
+let g:pymode_syntax_string_format = g:pymode_syntax_all
+let g:pymode_syntax_string_templates = g:pymode_syntax_all
+let g:pymode_syntax_doctests = g:pymode_syntax_all
+
+" ==================== Jedi ====================
+let g:jedi#force_py_version = 3
+
+" ==================== Fugitive ====================
+nnoremap <leader>ga :Git add --all<CR>
+nnoremap <leader>gs :Gstatus<CR>
+nnoremap <leader>gb :Gbrowse<CR>
+nnoremap <leader>gco :Git checkout
+nnoremap <leader>gpp :Gpush<CR>
+nnoremap <leader>gpm :Gpush origin master<CR>
+nnoremap <leader>gpd :Gpush origin develop<CR>
+nnoremap <leader>gcc :Gcommit<CR>
+nnoremap <leader>gdsf :Git dsf<CR>
+nnoremap <leader>gl :Git l<CR>
+
+" ========= vim-better-whitespace ==================
+" auto strip whitespace except for file with extension blacklisted
+let blacklist = ['markdown', 'md']
+autocmd BufWritePre * StripWhitespace
+" highlight ExtraWhitespace ctermbg=DarkGreen
+
+" ========= minibufexpl ==================
+map <Tab> :MBEbf<CR>
+map <leader><Tab> :MBEbp<CR>
+" Buffer closing
+nnoremap <leader>bd :bd<CR>
+nnoremap <leader>bq :bd!<CR>
+" open buffer in vertical split
+nnoremap <leader>bs :vert sb<Space>
+
+let g:miniBufExplBuffersNeeded = 1
+let g:miniBufExplStatusLineText = "buffers"
+let g:miniBufExplCycleArround = 1
+" let g:did_minibufexplorer_syntax_inits = 1
+let g:miniBufExplUseSingleClick = 1
+
+" ========= Startify =====================
+" start vim with startify & nerdtree
+autocmd VimEnter *
+            \   if !argc()
+            \ |   Startify
+            \ |   NERDTree
+            \ |   wincmd w
+            \ | endif
+
+let g:startify_custom_header = [
+    \ '',
+    \ '    , __            _                          _   _',
+    \ '   /|/  \       o  | |    |      ()           | | | |',
+    \ '    | __/          | |  __|      /\_|_        | | | |',
+    \ '    |   \|   |  |  |/  /  |     /  \|  |   |  |/  |/',
+    \ '    |(__/ \_/|_/|_/|__/\_/|_/  /(__/|_/ \_/|_/|__/|__/',
+    \ '                                              |\  |\',
+    \ '                                              |/  |/',
+    \ ]
+
+" ========= vim-markdown =============
+let g:vim_markdown_frontmatter = 1
 
 " ==================== Lightline ====================
 "
@@ -391,147 +541,33 @@ function! s:syntastic()
   call lightline#update()
 endfunction
 
-" ==================== Syntastic =====================
-let g:syntastic_go_checkers = ['golint']
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" ========== Rainbow Parentheses ===============
 
-nmap <leader>ee :Errors<cr>
-let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_auto_loc_list = 1
-" let g:syntastic_check_on_open = 1
-" let g:syntastic_check_on_wq = 0
-let g:syntastic_auto_jump = 3
-let g:syntastic_loc_list_height = 5
-
-" ====================== UltiSnips ===================
-" let g:UltiSnipsExpandTrigger="<C-l>"
-let g:UltiSnipsUsePythonVersion = 3
-
-" ==================== CtrlP ====================
-nnoremap <leader>cp :CtrlP<CR>
-nnoremap <leader>cm :CtrlPMRU<CR>
-nnoremap <leader>cb :CtrlPBuffer<CR>
-
-let g:ctrlp_by_filename = 1
-let g:ctrlp_show_hidden = 1
-let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_max_height = 10         " maxiumum height of match window
-let g:ctrlp_switch_buffer = 'et'    " jump to a file if it's open already
-let g:ctrlp_mruf_max=450            " number of recently opened files
-let g:ctrlp_max_files=0             " do not limit the number of searchable files
-let g:ctrlp_use_caching = 1
-let g:ctrlp_clear_cache_on_exit = 0
-let g:ctrlp_cache_dir = $HOME.'/.cache/ctrlp'
-let g:ctrlp_follow_symlinks = 1
-let g:ctrlp_line_prefix = '→'
-let g:ctrlp_buftag_types = {'go' : '--language-force=go --golang-types=ftv'}
-
-" ==================== Completion =========================
-" use deoplete for Neovim.
-if has('nvim')
-  let g:deoplete#enable_at_startup = 1
-  let g:deoplete#sources#go#gocode_binary="$GOPATH.'/bin/gocode'"
-  let g:deoplete#sources#go#pointer=1
-  let g:deoplete#ignore_sources = {}
-  let g:deoplete#ignore_sources._ = []
-  let g:deoplete#sources#go#sort_class = ['func', 'type', 'var', 'const']
-  let g:deoplete#sources#go#align_class = 1
-
-  " Use partial fuzzy matches like YouCompleteMe
-  call deoplete#custom#set('_', 'matchers', ['matcher_fuzzy'])
-  call deoplete#custom#set('_', 'converters', ['converter_remove_paren'])
-  call deoplete#custom#set('_', 'disabled_syntaxes', ['Comment', 'String'])
-endif
-
-" ==================== Python-Mode =========================
-let g:pymode = 1
-let g:pymode_trim_whitespaces = 1
-let g:pymode_options_max_line_length = 79
-let g:pymode_python = 'python3'
-let g:pymode_indent = 1
-let g:pymode_folding = 1
-let g:pymode_motion = 1
-let g:pymode_doc = 1
-let g:pymode_doc_bind = 'D'
-let g:pymode_virtualenv = 1
-let g:pymode_run = 1
-let g:pymode_run_bind = '<leader>rr'
-let g:pymode_lint = 1
-let g:pymode_lint_on_write = 1
-let g:pymode_lint_message = 1
-let g:pymode_lint_checkers = ['pyflakes', 'pep8', 'mccabe', 'pylint']
-let g:pymode_lint_ignore = "E501,F0002"
-let g:pymode_lint_cwindow = 0
-let g:pymode_lint_signs = 1
-let g:pymode_rope = 0
-let g:pymode_syntax = 1
-let g:pymode_syntax_all = 1
-let g:pymode_syntax_print_as_function = 1
-let g:pymode_syntax_indent_errors = g:pymode_syntax_all
-let g:pymode_syntax_space_errors = g:pymode_syntax_all
-let g:pymode_syntax_string_formatting = g:pymode_syntax_all
-let g:pymode_syntax_string_format = g:pymode_syntax_all
-let g:pymode_syntax_string_templates = g:pymode_syntax_all
-let g:pymode_syntax_doctests = g:pymode_syntax_all
-
-" ==================== Jedi ====================
-let g:jedi#force_py_version = 3
-
-" ==================== Fugitive ====================
-nnoremap <leader>ga :Git add --all<CR>
-nnoremap <leader>gs :Gstatus<CR>
-nnoremap <leader>gb :Gbrowse<CR>
-nnoremap <leader>gco :Git checkout
-nnoremap <leader>gpp :Gpush<CR>
-nnoremap <leader>gpm :Gpush origin master<CR>
-nnoremap <leader>gpd :Gpush origin develop<CR>
-nnoremap <leader>gcc :Gcommit<CR>
-nnoremap <leader>gdsf :Git dsf<CR>
-nnoremap <leader>gl :Git l<CR>
-
-" ========= vim-better-whitespace ==================
-" auto strip whitespace except for file with extention blacklisted
-let blacklist = ['markdown', 'md']
-autocmd BufWritePre * StripWhitespace
-highlight ExtraWhitespace ctermbg=DarkGreen
-
-" ========= minibufexpl ==================
-map <Tab> :MBEbf<CR>
-map <leader><Tab> :MBEbp<CR>
-" Buffer closing
-nnoremap <leader>bd :bd<CR>
-nnoremap <leader>bq :bd!<CR>
-" open buffer in vertical split
-nnoremap <leader>bs :vert sb<Space>
-
-let g:miniBufExplBuffersNeeded = 1
-let g:miniBufExplStatusLineText = "buffers"
-let g:miniBufExplCycleArround = 1
-" let g:did_minibufexplorer_syntax_inits = 1
-let g:miniBufExplUseSingleClick = 1
-
-" ========= Startify =====================
-" start vim with startify & nerdtree
-autocmd VimEnter *
-            \   if !argc()
-            \ |   Startify
-            \ |   NERDTree
-            \ |   wincmd w
-            \ | endif
-
-let g:startify_custom_header = [
-    \ '',
-    \ '    , __            _                          _   _',
-    \ '   /|/  \       o  | |    |      ()           | | | |',
-    \ '    | __/          | |  __|      /\_|_        | | | |',
-    \ '    |   \|   |  |  |/  /  |     /  \|  |   |  |/  |/',
-    \ '    |(__/ \_/|_/|_/|__/\_/|_/  /(__/|_/ \_/|_/|__/|__/',
-    \ '                                              |\  |\',
-    \ '                                              |/  |/',
+let g:rbpt_colorpairs = [
+    \ ['brown',       'RoyalBlue3'],
+    \ ['Darkblue',    'SeaGreen3'],
+    \ ['darkgray',    'DarkOrchid3'],
+    \ ['darkgreen',   'firebrick3'],
+    \ ['darkcyan',    'RoyalBlue3'],
+    \ ['darkred',     'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['brown',       'firebrick3'],
+    \ ['gray',        'RoyalBlue3'],
+    \ ['black',       'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['Darkblue',    'firebrick3'],
+    \ ['darkgreen',   'RoyalBlue3'],
+    \ ['darkcyan',    'SeaGreen3'],
+    \ ['darkred',     'DarkOrchid3'],
+    \ ['red',         'firebrick3'],
     \ ]
 
-" ========= vim-markdown =============
-let g:vim_markdown_frontmatter = 1
+let g:rbpt_max = 16
+let g:rbpt_loadcmd_toggle = 0
+
+" Rainbow parenthesis always on!
+autocmd VimEnter * RainbowParenthesesToggle
+autocmd Syntax * RainbowParenthesesLoadRound
+autocmd Syntax * RainbowParenthesesLoadSquare
+autocmd Syntax * RainbowParenthesesLoadBraces
 
