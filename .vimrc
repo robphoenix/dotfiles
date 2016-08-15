@@ -137,6 +137,7 @@ au Bufread,BufNewFile *.md setlocal filetype=markdown textwidth=80 wrap
 
 " Go settings
 au BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4
+
 " Python settings
 au BufNewFile,BufRead *.py setlocal ts=4 sts=4 sw=4 tw=79 list lcs=tab:▸\
 let g:python3_host_prog = '/usr/bin/python3'
@@ -145,9 +146,8 @@ let python_highlight_all=1
 " js/html/css settings
 au BufNewFile,BufRead *.js, *.html, *.css setlocal ts=2 sts=2 sw=2
 
-" ==========================================
-" ============= Key (re)Mappings ===========
-" ==========================================
+
+" ==> Key (re)Mappings <=======================================================
 
 " leader key
 let mapleader = "\<Space>"
@@ -211,18 +211,19 @@ map <leader>et :tabe %%
 " http://stackoverflow.com/a/8064607/127816
 vnoremap . :normal .<CR>
 
-" ===========================================
-" =============== PLUGINS ===================
-" ===========================================
+" ==> PLUGINS <================================================================
 
-" ========= SuperTab ========================
+" --> SuperTab <---------------------------------------------------------------
+"     --------
 let g:SuperTabDefaultCompletionType = "<tab>"
 
-" ========= vim-expand-region ================
+" --> vim-expand-region <------------------------------------------------------
+"     -----------------
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 
-" ==================== NerdTree ====================
+" --> NerdTree <---------------------------------------------------------------
+"     --------
 noremap <Leader>nn :NERDTreeToggle<cr>
 
 let NERDTreeShowHidden=1
@@ -232,7 +233,8 @@ let NERDTreeQuitOnOpen=1
 " Close nerdtree and vim on close file
 " autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
-" ==================== Vim-go ====================
+" --> vim-go <-----------------------------------------------------------------
+"     ------
 " let g:go_fmt_fail_silently = 1
 let g:go_list_type = "quickfix"
 let g:go_fmt_command = "goimports"
@@ -265,14 +267,16 @@ autocmd FileType go nmap <leader>cd :GoDeclsDir<CR>
 autocmd FileType go nmap <leader>rn :GoRename<space>
 autocmd FileType go nmap <leader>gp :GoPlay<space>
 
-" ==================== delimitMate ====================
+" --> delimitMate <------------------------------------------------------------
+"     -----------
 let g:delimitMate_expand_cr = 1
 let g:delimitMate_expand_space = 1
 let g:delimitMate_smart_quotes = 1
 let g:delimitMate_expand_inside_quotes = 0
 let g:delimitMate_smart_matchpairs = '^\%(\w\|\$\)'
 
-" ==================== Syntastic =====================
+" --> Syntastic <--------------------------------------------------------------
+"     ---------
 let g:syntastic_go_checkers = ['golint']
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -286,11 +290,13 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_jump = 3
 let g:syntastic_loc_list_height = 5
 
-" ====================== UltiSnips ===================
+" --> UltiSnips <--------------------------------------------------------------
+"     ---------
 " let g:UltiSnipsExpandTrigger="<C-l>"
 let g:UltiSnipsUsePythonVersion = 3
 
-" ==================== CtrlP ====================
+" --> CtrlP <------------------------------------------------------------------
+"     -----
 nnoremap <leader>cp :CtrlP<CR>
 nnoremap <leader>cm :CtrlPMRU<CR>
 nnoremap <leader>cb :CtrlPBuffer<CR>
@@ -309,7 +315,8 @@ let g:ctrlp_follow_symlinks = 1
 let g:ctrlp_line_prefix = '→'
 let g:ctrlp_buftag_types = {'go' : '--language-force=go --golang-types=ftv'}
 
-" ==================== Completion =========================
+" --> Completion <-------------------------------------------------------------
+"     ----------
 " use deoplete for Neovim.
 if has('nvim')
   let g:deoplete#enable_at_startup = 1
@@ -326,7 +333,8 @@ if has('nvim')
   call deoplete#custom#set('_', 'disabled_syntaxes', ['Comment', 'String'])
 endif
 
-" ==================== Python-Mode =========================
+" --> Python-Mode <------------------------------------------------------------
+"     -----------
 let g:pymode = 1
 let g:pymode_trim_whitespaces = 1
 let g:pymode_options_max_line_length = 79
@@ -357,10 +365,12 @@ let g:pymode_syntax_string_format = g:pymode_syntax_all
 let g:pymode_syntax_string_templates = g:pymode_syntax_all
 let g:pymode_syntax_doctests = g:pymode_syntax_all
 
-" ==================== Jedi ====================
+" --> Jedi <-------------------------------------------------------------------
+"     ----
 let g:jedi#force_py_version = 3
 
-" ==================== Fugitive ====================
+" --> Fugitive <---------------------------------------------------------------
+"     --------
 nnoremap <leader>ga :Git add --all<CR>
 nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gb :Gbrowse<CR>
@@ -372,13 +382,15 @@ nnoremap <leader>gcc :Gcommit<CR>
 nnoremap <leader>gdsf :Git dsf<CR>
 nnoremap <leader>gl :Git l<CR>
 
-" ========= vim-better-whitespace ==================
+" --> vim-better-whitespace <--------------------------------------------------
+"     ---------------------
 " auto strip whitespace except for file with extension blacklisted
 let blacklist = ['markdown', 'md']
 autocmd BufWritePre * StripWhitespace
 highlight ExtraWhitespace ctermbg=DarkGreen
 
-" ========= minibufexpl ==================
+" --> minibufexpl <------------------------------------------------------------
+"     -----------
 map <Tab> :MBEbf<CR>
 map <leader><Tab> :MBEbp<CR>
 " Buffer closing
@@ -393,7 +405,8 @@ let g:miniBufExplCycleArround = 1
 " let g:did_minibufexplorer_syntax_inits = 1
 let g:miniBufExplUseSingleClick = 1
 
-" ========= Startify =====================
+" --> Startify <---------------------------------------------------------------
+"     --------
 " start vim with startify & nerdtree
 autocmd VimEnter *
             \   if !argc()
@@ -413,11 +426,12 @@ let g:startify_custom_header = [
     \ '                                              |/  |/',
     \ ]
 
-" ========= vim-markdown =============
+" --> vim-markdown <-----------------------------------------------------------
+"     ------------
 let g:vim_markdown_frontmatter = 1
 
-" ==================== Lightline ====================
-"
+" --> Lightline <--------------------------------------------------------------
+"     ---------
 let g:lightline = {
       \ 'colorscheme': 'solarized',
       \ 'active': {
@@ -538,8 +552,8 @@ function! s:syntastic()
   call lightline#update()
 endfunction
 
-" ========== Rainbow Parentheses ===============
-
+" --> Rainbow Parentheses <----------------------------------------------------
+"     -------------------
 let g:rbpt_colorpairs = [
     \ ['brown',       'RoyalBlue3'],
     \ ['Darkblue',    'SeaGreen3'],
