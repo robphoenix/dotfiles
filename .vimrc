@@ -86,7 +86,7 @@ set ignorecase                  " ignore case when searching
 set hlsearch                    " don't highlight searches
 set autoindent                  " automatic indent new lines
 set smartindent                 " be smart about it
-set nowrap                        " dont't wrap lines
+set nowrap                      " dont't wrap lines
 set textwidth=80                " lines are automatically wrapped after 80 columns
 set showbreak=↪
 " set nofoldenable                " turn off folding
@@ -110,8 +110,6 @@ set autowrite                   " Automatically save before :next, :make etc.
 set virtualedit=onemore         " allow for cursor beyond last character
 set history=1000                " Store a ton of history (default is 20)
 set spell                       " spell checking on
-set list
-set listchars=tab:>.,trail:.,extends:\#,nbsp:. " Highlight problematic whitespace
 
 " Time out on key codes but not mappings.
 " Basically this makes terminal Vim work sanely.
@@ -139,9 +137,8 @@ au Bufread,BufNewFile *.md setlocal filetype=markdown textwidth=80 wrap
 
 " Go settings
 au BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4
-
 " Python settings
-au BufNewFile,BufRead *.py setlocal ts=4 sts=4 sw=4 tw=79
+au BufNewFile,BufRead *.py setlocal ts=4 sts=4 sw=4 tw=79 list lcs=tab:▸\
 let g:python3_host_prog = '/usr/bin/python3'
 let python_highlight_all=1
 
@@ -379,7 +376,7 @@ nnoremap <leader>gl :Git l<CR>
 " auto strip whitespace except for file with extension blacklisted
 let blacklist = ['markdown', 'md']
 autocmd BufWritePre * StripWhitespace
-" highlight ExtraWhitespace ctermbg=DarkGreen
+highlight ExtraWhitespace ctermbg=DarkGreen
 
 " ========= minibufexpl ==================
 map <Tab> :MBEbf<CR>
