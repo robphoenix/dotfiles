@@ -130,6 +130,9 @@ ln -sf /home/rob/dotfiles/ysb.zsh-theme /home/rob/.oh-my-zsh/themes/ysb.zsh-them
 ln -sf /home/rob/dotfiles/rc.conf /home/rob/.config/ranger/rc.conf
 ln -snf /home/rob/dotfiles/.vim /home/rob/.config/nvim
 ln -snf /home/rob/dotfiles/.vimrc /home/rob/.config/nvim/init.vim
+ln -sf /home/rob/dotfiles/aliases /home/rob/.oh-my-zsh/custom/aliases.zsh
+ln -sf /home/rob/dotfiles/functions /home/rob/.oh-my-zsh/custom/functions.zsh
+
 
 sudo apt autoremove
 sudo apt autoclean
