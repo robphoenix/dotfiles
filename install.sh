@@ -35,9 +35,6 @@ echo "deb https://apt.dockerproject.org/repo ubuntu-xenial main" | sudo tee /etc
 # NodeJS
 curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
 
-# Elixir/Erlang
-wget https://packages.erlang-solutions.com/erlang-solutions_1.0_all.deb && sudo dpkg -i erlang-solutions_1.0_all.deb
-
 apt update
 apt -y upgrade
 
@@ -68,8 +65,6 @@ apt install -y \
     nodejs \
     htop \
     zeal \
-    erlang \
-    elixir \
     screen \
     virtualenvwrapper
     ruby \
@@ -110,27 +105,14 @@ exercism configure --dir=~/code/exercism
 # Python
 sudo apt -y install python-pip python-dev build-essential pip3 python3-pip
 sudo pip install --upgrade pip
-sudo pip install jedi
-sudo pip install yapf
-sudo pip3 install bpython
-sudo pip3 install neovim --upgrade
-sudo pip3 install jedi
-sudo pip3 install netmiko
-sudo pip3 install virtualenv
-sudo pip3 install virtualenvwrapper
-
-# Ruby gems
-sudo gem install jekyll --no-rdoc --no-ri
+pip install -r requirements.txt
+pip3 install -r requirements3.txt
 
 # Personal repos
 git clone git@github.com:bordeltabernacle/exercism.git ~/code/exercism
 git clone git@github.com:bordeltabernacle/python_koans.git ~/code/python/python_koans
-git clone git@github.com:bordeltabernacle/gopl.git ~/code/go/src/gopl
-git clone git@github.com:bordeltabernacle/IPA.git ~/code/elixir/IPA
-git clone git@github.com:bordeltabernacle/project-euler.git ~/code/project-euler
 git clone git@github.com:bordeltabernacle/ansible_cisco_playground.git ~/code/ansible/ansible_cisco_playground
-git clone git@github.com:bordeltabernacle/btutils.git ~/code/python/btutils
-git clone https://github.com/bordeltabernacle/bordeltabernacle.github.io ~/bordeltabernacle.github.io
+git clone git@github.com:bordeltabernacle/rdutils.git ~/code/python/rdutils
 
 # symlinks
 ln -sf /home/rob/dotfiles/.zshenv /home/rob/.zshenv
@@ -144,6 +126,7 @@ ln -sf /home/rob/dotfiles/.i3/config /home/rob/.config/i3/config
 ln -sf /home/rob/dotfiles/.gitignore /home/rob/.gitignore
 ln -sf /home/rob/dotfiles/.dircolors /home/rob/.dircolors
 ln -sf /home/rob/dotfiles/.alias.zsh /home/rob/.oh-my-zsh/custom/alias.zsh
+ln -sf /home/rob/dotfiles/ysb.zsh-theme /home/rob/.oh-my-zsh/themes/ysb.zsh-theme
 ln -sf /home/rob/dotfiles/rc.conf /home/rob/.config/ranger/rc.conf
 ln -snf /home/rob/dotfiles/.vim /home/rob/.config/nvim
 ln -snf /home/rob/dotfiles/.vimrc /home/rob/.config/nvim/init.vim

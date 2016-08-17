@@ -90,7 +90,7 @@ set hlsearch                    " don't highlight searches
 set autoindent                  " automatic indent new lines
 set smartindent                 " be smart about it
 set nowrap                      " dont't wrap lines
-set textwidth=80                " lines are automatically wrapped after 80 columns
+" set textwidth=80                " lines are automatically wrapped after 80 columns
 set showbreak=↪
 set scrolljump=5                " lines to scroll when cursor leaves screen
 set scrolloff=3                 " minimum lines to keep above and below cursor
@@ -121,7 +121,7 @@ set modelines=1
 " Basically this makes terminal Vim work sanely.
 set notimeout
 set ttimeout
-set ttimeoutlen=10
+" set ttimeoutlen=10
 
 " Better Completion
 set complete=.,w,b,u,t
