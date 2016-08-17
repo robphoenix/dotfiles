@@ -44,38 +44,3 @@ set -o vi
 # thefuck
 eval $(thefuck --alias)
 
-# switch back to vim using Ctrl-z
-fancy-ctrl-z () {
-  if [[ $#BUFFER -eq 0 ]]; then
-    BUFFER="fg"
-    zle accept-line
-  else
-    zle push-input
-    zle clear-screen
-  fi
-}
-zle -N fancy-ctrl-z
-bindkey '^Z' fancy-ctrl-z
-
-# colorful man pages
-man() {
-    env \
-        LESS_TERMCAP_mb=$(printf "\e[33m") \
-        LESS_TERMCAP_md=$(printf "\e[33m") \
-        LESS_TERMCAP_me=$(printf "\e[0m") \
-        LESS_TERMCAP_se=$(printf "\e[0m") \
-        LESS_TERMCAP_so=$(printf "\e[0;37;102m") \
-        LESS_TERMCAP_ue=$(printf "\e[0m") \
-        LESS_TERMCAP_us=$(printf "\e[4;36m") \
-        PAGER=/usr/bin/less \
-        _NROFF_U=1 \
-        PATH=${HOME}/bin:${PATH} \
-    man "$@"
-}
-
-# tree from @wesbos
-function t() {
-  # Defaults to 3 levels deep, do more with `t 5` or `t 1`
-  # pass additional args after
-  tree -I '__pycache__|.git|node_modules|.vagrant|.DS_Store' --dirsfirst --filelimit 15 -L ${1:-3} -aC $2
-}
