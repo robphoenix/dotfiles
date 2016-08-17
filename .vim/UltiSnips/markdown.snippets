@@ -1,10 +1,9 @@
 snippet fm "markdown frontmatter"
----
-layout: post
++++
 title: $1
 date: `date +%Y-%m-%d`
-tags: $3
----
+tags: [ "$3" ]
++++
 
 $0
 
@@ -14,61 +13,21 @@ endsnippet
 
 
 snippet mfm "markdown music frontmatter"
----
-layout: post
++++
 title: "Songs to Code to: $1"
 date: `date +%Y-%m-%d`
-tags: music
----
+tags: [ "music" ]
++++
 
 <iframe width="640" height="360" src="https://www.youtube.com/embed/$0" frameborder="0"> </iframe>
 endsnippet
 
 
 snippet cb "code block"
-{{< highlight $1 >}}
-
-{{< /highlight >}}
-
-$0
-endsnippet
-
-snippet cbi "ini code block"
-~~~ini
-$1
-~~~
+```$1
+$2
+```
 
 $0
 endsnippet
 
-snippet cbp "python code block"
-~~~python
-$1
-~~~
-
-$0
-endsnippet
-
-snippet cbb "bash code block"
-~~~python
-$1
-~~~
-
-$0
-endsnippet
-
-snippet cbg "go code block"
-~~~python
-$1
-~~~
-
-$0
-endsnippet
-
-snippet cbr "ruby code block"
-~~~python
-$1
-~~~
-
-$0
-endsnippet
