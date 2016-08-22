@@ -27,8 +27,8 @@ HIST_STAMPS="dd.mm.yyyy"
 plugins=(z extract cp ssh-agent thefuck)
 
 source $ZSH/oh-my-zsh.sh
-# start in ~/code
-cd ~/code
+# # start in ~/code
+# cd ~/code
 
 export LANG=en_GB.UTF-8
 export TERM=rxvt-unicode-256color
