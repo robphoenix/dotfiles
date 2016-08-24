@@ -114,6 +114,7 @@ set autowrite                   " Automatically save before :next, :make etc.
 set virtualedit=onemore         " allow for cursor beyond last character
 set history=1000                " Store a ton of history (default is 20)
 set spell                       " spell checking on
+set spelllang=en_gb
 
 set modelines=1
 
@@ -165,8 +166,20 @@ nnoremap <C-K> <C-W><C-K> " Ctrl-k move to the split above
 nnoremap <C-L> <C-W><C-L> " Ctrl-l move to the split right
 nnoremap <C-H> <C-W><C-H> " Ctrl-h move to the split left
 
+" Buffer switching
+nnoremap <TAB> :bn<CR>
+nnoremap <S-TAB> :bp<CR>
+" Buffer closing
+nnoremap <leader>bd :bd<CR>
+nnoremap <leader>bq :bd!<CR>
+" open buffer in vertical split
+nnoremap <leader>bs :vert sb<Space>
+
 " move to end of line
 nnoremap 9 $
+
+" spell checking
+nnoremap <leader>ss z=<CR>
 
 " copy & paste to system clipboard
 vmap <Leader>y "+y
@@ -405,11 +418,6 @@ highlight ExtraWhitespace ctermbg=DarkGreen
 " --> minibufexpl {
 " map <Tab> :MBEbf<CR>
 " map <leader><Tab> :MBEbp<CR>
-" Buffer closing
-nnoremap <leader>bd :bd<CR>
-nnoremap <leader>bq :bd!<CR>
-" open buffer in vertical split
-nnoremap <leader>bs :vert sb<Space>
 
 " let g:miniBufExplBuffersNeeded = 1
 " let g:miniBufExplStatusLineText = "buffers"
