@@ -27,11 +27,11 @@ Plug 'airblade/vim-gitgutter'
 Plug 'majutsushi/tagbar'
 Plug 'slashmili/alchemist.vim'
 Plug 'elixir-lang/vim-elixir'
-Plug 'fholgado/minibufexpl.vim'
 Plug 'mhinz/vim-startify'
 Plug 'terryma/vim-expand-region'
 Plug 'SirVer/ultisnips'
 Plug 'ervandew/supertab'
+Plug 'ap/vim-buftabline'
 call plug#end()
 " }
 
@@ -42,7 +42,7 @@ set encoding=utf-8
 syntax on
 
 " set design of vertical split divider
-set fillchars+=vert:│
+set fillchars=fold:\ ,vert:\ ,
 autocmd ColorScheme * highlight VertSplit cterm=NONE ctermfg=NONE ctermbg=NONE
 
 " Solarized Colours
@@ -403,19 +403,19 @@ highlight ExtraWhitespace ctermbg=DarkGreen
 " }
 
 " --> minibufexpl {
-map <Tab> :MBEbf<CR>
-map <leader><Tab> :MBEbp<CR>
+" map <Tab> :MBEbf<CR>
+" map <leader><Tab> :MBEbp<CR>
 " Buffer closing
 nnoremap <leader>bd :bd<CR>
 nnoremap <leader>bq :bd!<CR>
 " open buffer in vertical split
 nnoremap <leader>bs :vert sb<Space>
 
-let g:miniBufExplBuffersNeeded = 1
-let g:miniBufExplStatusLineText = "buffers"
-let g:miniBufExplCycleArround = 1
-" let g:did_minibufexplorer_syntax_inits = 1
-let g:miniBufExplUseSingleClick = 1
+" let g:miniBufExplBuffersNeeded = 1
+" let g:miniBufExplStatusLineText = "buffers"
+" let g:miniBufExplCycleArround = 1
+" " let g:did_minibufexplorer_syntax_inits = 1
+" let g:miniBufExplUseSingleClick = 1
 " }
 
 " --> Startify {
