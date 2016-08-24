@@ -94,9 +94,9 @@ set nowrap                      " dont't wrap lines
 set showbreak=↪
 set scrolljump=5                " lines to scroll when cursor leaves screen
 set scrolloff=3                 " minimum lines to keep above and below cursor
-set foldenable                  " auto fold code
+set nofoldenable                " don't auto fold code
 set foldnestmax=10              " 10 nested fold max
-set foldmethod=syntax           " fold based on syntax
+set foldmethod=indent           " fold based on indent
 set gdefault                    " the /g flag on :s substitutions by default
 set autochdir                   " automatically change window's cwd to file's dir
 set shiftwidth=4                " use indents of 4 spaces
@@ -413,17 +413,6 @@ nnoremap <leader>gl :Git l<CR>
 let blacklist = ['markdown', 'md']
 autocmd BufWritePre * StripWhitespace
 highlight ExtraWhitespace ctermbg=DarkGreen
-" }
-
-" --> minibufexpl {
-" map <Tab> :MBEbf<CR>
-" map <leader><Tab> :MBEbp<CR>
-
-" let g:miniBufExplBuffersNeeded = 1
-" let g:miniBufExplStatusLineText = "buffers"
-" let g:miniBufExplCycleArround = 1
-" " let g:did_minibufexplorer_syntax_inits = 1
-" let g:miniBufExplUseSingleClick = 1
 " }
 
 " --> Startify {
