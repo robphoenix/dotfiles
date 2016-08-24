@@ -44,6 +44,11 @@ syntax on
 " set design of vertical split divider
 set fillchars=fold:\ ,vert:\ ,
 autocmd ColorScheme * highlight VertSplit cterm=NONE ctermfg=NONE ctermbg=NONE
+autocmd ColorScheme * highlight Folded cterm=BOLD ctermfg=NONE ctermbg=NONE
+autocmd ColorScheme * highlight BufTabLineFill cterm=BOLD
+autocmd ColorScheme * highlight BufTabLineCurrent cterm=NONE ctermfg=015 ctermbg=000
+autocmd ColorScheme * highlight BufTabLineActive cterm=NONE ctermfg=248 ctermbg=000
+autocmd ColorScheme * highlight BufTabLineHidden cterm=NONE ctermfg=248 ctermbg=NONE
 
 " Solarized Colours
 syntax enable
@@ -177,6 +182,7 @@ nnoremap <leader>bs :vert sb<Space>
 
 " move to end of line
 nnoremap 9 $
+vnoremap 9 $
 
 " spell checking
 nnoremap <leader>ss z=<CR>
