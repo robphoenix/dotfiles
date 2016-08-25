@@ -240,7 +240,7 @@ vmap <C-v> <Plug>(expand_region_shrink)
 " }
 
 " --> NerdTree {
-noremap <Leader>n :NERDTreeToggle<cr>
+noremap <Leader>nn :NERDTreeToggle<cr>
 
 let NERDTreeShowHidden=1
 let NERDTreeIgnore=['\.pyc$', '\.vagrant$', '\~$', '\.git$', '.DS_Store']
@@ -349,22 +349,25 @@ endif
 " --> Python-Mode {
 let g:pymode = 1
 let g:pymode_trim_whitespaces = 1
+let g:pymode_options = 1
 let g:pymode_options_max_line_length = 79
+let g:pymode_quickfix_minheight = 3
+let g:pymode_quickfix_maxheight = 6
 let g:pymode_python = 'python3'
 let g:pymode_indent = 1
 let g:pymode_folding = 1
 let g:pymode_motion = 1
 let g:pymode_doc = 1
-let g:pymode_doc_bind = 'D'
+let g:pymode_doc_bind = 'K'
 let g:pymode_virtualenv = 1
 let g:pymode_run = 1
-let g:pymode_run_bind = '<leader>rr'
+let g:pymode_run_bind = '<leader>r'
 let g:pymode_lint = 1
 let g:pymode_lint_on_write = 1
 let g:pymode_lint_message = 1
 let g:pymode_lint_checkers = ['pyflakes', 'pep8', 'mccabe', 'pylint']
 let g:pymode_lint_ignore = "E501,F0002"
-let g:pymode_lint_cwindow = 0
+let g:pymode_lint_cwindow = 1
 let g:pymode_lint_signs = 1
 let g:pymode_rope = 0
 let g:pymode_syntax = 1
