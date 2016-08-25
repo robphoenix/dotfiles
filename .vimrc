@@ -20,7 +20,6 @@ Plug 'honza/vim-snippets'
 Plug 'zchee/deoplete-go'
 Plug 'Konfekt/FastFold'
 Plug 'davidhalter/jedi-vim'
-Plug 'tpope/vim-commentary'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'airblade/vim-gitgutter'
@@ -32,6 +31,7 @@ Plug 'terryma/vim-expand-region'
 Plug 'SirVer/ultisnips'
 Plug 'ervandew/supertab'
 Plug 'ap/vim-buftabline'
+Plug 'scrooloose/nerdcommenter'
 call plug#end()
 " }
 
@@ -86,8 +86,6 @@ set whichwrap+=<,>,h,l,[,]      " backspace and cursor keys wrap to
 set shortmess+=filmnrxoOtT      " abbrev. of messages (avoids 'hit enter')
 set report=0                    " tell us about changes
 set nostartofline               " don't jump to the start of line when scrolling
-" set showmatch                   " brackets/braces that is
-" set mat=5                       " duration to show matching brace (1/10 sec)
 set incsearch                   " show search matches as you type
 set laststatus=2                " always show the status line
 set ignorecase                  " ignore case when searching
@@ -95,7 +93,6 @@ set hlsearch                    " don't highlight searches
 set autoindent                  " automatic indent new lines
 set smartindent                 " be smart about it
 set nowrap                      " dont't wrap lines
-" set textwidth=80                " lines are automatically wrapped after 80 columns
 set showbreak=↪
 set scrolljump=5                " lines to scroll when cursor leaves screen
 set scrolloff=3                 " minimum lines to keep above and below cursor
@@ -127,7 +124,7 @@ set modelines=1
 " Basically this makes terminal Vim work sanely.
 set notimeout
 set ttimeout
-" set ttimeoutlen=10
+set ttimeoutlen=10
 
 " Better Completion
 set complete=.,w,b,u,t
@@ -154,9 +151,6 @@ au BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4
 au BufNewFile,BufRead *.py setlocal ts=4 sts=4 sw=4 tw=79 list lcs=tab:▸\
 let g:python3_host_prog = '/usr/bin/python3'
 let python_highlight_all=1
-
-" js/html/css settings
-au BufNewFile,BufRead *.js, *.html, *.css setlocal ts=2 sts=2 sw=2
 " }
 
 " ==> Key (re)Mappings {
@@ -166,10 +160,10 @@ let mapleader = "\<Space>"
 let g:mapleader = "\<Space>"
 
 "split navigations
-nnoremap <C-J> <C-W><C-J> " Ctrl-j move to the split below
-nnoremap <C-K> <C-W><C-K> " Ctrl-k move to the split above
-nnoremap <C-L> <C-W><C-L> " Ctrl-l move to the split right
-nnoremap <C-H> <C-W><C-H> " Ctrl-h move to the split left
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
 
 " Buffer switching
 nnoremap <TAB> :bn<CR>
@@ -179,13 +173,15 @@ nnoremap <leader>bd :bd<CR>
 nnoremap <leader>bq :bd!<CR>
 " open buffer in vertical split
 nnoremap <leader>bs :vert sb<Space>
+" list buffers
+nnoremap <leader>bl :ls<CR>
 
 " move to end of line
 nnoremap 9 $
-vnoremap 9 $
+vnoremap 9 $h
 
 " spell checking
-nnoremap <leader>ss z=<CR>
+nnoremap <leader>z z=<CR>
 
 " copy & paste to system clipboard
 vmap <Leader>y "+y
@@ -195,17 +191,12 @@ nmap <Leader>P "+P
 vmap <Leader>p "+p
 vmap <Leader>P "+P
 
-" highlight last inserted text
-nnoremap gV `[v`]
-
 " Fast saving
 nmap <leader>w :w!<cr>
 nmap <leader>W :wq<cr>
 nmap <leader>q :qa<cr>
 nmap <leader>Q :q!<cr>
 
-" Enter visual line mode
-nmap <Leader><Leader> V
 " visual shifting (does not exit Visual mode)
 vnoremap < <gv
 vnoremap > >gv
@@ -223,12 +214,6 @@ nnoremap <leader>lc :lclose<CR>
 
 " tagbar
 nmap <leader>tt :TagbarToggle<CR>
-
-" open vsplit window
-nmap <leader>vs :50vsp<CR>
-
-" toggle cursorline & cursorcolumn
-:nnoremap <Leader>cc :set cursorline! cursorcolumn!<CR>
 
 " Some helpers to edit mode
 " http://vimcasts.org/e/14
@@ -255,7 +240,7 @@ vmap <C-v> <Plug>(expand_region_shrink)
 " }
 
 " --> NerdTree {
-noremap <Leader>nn :NERDTreeToggle<cr>
+noremap <Leader>n :NERDTreeToggle<cr>
 
 let NERDTreeShowHidden=1
 let NERDTreeIgnore=['\.pyc$', '\.vagrant$', '\~$', '\.git$', '.DS_Store']
@@ -328,10 +313,6 @@ let g:UltiSnipsUsePythonVersion = 3
 " }
 
 " --> CtrlP {
-nnoremap <leader>cp :CtrlP<CR>
-nnoremap <leader>cm :CtrlPMRU<CR>
-nnoremap <leader>cb :CtrlPBuffer<CR>
-
 let g:ctrlp_by_filename = 1
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_working_path_mode = 'ra'
@@ -405,11 +386,9 @@ let g:jedi#force_py_version = 3
 nnoremap <leader>ga :Git add --all<CR>
 nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gb :Gbrowse<CR>
-nnoremap <leader>gco :Git checkout
-nnoremap <leader>gpp :Gpush<CR>
 nnoremap <leader>gpm :Gpush origin master<CR>
 nnoremap <leader>gpd :Gpush origin develop<CR>
-nnoremap <leader>gcc :Gcommit<CR>
+nnoremap <leader>gc :Gcommit<CR>
 nnoremap <leader>gdsf :Git dsf<CR>
 nnoremap <leader>gl :Git l<CR>
 " }
