@@ -32,6 +32,7 @@ Plug 'SirVer/ultisnips'
 Plug 'ervandew/supertab'
 Plug 'ap/vim-buftabline'
 Plug 'scrooloose/nerdcommenter'
+Plug 'Yggdroot/indentLine'
 call plug#end()
 " }
 
