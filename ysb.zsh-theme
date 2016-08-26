@@ -8,10 +8,10 @@
 
 # Git info
 local git_info='$(git_prompt_info)'
-ZSH_THEME_GIT_PROMPT_PREFIX=" %{$fg[cyan]%}"
+ZSH_THEME_GIT_PROMPT_PREFIX=" %{$fg[yellow]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX=""
-ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[red]%} ▼"
-ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[green]%} ▴"
+ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[red]%} +"
+ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[green]%} ="
 
 local exit_code="%(?,,C:%{$fg[red]%}%?%{$reset_color%})"
 
@@ -25,14 +25,11 @@ local exit_code="%(?,,C:%{$fg[red]%}%?%{$reset_color%})"
 # ~/.oh-my-zsh master x 11:09 C:0
 # %
 #
-# %{$fg[cyan]%}%n@%m \
 
-PROMPT="\
+PROMPT="
+%{$fg[cyan]%}[%n@%m] \
 %{$fg[green]%}%~\
 ${git_info} \
-%{$fg[yellow]%}%T \
 $exit_code
 %{$fg[magenta]%}▶ \
 %{$reset_color%}"
-
-RPROMPT="%{$fg[magenta]%} ϕ%{$reset_color%}"
