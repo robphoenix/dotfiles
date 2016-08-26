@@ -33,3 +33,5 @@ ${git_info} \
 $exit_code
 %{$fg[magenta]%}▶ \
 %{$reset_color%}"
+
+RPROMPT=""
