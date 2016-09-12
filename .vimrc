@@ -245,8 +245,8 @@ let NERDTreeShowHidden=1
 let NERDTreeIgnore=['\.pyc$', '\.vagrant$', '\~$', '\.git$', '.DS_Store']
 let NERDTreeQuitOnOpen=1
 
-" Close nerdtree and vim on close file
-" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+"Close nerdtree and vim on close file
+"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 " }
 
 " --> vim-go {

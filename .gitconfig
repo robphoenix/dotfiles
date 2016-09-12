@@ -13,6 +13,7 @@
     pum = push upstream master
     fom = fetch origin master
     fod = fetch origin develop
+    h = reflog
     m = merge
     co = checkout
     con = checkout -b
@@ -23,6 +24,7 @@
     unstage = reset -q HEAD --
     discard = checkout -- .
     uncommit = reset --mixed HEAD~
+    recommit = commit --amend
     amend = commit --amend
     unmerged = diff --name-only --diff-filter=U
     unmerge = reset --merge
