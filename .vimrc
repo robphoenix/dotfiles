@@ -49,7 +49,7 @@ autocmd ColorScheme * highlight Folded cterm=BOLD ctermfg=NONE ctermbg=NONE
 autocmd ColorScheme * highlight BufTabLineFill cterm=BOLD
 autocmd ColorScheme * highlight BufTabLineCurrent cterm=NONE ctermfg=015 ctermbg=000
 autocmd ColorScheme * highlight BufTabLineActive cterm=NONE ctermfg=248 ctermbg=000
-autocmd ColorScheme * highlight BufTabLineHidden cterm=NONE ctermfg=248 ctermbg=NONE
+autocmd ColorScheme * highlight BufTabLineHidden cterm=NONE ctermfg=011 ctermbg=000
 
 " Solarized Colours
 syntax enable
@@ -325,7 +325,7 @@ let g:ctrlp_use_caching = 1
 let g:ctrlp_clear_cache_on_exit = 0
 let g:ctrlp_cache_dir = $HOME.'/.cache/ctrlp'
 let g:ctrlp_follow_symlinks = 1
-let g:ctrlp_line_prefix = '→'
+let g:ctrlp_line_prefix = '>'
 let g:ctrlp_buftag_types = {'go' : '--language-force=go --golang-types=ftv'}
 " }
 
