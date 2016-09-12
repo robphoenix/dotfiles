@@ -33,6 +33,7 @@ Plug 'ervandew/supertab'
 Plug 'ap/vim-buftabline'
 Plug 'scrooloose/nerdcommenter'
 Plug 'Yggdroot/indentLine'
+Plug 'mhinz/vim-sayonara'
 call plug#end()
 " }
 
@@ -170,7 +171,7 @@ nnoremap <C-H> <C-W><C-H>
 nnoremap <TAB> :bn<CR>
 nnoremap <S-TAB> :bp<CR>
 " Buffer closing
-nnoremap <leader>bd :bd<CR>
+nnoremap <silent> <leader>q :Sayonara<CR>
 nnoremap <leader>bq :bd!<CR>
 " open buffer in vertical split
 nnoremap <leader>bs :vert sb<Space>
@@ -194,9 +195,6 @@ vmap <Leader>P "+P
 
 " Fast saving
 nmap <leader>w :w!<cr>
-nmap <leader>W :wq<cr>
-nmap <leader>q :qa<cr>
-nmap <leader>Q :q!<cr>
 
 " visual shifting (does not exit Visual mode)
 vnoremap < <gv
