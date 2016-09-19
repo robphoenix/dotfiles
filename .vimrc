@@ -184,6 +184,7 @@ vnoremap 9 $h
 
 " spell checking
 nnoremap <leader>z z=<CR>
+nnoremap <F6> :setlocal spell! spell?<CR>
 
 " copy & paste to system clipboard
 vmap <Leader>y "+y
@@ -425,6 +426,7 @@ let g:startify_custom_header = [
 
 " --> vim-markdown {
 let g:vim_markdown_frontmatter = 1
+let g:vim_markdown_conceal = 0
 " }
 
 " --> Lightline {
