@@ -46,7 +46,9 @@ syntax on
 " set design of vertical split divider
 set fillchars=fold:\ ,vert:\ ,
 autocmd ColorScheme * highlight VertSplit cterm=NONE ctermfg=NONE ctermbg=NONE
+" set design of fold
 autocmd ColorScheme * highlight Folded cterm=BOLD ctermfg=NONE ctermbg=NONE
+" set design of BufTabLine
 autocmd ColorScheme * highlight BufTabLineFill cterm=BOLD
 autocmd ColorScheme * highlight BufTabLineCurrent cterm=NONE ctermfg=015 ctermbg=000
 autocmd ColorScheme * highlight BufTabLineActive cterm=NONE ctermfg=248 ctermbg=000
@@ -79,7 +81,7 @@ set wildmode=list:longest,full  " list matches, then longest common part, then a
 au FocusLost * :wa              " Set vim to save the file on focus out.
 set fileformats=unix,dos,mac    " Prefer Unix over Windows over OS 9 formats
 set noshowmatch                 " Do not show matching brackets by flickering
-set showmode                  " We show the mode with lightline
+set noshowmode                  " We show the mode with lightline
 set incsearch                   " Shows the match while typing
 set hlsearch                    " Highlight found searches
 set ch=2                        " command line height
@@ -433,14 +435,15 @@ let g:vim_markdown_conceal = 0
 let g:lightline = {
       \ 'colorscheme': 'solarized',
       \ 'active': {
-      \   'left': [[ 'paste' ], [ 'ctrlpmark' ],
-      \            [ 'lineinfo', 'fugitive', 'modified' ]],
-      \   'right': [[ 'syntastic' ]]
+      \   'left': [[ 'mode', 'paste' ], [ 'ctrlpmark' ],
+      \            [ 'fugitive', 'modified' ]],
+      \   'right': [[ 'lineinfo', 'syntastic' ]]
       \ },
       \ 'inactive': {
       \ },
       \ 'component_function': {
       \   'lineinfo': 'LightLineInfo',
+      \   'mode': 'LightLineMode',
       \   'modified': 'LightLineModified',
       \   'fugitive': 'LightLineFugitive',
       \   'ctrlpmark': 'CtrlPMark',
@@ -467,6 +470,13 @@ endfunction
 
 function! LightLineInfo()
     return winwidth(0) > 60 ? printf("%-2d", col('.')) : ''
+endfunction
+
+function! LightLineMode()
+  let fname = expand('%:t')
+  return fname == 'ControlP' ? 'CtrlP' :
+        \ &ft == 'vimfiler' ? 'VimFiler' :
+        \ winwidth(0) > 60 ? lightline#mode() : ''
 endfunction
 
 function! LightLineFugitive()

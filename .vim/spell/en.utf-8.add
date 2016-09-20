@@ -12,3 +12,6 @@ config
 elem
 additonal
 Ansible
+filesystem
+filepath
+filepaths
