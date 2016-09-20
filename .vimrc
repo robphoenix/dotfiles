@@ -79,7 +79,7 @@ set wildmode=list:longest,full  " list matches, then longest common part, then a
 au FocusLost * :wa              " Set vim to save the file on focus out.
 set fileformats=unix,dos,mac    " Prefer Unix over Windows over OS 9 formats
 set noshowmatch                 " Do not show matching brackets by flickering
-set noshowmode                  " We show the mode with lightline
+set showmode                  " We show the mode with lightline
 set incsearch                   " Shows the match while typing
 set hlsearch                    " Highlight found searches
 set ch=2                        " command line height
@@ -433,21 +433,15 @@ let g:vim_markdown_conceal = 0
 let g:lightline = {
       \ 'colorscheme': 'solarized',
       \ 'active': {
-      \   'left': [ [ 'mode', 'paste'],
-      \             [ 'filename' ],
-      \             [ 'fugitive', 'modified', 'ctrlpmark']],
-      \   'right': [ [ 'lineinfo' ], [ 'fileformat', 'fileencoding' ], [ 'syntastic' ]]
+      \   'left': [[ 'paste' ], [ 'ctrlpmark' ],
+      \            [ 'lineinfo', 'fugitive', 'modified' ]],
+      \   'right': [[ 'syntastic' ]]
       \ },
       \ 'inactive': {
       \ },
       \ 'component_function': {
       \   'lineinfo': 'LightLineInfo',
       \   'modified': 'LightLineModified',
-      \   'filename': 'LightLineFilename',
-      \   'fileformat': 'LightLineFileformat',
-      \   'filetype': 'LightLineFiletype',
-      \   'fileencoding': 'LightLineFileencoding',
-      \   'mode': 'LightLineMode',
       \   'fugitive': 'LightLineFugitive',
       \   'ctrlpmark': 'CtrlPMark',
       \ },
@@ -471,43 +465,12 @@ function! LightLineModified()
   endif
 endfunction
 
-function! LightLineFileformat()
-  return winwidth(0) > 70 ? &fileformat : ''
-endfunction
-
-function! LightLineFiletype()
-  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
-endfunction
-
-function! LightLineFileencoding()
-  return winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
-endfunction
-
 function! LightLineInfo()
-    return winwidth(0) > 60 ? printf("%3d:%-2d", line('.'), col('.')) : ''
+    return winwidth(0) > 60 ? printf("%-2d", col('.')) : ''
 endfunction
 
 function! LightLineFugitive()
   return exists('*fugitive#head') ? fugitive#head() : ''
-endfunction
-
-function! LightLineMode()
-  let fname = expand('%:t')
-  return fname == 'ControlP' ? 'CtrlP' :
-        \ &ft == 'vimfiler' ? 'VimFiler' :
-        \ winwidth(0) > 60 ? lightline#mode() : ''
-endfunction
-
-function! LightLineFilename()
-  let fname = expand('%:t')
-  if mode() == 't'
-    return ''
-  endif
-
-  return fname == 'ControlP' ? g:lightline.ctrlp_item :
-        \ &ft == 'vimfiler' ? vimfiler#get_status_string() :
-        \ ('' != LightLineReadonly() ? LightLineReadonly() . ' ' : '') .
-        \ ('' != fname ? fname : '[No Name]')
 endfunction
 
 function! LightLineReadonly()
@@ -517,8 +480,7 @@ endfunction
 function! CtrlPMark()
   if expand('%:t') =~ 'ControlP'
     call lightline#link('iR'[g:lightline.ctrlp_regex])
-    return lightline#concatenate([g:lightline.ctrlp_prev, g:lightline.ctrlp_item
-          \ , g:lightline.ctrlp_next], 0)
+    return lightline#concatenate([g:lightline.ctrlp_item], 0)
   else
     return ''
   endif
