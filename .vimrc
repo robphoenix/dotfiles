@@ -180,9 +180,11 @@ nnoremap <leader>bs :vert sb<Space>
 " list buffers
 nnoremap <leader>bl :ls<CR>
 
-" move to end of line
-nnoremap 9 $
-vnoremap 9 $h
+" Remap H and L (top, bottom of screen to left and right end of line)
+nnoremap H ^
+nnoremap L $
+vnoremap H ^
+vnoremap L g_
 
 " spell checking
 nnoremap <leader>z z=<CR>
@@ -202,6 +204,32 @@ nmap <leader>w :w!<cr>
 " visual shifting (does not exit Visual mode)
 vnoremap < <gv
 vnoremap > >gv
+
+" When jump to next match also center screen
+nnoremap n nzz
+nnoremap N Nzz
+vnoremap n nzz
+vnoremap N Nzz
+
+" Same when moving up and down
+nnoremap <C-u> <C-u>zz
+nnoremap <C-d> <C-d>zz
+nnoremap <C-f> <C-f>zz
+nnoremap <C-b> <C-b>zz
+vnoremap <C-u> <C-u>zz
+vnoremap <C-d> <C-d>zz
+vnoremap <C-f> <C-f>zz
+vnoremap <C-b> <C-b>zz
+
+" Visual linewise up and down by default (and use gj gk to go quicker)
+nnoremap j gj
+nnoremap k gk
+nnoremap gj 5j
+nnoremap gk 5k
+vnoremap j gj
+vnoremap k gk
+vnoremap gj 5j
+vnoremap gk 5k
 
 "clearing highlighted search
 nmap <silent> <leader>/ :nohlsearch<CR>
