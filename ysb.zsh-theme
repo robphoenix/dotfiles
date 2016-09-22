@@ -17,17 +17,19 @@ local exit_code="%(?,,C:%{$fg[red]%}%?%{$reset_color%})"
 
 # Prompt format:
 #
-# DIRECTORY BRANCH STATE TIME C:LAST_EXIT_CODE
-# PRIVILEGES COMMAND
+# DIRECTORY BRANCH STATE C:LAST_EXIT_CODE
 #
 # For example:
 #
-# ~/.oh-my-zsh master x 11:09 C:0
-# %
+# ~/.oh-my-zsh master + C:0
+# ▶
 #
+#
+#REMOVED:
+#[user@machine]
+#%{$fg[cyan]%}[%n@%m] \
 
 PROMPT="
-%{$fg[cyan]%}[%n@%m] \
 %{$fg[green]%}%~\
 ${git_info} \
 $exit_code
