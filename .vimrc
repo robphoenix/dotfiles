@@ -34,6 +34,7 @@ Plug 'ap/vim-buftabline'
 Plug 'scrooloose/nerdcommenter'
 Plug 'Yggdroot/indentLine'
 Plug 'mhinz/vim-sayonara'
+Plug 'terryma/vim-multiple-cursors'
 call plug#end()
 " }
 
