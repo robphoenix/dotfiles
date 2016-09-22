@@ -75,7 +75,6 @@ set splitbelow                  " Split horizontal windows below to the current 
 set encoding=utf-8              " Set default encoding to UTF-8
 set autoread                    " Automatically reread changed files without asking me anything
 set number                      " line numbers
-set relativenumber              " relative line numbers
 set wildmenu                    " show list instead of just completing
 set wildmode=list:longest,full  " list matches, then longest common part, then all
 au FocusLost * :wa              " Set vim to save the file on focus out.
@@ -136,10 +135,6 @@ set completeopt=longest,menuone
 
 " save no history or bookmarks in netrw
 :let g:netrw_dirhistmax = 0
-
-" relative line numbers off in insert mode
-autocmd InsertEnter * :set number norelativenumber
-autocmd InsertLeave * :set nonumber relativenumber
 
 " highlight column only in INSERT mode
 autocmd InsertEnter * setlocal colorcolumn=80,120
