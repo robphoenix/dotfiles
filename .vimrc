@@ -141,6 +141,9 @@ set completeopt=longest,menuone
 autocmd InsertEnter * setlocal colorcolumn=80,120
 autocmd InsertLeave * setlocal colorcolumn=0
 
+" highlight cursorline only in INSERT mode
+:autocmd InsertEnter,InsertLeave * set cul!
+
 " Vim interprets .md as 'modula2' otherwise, see :set filetype?
 au Bufread,BufNewFile *.md setlocal filetype=markdown textwidth=80 wrap
 
