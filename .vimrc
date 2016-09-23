@@ -421,6 +421,7 @@ nnoremap <leader>gb :Gbrowse<CR>
 nnoremap <leader>gpm :Gpush origin master<CR>
 nnoremap <leader>gpd :Gpush origin dev<CR>
 nnoremap <leader>gc :Gcommit<CR>
+nnoremap <leader>go :Git checkout<Space>
 nnoremap <leader>gdsf :Git dsf<CR>
 nnoremap <leader>gl :Git l<CR>
 " }
