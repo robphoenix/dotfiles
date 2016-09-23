@@ -255,6 +255,10 @@ map <leader>et :tabe %%
 " Allow using the repeat operator with a visual selection (!)
 " http://stackoverflow.com/a/8064607/127816
 vnoremap . :normal .<CR>
+
+" find files
+nnoremap <leader>ff :CtrlP<CR>
+nnoremap <leader>fm :CtrlPMRU<CR>
 " }
 
 " ==> Plugins {
