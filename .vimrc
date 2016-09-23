@@ -168,11 +168,14 @@ nnoremap <C-H> <C-W><C-H>
 " Buffer switching
 nnoremap <TAB> :bn<CR>
 nnoremap <S-TAB> :bp<CR>
+
 " Buffer closing
 nnoremap <silent> <leader>q :Sayonara<CR>
 nnoremap <leader>bq :bd!<CR>
+
 " open buffer in vertical split
 nnoremap <leader>bs :vert sb<Space>
+
 " list buffers
 nnoremap <leader>bl :ls<CR>
 
@@ -416,7 +419,7 @@ nnoremap <leader>ga :Git add --all<CR>
 nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gb :Gbrowse<CR>
 nnoremap <leader>gpm :Gpush origin master<CR>
-nnoremap <leader>gpd :Gpush origin develop<CR>
+nnoremap <leader>gpd :Gpush origin dev<CR>
 nnoremap <leader>gc :Gcommit<CR>
 nnoremap <leader>gdsf :Git dsf<CR>
 nnoremap <leader>gl :Git l<CR>
