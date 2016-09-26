@@ -133,7 +133,7 @@ ln -snf /home/rob/dotfiles/.vim /home/rob/.config/nvim
 ln -snf /home/rob/dotfiles/.vimrc /home/rob/.config/nvim/init.vim
 ln -sf /home/rob/dotfiles/aliases /home/rob/.oh-my-zsh/custom/aliases.zsh
 ln -sf /home/rob/dotfiles/functions /home/rob/.oh-my-zsh/custom/functions.zsh
-
+ln -sf /home/rob/dotfiles/.ptpython/config.py /home/rob/.ptpython/config.py
 
 sudo apt autoremove
 sudo apt autoclean
