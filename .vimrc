@@ -162,6 +162,8 @@ let python_highlight_all=1
 let mapleader = "\<Space>"
 let g:mapleader = "\<Space>"
 
+inoremap jj <Esc>
+
 "split navigations
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
