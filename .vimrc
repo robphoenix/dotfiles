@@ -24,8 +24,6 @@ Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'airblade/vim-gitgutter'
 Plug 'majutsushi/tagbar'
-Plug 'slashmili/alchemist.vim'
-Plug 'elixir-lang/vim-elixir'
 Plug 'mhinz/vim-startify'
 Plug 'terryma/vim-expand-region'
 Plug 'SirVer/ultisnips'
@@ -40,7 +38,6 @@ call plug#end()
 
 " ==> Settings {
 filetype plugin indent on   " Automatically detect file types
-set encoding=utf-8
 
 syntax on
 
@@ -73,7 +70,6 @@ set nobackup                    " Don't create annoying backup files
 set nowritebackup
 set splitright                  " Split vertical windows right to the current windows
 set splitbelow                  " Split horizontal windows below to the current windows
-set encoding=utf-8              " Set default encoding to UTF-8
 set autoread                    " Automatically reread changed files without asking me anything
 set number                      " line numbers
 set wildmenu                    " show list instead of just completing
@@ -163,6 +159,9 @@ let mapleader = "\<Space>"
 let g:mapleader = "\<Space>"
 
 inoremap jj <Esc>
+
+" easily edit .vimrc in new buffer
+nmap <leader>v :edit $MYVIMRC<CR>
 
 "split navigations
 nnoremap <C-J> <C-W><C-J>
