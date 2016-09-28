@@ -1,7 +1,10 @@
+" --> header {
+"
 set nocompatible              " be iMproved, required
 filetype off                  " required
+" }
 
-" ==> vim-plug {
+" --> vim-plug {
 call plug#begin()
 Plug 'altercation/vim-colors-solarized'
 Plug 'tpope/vim-surround'
@@ -36,7 +39,7 @@ Plug 'terryma/vim-multiple-cursors'
 call plug#end()
 " }
 
-" ==> Settings {
+" --> Settings {
 filetype plugin indent on   " Automatically detect file types
 
 syntax on
@@ -152,7 +155,7 @@ let g:python3_host_prog = '/usr/bin/python3'
 let python_highlight_all=1
 " }
 
-" ==> Key (re)Mappings {
+" --> Key (re)Mappings {
 
 " leader key
 let mapleader = "\<Space>"
@@ -182,6 +185,8 @@ nnoremap <leader>bs :vert sb<Space>
 
 " list buffers
 nnoremap <leader>bl :ls<CR>
+" --- Open a list of buffers and change to the number selected
+nnoremap <leader>bc :ls<CR>:buffer<Space>
 
 " Remap H and L (top, bottom of screen to left and right end of line)
 nnoremap H ^
@@ -271,11 +276,27 @@ map <Enter> o<ESC>
 map <S-Enter> O<ESC>
 " }
 
-" ==> Plugins {
+" --> Plugins {
 
 " --> SuperTab {
 let g:SuperTabDefaultCompletionType = "<tab>"
 " }
+
+" --> vim-buftabline {
+let g:buftabline_show = 2
+let g:buftabline_numbers = 2
+let g:buftabline_indicators = 1
+nmap <leader>1 <Plug>BufTabLine.Go(1)
+nmap <leader>2 <Plug>BufTabLine.Go(2)
+nmap <leader>3 <Plug>BufTabLine.Go(3)
+nmap <leader>4 <Plug>BufTabLine.Go(4)
+nmap <leader>5 <Plug>BufTabLine.Go(5)
+nmap <leader>6 <Plug>BufTabLine.Go(6)
+nmap <leader>7 <Plug>BufTabLine.Go(7)
+nmap <leader>8 <Plug>BufTabLine.Go(8)
+nmap <leader>9 <Plug>BufTabLine.Go(9)
+nmap <leader>0 <Plug>BufTabLine.Go(10)
+"  }
 
 " --> vim-expand-region {
 vmap v <Plug>(expand_region_expand)
