@@ -29,7 +29,7 @@ local exit_code="%(?,,C:%{$fg[red]%}%?%{$reset_color%})"
 #[user@machine]
 #%{$fg[cyan]%}[%n@%m] \
 
-PROMPT="
+PROMPT="\
 %{$fg[green]%}%~\
 ${git_info} \
 $exit_code

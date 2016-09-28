@@ -263,6 +263,10 @@ vnoremap . :normal .<CR>
 " find files
 nnoremap <leader>ff :CtrlP<CR>
 nnoremap <leader>fm :CtrlPMRU<CR>
+
+" add blank line above/below
+map <Enter> o<ESC>
+map <S-Enter> O<ESC>
 " }
 
 " ==> Plugins {

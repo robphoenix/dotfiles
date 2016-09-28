@@ -12,6 +12,7 @@ export MANPATH="/usr/local/man:$MANPATH"
 export LANG=en_GB.UTF-8
 export TERM=rxvt-unicode-256color
 export SSH_KEY_PATH="~/.ssh/id_rsa"
+export RANGER_LOAD_DEFAULT_RC=FALSE
 
 # GOPATH
 export GOPATH=$HOME/code/go
