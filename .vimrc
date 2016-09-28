@@ -238,12 +238,15 @@ vnoremap gk 5k
 nmap <silent> <leader>/ :nohlsearch<CR>
 
 " deal with quickfix easily
-map <C-n> :cnext<CR>
-map <C-m> :cprevious<CR>
-nnoremap <leader>a :cclose<CR>
+map <leader>cn :cnext<CR>
+map <leader>cp :cprevious<CR>
+nnoremap <leader>cc :cclose<CR>
 
 " close location list
+map <leader>ln :lnext<CR>
+map <leader>lp :lprevious<CR>
 nnoremap <leader>lc :lclose<CR>
+nnoremap <leader>lo :lopen<CR>
 
 " tagbar
 nmap <leader>tt :TagbarToggle<CR>
@@ -254,7 +257,6 @@ cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
 map <leader>ew :e %%
 map <leader>es :sp %%
 map <leader>ev :vsp %%
-map <leader>et :tabe %%
 
 " Allow using the repeat operator with a visual selection (!)
 " http://stackoverflow.com/a/8064607/127816
