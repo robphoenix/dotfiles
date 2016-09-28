@@ -274,6 +274,34 @@ nnoremap <leader>fm :CtrlPMRU<CR>
 " add blank line above/below
 map <Enter> o<ESC>
 map <S-Enter> O<ESC>
+
+" Some basic refactoring
+" from https://github.com/toranb/vimfiles/blob/8c43dc7d705e2405d93a3e797e31d984477d4faf/vimrc#L193
+map <leader>rv :call RenameVariable()<cr>
+
+function! GetSelectedText(...)
+    try
+        let a_save = @a
+        if a:0 >= 1 && a:1 == 1
+            normal! gv"ad
+        else
+            normal! gv"ay
+        endif
+        return @a
+    finally
+        let @a = a_save
+    endtry
+endfunction
+
+function! RenameVariable()
+    let new_name = input("New variable name: ")
+    let old_name = GetSelectedText()
+    if new_name != '' && new_name != old_name
+        exec ':%s /' . old_name . '/' . new_name . '/gc'
+        redraw!
+    endif
+endfunction
+
 " }
 
 " --> Plugins {
@@ -307,7 +335,7 @@ vmap <C-v> <Plug>(expand_region_shrink)
 noremap <Leader>nn :NERDTreeToggle<cr>
 
 let NERDTreeShowHidden=1
-let NERDTreeIgnore=['\.pyc$', '\.vagrant$', '\~$', '\.git$', '.DS_Store']
+let NERDTreeIgnore=['\.cache$', '__pycache__', '\.pyc$', '\.vagrant$', '\~$', '\.git$', '.DS_Store']
 let NERDTreeQuitOnOpen=1
 
 "Close nerdtree and vim on close file
