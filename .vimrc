@@ -1,9 +1,3 @@
-" --> header {
-"
-set nocompatible              " be iMproved, required
-filetype off                  " required
-" }
-
 " --> vim-plug {
 call plug#begin()
 Plug 'altercation/vim-colors-solarized'
@@ -41,9 +35,7 @@ call plug#end()
 " }
 
 " --> Settings {
-filetype plugin indent on   " Automatically detect file types
-
-syntax on
+set nocompatible    " be iMproved, required
 
 " set design of vertical split divider
 set fillchars=fold:\ ,vert:\ ,
