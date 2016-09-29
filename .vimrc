@@ -36,6 +36,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'Yggdroot/indentLine'
 Plug 'mhinz/vim-sayonara'
 Plug 'terryma/vim-multiple-cursors'
+Plug 'alfredodeza/pytest.vim'
 call plug#end()
 " }
 
@@ -305,6 +306,11 @@ endfunction
 " }
 
 " --> Plugins {
+
+" --> pytest.vim {
+nmap <silent><Leader>tp :Pytest project<CR>
+nmap <silent><Leader>te :Pytest error<CR>
+"  }
 
 " --> SuperTab {
 let g:SuperTabDefaultCompletionType = "<tab>"

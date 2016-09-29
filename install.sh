@@ -73,7 +73,8 @@ apt install -y \
     gcc \
     vagrant \
     virtualbox \
-    bridge-utils
+    bridge-utils \
+    python3-nose
 
 # oh-my-zsh
 wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
