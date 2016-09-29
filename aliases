@@ -27,7 +27,7 @@ alias dot="nvim ~/dotfiles"
 
 alias p="python3"
 alias bpy="bpython"
-alias pyt="pytest"
+alias pyt="py.test -x --lf -v --color=yes"
 alias pyn="nosetests3 -v -x"
 
 alias exf="exercism fetch"
