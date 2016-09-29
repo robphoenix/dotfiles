@@ -238,7 +238,7 @@ nmap <silent> <leader>/ :nohlsearch<CR>
 " deal with quickfix easily
 map <leader>cn :cnext<CR>
 map <leader>cp :cprevious<CR>
-nnoremap <leader>cc :cclose<CR>
+nnoremap <leader>a :cclose<CR>
 
 " close location list
 map <leader>ln :lnext<CR>
