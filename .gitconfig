@@ -8,11 +8,10 @@
     i = status -s
     cam = commit -am
     aa = add --all
+    po = push origin
     pom = push origin master
-    pod = push origin develop
-    pum = push upstream master
     fom = fetch origin master
-    fod = fetch origin develop
+    mom = merge origin/master
     h = reflog
     m = merge
     co = checkout
@@ -25,7 +24,6 @@
     discard = checkout -- .
     uncommit = reset --mixed HEAD~
     recommit = commit --amend
-    amend = commit --amend
     unmerged = diff --name-only --diff-filter=U
     unmerge = reset --merge
     remotes = remote -v

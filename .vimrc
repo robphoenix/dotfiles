@@ -85,7 +85,7 @@ set nostartofline               " don't jump to the start of line when scrolling
 set incsearch                   " show search matches as you type
 set laststatus=2                " always show the status line
 set ignorecase                  " ignore case when searching
-set hlsearch                    " don't highlight searches
+set hlsearch                    " highlight searches
 set autoindent                  " automatic indent new lines
 set smartindent                 " be smart about it
 set nowrap                      " dont't wrap lines
@@ -130,8 +130,12 @@ set completeopt=longest,menuone
 :let g:netrw_dirhistmax = 0
 
 " highlight column only in INSERT mode
-autocmd InsertEnter * setlocal colorcolumn=80,120
+autocmd InsertEnter * setlocal colorcolumn=79,120
 autocmd InsertLeave * setlocal colorcolumn=0
+
+" relative line numbers off in insert mode
+autocmd InsertEnter * :set number norelativenumber
+autocmd InsertLeave * :set nonumber relativenumber
 
 " highlight cursorline only in INSERT mode
 :autocmd InsertEnter,InsertLeave * set cul!
@@ -154,10 +158,11 @@ let python_highlight_all=1
 let mapleader = "\<Space>"
 let g:mapleader = "\<Space>"
 
-inoremap jj <Esc>
-
 " easily edit .vimrc in new buffer
 nmap <leader>v :edit $MYVIMRC<CR>
+
+" enter visual line mode
+nmap <leader><leader> V
 
 "split navigations
 nnoremap <C-J> <C-W><C-J>
@@ -178,8 +183,6 @@ nnoremap <leader>bs :vert sb<Space>
 
 " list buffers
 nnoremap <leader>bl :ls<CR>
-" --- Open a list of buffers and change to the number selected
-nnoremap <leader>bc :ls<CR>:buffer<Space>
 
 " Remap H and L (top, bottom of screen to left and right end of line)
 nnoremap H ^
@@ -263,10 +266,6 @@ vnoremap . :normal .<CR>
 " find files
 nnoremap <leader>ff :CtrlP<CR>
 nnoremap <leader>fm :CtrlPMRU<CR>
-
-" add blank line above/below
-map <Enter> o<ESC>
-map <S-Enter> O<ESC>
 
 " Some basic refactoring
 " from https://github.com/toranb/vimfiles/blob/8c43dc7d705e2405d93a3e797e31d984477d4faf/vimrc#L193
