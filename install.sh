@@ -10,7 +10,6 @@ mkdir ~/code/go/src
 mkdir ~/code/go/pkg
 mkdir ~/code/go/bin
 mkdir ~/code/python
-mkdir ~/code/elixir
 mkdir ~/code/ansible
 mkdir -p ${XDG_CONFIG_HOME:=$HOME/.config}
 
@@ -110,31 +109,25 @@ sudo pip install --upgrade pip
 pip install -r requirements.txt
 pip3 install -r requirements3.txt
 
-# Personal repos
-git clone git@github.com:bordeltabernacle/exercism.git ~/code/exercism
-git clone git@github.com:bordeltabernacle/python_koans.git ~/code/python/python_koans
-git clone git@github.com:bordeltabernacle/ansible_cisco_playground.git ~/code/ansible/ansible_cisco_playground
-git clone git@github.com:bordeltabernacle/rdutils.git ~/code/python/rdutils
-
 # symlinks
-ln -sf /home/rob/dotfiles/.zshenv /home/rob/.zshenv
-ln -sf /home/rob/dotfiles/.zshrc /home/rob/.zshrc
-ln -sf /home/rob/dotfiles/.xsessionrc /home/rob/.xsessionrc
-ln -sf /home/rob/dotfiles/.Xresources /home/rob/.Xresources
-ln -sf /home/rob/dotfiles/.gitconfig /home/rob/.gitconfig
-ln -sf /home/rob/dotfiles/.fonts /home/rob/.fonts
-ln -sf /home/rob/dotfiles/.bashrc /home/rob/.bashrc
-ln -sf /home/rob/dotfiles/.i3/config /home/rob/.config/i3/config
-ln -sf /home/rob/dotfiles/.gitignore /home/rob/.gitignore
-ln -sf /home/rob/dotfiles/.dircolors /home/rob/.dircolors
-ln -sf /home/rob/dotfiles/.alias.zsh /home/rob/.oh-my-zsh/custom/alias.zsh
-ln -sf /home/rob/dotfiles/ysb.zsh-theme /home/rob/.oh-my-zsh/themes/ysb.zsh-theme
-ln -sf /home/rob/dotfiles/rc.conf /home/rob/.config/ranger/rc.conf
-ln -snf /home/rob/dotfiles/.vim /home/rob/.config/nvim
-ln -snf /home/rob/dotfiles/.vimrc /home/rob/.config/nvim/init.vim
-ln -sf /home/rob/dotfiles/aliases /home/rob/.oh-my-zsh/custom/aliases.zsh
-ln -sf /home/rob/dotfiles/functions /home/rob/.oh-my-zsh/custom/functions.zsh
-ln -sf /home/rob/dotfiles/.ptpython/config.py /home/rob/.ptpython/config.py
+ln -sf $HOME/dotfiles/.zshenv $HOME/.zshenv
+ln -sf $HOME/dotfiles/.zshrc $HOME/.zshrc
+ln -sf $HOME/dotfiles/.xsessionrc $HOME/.xsessionrc
+ln -sf $HOME/dotfiles/.Xresources $HOME/.Xresources
+ln -sf $HOME/dotfiles/.gitconfig $HOME/.gitconfig
+ln -sf $HOME/dotfiles/.fonts $HOME/.fonts
+ln -sf $HOME/dotfiles/.bashrc $HOME/.bashrc
+ln -sf $HOME/dotfiles/.i3/config $HOME/.config/i3/config
+ln -sf $HOME/dotfiles/.gitignore $HOME/.gitignore
+ln -sf $HOME/dotfiles/.dircolors $HOME/.dircolors
+ln -sf $HOME/dotfiles/.alias.zsh $HOME/.oh-my-zsh/custom/alias.zsh
+ln -sf $HOME/dotfiles/ysb.zsh-theme $HOME/.oh-my-zsh/themes/ysb.zsh-theme
+ln -sf $HOME/dotfiles/rc.conf $HOME/.config/ranger/rc.conf
+ln -snf $HOME/dotfiles/.vim $HOME/.config/nvim
+ln -snf $HOME/dotfiles/.vimrc $HOME/.config/nvim/init.vim
+ln -sf $HOME/dotfiles/aliases $HOME/.oh-my-zsh/custom/aliases.zsh
+ln -sf $HOME/dotfiles/functions $HOME/.oh-my-zsh/custom/functions.zsh
+ln -sf $HOME/dotfiles/.ptpython/config.py $HOME/.ptpython/config.py
 
 sudo apt autoremove
 sudo apt autoclean
