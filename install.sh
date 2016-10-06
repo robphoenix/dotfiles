@@ -65,7 +65,7 @@ apt install -y \
     htop \
     zeal \
     screen \
-    virtualenvwrapper
+    virtualenvwrapper \
     ruby \
     ruby-dev \
     make \

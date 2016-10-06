@@ -23,7 +23,7 @@
     unstage = reset -q HEAD --
     discard = checkout -- .
     uncommit = reset --mixed HEAD~
-    recommit = commit --amend
+    recommit = commit --amend --no-edit
     unmerged = diff --name-only --diff-filter=U
     unmerge = reset --merge
     remotes = remote -v
