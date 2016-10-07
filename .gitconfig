@@ -16,6 +16,7 @@
     m = merge
     co = checkout
     con = checkout -b
+    com = checkout master
     cl = clone
     branches = branch -a
     tags = tag

@@ -15,14 +15,13 @@ ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[green]%} ="
 
 local exit_code="%(?,,C:%{$fg[red]%}%?%{$reset_color%})"
 
-# Prompt format:
-#
-# DIRECTORY BRANCH STATE C:LAST_EXIT_CODE
+# Left Prompt: DIRECTORY BRANCH STATE
+# Right Prompt: C:LAST_EXIT_CODE
 #
 # For example:
 #
-# ~/.oh-my-zsh master + C:0
-# ▶
+# ~/.oh-my-zsh master +
+# ▶                                C:0
 #
 #
 #REMOVED:
@@ -31,9 +30,9 @@ local exit_code="%(?,,C:%{$fg[red]%}%?%{$reset_color%})"
 
 PROMPT="\
 %{$fg[green]%}%~\
-${git_info} \
-$exit_code
+${git_info}
 %{$fg[magenta]%}▶ \
 %{$reset_color%}"
 
-RPROMPT=""
+RPROMPT="$exit_code"
+
