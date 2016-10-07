@@ -120,7 +120,6 @@ ln -sf $HOME/dotfiles/.bashrc $HOME/.bashrc
 ln -sf $HOME/dotfiles/.i3/config $HOME/.config/i3/config
 ln -sf $HOME/dotfiles/.gitignore $HOME/.gitignore
 ln -sf $HOME/dotfiles/.dircolors $HOME/.dircolors
-ln -sf $HOME/dotfiles/.alias.zsh $HOME/.oh-my-zsh/custom/alias.zsh
 ln -sf $HOME/dotfiles/ysb.zsh-theme $HOME/.oh-my-zsh/themes/ysb.zsh-theme
 ln -sf $HOME/dotfiles/rc.conf $HOME/.config/ranger/rc.conf
 ln -snf $HOME/dotfiles/.vim $HOME/.config/nvim

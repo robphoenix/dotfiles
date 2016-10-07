@@ -497,14 +497,6 @@ highlight ExtraWhitespace ctermbg=DarkGreen
 " }
 
 " --> Startify {
-" start vim with startify & nerdtree
-autocmd VimEnter *
-            \   if !argc()
-            \ |   Startify
-            \ |   NERDTree
-            \ |   wincmd w
-            \ | endif
-
 let g:startify_custom_header = [
     \ '',
     \ '    , __            _                          _   _',
