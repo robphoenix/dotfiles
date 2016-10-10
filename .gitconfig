@@ -2,7 +2,7 @@
 
     email = robertphoenix@gmail.com
     name = Rob Phoenix
-	signingkey = 8C2DFE0F8A4663E6
+	signingkey = FA3F87125D84F283
 
 [alias]
 
@@ -50,3 +50,11 @@
 [github]
 
     user = bordeltabernacle
+
+[commit]
+
+	gpgsign = true
+
+[gpg]
+
+	program = gpg2
