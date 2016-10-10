@@ -31,6 +31,7 @@ Plug 'Yggdroot/indentLine'
 Plug 'mhinz/vim-sayonara'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'alfredodeza/pytest.vim'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 call plug#end()
 " }
 
