@@ -73,7 +73,8 @@ apt install -y \
     vagrant \
     virtualbox \
     bridge-utils \
-    python3-nose
+    python3-nose \
+    gnupg2
 
 # oh-my-zsh
 wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
@@ -127,6 +128,8 @@ ln -snf $HOME/dotfiles/.vimrc $HOME/.config/nvim/init.vim
 ln -sf $HOME/dotfiles/aliases $HOME/.oh-my-zsh/custom/aliases.zsh
 ln -sf $HOME/dotfiles/functions $HOME/.oh-my-zsh/custom/functions.zsh
 ln -sf $HOME/dotfiles/.ptpython/config.py $HOME/.ptpython/config.py
+ln -sf $HOME/dotfiles/.gnupg/gpg.conf $HOME/.gnupg/gpg.conf
+ln -sf $HOME/dotfiles/.gnupg/gpg-agent.conf $HOME/.gnupg/gpg-agent.conf
 
 sudo apt autoremove
 sudo apt autoclean
