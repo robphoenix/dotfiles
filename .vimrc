@@ -32,6 +32,7 @@ Plug 'mhinz/vim-sayonara'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'alfredodeza/pytest.vim'
 Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'crosbymichael/vim-cfmt'
 call plug#end()
 " }
 
@@ -298,6 +299,11 @@ endfunction
 " }
 
 " --> Plugins {
+
+" --> vim-cfmt {
+let g:cfmt_style = '-linux'
+autocmd BufWritePre *.c,*.h Cfmt
+"  }
 
 " --> pytest.vim {
 nmap <silent><Leader>tp :Pytest project<CR>
