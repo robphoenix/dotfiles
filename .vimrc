@@ -211,7 +211,7 @@ nmap <leader>w :w!<cr>
 vnoremap < <gv
 vnoremap > >gv
 
-" When jump to next match also center screen
+" When jump to next match also centre screen
 nnoremap n nzz
 nnoremap N Nzz
 vnoremap n nzz
@@ -230,12 +230,8 @@ vnoremap <C-b> <C-b>zz
 " Visual linewise up and down by default (and use gj gk to go quicker)
 nnoremap j gj
 nnoremap k gk
-nnoremap gj 5j
-nnoremap gk 5k
 vnoremap j gj
 vnoremap k gk
-vnoremap gj 5j
-vnoremap gk 5k
 
 "clearing highlighted search
 nmap <silent> <leader>/ :nohlsearch<CR>
@@ -296,6 +292,7 @@ function! RenameVariable()
     endif
 endfunction
 
+nnoremap <silent> <leader>mc :!clear;gcc % -o %:r && ./%:r<CR>
 " }
 
 " --> Plugins {
