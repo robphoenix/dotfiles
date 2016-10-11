@@ -33,6 +33,8 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'alfredodeza/pytest.vim'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'crosbymichael/vim-cfmt'
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-notes'
 call plug#end()
 " }
 
@@ -296,6 +298,11 @@ nnoremap <silent> <leader>mc :!clear;gcc % -o %:r && ./%:r<CR>
 " }
 
 " --> Plugins {
+
+" --> vim-notes {
+let g:notes_directories = ['~/notes']
+let g:notes_suffix = '.md'
+"  }
 
 " --> vim-cfmt {
 let g:cfmt_style = '-linux'
