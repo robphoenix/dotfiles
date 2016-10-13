@@ -71,7 +71,8 @@ set nowritebackup
 set splitright                  " Split vertical windows right to the current windows
 set splitbelow                  " Split horizontal windows below to the current windows
 set autoread                    " Automatically reread changed files without asking me anything
-set number                      " line numbers
+set relativenumber              " relative line numbers - combined with `set number` gives hybrid mode
+set number                      " line numbers - combined with `set relativenumber` gives hybrid mode
 set wildmenu                    " show list instead of just completing
 set wildmode=list:longest,full  " list matches, then longest common part, then all
 au FocusLost * :wa              " Set vim to save the file on focus out.
