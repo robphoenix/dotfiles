@@ -46,6 +46,7 @@
 
     excludesfile = ~/.gitignore
     editor = "if [[ '$OSTYPE' == 'linux-gnu' ]]; then EDITOR='nvim'; else EDITOR='vim'; fi; $EDITOR"
+	trustctime = false
 
 [github]
 
@@ -58,3 +59,5 @@
 [gpg]
 
     program = gpg2
+[push]
+	default = matching

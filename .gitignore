@@ -17,3 +17,5 @@ _site/
 __pycache__
 *.beam
 tags
+.vim/plugged/
+
