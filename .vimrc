@@ -1,45 +1,55 @@
 " --> vim-plug {
+
 call plug#begin()
-Plug 'altercation/vim-colors-solarized'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-fugitive'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'ntpeters/vim-better-whitespace'
-Plug 'Raimondi/delimitMate'
-Plug 'Shougo/deoplete.nvim'
-Plug 'itchyny/lightline.vim'
-Plug 'scrooloose/nerdtree'
-Plug 'klen/python-mode'
-Plug 'kien/rainbow_parentheses.vim'
-Plug 'scrooloose/syntastic'
-Plug 'fatih/vim-go'
-Plug 'honza/vim-snippets'
-Plug 'zchee/deoplete-go'
-Plug 'Konfekt/FastFold'
-Plug 'davidhalter/jedi-vim'
-Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown'
-Plug 'airblade/vim-gitgutter'
-Plug 'majutsushi/tagbar'
-Plug 'mhinz/vim-startify'
-Plug 'terryma/vim-expand-region'
-Plug 'SirVer/ultisnips'
-Plug 'ervandew/supertab'
-Plug 'ap/vim-buftabline'
-Plug 'scrooloose/nerdcommenter'
-Plug 'Yggdroot/indentLine'
-Plug 'mhinz/vim-sayonara'
-Plug 'terryma/vim-multiple-cursors'
-Plug 'alfredodeza/pytest.vim'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'crosbymichael/vim-cfmt'
-Plug 'xolox/vim-misc'
-Plug 'xolox/vim-notes'
+
+Plug 'altercation/vim-colors-solarized' " Solarized Colour Scheme
+Plug 'tpope/vim-surround'               " Add quotes/parenthesis etc.
+Plug 'tpope/vim-fugitive'               " Git wrapper
+Plug 'airblade/vim-gitgutter'           " Gutter markers for Git
+Plug 'Xuyuanp/nerdtree-git-plugin'      " Git gutter markers in NERDTree
+Plug 'ctrlpvim/ctrlp.vim'               " Fuzzy Finder
+Plug 'ntpeters/vim-better-whitespace'   " Remove whitespace
+Plug 'Raimondi/delimitMate'             " Auto-insert closing delimiters
+Plug 'itchyny/lightline.vim'            " Sweet statusline
+Plug 'scrooloose/nerdtree'              " File explorer
+Plug 'klen/python-mode'                 " Python
+Plug 'davidhalter/jedi-vim'             " Extra Python
+Plug 'alfredodeza/pytest.vim'           " PyTest wrapper
+Plug 'kien/rainbow_parentheses.vim'     " Pretty Parens
+Plug 'scrooloose/syntastic'             " Syntax checker
+Plug 'SirVer/ultisnips'                 " Code snippets
+Plug 'honza/vim-snippets'               " Code snippets
+Plug 'godlygeek/tabular'                " Line up tabular data
+Plug 'plasticboy/vim-markdown'          " Markdown
+Plug 'majutsushi/tagbar'                " Overview of Structure
+Plug 'mhinz/vim-startify'               " Fancy start screen
+Plug 'terryma/vim-expand-region'        " Visually select increasingly larger regions of text using the same key combination
+Plug 'ervandew/supertab'                " Use tab to for completions
+Plug 'ap/vim-buftabline'                " Buffer info in tabs
+Plug 'scrooloose/nerdcommenter'         " Comments
+Plug 'Yggdroot/indentLine'              " Visualize indentation levels
+Plug 'mhinz/vim-sayonara'               " Easy buffer closing
+Plug 'terryma/vim-multiple-cursors'     " Like Sublime Text
+Plug 'Konfekt/FastFold'                 " Fold updating
+
+if has('nvim')
+    Plug 'fatih/vim-go'                 " Golang
+    Plug 'Shougo/deoplete.nvim'         " NeoVim autocomplete
+    Plug 'zchee/deoplete-go'            " Go autocomplete
+    Plug 'crosbymichael/vim-cfmt'       " Auto-format C code
+else
+    Plug 'Shougo/neocomplete.vim'       " Vim autocomplete
+    Plug 'elixir-lang/vim-elixir'       " Elixir
+endif
+
 call plug#end()
+
 " }
 
 " --> Settings {
+
 set nocompatible    " be iMproved, required
+set t_Co=256        " ensure vim uses 256 colours, just in case TERM is not xterm-256color
 
 " set design of vertical split divider
 set fillchars=fold:\ ,vert:\ ,
@@ -57,13 +67,8 @@ syntax enable
 set background=dark
 colorscheme solarized
 
-if !has('gui_running')
-  set t_Co=256
-endif
-
 set ruler                       " show the cursor position all the time
-set showcmd                     " show partial commands in status line and
-                                " selected characters/lines in visual mode
+set showcmd                     " show partial commands in status line and selected characters/lines in visual mode
 set nolazyredraw                " turn off lazy redraw
 set noswapfile                  " Don't use swapfile
 set nobackup                    " Don't create annoying backup files
@@ -118,7 +123,6 @@ set virtualedit=onemore         " allow for cursor beyond last character
 set history=1000                " Store a ton of history (default is 20)
 set spell                       " spell checking on
 set spelllang=en_gb
-
 set modelines=1
 
 " Time out on key codes but not mappings.
@@ -140,7 +144,7 @@ autocmd InsertLeave * setlocal colorcolumn=0
 
 " relative line numbers off in insert mode
 autocmd InsertEnter * :set number norelativenumber
-autocmd InsertLeave * :set nonumber relativenumber
+autocmd InsertLeave * :set relativenumber number
 
 " highlight cursorline only in INSERT mode
 :autocmd InsertEnter,InsertLeave * set cul!
@@ -268,42 +272,12 @@ vnoremap . :normal .<CR>
 nnoremap <leader>ff :CtrlP<CR>
 nnoremap <leader>fm :CtrlPMRU<CR>
 
-" Some basic refactoring
-" from https://github.com/toranb/vimfiles/blob/8c43dc7d705e2405d93a3e797e31d984477d4faf/vimrc#L193
-map <leader>rv :call RenameVariable()<cr>
-
-function! GetSelectedText(...)
-    try
-        let a_save = @a
-        if a:0 >= 1 && a:1 == 1
-            normal! gv"ad
-        else
-            normal! gv"ay
-        endif
-        return @a
-    finally
-        let @a = a_save
-    endtry
-endfunction
-
-function! RenameVariable()
-    let new_name = input("New variable name: ")
-    let old_name = GetSelectedText()
-    if new_name != '' && new_name != old_name
-        exec ':%s /' . old_name . '/' . new_name . '/gc'
-        redraw!
-    endif
-endfunction
-
+" make current C program, output has same name
 nnoremap <silent> <leader>mc :!clear;gcc % -o %:r && ./%:r<CR>
+
 " }
 
 " --> Plugins {
-
-" --> vim-notes {
-let g:notes_directories = ['~/notes']
-let g:notes_suffix = '.md'
-"  }
 
 " --> vim-cfmt {
 let g:cfmt_style = '-linux'
@@ -312,11 +286,13 @@ autocmd BufWritePre *.c,*.h Cfmt
 
 " --> pytest.vim {
 nmap <silent><Leader>tp :Pytest project<CR>
+nmap <silent><Leader>ts :Pytest session<CR>
 nmap <silent><Leader>te :Pytest error<CR>
 "  }
 
 " --> SuperTab {
-let g:SuperTabDefaultCompletionType = "<tab>"
+let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabContextDefaultCompletionType = "<tab>"
 " }
 
 " --> vim-buftabline {
@@ -347,56 +323,67 @@ let NERDTreeShowHidden=1
 let NERDTreeIgnore=['\.cache$', '__pycache__', '\.pyc$', '\.vagrant$', '\~$', '\.git$', '.DS_Store']
 let NERDTreeQuitOnOpen=1
 
+" Windows garbled NERDTree's arrows
+if !has('nvim')
+    let g:NERDTreeDirArrowExpandable = '►'
+    let g:NERDTreeDirArrowCollapsible = '▼'
+endif
+
 " close vim if the only window left open is NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-"Close nerdtree and vim on close file
-"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 " }
 
 " --> vim-go {
-" let g:go_fmt_fail_silently = 1
-let g:go_list_type = "quickfix"
-let g:go_fmt_command = "goimports"
-let g:go_metalinter_autosave = 0
-let g:go_autodetect_gopath = 1
-let g:go_term_enabled = 1
-let g:go_highlight_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_build_constraints = 1
-let g:go_highlight_space_tab_error = 1
-let g:go_highlight_array_whitespace_error = 1
-let g:go_highlight_trailing_whitespace_error = 1
-let g:go_highlight_extra_types = 0
-let g:go_term_width = 30
-let g:go_term_enabled = 1
-let g:go_auto_sameids = 1
-let g:go_auto_type_info = 1
-set updatetime=100
 
-autocmd FileType go nmap <Leader>l  <Plug>(go-metalinter)
-autocmd FileType go nmap <leader>b  <Plug>(go-build)
-autocmd FileType go nmap <leader>rr  <Plug>(go-run)
-autocmd FileType go nmap <leader>t  <Plug>(go-test)
-autocmd FileType go nmap <leader>d :GoDecls<CR>
-autocmd FileType go nmap <leader>cd :GoDeclsDir<CR>
-autocmd FileType go nmap <leader>rn :GoRename<space>
-autocmd FileType go nmap <leader>gp :GoPlay<space>
+if has('nvim')
+    " let g:go_fmt_fail_silently = 1
+    let g:go_list_type = "quickfix"
+    let g:go_fmt_command = "goimports"
+    let g:go_metalinter_autosave = 0
+    let g:go_autodetect_gopath = 1
+    let g:go_term_enabled = 1
+    let g:go_highlight_types = 1
+    let g:go_highlight_fields = 1
+    let g:go_highlight_operators = 1
+    let g:go_highlight_methods = 1
+    let g:go_highlight_functions = 1
+    let g:go_highlight_structs = 1
+    let g:go_highlight_build_constraints = 1
+    let g:go_highlight_space_tab_error = 1
+    let g:go_highlight_array_whitespace_error = 1
+    let g:go_highlight_trailing_whitespace_error = 1
+    let g:go_highlight_extra_types = 0
+    let g:go_term_width = 30
+    let g:go_term_enabled = 1
+    let g:go_auto_sameids = 1
+    let g:go_auto_type_info = 1
+    set updatetime=100
+
+    autocmd FileType go nmap <Leader>l  <Plug>(go-metalinter)
+    autocmd FileType go nmap <leader>b  <Plug>(go-build)
+    autocmd FileType go nmap <leader>rr  <Plug>(go-run)
+    autocmd FileType go nmap <leader>t  <Plug>(go-test)
+    autocmd FileType go nmap <leader>d :GoDecls<CR>
+    autocmd FileType go nmap <leader>cd :GoDeclsDir<CR>
+    autocmd FileType go nmap <leader>rn :GoRename<space>
+    autocmd FileType go nmap <leader>gp :GoPlay<space>
+endif
+
 " }
 
 " --> delimitMate {
+
 let g:delimitMate_expand_cr = 1
 let g:delimitMate_expand_space = 1
 let g:delimitMate_smart_quotes = 1
 let g:delimitMate_expand_inside_quotes = 0
 let g:delimitMate_smart_matchpairs = '^\%(\w\|\$\)'
+
 " }
 
 " --> Syntastic {
+
 let g:syntastic_go_checkers = ['golint']
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -404,19 +391,19 @@ set statusline+=%*
 
 nmap <leader>ee :Errors<cr>
 let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_auto_loc_list = 1
-" let g:syntastic_check_on_open = 1
-" let g:syntastic_check_on_wq = 0
 let g:syntastic_auto_jump = 3
 let g:syntastic_loc_list_height = 5
+
 " }
 
 " --> UltiSnips {
-" let g:UltiSnipsExpandTrigger="<C-l>"
+
 let g:UltiSnipsUsePythonVersion = 3
+
 " }
 
 " --> CtrlP {
+
 let g:ctrlp_by_filename = 1
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_working_path_mode = 'ra'
@@ -430,27 +417,42 @@ let g:ctrlp_cache_dir = $HOME.'/.cache/ctrlp'
 let g:ctrlp_follow_symlinks = 1
 let g:ctrlp_line_prefix = '>'
 let g:ctrlp_buftag_types = {'go' : '--language-force=go --golang-types=ftv'}
+
 " }
 
 " --> Completion {
-" use deoplete for Neovim.
-if has('nvim')
-  let g:deoplete#enable_at_startup = 1
-  let g:deoplete#sources#go#gocode_binary="$GOPATH.'/bin/gocode'"
-  let g:deoplete#sources#go#pointer=1
-  let g:deoplete#ignore_sources = {}
-  let g:deoplete#ignore_sources._ = []
-  let g:deoplete#sources#go#sort_class = ['func', 'type', 'var', 'const']
-  let g:deoplete#sources#go#align_class = 1
 
-  " Use partial fuzzy matches like YouCompleteMe
-  call deoplete#custom#set('_', 'matchers', ['matcher_fuzzy'])
-  call deoplete#custom#set('_', 'converters', ['converter_remove_paren'])
-  call deoplete#custom#set('_', 'disabled_syntaxes', ['Comment', 'String'])
+if has('nvim')
+
+    let g:deoplete#enable_at_startup = 1
+    let g:deoplete#sources#go#gocode_binary="$GOPATH.'/bin/gocode'"
+    let g:deoplete#sources#go#pointer=1
+    let g:deoplete#ignore_sources = {}
+    let g:deoplete#ignore_sources._ = []
+    let g:deoplete#sources#go#sort_class = ['func', 'type', 'var', 'const']
+    let g:deoplete#sources#go#align_class = 1
+
+    " Use partial fuzzy matches like YouCompleteMe
+    call deoplete#custom#set('_', 'matchers', ['matcher_fuzzy'])
+    call deoplete#custom#set('_', 'converters', ['converter_remove_paren'])
+    call deoplete#custom#set('_', 'disabled_syntaxes', ['Comment', 'String'])
+
+else
+
+    " Disable AutoComplPop.
+    let g:acp_enableAtStartup = 0
+    " Use neocomplete.
+    let g:neocomplete#enable_at_startup = 1
+    " insert delimiter automatically
+    let g:neocomplete#enable_auto_delimiter = 1
+    autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+
 endif
+
 " }
 
 " --> Python-Mode {
+
 let g:pymode = 1
 let g:pymode_trim_whitespaces = 1
 let g:pymode_options = 1
@@ -465,7 +467,7 @@ let g:pymode_doc = 1
 let g:pymode_doc_bind = 'K'
 let g:pymode_virtualenv = 1
 let g:pymode_run = 1
-let g:pymode_run_bind = '<leader>r'
+let g:pymode_run_bind = '<leader>pr'
 let g:pymode_lint = 1
 let g:pymode_lint_on_write = 1
 let g:pymode_lint_message = 1
@@ -483,13 +485,18 @@ let g:pymode_syntax_string_formatting = g:pymode_syntax_all
 let g:pymode_syntax_string_format = g:pymode_syntax_all
 let g:pymode_syntax_string_templates = g:pymode_syntax_all
 let g:pymode_syntax_doctests = g:pymode_syntax_all
+
 " }
 
 " --> Jedi {
+
 let g:jedi#force_py_version = 3
+let g:jedi#popup_on_dot = 0
+
 " }
 
 " --> Fugitive {
+
 nnoremap <leader>ga :Git add --all<CR>
 nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gb :Gbrowse<CR>
@@ -500,16 +507,20 @@ nnoremap <leader>gc :Gcommit<CR>
 nnoremap <leader>go :Git checkout<Space>
 nnoremap <leader>gdsf :Git dsf<CR>
 nnoremap <leader>gl :Git l<CR>
+
 " }
 
 " --> vim-better-whitespace {
+
 " auto strip whitespace except for file with extension blacklisted
 let blacklist = ['markdown', 'md']
 autocmd BufWritePre * StripWhitespace
 highlight ExtraWhitespace ctermbg=DarkGreen
+
 " }
 
 " --> Startify {
+
 let g:startify_custom_header = [
     \ '',
     \ '    , __            _                          _   _',
@@ -520,14 +531,18 @@ let g:startify_custom_header = [
     \ '                                              |\  |\',
     \ '                                              |/  |/',
     \ ]
+
 " }
 
 " --> vim-markdown {
+
 let g:vim_markdown_frontmatter = 1
 let g:vim_markdown_conceal = 0
+
 " }
 
 " --> Lightline {
+
 let g:lightline = {
       \ 'colorscheme': 'solarized',
       \ 'active': {
@@ -617,9 +632,11 @@ function! s:syntastic()
   SyntasticCheck
   call lightline#update()
 endfunction
+
 " }
 
 " --> Rainbow Parentheses {
+
 let g:rbpt_colorpairs = [
     \ ['brown',       'RoyalBlue3'],
     \ ['Darkblue',    'SeaGreen3'],
@@ -647,6 +664,7 @@ autocmd VimEnter * RainbowParenthesesToggle
 autocmd Syntax * RainbowParenthesesLoadRound
 autocmd Syntax * RainbowParenthesesLoadSquare
 autocmd Syntax * RainbowParenthesesLoadBraces
+
 " }
 
 " vim: set foldmarker={,} foldlevel=0 foldmethod=marker spell:
