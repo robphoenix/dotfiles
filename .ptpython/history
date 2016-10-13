@@ -1,0 +1,49 @@
+
+# 2016-10-04 13:42:33.320867
++for x in range(10):
++    x
+
+# 2016-10-05 21:04:14.595898
++for c in range(10):
++    print(c)
+
+# 2016-10-07 11:22:06.860345
++from string import ascii_lowercase
+
+# 2016-10-07 11:22:18.109345
++ascii_lowercase()
+
+# 2016-10-07 11:22:21.163345
++ascii_lowercase
+
+# 2016-10-07 11:22:32.873345
++[i for i in ascii_lowercase]
+
+# 2016-10-07 11:22:42.533345
++ascii_lowercase.split()
+
+# 2016-10-07 11:23:20.670345
++ispl = [i for i in ascii_lowercase]
+
+# 2016-10-07 11:23:31.333345
++for i in ispl:
++    print(i)
+
+# 2016-10-07 11:23:40.851345
++for i in ascii_lowercase:
++    print(i)
+
+# 2016-10-07 11:29:01.917345
++s = "-_hello"
+
+# 2016-10-07 12:43:06.240345
++join([i for i in range(10)])
+
+# 2016-10-07 12:43:30.270345
++"".join([i for i in range(10)])
+
+# 2016-10-07 12:43:42.604345
++"".join([str(i) for i in range(10)])
+
+# 2016-10-07 12:44:07.458345
++"".join(str(i) for i in range(10))
