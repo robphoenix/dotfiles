@@ -1,39 +1,59 @@
 # Personal aliases
-alias say="sudo apt -y"
-alias sarepo="sudo add-apt-repository"
-alias sudo="sudo "
-alias su="sudo -i"
-alias s="sudo"
-alias up="sudo apt -y update && sudo apt -y upgrade"
-alias rd="sudo rm -r"
-alias bye="sudo shutdown now"
-alias reup="sudo reboot now"
 
-alias l="ls -lAh -I.cache -I__pycache__ -I.git -Inode_modules -I.vagrant -I.DS_Store"
+# Cross-Platform aliases
+alias l="ls -I.cache -I__pycache__ -I.git -Inode_modules -I.vagrant -I.DS_Store -lAh "
 
 alias web="google-chrome"
 alias open="xdg-open"
-alias rng="ranger"
 alias f="fuck"
 alias g="git"
 
-alias v="nvim"
-alias factoryvim="vim -u ~/dotfiles/.vim/essential.vim"
-alias relo="source ~/.zshrc"
-alias dot="nvim ~/dotfiles"
+alias vup="vagrant up && vagrant ssh"
+alias vh="vagrant halt"
+alias vd="vagrant destroy -f"
 
-#alias vpnup="nmcli --ask con up id 'PIA - UK London'"
-#alias vpndown="nmcli con down id 'PIA - UK London'"
+alias relo="source ~/.zshrc"
 
 alias p="python3"
 alias bpy="bpython"
+alias pty="ptpython"
 alias pyt="py.test -x --lf -v --color=yes"
 alias pyn="nosetests3 -v -x"
+alias mkv="mkvirtualenv -a ."
 
 alias exf="exercism fetch"
 alias exs="exercism submit"
 
-alias cscon="sudo screen /dev/ttyUSB0 9600"
+# OS-specific aliases
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
 
-alias u="usb"
-alias uu="sudo umount /media/usb"
+    alias v="nvim"
+    alias dot="nvim ~/dotfiles"
+    alias factoryvim="vim -u ~/dotfiles/.vim/essential.vim"
+
+    alias say="sudo apt -y"
+    alias sarepo="sudo add-apt-repository"
+    alias sudo="sudo "
+    alias su="sudo -i"
+    alias s="sudo"
+    alias up="sudo apt -y update && sudo apt -y upgrade"
+    alias rd="sudo rm -r"
+    alias bye="sudo shutdown now"
+    alias reup="sudo reboot now"
+
+    alias rng="ranger"
+
+    alias cscon="sudo screen /dev/ttyUSB0 9600"
+
+    alias u="usb"
+    alias uu="sudo umount /media/usb"
+
+elif [[ "$OSTYPE" == "cygwin" ]]; then
+
+    alias v="vim"
+    alias dot="vim ~/dotfiles"
+
+    alias e="explorer ."
+
+fi
+
