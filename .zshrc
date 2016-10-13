@@ -42,3 +42,5 @@ eval `dircolors ~/.dircolors`
 # vi mode in the terminal
 set -o vi
 
+# gpg-agent
+gpg-agent
