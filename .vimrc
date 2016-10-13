@@ -31,9 +31,9 @@ Plug 'Yggdroot/indentLine'              " Visualize indentation levels
 Plug 'mhinz/vim-sayonara'               " Easy buffer closing
 Plug 'terryma/vim-multiple-cursors'     " Like Sublime Text
 Plug 'Konfekt/FastFold'                 " Fold updating
+Plug 'fatih/vim-go'                     " Golang
 
 if has('nvim')
-    Plug 'fatih/vim-go'                 " Golang
     Plug 'Shougo/deoplete.nvim'         " NeoVim autocomplete
     Plug 'zchee/deoplete-go'            " Go autocomplete
     Plug 'crosbymichael/vim-cfmt'       " Auto-format C code
