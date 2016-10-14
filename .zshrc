@@ -43,4 +43,9 @@ eval `dircolors ~/.dircolors`
 set -o vi
 
 # gpg-agent
-gpg-agent
+if [[ "$OSTYPE" == "cygwin" ]]; then
+    "/cygdrive/c/Program Files (x86)/GNU/GnuPG/gpg-agent"
+else
+    gpg-agent
+fi
+
