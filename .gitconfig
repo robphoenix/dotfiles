@@ -13,6 +13,7 @@
     pom = push origin master
     fom = fetch origin master
     mom = merge origin/master
+    rom = rebase origin/master
     h = reflog
     m = merge
     co = checkout
