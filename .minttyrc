@@ -1,5 +1,5 @@
 Font=Input
-FontHeight=14
+FontHeight=12
 Columns=146
 Rows=42
 Transparency=off
@@ -8,7 +8,7 @@ CursorType=block
 CursorBlinks=no
 CursorColour=255,255,255
 
-ForegroundColour=131,148,150
+ForegroundColour=253,246,227
 BackgroundColour=0,43,54
 
 Black=7,54,66
