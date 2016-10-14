@@ -26,12 +26,12 @@ local exit_code="%(?,,C:%{$fg[red]%}%?%{$reset_color%})"
 #
 #REMOVED:
 #[user@machine]
-#%{$fg[cyan]%}[%n@%m] \
+#%{$fg[yellow]%}%n%{$fg[cyan]%}@%{$fg[yellow]%}[%m] \
 
-PROMPT="\
+PROMPT="
 %{$fg[green]%}%~\
 ${git_info}
-%{$fg[magenta]%}► \
+%{$fg[magenta]%}> \
 %{$reset_color%}"
 
 RPROMPT="$exit_code"
