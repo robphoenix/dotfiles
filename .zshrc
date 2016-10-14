@@ -15,6 +15,7 @@ if [[ "$OSTYPE" == "cygwin" ]]; then
     export SSH_KEY_PATH="~/.ssh/id_rsa"
     export EDITOR=vim
     export ZSH_TMUX_AUTOSTART=true
+    export ZSH_TMUX_AUTOSTART_ONCE=true
 
     # Python virtualenvwrapper
     export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
