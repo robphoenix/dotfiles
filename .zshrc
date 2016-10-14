@@ -14,6 +14,7 @@ if [[ "$OSTYPE" == "cygwin" ]]; then
     export LANG=en_GB.UTF-8
     export SSH_KEY_PATH="~/.ssh/id_rsa"
     export EDITOR=vim
+    export ZSH_TMUX_AUTOSTART=true
 
     # Python virtualenvwrapper
     export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
@@ -28,7 +29,7 @@ if [[ "$OSTYPE" == "cygwin" ]]; then
 
 fi
 
-plugins=(z extract ssh-agent thefuck virtualenvwrapper gpg-agent)
+plugins=(z extract ssh-agent thefuck virtualenvwrapper gpg-agent tmux)
 
 source $ZSH/oh-my-zsh.sh
 
