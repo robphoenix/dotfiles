@@ -8,7 +8,7 @@ CursorType=block
 CursorBlinks=no
 CursorColour=255,255,255
 
-ForegroundColour=253,246,227
+ForegroundColour=238,232,213
 BackgroundColour=0,43,54
 
 Black=7,54,66
