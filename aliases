@@ -12,6 +12,8 @@ alias vup="vagrant up && vagrant ssh"
 alias vh="vagrant halt"
 alias vd="vagrant destroy -f"
 
+alias apb="ansible-playbook"
+
 alias relo="source ~/.zshrc"
 
 alias p="python3"

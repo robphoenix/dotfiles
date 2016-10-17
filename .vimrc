@@ -294,7 +294,7 @@ nmap <silent><Leader>te :Pytest error<CR>
 let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabContextDefaultCompletionType = "<tab>"
 " we need to remap this to not interfere with delimitMate
-let g:SuperTabMappingForward = '<c-j>'
+let g:SuperTabMappingForward = '<tab>'
 let g:SuperTabMappingBackward = '<c-k>'
 " }
 
