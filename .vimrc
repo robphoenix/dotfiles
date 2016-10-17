@@ -293,6 +293,9 @@ nmap <silent><Leader>te :Pytest error<CR>
 " --> SuperTab {
 let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabContextDefaultCompletionType = "<tab>"
+" we need to remap this to not interfere with delimitMate
+let g:SuperTabMappingForward = '<c-j>'
+let g:SuperTabMappingBackward = '<c-k>'
 " }
 
 " --> vim-buftabline {
