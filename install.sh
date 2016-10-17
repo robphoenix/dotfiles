@@ -74,7 +74,8 @@ apt install -y \
     virtualbox \
     bridge-utils \
     python3-nose \
-    gnupg2
+    gnupg2 \
+    inetutils-traceroute
 
 # oh-my-zsh
 wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
