@@ -18,13 +18,11 @@ function virtualenv_info {
     [ $VIRTUAL_ENV ] && echo '('`basename $VIRTUAL_ENV`') '
 }
 
-local venv="$(virtualenv_info)"
-
 # Left Prompt
 PROMPT="
 %{$fg[magenta]%}\$(virtualenv_info)\
 %{$fg[green]%}%~ \
-$(git_prompt_info)
+${git_info}
 %{$fg[magenta]%}> \
 %{$reset_color%}"
 

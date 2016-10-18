@@ -19,7 +19,7 @@ alias relo="source ~/.zshrc"
 alias p="python3"
 alias bpy="bpython"
 alias pty="ptpython"
-alias pyt="py.test -x --lf -v --color=yes"
+alias pyt="py.test"
 alias mkv="mkvirtualenv -a ."
 
 alias exf="exercism fetch"
