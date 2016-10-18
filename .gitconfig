@@ -11,9 +11,13 @@
     aa = add --all
     po = push origin
     pom = push origin master
+    pod = push origin dev
     fom = fetch origin master
+    fod = fetch origin dev
     mom = merge origin/master
+    mod = merge origin/dev
     rom = rebase origin/master
+    rod = rebase origin/dev
     h = reflog
     m = merge
     co = checkout
