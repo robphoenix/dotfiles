@@ -5,20 +5,12 @@
 export OLD_PS1="$PS1"
 
 # add virtualenv to prompt
-function virtualenv_info(){
-    if [[ -n "$VIRTUAL_ENV" ]]; then
-        venv="${VIRTUAL_ENV##*/}"
-    else
-        venv=""
-    fi
-    [[ -n "$venv" ]] && echo "$venv"
+function virtualenv_info {
+    [ $VIRTUAL_ENV ] && echo '('`basename $VIRTUAL_ENV`')'
 }
-
-# disable virtualenvwrapper prompt
-export VIRTUAL_ENV_DISABLE_PROMPT=1
 
 local venv="$(virtualenv_info)"
 
 PS1="
-%{$fg[magenta]%}(${venv}) \\$PS1"
+%{$fg[magenta]%}${venv} \\$PS1"
 
