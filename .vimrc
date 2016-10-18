@@ -14,7 +14,6 @@ Plug 'itchyny/lightline.vim'            " Sweet statusline
 Plug 'scrooloose/nerdtree'              " File explorer
 Plug 'klen/python-mode'                 " Python
 Plug 'davidhalter/jedi-vim'             " Extra Python
-Plug 'alfredodeza/pytest.vim'           " PyTest wrapper
 Plug 'kien/rainbow_parentheses.vim'     " Pretty Parens
 Plug 'scrooloose/syntastic'             " Syntax checker
 Plug 'SirVer/ultisnips'                 " Code snippets
@@ -273,7 +272,10 @@ nnoremap <leader>ff :CtrlP<CR>
 nnoremap <leader>fm :CtrlPMRU<CR>
 
 " make current C program, output has same name
-nnoremap <silent> <leader>mc :!clear;gcc % -o %:r && ./%:r<CR>
+autocmd FileType c nnoremap <silent> <leader>mc :!clear;gcc % -o %:r && ./%:r<CR>
+
+" run python nosetests
+nnoremap <silent> <leader>tp :!nosetests3 -v -x --with-coverage<CR>
 
 " }
 
@@ -282,12 +284,6 @@ nnoremap <silent> <leader>mc :!clear;gcc % -o %:r && ./%:r<CR>
 " --> vim-cfmt {
 let g:cfmt_style = '-linux'
 autocmd BufWritePre *.c,*.h Cfmt
-"  }
-
-" --> pytest.vim {
-nmap <silent><Leader>tp :Pytest project<CR>
-nmap <silent><Leader>ts :Pytest session<CR>
-nmap <silent><Leader>te :Pytest error<CR>
 "  }
 
 " --> SuperTab {
