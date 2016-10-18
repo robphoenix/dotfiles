@@ -34,5 +34,12 @@ ${git_info}
 %{$fg[magenta]%}> \
 %{$reset_color%}"
 
-RPROMPT="$exit_code"
+# Setup Vi-mode indicator in right-prompt
+function zle-line-init zle-keymap-select {
+  VIM_PROMPT="%{$fg[blue]%} [% NORMAL]% %{$reset_color%}"
+  RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $exit_code"
+  zle reset-prompt
+}
 
+zle -N zle-line-init
+zle -N zle-keymap-select
