@@ -1,0 +1,24 @@
+#!/usr/bin/zsh
+# This hook is sourced after every virtualenv is activated.
+
+# add virtualenv to prompt
+function virtualenv_info(){
+    if [[ -n "$VIRTUAL_ENV" ]]; then
+        venv="${VIRTUAL_ENV##*/}"
+    else
+        venv=""
+    fi
+    [[ -n "$venv" ]] && echo "$venv"
+}
+
+# disable virtualenvwrapper prompt
+export VIRTUAL_ENV_DISABLE_PROMPT=1
+
+local venv="$(virtualenv_info)"
+
+# make the non-virtualenv prompt available
+export OLD_PS1="$PS1"
+
+PS1="
+%{$fg[magenta]%}(${venv}) \\$PS1"
+

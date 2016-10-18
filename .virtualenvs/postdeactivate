@@ -1,0 +1,6 @@
+#!/usr/bin/zsh
+# This hook is sourced after every virtualenv is deactivated.
+
+# revert back to non-virtualenv prompt
+PS1="$OLD_PS1"
+
