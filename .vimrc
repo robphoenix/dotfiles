@@ -275,7 +275,7 @@ nnoremap <leader>fm :CtrlPMRU<CR>
 autocmd FileType c nnoremap <silent> <leader>mc :!clear;gcc % -o %:r && ./%:r<CR>
 
 " run python nosetests
-nnoremap <silent> <leader>tp :!nosetests3 -v -x --with-coverage<CR>
+nnoremap <silent> <leader>tp :!clear;nosetests3 -v -x --with-coverage<CR>
 
 " }
 
