@@ -1,10 +1,7 @@
-# Clean, simple, compatible and meaningful.
-# Tested on Linux, Unix and Windows under ANSI colors.
-# It is recommended to use with a dark background.
-# Colors: black, red, green, yellow, *blue, magenta, cyan, and white.
+# 2016 Rob Phoenix @bordeltabernacle
+# Adapted from Yad Smood's ys.zsh-theme
 #
-# Mar 2013 Yad Smood
-# Adapted June 2016 Rob Phoenix
+# Colors: black, red, green, yellow, *blue, magenta, cyan, and white.
 
 # Git info
 local git_info='$(git_prompt_info)'
@@ -13,27 +10,25 @@ ZSH_THEME_GIT_PROMPT_SUFFIX=""
 ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[red]%} ±"
 ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[green]%} ="
 
+# Exit code
 local exit_code="%(?,,C:%{$fg[red]%}%?%{$reset_color%})"
 
-# Left Prompt: DIRECTORY BRANCH STATE
-# Right Prompt: C:LAST_EXIT_CODE
-#
-# For example:
-#
-# ~/.oh-my-zsh master +
-# ▶                                C:0
-#
-#
-#REMOVED:
-#[user@machine]
-#%{$fg[yellow]%}%n%{$fg[cyan]%}@%{$fg[yellow]%}[%m] \
+# Python Virtualenv info
+function virtualenv_info {
+    [ $VIRTUAL_ENV ] && echo '('`basename $VIRTUAL_ENV`') '
+}
 
+local venv="$(virtualenv_info)"
+
+# Left Prompt
 PROMPT="
+%{$fg[magenta]%}\$(virtualenv_info)\
 %{$fg[green]%}%~ \
-${git_info}
+$(git_prompt_info)
 %{$fg[magenta]%}> \
 %{$reset_color%}"
 
+# Right Prompt
 # Setup Vi-mode indicator in right-prompt
 function zle-line-init zle-keymap-select {
   VIM_PROMPT="%{$fg[blue]%} [% NORMAL]% %{$reset_color%}"
