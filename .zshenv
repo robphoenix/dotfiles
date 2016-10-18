@@ -21,4 +21,3 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
     export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
 
 fi
-
