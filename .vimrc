@@ -285,6 +285,7 @@ nmap <silent><Leader>tp :Pytest project<CR>
 nmap <silent><Leader>ts :Pytest session<CR>
 nmap <silent><Leader>te :Pytest error<CR>
 "  }
+
 " --> vim-cfmt {
 let g:cfmt_style = '-linux'
 autocmd BufWritePre *.c,*.h Cfmt
@@ -468,7 +469,7 @@ let g:pymode_folding = 1
 let g:pymode_motion = 1
 let g:pymode_doc = 1
 let g:pymode_doc_bind = 'K'
-let g:pymode_virtualenv = 1
+let g:pymode_virtualenv = 0
 let g:pymode_run = 1
 let g:pymode_run_bind = '<leader>pr'
 let g:pymode_lint = 1
