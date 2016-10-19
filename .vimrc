@@ -123,6 +123,7 @@ set virtualedit=onemore         " allow for cursor beyond last character
 set history=1000                " Store a ton of history (default is 20)
 set spell                       " spell checking on
 set spelllang=en_gb
+set noundofile                  " no annoying .un~ files
 set modelines=1
 
 " Time out on key codes but not mappings.
