@@ -22,6 +22,8 @@ alias pty="ptpython"
 alias pyt="py.test"
 alias mkv="mkvirtualenv -a ."
 
+alias gt="go test -v -cover"
+
 alias exf="exercism fetch"
 alias exs="exercism submit"
 
