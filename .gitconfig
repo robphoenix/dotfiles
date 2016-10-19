@@ -6,7 +6,7 @@
 
 [alias]
 
-    i = status -s
+    s = status -s
     cam = commit -am
     aa = add --all
     po = push origin
