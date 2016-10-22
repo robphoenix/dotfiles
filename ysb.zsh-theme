@@ -60,12 +60,12 @@ function parse_git_state() {
 # If inside a Git repository, print its branch and state
 function git_prompt_info() {
   if [[ "$(parse_git_state)" == "" ]]; then
-    local git_state="%{$fg[yellow]%} ≡]"
+    local git_state="%{$fg[yellow]%}≡]"
   else
     local git_state="$(parse_git_state)"
   fi
   local git_where="$(parse_git_branch)"
-  [ -n "$git_where" ] && echo "%{$fg[yellow]%}[${git_where#(refs/heads/|tags/)}%{$reset_color%}${git_state}"
+  [ -n "$git_where" ] && echo "%{$fg[yellow]%}[${git_where#(refs/heads/|tags/)} %{$reset_color%}${git_state}"
 }
 
 local git_info='$(git_prompt_info)'

@@ -30,7 +30,7 @@ if [[ "$OSTYPE" == "cygwin" ]]; then
 
 fi
 
-plugins=(z extract ssh-agent thefuck virtualenvwrapper gpg-agent tmux)
+plugins=(z extract thefuck virtualenvwrapper gpg-agent tmux)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -44,7 +44,7 @@ eval `dircolors ~/.dircolors`
 set -o vi
 
 # start gpg-agent
-gpg-agent
+#gpg-agent
 
 # Set Options
 
