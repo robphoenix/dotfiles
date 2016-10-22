@@ -115,6 +115,7 @@ pip3 install -r requirements3.txt
 # symlinks
 ln -sf $HOME/dotfiles/.zshenv $HOME/.zshenv
 ln -sf $HOME/dotfiles/.zshrc $HOME/.zshrc
+ln -sf $HOME/dotfiles/prompt.zsh $HOME/prompt.zsh
 ln -sf $HOME/dotfiles/.xsessionrc $HOME/.xsessionrc
 ln -sf $HOME/dotfiles/.Xresources $HOME/.Xresources
 ln -sf $HOME/dotfiles/.gitconfig $HOME/.gitconfig

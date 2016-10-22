@@ -1,6 +1,6 @@
 export ZSH=$HOME/.oh-my-zsh
 
-ZSH_THEME="ysb"
+#ZSH_THEME="ysb"
 
 HYPHEN_INSENSITIVE="true"
 DISABLE_AUTO_TITLE="true"
@@ -30,9 +30,10 @@ if [[ "$OSTYPE" == "cygwin" ]]; then
 
 fi
 
-plugins=(z extract thefuck virtualenvwrapper gpg-agent tmux)
+plugins=(z thefuck virtualenvwrapper ssh-agent gpg-agent)
 
 source $ZSH/oh-my-zsh.sh
+source ~/prompt.zsh
 
 # disable virtualenvwrapper prompt
 export VIRTUAL_ENV_DISABLE_PROMPT=1
