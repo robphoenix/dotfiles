@@ -9,8 +9,8 @@ GIT_PROMPT_AHEAD="%{$fg[cyan]%}↑NUM%{$reset_color%}"
 GIT_PROMPT_BEHIND="%{$fg[red]%}↓NUM%{$reset_color%}"
 GIT_PROMPT_MERGING="%{$fg[magenta]%}⚡︎%{$reset_color%}"
 GIT_PROMPT_UNTRACKED="%{$fg[red]%}!%{$reset_color%}"
-GIT_PROMPT_MODIFIED="%{$fg[red]%}± %{$reset_color%}"
-GIT_PROMPT_STAGED="%{$fg[green]%} ✓%{$reset_color%}"
+GIT_PROMPT_MODIFIED="%{$fg[red]%}±%{$reset_color%}"
+GIT_PROMPT_STAGED="%{$fg[green]%}✓%{$reset_color%}"
 
 # Show Git branch/tag, or name-rev if on detached head
 function parse_git_branch() {
@@ -91,9 +91,7 @@ ${${KEYMAP/vicmd/\$VIM_PROMPT}/(main|viins)/}
 }
 
 # Right Prompt
-RPROMPT="\
-%{$fg[magenta]%}\$(virtualenv_info)\
-%{$reset_color%}$exit_code"
+RPROMPT="%{$fg[magenta]%}\$(virtualenv_info) %{$reset_color%}$exit_code"
 
 zle -N zle-line-init
 zle -N zle-keymap-select
