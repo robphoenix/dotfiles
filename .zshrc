@@ -1,7 +1,5 @@
 export ZSH=$HOME/.oh-my-zsh
 
-#ZSH_THEME="ysb"
-
 HYPHEN_INSENSITIVE="true"
 DISABLE_AUTO_TITLE="true"
 ENABLE_CORRECTION="true"
@@ -43,9 +41,6 @@ eval `dircolors ~/.dircolors`
 
 # vi mode in the terminal
 set -o vi
-
-# start gpg-agent
-#gpg-agent
 
 # Set Options
 
