@@ -11,28 +11,27 @@ ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[red]%} ±"
 ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[green]%} ="
 
 # Exit code
-local exit_code="%(?,,C:%{$fg[red]%}%?%{$reset_color%})"
+local exit_code="%(?,,%{$fg[red]%}%?%{$reset_color%})"
 
 # Python Virtualenv info
 function virtualenv_info {
     [ $VIRTUAL_ENV ] && echo '('`basename $VIRTUAL_ENV`') '
 }
 
-# Left Prompt
-PROMPT="
+# Setup Vi-mode indicator in prompt
+function zle-line-init zle-keymap-select {
+  VIM_PROMPT="%{$fg[blue]%} [N]%{$reset_color%}"
+  PROMPT="
 %{$fg[magenta]%}\$(virtualenv_info)\
 %{$fg[green]%}%~ \
-${git_info}
+${git_info}\
+${${KEYMAP/vicmd/\$VIM_PROMPT}/(main|viins)/}
 %{$fg[magenta]%}> \
 %{$reset_color%}"
-
-# Right Prompt
-# Setup Vi-mode indicator in right-prompt
-function zle-line-init zle-keymap-select {
-  VIM_PROMPT="%{$fg[blue]%} [% NORMAL]% %{$reset_color%}"
-  RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $exit_code"
   zle reset-prompt
 }
+
+RPROMPT="$exit_code"
 
 zle -N zle-line-init
 zle -N zle-keymap-select

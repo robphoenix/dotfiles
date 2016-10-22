@@ -47,3 +47,15 @@
 
 # 2016-10-07 12:44:07.458345
 +"".join(str(i) for i in range(10))
+
+# 2016-10-21 11:53:46.776787
++import os
+
+# 2016-10-21 11:54:01.207156
++os.getcwd()
+
+# 2016-10-21 11:54:35.084653
++os.path.islink(os.path.join(os.getcwd(), '.ptpython'))
+
+# 2016-10-21 11:57:29.064459
++os.path.expanduser(os.path.join('~', '.ptpython'))
