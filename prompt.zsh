@@ -71,11 +71,11 @@ function git_prompt_info() {
 local git_info='$(git_prompt_info)'
 
 # Exit code
-local exit_code="%(?,,%{$fg[red]%}%?%{$reset_color%})"
+local exit_code="%(?,,%{$fg[red]%}[%?]%{$reset_color%})"
 
 # Python Virtualenv info
 function virtualenv_info {
-    [ $VIRTUAL_ENV ] && echo '('`basename $VIRTUAL_ENV`') '
+    [ $VIRTUAL_ENV ] && echo '('`basename $VIRTUAL_ENV`')'
 }
 
 # Setup Vi-mode indicator in prompt
@@ -91,7 +91,7 @@ ${${KEYMAP/vicmd/\$VIM_PROMPT}/(main|viins)/}
 }
 
 # Right Prompt
-RPROMPT="%{$fg[magenta]%}\$(virtualenv_info) %{$reset_color%}$exit_code"
+RPROMPT="%{$fg[magenta]%}\$(virtualenv_info)%{$reset_color%}$exit_code"
 
 zle -N zle-line-init
 zle -N zle-keymap-select
