@@ -403,6 +403,7 @@ let g:syntastic_loc_list_height = 5
 " --> UltiSnips {
 
 let g:UltiSnipsUsePythonVersion = 3
+let g:ultisnips_python_style = "google"
 
 " }
 
