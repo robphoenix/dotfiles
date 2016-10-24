@@ -28,7 +28,7 @@ if [[ "$OSTYPE" == "cygwin" ]]; then
 
 fi
 
-plugins=(git-prompt z thefuck virtualenvwrapper ssh-agent gpg-agent)
+plugins=(z thefuck virtualenvwrapper ssh-agent gpg-agent)
 
 source $ZSH/oh-my-zsh.sh
 source ~/dotfiles/git-prompt.sh

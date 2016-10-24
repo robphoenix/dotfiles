@@ -169,9 +169,9 @@ __posh_git_echo () {
     local WorkingForegroundColor=$(__posh_color '$fg[cyan]') # Dark red
     local WorkingBackgroundColor=
 
-    local StashForegroundColor=$(__posh_color '\e[0;34m') # Darker blue
+    local StashForegroundColor=$(__posh_color '$fg[yellow]') # Darker blue
     local StashBackgroundColor=
-    local StashText='$'
+    local StashText='*'
 
     local RebaseForegroundColor=$(__posh_color '\e[0m') # reset
     local RebaseBackgroundColor=
