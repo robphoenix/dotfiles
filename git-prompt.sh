@@ -150,13 +150,13 @@ __posh_git_echo () {
     local BranchBehindStatusSymbol=$'\xE2\x86\x93' # Down Arrow
     local BranchBehindAndAheadStatusSymbol=$'\xE2\x86\x95' # Up and Down Arrow
 
-    local BranchForegroundColor=$(__posh_color '$fg[yellow]')  # Yellow
+    local BranchForegroundColor=$(__posh_color '$fg[yellow]')
     local BranchBackgroundColor=
-    local BranchAheadForegroundColor=$(__posh_color '$fg[green]') # Green
+    local BranchAheadForegroundColor=$(__posh_color '$fg[cyan]')
     local BranchAheadBackgroundColor=
-    local BranchBehindForegroundColor=$(__posh_color '$fg[red]') # Red
+    local BranchBehindForegroundColor=$(__posh_color '$fg[red]')
     local BranchBehindBackgroundColor=
-    local BranchBehindAndAheadForegroundColor=$(__posh_color '$fg[yellow]') # Yellow
+    local BranchBehindAndAheadForegroundColor=$(__posh_color '$fg[magenta]')
     local BranchBehindAndAheadBackgroundColor=
 
     local BeforeIndexText=''
