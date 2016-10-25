@@ -3,4 +3,5 @@
 # ~/.xsessionrc
 
 # scale dpi
-xrandr --dpi 184
+xrandr  --output HDMI1 --scale 1.8x1.8
+xrandr  --output eDP1 --dpi 184/eDP1 --mode 3200x1800
