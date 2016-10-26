@@ -75,7 +75,8 @@ apt install -y \
     bridge-utils \
     python3-nose \
     gnupg2 \
-    inetutils-traceroute
+    inetutils-traceroute \
+    shellcheck
 
 # oh-my-zsh
 wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh

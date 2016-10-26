@@ -32,6 +32,7 @@ Plug 'mhinz/vim-sayonara'               " Easy buffer closing
 Plug 'terryma/vim-multiple-cursors'     " Like Sublime Text
 Plug 'Konfekt/FastFold'                 " Fold updating
 Plug 'fatih/vim-go'                     " Golang
+Plug 'pearofducks/ansible-vim'          " Ansible
 
 if has('nvim')
     Plug 'Shougo/deoplete.nvim'         " NeoVim autocomplete
@@ -167,6 +168,9 @@ let python_highlight_all=1
 " leader key
 let mapleader = "\<Space>"
 let g:mapleader = "\<Space>"
+
+" remap ESC
+inoremap jj <ESC>
 
 " easily edit .vimrc in new buffer
 nmap <leader>v :edit $MYVIMRC<CR>
@@ -392,6 +396,8 @@ let g:delimitMate_smart_matchpairs = '^\%(\w\|\$\)'
 " --> Syntastic {
 
 let g:syntastic_go_checkers = ['golint']
+let g:syntastic_sh_checkers = ['shellcheck']
+let g:syntastic_c_checkers=['make','gcc']
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
