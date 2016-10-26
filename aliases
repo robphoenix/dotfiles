@@ -1,21 +1,23 @@
 # Personal aliases
 
-# Cross-Platform aliases
 alias l="ls -I.cache -I__pycache__ -I.git -Inode_modules -I.vagrant -I.DS_Store -lAh "
 
 alias web="google-chrome"
 alias open="xdg-open"
 alias f="fuck"
-alias g="git"
 
+# vagrant
 alias vup="vagrant up && vagrant ssh"
 alias vh="vagrant halt"
 alias vd="vagrant destroy -f"
 
+# ansible
 alias apb="ansible-playbook"
 
+# zsh
 alias relo="source ~/.zshrc"
 
+# python
 alias p="python3"
 alias bpy="bpython"
 alias pty="ptpython"
@@ -23,46 +25,48 @@ alias pyt="py.test"
 alias mkv="mkvirtualenv -a ."
 alias off="deactivate"
 
+# go
 alias gt="go test -v -cover"
 
+# git
+alias g="git"
 alias gs="g s"
 alias gl="g l"
 alias gpm="g pom"
 alias gc="g cam"
 
+# exercism
 alias exf="exercism fetch"
 alias exs="exercism submit"
 
-# OS-specific aliases
-if [[ "$OSTYPE" == "linux-gnu" ]]; then
+# vim/neovim
+alias v="nvim"
+alias dot="nvim ~/dotfiles"
+alias factoryvim="vim -u ~/dotfiles/.vim/essential.vim"
 
-    alias v="nvim"
-    alias dot="nvim ~/dotfiles"
-    alias factoryvim="vim -u ~/dotfiles/.vim/essential.vim"
+# general system stuff
+alias say="sudo apt -y"
+alias sarepo="sudo add-apt-repository"
+alias sudo="sudo "
+alias su="sudo -i"
+alias s="sudo"
+alias up="sudo apt -y update && sudo apt -y upgrade"
+alias rd="sudo rm -r"
+alias bye="sudo shutdown now"
+alias reup="sudo reboot now"
 
-    alias say="sudo apt -y"
-    alias sarepo="sudo add-apt-repository"
-    alias sudo="sudo "
-    alias su="sudo -i"
-    alias s="sudo"
-    alias up="sudo apt -y update && sudo apt -y upgrade"
-    alias rd="sudo rm -r"
-    alias bye="sudo shutdown now"
-    alias reup="sudo reboot now"
+# ranger
+alias rng="ranger"
 
-    alias rng="ranger"
+# cisco console connection
+alias cscon="sudo screen /dev/ttyUSB0 9600"
 
-    alias cscon="sudo screen /dev/ttyUSB0 9600"
+# usb
+alias u="usb"
+alias uu="sudo umount /media/usb"
 
-    alias u="usb"
-    alias uu="sudo umount /media/usb"
-
-elif [[ "$OSTYPE" == "cygwin" ]]; then
-
-    alias v="vim"
-    alias dot="vim ~/dotfiles"
-
-    alias e="explorer ."
-
-fi
-
+# travis
+alias ts="travis show"
+alias th="travis history --limit 5"
+alias tw="travis whatsup"
+alias tl="travis logs"
