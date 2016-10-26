@@ -76,7 +76,8 @@ apt install -y \
     python3-nose \
     gnupg2 \
     inetutils-traceroute \
-    shellcheck
+    shellcheck \
+    splint
 
 # oh-my-zsh
 wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh

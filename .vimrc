@@ -397,7 +397,7 @@ let g:delimitMate_smart_matchpairs = '^\%(\w\|\$\)'
 
 let g:syntastic_go_checkers = ['golint']
 let g:syntastic_sh_checkers = ['shellcheck']
-let g:syntastic_c_checkers=['make','gcc']
+let g:syntastic_c_checkers=['splint', 'make']
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -485,7 +485,7 @@ let g:pymode_run_bind = '<leader>pr'
 let g:pymode_lint = 1
 let g:pymode_lint_on_write = 1
 let g:pymode_lint_message = 1
-let g:pymode_lint_checkers = ['pyflakes', 'pep8', 'mccabe', 'pylint']
+let g:pymode_lint_checkers = ['flake8', 'pylint']
 let g:pymode_lint_ignore = "E501,F0002,E116"
 let g:pymode_lint_cwindow = 1
 let g:pymode_lint_signs = 1
