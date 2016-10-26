@@ -299,11 +299,9 @@ autocmd BufWritePre *.c,*.h Cfmt
 "  }
 
 " --> SuperTab {
-let g:SuperTabDefaultCompletionType = "context"
-let g:SuperTabContextDefaultCompletionType = "<tab>"
-" we need to remap this to not interfere with delimitMate
-let g:SuperTabMappingForward = '<tab>'
-let g:SuperTabMappingBackward = '<c-k>'
+
+let g:SuperTabDefaultCompletionType = "<c-n>"
+
 " }
 
 " --> vim-buftabline {
@@ -413,6 +411,7 @@ let g:syntastic_loc_list_height = 5
 
 let g:UltiSnipsUsePythonVersion = 3
 let g:ultisnips_python_style = "google"
+let g:UltiSnipsExpandTrigger="<c-j>"
 
 " }
 
@@ -441,8 +440,6 @@ if has('nvim')
     let g:deoplete#enable_at_startup = 1
     let g:deoplete#sources#go#gocode_binary="$GOPATH.'/bin/gocode'"
     let g:deoplete#sources#go#pointer=1
-    let g:deoplete#ignore_sources = {}
-    let g:deoplete#ignore_sources._ = []
     let g:deoplete#sources#go#sort_class = ['func', 'type', 'var', 'const']
     let g:deoplete#sources#go#align_class = 1
 
