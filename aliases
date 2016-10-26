@@ -34,6 +34,7 @@ alias gs="g s"
 alias gl="g l"
 alias gpm="g pom"
 alias gc="g cam"
+alias ga="g aa"
 
 # exercism
 alias exf="exercism fetch"
@@ -70,3 +71,4 @@ alias ts="travis show"
 alias th="travis history --limit 5"
 alias tw="travis whatsup"
 alias tl="travis logs"
+alias to="travis open"

@@ -69,8 +69,8 @@ Xft.hinting:    1
 Xft.antialias:  1
 
 ! -- Fonts -- !
-URxvt.font:xft:inconsolata:pixelsize=40
-URxvt.boldFont:xft:inconsolata:style=Bold,pixelsize=40
+URxvt.font:xft:input:pixelsize=35
+URxvt.boldFont:xft:input:style=Bold,pixelsize=35
 *faceSize:              10
 *bellIsUrgent:          true
 
