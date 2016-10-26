@@ -14,6 +14,7 @@ Plug 'itchyny/lightline.vim'            " Sweet statusline
 Plug 'scrooloose/nerdtree'              " File explorer
 Plug 'klen/python-mode'                 " Python
 Plug 'davidhalter/jedi-vim'             " Extra Python
+Plug 'zchee/deoplete-jedi'              " Python autocomplete
 Plug 'alfredodeza/pytest.vim'           " Python testing
 Plug 'kien/rainbow_parentheses.vim'     " Pretty Parens
 Plug 'scrooloose/syntastic'             " Syntax checker
@@ -301,6 +302,8 @@ autocmd BufWritePre *.c,*.h Cfmt
 " --> SuperTab {
 
 let g:SuperTabDefaultCompletionType = "<c-n>"
+" we need to remap this to not interfere with delimitMate
+let g:SuperTabMappingBackward = '<c-k>'
 
 " }
 
@@ -395,10 +398,14 @@ let g:delimitMate_smart_matchpairs = '^\%(\w\|\$\)'
 
 let g:syntastic_go_checkers = ['golint']
 let g:syntastic_sh_checkers = ['shellcheck']
-let g:syntastic_c_checkers=['splint', 'make']
+let g:syntastic_c_checkers = ['splint', 'make', 'gcc']
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
+" let python-mode handle syntax checking
+let g:syntastic_mode_map = {
+        \ "mode": "active",
+        \ "passive_filetypes": ["python"] }
 
 nmap <leader>ee :Errors<cr>
 let g:syntastic_always_populate_loc_list = 1
