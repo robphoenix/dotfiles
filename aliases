@@ -25,6 +25,11 @@ alias off="deactivate"
 
 alias gt="go test -v -cover"
 
+alias gs="g s"
+alias gl="g l"
+alias gpm="g pom"
+alias gc="g cam"
+
 alias exf="exercism fetch"
 alias exs="exercism submit"
 
