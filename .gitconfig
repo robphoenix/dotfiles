@@ -2,12 +2,12 @@
 
     email = robertphoenix@gmail.com
     name = Rob Phoenix
-    signingkey = FA3F87125D84F283
+    signingkey = 4E270D9DED1AB5E7
 
 [alias]
 
     s = status -s
-    cam = commit -am
+    c = commit -S -m
     aa = add --all
     po = push origin
     pom = push origin master
