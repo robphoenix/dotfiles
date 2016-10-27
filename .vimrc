@@ -37,6 +37,7 @@ Plug 'pearofducks/ansible-vim'          " Ansible
 Plug 'Shougo/deoplete.nvim'             " NeoVim autocomplete
 Plug 'zchee/deoplete-go'                " Go autocomplete
 Plug 'crosbymichael/vim-cfmt'           " Auto-format C code
+Plug 'vim-scripts/cisco.vim'            " Cisco config highlighting
 
 call plug#end()
 
@@ -156,6 +157,11 @@ au BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4
 au BufNewFile,BufRead *.py setlocal ts=4 sts=4 sw=4 tw=79 list lcs=tab:▸\
 let g:python3_host_prog = '/usr/bin/python3'
 let python_highlight_all=1
+
+" Cisco config files
+au BufRead,BufNewFile *.cfg set filetype=cisco
+au BufRead,BufNewFile *.conf set filetype=cisco
+
 " }
 
 " --> Key (re)Mappings {
