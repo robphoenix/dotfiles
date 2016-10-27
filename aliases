@@ -33,7 +33,8 @@ alias g="git"
 alias gs="g s"
 alias gl="g l"
 alias gpm="g pom"
-alias gc="g aa && g cam"
+alias gc="g cam"
+alias ga="g aa"
 
 # exercism
 alias exf="exercism fetch"

@@ -8,13 +8,8 @@
                       |/
 ```
 
-I use these across my work and personal machines. On my personal machine I use
-Ubuntu with [zsh](http://ohmyz.sh/), [i3](http://i3wm.org/) and [NeoVim](https://neovim.io/), and for
-work I use Windows 7 with [zsh](http://ohmyz.sh/), [babun](https://babun.github.io/), tmux & Vim.
-On both machines I make things pretty with the classic [Solarized](http://ethanschoonover.com/solarized) colour scheme
-and the [Input](http://input.fontbureau.com/) font.
-
-![Prompt](images/prompt.png "Prompt")
+On my personal machine I use
+Ubuntu with [zsh](http://ohmyz.sh/), [i3](http://i3wm.org/) and [NeoVim](https://neovim.io/).
 
 ## Linux machine
 
@@ -52,43 +47,6 @@ Ranger is a terminal file explorer, though I don't find I use it a lot.
 ### .xsessionrc
 
 This sets the right scale on my laptop, without this everything is really tiny.
-
-
-## Windows machine
-
-I have the ugly Windows 7 taskbar permanently hidden, thanks to
-[this](http://rocketdock.com/addon/misc/3425), but keep access to the Tray with
-[this](http://rocketdock.com/addon/docklets/35659), and then use
-[RocketDock](http://rocketdock.com).
-
-### .babunrc
-
-This is pretty much just the default configuration file that comes with Babun,
-but with the last line making sure we can ignore annoying BLODA warnings.
-
-### .minttyrc
-
-Configures the appearance of the console used by Babun. Applies the Solarized
-colour scheme.
-
-### .ptpython
-
-A better Python REPL. On Linux I prefer [bpython](http://bpython-interpreter.org/) though.
-
-### .tmux.conf
-
-I only really have tmux to have a status line and split panes in my Windows
-console. I have permanently hidden the Taskbar, and it's nice to have the time
-on view. And split panes are so useful, yet Babun doesn't have them. I did use [cmder](http://cmder.net/)
-for a while but could never get vim to work properly.
-
-
-## Cross-machine
-
-I initially had separate dotfiles for my two machines but this very quickly
-became a nightmare to manage and avoid discrepancies between them. So, with a
-couple of checks whether an environment is Vim or NeoVim, Cygwin or Linux, my
-.zshrc & .vimrc now work across both, phew.
 
 ### .gnupg
 
@@ -135,15 +93,9 @@ Plugins I'm using...
 - [ terryma/vim-multiple-cursors ](https://github.com/terryma/vim-multiple-cursors)      -> Like Sublime Text
 - [ Konfekt/FastFold ](https://github.com/Konfekt/FastFold)                  -> Fold updating
 - [ fatih/vim-go ](https://github.com/fatih/vim-go)                      -> Golang
-
-Linux Only
 - [ Shougo/deoplete.nvim ](https://github.com/Shougo/deoplete.nvim)              -> NeoVim autocomplete
 - [ zchee/deoplete-go ](https://github.com/zchee/deoplete-go)                 -> Go autocomplete
 - [ crosbymichael/vim-cfmt ](https://github.com/crosbymichael/vim-cfmt)            -> Auto-format C code
-
-Windows Only
-- [ Shougo/neocomplete.vim ](https://github.com/Shougo/neocomplete.vim)            -> Vim autocomplete
-- [elixir-lang/vim-elixir](https://github.com/elixir-lang/vim-elixir)            -> Elixir
 
 ### .vimrc
 

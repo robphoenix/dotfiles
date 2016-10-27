@@ -34,15 +34,9 @@ Plug 'terryma/vim-multiple-cursors'     " Like Sublime Text
 Plug 'Konfekt/FastFold'                 " Fold updating
 Plug 'fatih/vim-go'                     " Golang
 Plug 'pearofducks/ansible-vim'          " Ansible
-
-if has('nvim')
-    Plug 'Shougo/deoplete.nvim'         " NeoVim autocomplete
-    Plug 'zchee/deoplete-go'            " Go autocomplete
-    Plug 'crosbymichael/vim-cfmt'       " Auto-format C code
-else
-    Plug 'Shougo/neocomplete.vim'       " Vim autocomplete
-    Plug 'elixir-lang/vim-elixir'       " Elixir
-endif
+Plug 'Shougo/deoplete.nvim'             " NeoVim autocomplete
+Plug 'zchee/deoplete-go'                " Go autocomplete
+Plug 'crosbymichael/vim-cfmt'           " Auto-format C code
 
 call plug#end()
 
@@ -142,7 +136,7 @@ set completeopt=longest,menuone
 :let g:netrw_dirhistmax = 0
 
 " highlight column only in INSERT mode
-autocmd InsertEnter * setlocal colorcolumn=79,120
+autocmd InsertEnter * setlocal colorcolumn=79,119
 autocmd InsertLeave * setlocal colorcolumn=0
 
 " relative line numbers off in insert mode
@@ -440,32 +434,19 @@ let g:ctrlp_buftag_types = {'go' : '--language-force=go --golang-types=ftv'}
 
 " }
 
-" --> Completion {
+" --> Deoplete {
 
-if has('nvim')
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#sources#go#gocode_binary="$GOPATH.'/bin/gocode'"
+let g:deoplete#sources#go#pointer=1
+let g:deoplete#sources#go#sort_class = ['func', 'type', 'var', 'const']
+let g:deoplete#sources#go#align_class = 1
+let deoplete#sources#jedi#show_docstring = 1
 
-    let g:deoplete#enable_at_startup = 1
-    let g:deoplete#sources#go#gocode_binary="$GOPATH.'/bin/gocode'"
-    let g:deoplete#sources#go#pointer=1
-    let g:deoplete#sources#go#sort_class = ['func', 'type', 'var', 'const']
-    let g:deoplete#sources#go#align_class = 1
-
-    " Use partial fuzzy matches like YouCompleteMe
-    call deoplete#custom#set('_', 'matchers', ['matcher_fuzzy'])
-    call deoplete#custom#set('_', 'converters', ['converter_remove_paren'])
-    call deoplete#custom#set('_', 'disabled_syntaxes', ['Comment', 'String'])
-
-else
-
-    " Disable AutoComplPop.
-    let g:acp_enableAtStartup = 0
-    " Use neocomplete.
-    let g:neocomplete#enable_at_startup = 1
-    " insert delimiter automatically
-    let g:neocomplete#enable_auto_delimiter = 1
-    autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-
-endif
+" Use partial fuzzy matches like YouCompleteMe
+call deoplete#custom#set('_', 'matchers', ['matcher_fuzzy'])
+call deoplete#custom#set('_', 'converters', ['converter_remove_paren'])
+call deoplete#custom#set('_', 'disabled_syntaxes', ['Comment', 'String'])
 
 " }
 
