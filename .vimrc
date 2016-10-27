@@ -282,6 +282,12 @@ nnoremap <leader>th :!travis history --limit 3<CR>
 
 " --> Plugins {
 
+" --> ansible-vim {
+let g:ansible_attribute_highlight = "ab"
+let g:ansible_name_highlight = 'b'
+let g:ansible_extra_keywords_highlight = 1
+"  }
+
 " --> pytest.vim {
 nmap <silent><Leader>tp :Pytest project<CR>
 nmap <silent><Leader>ts :Pytest session<CR>
@@ -393,6 +399,8 @@ let g:delimitMate_smart_matchpairs = '^\%(\w\|\$\)'
 let g:syntastic_go_checkers = ['golint']
 let g:syntastic_sh_checkers = ['shellcheck']
 let g:syntastic_c_checkers = ['splint', 'make', 'gcc']
+let g:syntastic_yaml_checkers = ['yamllint']
+let g:syntastic_ansible_checkers = ['ansible_lint', 'yamllint']
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
