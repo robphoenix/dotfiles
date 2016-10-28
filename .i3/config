@@ -90,17 +90,19 @@ bindsym $mod+a focus parent
 
 set $ws1 ""
 set $ws2 ""
-set $ws3 ""
+set $ws3 ""
+set $ws4 ""
 
 assign [class="URxvt"] $ws1
 assign [class="google-chrome"] $ws2
-assign [class="Zeal"] $ws3
+assign [class="Tor Browser"] $ws3
+assign [class="Zeal"] $ws4
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
 bindsym $mod+3 workspace $ws3
-bindsym $mod+4 workspace 4
+bindsym $mod+4 workspace $ws4
 bindsym $mod+5 workspace 5
 bindsym $mod+6 workspace 6
 bindsym $mod+7 workspace 7
