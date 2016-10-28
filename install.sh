@@ -79,7 +79,8 @@ apt install -y \
     shellcheck \
     splint \
     dos2unix \
-    openvpn
+    openvpn \
+    clamav
 
 # oh-my-zsh
 wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
