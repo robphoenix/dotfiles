@@ -93,7 +93,7 @@ wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - 
 
 # Docker
 apt-cache policy docker-engine
-sudo apt -y install linux-image-extra-$(uname -r)
+sudo apt -y install "linux-image-extra-$(uname -r)"
 sudo apt -y install docker-engine
 sudo service docker start
 sudo groupadd docker
@@ -124,25 +124,24 @@ pip install -r requirements.txt
 pip3 install -r requirements3.txt
 
 # symlinks
-ln -sf $HOME/dotfiles/.zshenv $HOME/.zshenv
-ln -sf $HOME/dotfiles/.zshrc $HOME/.zshrc
-ln -sf $HOME/dotfiles/prompt.zsh $HOME/prompt.zsh
-ln -sf $HOME/dotfiles/.xsessionrc $HOME/.xsessionrc
-ln -sf $HOME/dotfiles/.Xresources $HOME/.Xresources
-ln -sf $HOME/dotfiles/.gitconfig $HOME/.gitconfig
-ln -sf $HOME/dotfiles/.fonts $HOME/.fonts
-ln -sf $HOME/dotfiles/.bashrc $HOME/.bashrc
-ln -sf $HOME/dotfiles/.i3/config $HOME/.config/i3/config
-ln -sf $HOME/dotfiles/.gitignore $HOME/.gitignore
-ln -sf $HOME/dotfiles/.dircolors $HOME/.dircolors
-ln -sf $HOME/dotfiles/rc.conf $HOME/.config/ranger/rc.conf
-ln -snf $HOME/dotfiles/.vim $HOME/.config/nvim
-ln -snf $HOME/dotfiles/.vimrc $HOME/.config/nvim/init.vim
-ln -sf $HOME/dotfiles/aliases $HOME/.oh-my-zsh/custom/aliases.zsh
-ln -sf $HOME/dotfiles/functions $HOME/.oh-my-zsh/custom/functions.zsh
-ln -sf $HOME/dotfiles/.ptpython/config.py $HOME/.ptpython/config.py
-ln -sf $HOME/dotfiles/.gnupg/gpg.conf $HOME/.gnupg/gpg.conf
-ln -sf $HOME/dotfiles/.gnupg/gpg-agent.conf $HOME/.gnupg/gpg-agent.conf
+ln -sf "$HOME/dotfiles/.zshenv" "$HOME/.zshenv"
+ln -sf "$HOME/dotfiles/.zshrc" "$HOME/.zshrc"
+ln -sf "$HOME/dotfiles/prompt.zsh" "$HOME/prompt.zsh"
+ln -sf "$HOME/dotfiles/.xsessionrc" "$HOME/.xsessionrc"
+ln -sf "$HOME/dotfiles/.Xresources" "$HOME/.Xresources"
+ln -sf "$HOME/dotfiles/.gitconfig" "$HOME/.gitconfig"
+ln -sf "$HOME/dotfiles/.fonts" "$HOME/.fonts"
+ln -sf "$HOME/dotfiles/.bashrc" "$HOME/.bashrc"
+ln -sf "$HOME/dotfiles/.i3/config" "$HOME/.config/i3/config"
+ln -sf "$HOME/dotfiles/.gitignore" "$HOME/.gitignore"
+ln -sf "$HOME/dotfiles/.dircolors" "$HOME/.dircolors"
+ln -sf "$HOME/dotfiles/rc.conf" "$HOME/.config/ranger/rc.conf"
+ln -snf "$HOME/dotfiles/.vim" "$HOME/.config/nvim"
+ln -snf "$HOME/dotfiles/.vimrc" "$HOME/.config/nvim/init.vim"
+ln -sf "$HOME/dotfiles/aliases" "$HOME/.oh-my-zsh/custom/aliases.zsh"
+ln -sf "$HOME/dotfiles/functions" "$HOME/.oh-my-zsh/custom/functions.zsh"
+ln -sf "$HOME/dotfiles/.gnupg/gpg.conf" "$HOME/.gnupg/gpg.conf"
+ln -sf "$HOME/dotfiles/.gnupg/gpg-agent.conf" "$HOME/.gnupg/gpg-agent.conf"
 
 sudo apt autoremove
 sudo apt autoclean
