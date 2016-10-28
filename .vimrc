@@ -171,7 +171,7 @@ let mapleader = "\<Space>"
 let g:mapleader = "\<Space>"
 
 " remap ESC
-inoremap jj <ESC>
+inoremap jk <ESC>
 
 " easily edit .vimrc in new buffer
 nmap <leader>v :edit $MYVIMRC<CR>

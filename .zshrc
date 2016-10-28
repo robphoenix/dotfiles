@@ -24,6 +24,9 @@ set -o vi
 # ensure gpg-agent is started
 gpg-agent
 
+# added by travis gem
+[ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
+
 
 # Set Options
 
@@ -59,11 +62,7 @@ setopt auto_name_dirs # any parameter that is set to the absolute name of a dire
 setopt complete_in_word # Allow completion from within a word/phrase
 
 # ===== Correction
-unsetopt correct_all # spelling correction for arguments
-setopt correct # spelling correction for commands
+unsetopt correct # turn off spelling correction for commands
 
 # ===== Scripts and Functions
 setopt multios # perform implicit tees or cats when multiple redirections are attempted
-
-# added by travis gem
-[ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh

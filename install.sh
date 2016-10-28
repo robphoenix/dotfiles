@@ -73,7 +73,6 @@ apt install -y \
     vagrant \
     virtualbox \
     bridge-utils \
-    python3-nose \
     gnupg2 \
     inetutils-traceroute \
     shellcheck \
