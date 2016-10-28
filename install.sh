@@ -79,6 +79,7 @@ apt install -y \
     shellcheck \
     splint \
     dos2unix \
+    openvpn
 
 # oh-my-zsh
 wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
@@ -114,6 +115,16 @@ sudo apt -y install python-pip python-dev build-essential pip3 python3-pip
 sudo pip install --upgrade pip
 pip install -r requirements.txt
 pip3 install -r requirements3.txt
+
+# Tor Browser
+sudo wget https://www.torproject.org/dist/torbrowser/6.0.5/tor-browser-linux64-6.0.5_en-US.tar.xz
+tar -xvJf ~/Downloads/tor-browser-linux64-6.0.5_en-US.tar.xz
+rm tor-browser-linux64-6.0.5_en-US.tar.xz
+
+# Private Internet Access VPN
+cd /etc/openvpn
+sudo wget https://www.privateinternetaccess.com/openvpn/openvpn.zip
+sudo unzip openvpn.zip
 
 # symlinks
 ln -sf "$HOME/dotfiles/.zshenv" "$HOME/.zshenv"
