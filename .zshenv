@@ -13,6 +13,7 @@ export LANG=en_GB.UTF-8
 export TERM=rxvt-unicode-256color
 export SSH_KEY_PATH="~/.ssh/id_rsa"
 export RANGER_LOAD_DEFAULT_RC=FALSE
+export EDITOR=nvim
 
 # PYTHON VIRTUALENVWRAPPER
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3

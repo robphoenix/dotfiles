@@ -80,7 +80,9 @@ apt install -y \
     splint \
     dos2unix \
     openvpn \
-    clamav
+    clamav \
+    fortune \
+    lolcat
 
 # oh-my-zsh
 wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
