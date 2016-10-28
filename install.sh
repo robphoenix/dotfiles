@@ -129,6 +129,11 @@ cd /etc/openvpn
 sudo wget https://www.privateinternetaccess.com/openvpn/openvpn.zip
 sudo unzip openvpn.zip
 
+# Keybase
+curl -O https://prerelease.keybase.io/keybase_amd64.deb
+sudo dpkg -i keybase_amd64.deb
+sudo apt-get install -f
+
 # symlinks
 ln -sf "$HOME/dotfiles/.zshenv" "$HOME/.zshenv"
 ln -sf "$HOME/dotfiles/.zshrc" "$HOME/.zshrc"
