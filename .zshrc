@@ -18,15 +18,14 @@ export VIRTUAL_ENV_DISABLE_PROMPT=1
 # solarized dir colours
 eval `dircolors ~/.dircolors`
 
+# added by travis gem
+[ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
+
 # vi mode in the terminal
 set -o vi
 
 # ensure gpg-agent is started
 gpg-agent
-
-# added by travis gem
-[ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
-
 
 # Set Options
 

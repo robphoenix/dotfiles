@@ -14,6 +14,10 @@ alias vd="vagrant destroy -f"
 # ansible
 alias apb="ansible-playbook"
 
+# start vpn
+alias vpnu="sudo openvpn ~/pia &"
+alias vpnd="sudo killall openvpn"
+
 # zsh
 alias relo="source ~/.zshrc"
 
