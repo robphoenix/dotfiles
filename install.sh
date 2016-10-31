@@ -34,6 +34,10 @@ echo "deb https://apt.dockerproject.org/repo ubuntu-xenial main" | sudo tee /etc
 # NodeJS
 curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
 
+# Spotify
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys BBEBDCB318AD50EC6865090613B00F1FD2C19886
+echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list
+
 # Apt
 apt update
 apt -y upgrade
@@ -82,7 +86,8 @@ apt install -y \
     openvpn \
     clamav \
     fortune \
-    lolcat
+    lolcat \
+    spotify-client
 
 # oh-my-zsh
 wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
