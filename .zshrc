@@ -25,7 +25,7 @@ eval `dircolors ~/.dircolors`
 set -o vi
 
 # ensure gpg-agent is started
-gpg-agent
+#gpg-agent
 
 # Set Options
 
