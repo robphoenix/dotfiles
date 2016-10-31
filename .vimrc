@@ -206,7 +206,6 @@ vnoremap H ^
 vnoremap L g_
 
 " spell checking
-nnoremap <leader>z z=<CR>
 nnoremap <F6> :setlocal spell! spell?<CR>
 
 " copy & paste to system clipboard
