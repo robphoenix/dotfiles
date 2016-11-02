@@ -85,8 +85,6 @@ apt install -y \
     dos2unix \
     openvpn \
     clamav \
-    fortune \
-    lolcat \
     spotify-client
 
 # oh-my-zsh

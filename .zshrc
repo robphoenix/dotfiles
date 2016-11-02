@@ -63,5 +63,3 @@ unsetopt correct # turn off spelling correction for commands
 # ===== Scripts and Functions
 setopt multios # perform implicit tees or cats when multiple redirections are attempted
 
-# fortune!!
-fortune -a | lolcat
