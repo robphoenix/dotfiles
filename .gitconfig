@@ -11,14 +11,14 @@
     aa = add --all
     po = push origin
     pom = push origin master
-    pod = push origin dev
+    pod = push origin develop
     fom = fetch origin master
-    fod = fetch origin dev
+    fod = fetch origin develop
     fo = fetch origin
     mom = merge origin/master
-    mod = merge origin/dev
+    mod = merge origin/develop
     rom = rebase origin/master
-    rod = rebase origin/dev
+    rod = rebase origin/develop
     h = reflog
     m = merge
     co = checkout
@@ -51,7 +51,7 @@
 [core]
 
     excludesfile = ~/.gitignore
-    editor = "if [[ '$OSTYPE' == 'linux-gnu' ]]; then EDITOR='nvim'; else EDITOR='vim'; fi; $EDITOR"
+	editor = nvim
 	trustctime = false
 
 [github]
@@ -65,5 +65,7 @@
 [gpg]
 
     program = gpg2
+
 [push]
+
 	default = matching
