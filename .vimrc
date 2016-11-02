@@ -63,6 +63,8 @@ autocmd ColorScheme * highlight BufTabLineHidden cterm=NONE ctermfg=011 ctermbg=
 syntax enable
 set background=dark
 colorscheme solarized
+" toggle background light/dark
+call togglebg#map("<F5>")
 
 set ruler                       " show the cursor position all the time
 set showcmd                     " show partial commands in status line and selected characters/lines in visual mode
@@ -560,13 +562,18 @@ let g:lightline = {
       \ 'active': {
       \   'left': [[ 'mode', 'paste' ], [ 'ctrlpmark' ],
       \            [ 'fugitive', 'modified' ]],
-      \   'right': [[ 'lineinfo', 'syntastic' ]]
+      \   'right': [ [ 'lineinfo' ],
+      \              [ 'percent' ],
+      \              [ 'fileformat', 'fileencoding', 'filetype' ],
+      \              [ 'syntastic' ]]
       \ },
       \ 'inactive': {
       \ },
       \ 'component_function': {
       \   'lineinfo': 'LightLineInfo',
+      \   'percent': 'LightLinePercent',
       \   'mode': 'LightLineMode',
+      \   'filetype': 'LightLineFiletype',
       \   'modified': 'LightLineModified',
       \   'fugitive': 'LightLineFugitive',
       \   'ctrlpmark': 'CtrlPMark',
@@ -592,7 +599,19 @@ function! LightLineModified()
 endfunction
 
 function! LightLineInfo()
-    return winwidth(0) > 60 ? printf("%-2d", col('.')) : ''
+  return winwidth(0) > 60 ? printf("%3d:%-2d", line('.'), col('.')) : ''
+endfunction
+
+function! LightLineFileformat()
+  return winwidth(0) > 70 ? &fileformat : ''
+endfunction
+
+function! LightLineFiletype()
+  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
+endfunction
+
+function! LightLineFileencoding()
+  return winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
 endfunction
 
 function! LightLineMode()
@@ -600,6 +619,10 @@ function! LightLineMode()
   return fname == 'ControlP' ? 'CtrlP' :
         \ &ft == 'vimfiler' ? 'VimFiler' :
         \ winwidth(0) > 60 ? lightline#mode() : ''
+endfunction
+
+function! LightLinePercent()
+  return &ft =~? 'vimfiler' ? '' : (100 * line('.') / line('$')) . '%'
 endfunction
 
 function! LightLineFugitive()
@@ -638,7 +661,7 @@ endfunction
 
 augroup AutoSyntastic
   autocmd!
-  autocmd BufWritePost *.go,*.py call s:syntastic()
+  autocmd BufWritePost *.sh,*.yaml,*.yml,*.c,*.go,*.py call s:syntastic()
 augroup END
 function! s:syntastic()
   SyntasticCheck
