@@ -519,7 +519,7 @@ nnoremap <leader>ga :Git add --all<CR>
 nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gb :Gbrowse<CR>
 nnoremap <leader>gpm :Gpush origin master<CR>
-nnoremap <leader>gpd :Gpush origin dev<CR>
+nnoremap <leader>gpd :Gpush origin develop<CR>
 nnoremap <leader>gpp :Gpush<Space>
 nnoremap <leader>gc :Gcommit<CR>
 nnoremap <leader>go :Git checkout<Space>

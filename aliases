@@ -57,6 +57,7 @@ alias su="sudo -i"
 alias s="sudo"
 alias up="sudo apt -y update && sudo apt -y upgrade"
 alias rd="sudo rm -r"
+alias cpd="sudo cp -r"
 alias bye="sudo shutdown now"
 alias reup="sudo reboot now"
 
