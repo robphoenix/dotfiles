@@ -24,6 +24,7 @@
     co = checkout
     con = checkout -b
     com = checkout master
+    cod = checkout develop
     cl = clone
     branches = branch -a
     tags = tag

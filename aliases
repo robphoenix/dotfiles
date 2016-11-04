@@ -37,6 +37,7 @@ alias g="git"
 alias gs="g s"
 alias gl="g l"
 alias gpm="g pom"
+alias gpd="g pod"
 alias gc="g c"
 alias ga="g aa"
 
