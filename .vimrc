@@ -161,8 +161,8 @@ let g:python3_host_prog = '/usr/bin/python3'
 let python_highlight_all=1
 
 " Yaml settings
-au BufNewFile,BufRead *.yaml setlocal noet ts=2 sw=2 sts=2
-au BufNewFile,BufRead *.yml setlocal noet ts=2 sw=2 sts=2
+au BufNewFile,BufRead *.yaml setlocal ts=2 sw=2 sts=2
+au BufNewFile,BufRead *.yml setlocal ts=2 sw=2 sts=2
 
 " Cisco config files
 au BufRead,BufNewFile *.cfg set filetype=cisco
