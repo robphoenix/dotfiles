@@ -16,6 +16,7 @@ Plug 'klen/python-mode'                 " Python
 Plug 'davidhalter/jedi-vim'             " Extra Python
 Plug 'zchee/deoplete-jedi'              " Python autocomplete
 Plug 'alfredodeza/pytest.vim'           " Python testing
+Plug 'jmcantrell/vim-virtualenv'        " Python Virtualenvs
 Plug 'kien/rainbow_parentheses.vim'     " Pretty Parens
 Plug 'scrooloose/syntastic'             " Syntax checker
 Plug 'SirVer/ultisnips'                 " Code snippets
@@ -489,8 +490,8 @@ let g:pymode_run_bind = '<leader>pr'
 let g:pymode_lint = 1
 let g:pymode_lint_on_write = 1
 let g:pymode_lint_message = 1
-let g:pymode_lint_checkers = ['flake8', 'pylint']
-let g:pymode_lint_ignore = "E501,F0002,E116"
+let g:pymode_lint_checkers = ['flake8']
+let g:pymode_lint_ignore = "E501,F0002,E115,E116"
 let g:pymode_lint_cwindow = 1
 let g:pymode_lint_signs = 1
 let g:pymode_rope = 0
@@ -560,12 +561,11 @@ let g:vim_markdown_conceal = 0
 " }
 
 " --> Lightline {
-
 let g:lightline = {
       \ 'colorscheme': 'solarized',
       \ 'active': {
       \   'left': [[ 'mode', 'paste' ], [ 'ctrlpmark' ],
-      \            [ 'fugitive', 'modified' ]],
+      \            [ 'fugitive', 'virtualenv', 'filename' ]],
       \   'right': [ [ 'lineinfo' ],
       \              [ 'percent' ],
       \              [ 'fileformat', 'fileencoding', 'filetype' ],
@@ -577,10 +577,13 @@ let g:lightline = {
       \   'lineinfo': 'LightLineInfo',
       \   'percent': 'LightLinePercent',
       \   'mode': 'LightLineMode',
+      \   'readonly': 'LightLineReadonly',
+      \   'filename': 'LightLineFilename',
       \   'filetype': 'LightLineFiletype',
       \   'modified': 'LightLineModified',
       \   'fugitive': 'LightLineFugitive',
       \   'ctrlpmark': 'CtrlPMark',
+      \   'virtualenv': 'LightLineVirtualenv',
       \ },
       \ 'component_expand': {
       \   'syntastic': 'SyntasticStatuslineFlag',
@@ -602,6 +605,22 @@ function! LightLineModified()
   endif
 endfunction
 
+function! LightLineReadonly()
+  if &filetype == "help"
+    return ""
+  elseif &readonly
+    return "⭤"
+  else
+    return ""
+  endif
+endfunction
+
+function! LightLineFilename()
+  return ('' != LightLineReadonly() ? LightLineReadonly() . ' ' : '') .
+       \ ('' != expand('%:t') ? expand('%:t') : '[No Name]') .
+       \ ('' != LightLineModified() ? ' ' . LightLineModified() : '')
+endfunction
+
 function! LightLineInfo()
   return winwidth(0) > 60 ? printf("%3d:%-2d", line('.'), col('.')) : ''
 endfunction
@@ -621,7 +640,7 @@ endfunction
 function! LightLineMode()
   let fname = expand('%:t')
   return fname == 'ControlP' ? 'CtrlP' :
-        \ &ft == 'vimfiler' ? 'VimFiler' :
+        \ fname =~ 'NERD_tree' ? 'NERDTree' :
         \ winwidth(0) > 60 ? lightline#mode() : ''
 endfunction
 
@@ -629,8 +648,20 @@ function! LightLinePercent()
   return &ft =~? 'vimfiler' ? '' : (100 * line('.') / line('$')) . '%'
 endfunction
 
+let g:tagbar_status_func = 'TagbarStatusFunc'
+
+function! TagbarStatusFunc(current, sort, fname, ...) abort
+    let g:lightline.fname = a:fname
+  return lightline#statusline(0)
+endfunction
+
 function! LightLineFugitive()
   return exists('*fugitive#head') ? fugitive#head() : ''
+endfunction
+
+function! LightLineVirtualenv()
+  "return exists('*virtualenv#statusline') ? virtualenv#statusline() : ''
+  return virtualenv#statusline()
 endfunction
 
 function! LightLineReadonly()
