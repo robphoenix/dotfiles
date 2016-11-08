@@ -5,6 +5,7 @@ alias l="ls -I.cache -I__pycache__ -I.git -Inode_modules -I.vagrant -I.DS_Store 
 alias web="google-chrome"
 alias open="xdg-open"
 alias f="fuck"
+alias gpg="gpg2"
 
 # vagrant
 alias vup="vagrant up && vagrant ssh"

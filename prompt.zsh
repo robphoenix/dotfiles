@@ -17,7 +17,7 @@ function virtualenv_info {
 function zle-line-init zle-keymap-select {
   VIM_PROMPT="%{$fg[blue]%} ••%{$reset_color%}"
   PS1="
-%{$fg[green]%}%~\
+%{$fg[green]%}%2~\
 $(__posh_git_echo)\
 %{$fg[magenta]%}\$(virtualenv_info)\
 ${${KEYMAP/vicmd/\$VIM_PROMPT}/(main|viins)/}

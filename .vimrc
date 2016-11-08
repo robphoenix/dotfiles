@@ -285,7 +285,7 @@ nnoremap <leader>ff :CtrlP<CR>
 nnoremap <leader>fm :CtrlPMRU<CR>
 
 " make current C program, output has same name
-autocmd FileType c nnoremap <silent> <leader>mc :!clear;gcc % -o %:r.out && ./%:r.out<CR>
+autocmd FileType c nnoremap <silent> <leader>mc :!clear;gcc % -o %:r.out<CR>
 
 " travis-ci
 nnoremap <leader>th :!travis history --limit 3<CR>
