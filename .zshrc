@@ -6,7 +6,7 @@ ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
 HIST_STAMPS="dd.mm.yyyy"
 
-plugins=(z thefuck virtualenvwrapper ssh-agent gpg-agent)
+plugins=(z thefuck virtualenvwrapper ssh-agent gpg-agent zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 source ~/dotfiles/git-prompt.sh
@@ -63,7 +63,13 @@ unsetopt correct # turn off spelling correction for commands
 # ===== Scripts and Functions
 setopt multios # perform implicit tees or cats when multiple redirections are attempted
 
-
-
+# Base16 colour schemes
 BASE16_SHELL=$HOME/.config/base16-shell/
 [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
+
+# ZSH history substring search
+source $HOME/dotfiles/zsh-history-substring-search.zsh
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
