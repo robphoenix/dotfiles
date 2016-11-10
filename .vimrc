@@ -69,7 +69,7 @@ let base16colorspace=256  " Access colors present in 256 colorspace
 colorscheme base16-default-dark
 "colorscheme solarized
 " toggle background light/dark
-call togglebg#map("<F5>")
+"call togglebg#map("<F5>")
 
 set ruler                       " show the cursor position all the time
 set showcmd                     " show partial commands in status line and selected characters/lines in visual mode
@@ -129,6 +129,10 @@ set spell                       " spell checking on
 set spelllang=en_gb
 set noundofile                  " no annoying .un~ files
 set modelines=1
+set cursorline
+
+" incremental command live feedback
+set inccommand=split
 
 " Time out on key codes but not mappings.
 " Basically this makes terminal Vim work sanely.
@@ -152,7 +156,7 @@ autocmd InsertEnter * :set number norelativenumber
 autocmd InsertLeave * :set relativenumber number
 
 " highlight cursorline only in INSERT mode
-:autocmd InsertEnter,InsertLeave * set cul!
+":autocmd InsertEnter,InsertLeave * set cul!
 
 " Vim interprets .md as 'modula2' otherwise, see :set filetype?
 au Bufread,BufNewFile *.md setlocal filetype=markdown textwidth=80 wrap
@@ -191,10 +195,14 @@ nmap <leader>v :edit $MYVIMRC<CR>
 nmap <leader><leader> V
 
 "split navigations
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
+nnoremap <C-J> <C-W>j
+nnoremap <C-K> <C-W>k
+nnoremap <C-L> <C-W>l
+nnoremap <C-H> <C-W>h
+tnoremap <C-h> <C-\><C-n><C-w>h
+tnoremap <C-j> <C-\><C-n><C-w>j
+tnoremap <C-k> <C-\><C-n><C-w>k
+tnoremap <C-l> <C-\><C-n><C-w>l
 
 " Buffer switching
 nnoremap <TAB> :bn<CR>
@@ -256,8 +264,11 @@ nnoremap k gk
 vnoremap j gj
 vnoremap k gk
 
-"clearing highlighted search
+" clear highlighted search
 nmap <silent> <leader>/ :nohlsearch<CR>
+
+" substitution
+nnoremap <leader>s :%s/
 
 " deal with quickfix easily
 map <leader>cn :cnext<CR>
@@ -293,6 +304,18 @@ autocmd FileType c nnoremap <silent> <leader>mc :!clear;gcc % -o %:r.out<CR>
 
 " travis-ci
 nnoremap <leader>th :!travis history --limit 3<CR>
+
+" integrated terminal
+nnoremap <leader>tr :50vsp term://zsh<CR>
+nnoremap <leader>ty :50vsp term://bpython<CR>
+tnoremap <leader>e <c-\><c-n>
+:au BufEnter * if &buftype == 'terminal' | :startinsert | endif
+
+" resizing
+nnoremap <silent> <a-h> :vertical resize +10<cr>
+nnoremap <silent> <a-l> :vertical resize -10<cr>
+nnoremap <silent> <a-j> :res -10<cr>
+nnoremap <silent> <a-k> :res -10<cr>
 
 " }
 
@@ -393,39 +416,37 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 
 " --> vim-go {
 
-if has('nvim')
-    " let g:go_fmt_fail_silently = 1
-    let g:go_list_type = "quickfix"
-    let g:go_fmt_command = "goimports"
-    let g:go_metalinter_autosave = 0
-    let g:go_autodetect_gopath = 1
-    let g:go_term_enabled = 1
-    let g:go_highlight_types = 1
-    let g:go_highlight_fields = 1
-    let g:go_highlight_operators = 1
-    let g:go_highlight_methods = 1
-    let g:go_highlight_functions = 1
-    let g:go_highlight_structs = 1
-    let g:go_highlight_build_constraints = 1
-    let g:go_highlight_space_tab_error = 1
-    let g:go_highlight_array_whitespace_error = 1
-    let g:go_highlight_trailing_whitespace_error = 1
-    let g:go_highlight_extra_types = 0
-    let g:go_term_width = 30
-    let g:go_term_enabled = 1
-    let g:go_auto_sameids = 1
-    let g:go_auto_type_info = 1
-    set updatetime=100
+" let g:go_fmt_fail_silently = 1
+let g:go_list_type = "quickfix"
+let g:go_fmt_command = "goimports"
+let g:go_metalinter_autosave = 0
+let g:go_autodetect_gopath = 1
+let g:go_term_enabled = 1
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_space_tab_error = 1
+let g:go_highlight_array_whitespace_error = 1
+let g:go_highlight_trailing_whitespace_error = 1
+let g:go_highlight_extra_types = 0
+let g:go_term_width = 30
+let g:go_term_enabled = 1
+let g:go_auto_sameids = 1
+let g:go_auto_type_info = 1
+set updatetime=100
 
-    autocmd FileType go nmap <Leader>l  <Plug>(go-metalinter)
-    autocmd FileType go nmap <leader>b  <Plug>(go-build)
-    autocmd FileType go nmap <leader>rr  <Plug>(go-run)
-    autocmd FileType go nmap <leader>t  <Plug>(go-test)
-    autocmd FileType go nmap <leader>d :GoDecls<CR>
-    autocmd FileType go nmap <leader>cd :GoDeclsDir<CR>
-    autocmd FileType go nmap <leader>rn :GoRename<space>
-    autocmd FileType go nmap <leader>gp :GoPlay<space>
-endif
+autocmd FileType go nmap <Leader>gl  <Plug>(go-metalinter)
+autocmd FileType go nmap <leader>gb  <Plug>(go-build)
+autocmd FileType go nmap <leader>gr  <Plug>(go-run)
+autocmd FileType go nmap <leader>gt  <Plug>(go-test)
+autocmd FileType go nmap <leader>gd :GoDecls<CR>
+autocmd FileType go nmap <leader>cd :GoDeclsDir<CR>
+autocmd FileType go nmap <leader>rn :GoRename<space>
+autocmd FileType go nmap <leader>gp :GoPlay<space>
 
 " }
 
