@@ -38,6 +38,9 @@ Plug 'Shougo/deoplete.nvim'             " NeoVim autocomplete
 Plug 'zchee/deoplete-go'                " Go autocomplete
 Plug 'crosbymichael/vim-cfmt'           " Auto-format C code
 Plug 'vim-scripts/cisco.vim'            " Cisco config highlighting
+Plug 'chriskempson/base16-vim'
+Plug 'kien/rainbow_parentheses.vim'
+Plug 'daviesjamie/vim-base16-lightline'
 
 call plug#end()
 
@@ -62,7 +65,9 @@ autocmd ColorScheme * highlight BufTabLineHidden cterm=NONE ctermfg=011 ctermbg=
 " Solarized Colours
 syntax enable
 set background=dark
-colorscheme solarized
+let base16colorspace=256  " Access colors present in 256 colorspace
+colorscheme base16-default-dark
+"colorscheme solarized
 " toggle background light/dark
 call togglebg#map("<F5>")
 
@@ -292,6 +297,35 @@ nnoremap <leader>th :!travis history --limit 3<CR>
 " }
 
 " --> Plugins {
+
+" --> Rainbow Parentheses {
+let g:rbpt_colorpairs = [
+    \ ['brown',       'RoyalBlue3'],
+    \ ['Darkblue',    'SeaGreen3'],
+    \ ['darkgray',    'DarkOrchid3'],
+    \ ['darkgreen',   'firebrick3'],
+    \ ['darkcyan',    'RoyalBlue3'],
+    \ ['darkred',     'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['brown',       'firebrick3'],
+    \ ['gray',        'RoyalBlue3'],
+    \ ['black',       'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['Darkblue',    'firebrick3'],
+    \ ['darkgreen',   'RoyalBlue3'],
+    \ ['darkcyan',    'SeaGreen3'],
+    \ ['darkred',     'DarkOrchid3'],
+    \ ['red',         'firebrick3'],
+    \ ]
+
+let g:rbpt_max = 16
+let g:rbpt_loadcmd_toggle = 0
+
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
+"  }
 
 " --> ansible-vim {
 let g:ansible_attribute_highlight = "ab"
@@ -561,7 +595,7 @@ let g:vim_markdown_conceal = 0
 
 " --> Lightline {
 let g:lightline = {
-      \ 'colorscheme': 'solarized',
+      \ 'colorscheme': 'base16',
       \ 'active': {
       \   'left': [[ 'mode', 'paste' ], [ 'ctrlpmark' ],
       \            [ 'fugitive', 'virtualenv', 'filename' ]],

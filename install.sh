@@ -11,7 +11,7 @@ mkdir ~/code/go/pkg
 mkdir ~/code/go/bin
 mkdir ~/code/python
 mkdir ~/code/ansible
-mkdir -p ${XDG_CONFIG_HOME:=$HOME/.config}
+mkdir -p "${XDG_CONFIG_HOME:=$HOME/.config}"
 
 # turn off translations, speed up apt-get update
 mkdir -p /etc/apt/apt.conf.d
@@ -137,6 +137,9 @@ curl -O https://prerelease.keybase.io/keybase_amd64.deb
 sudo dpkg -i keybase_amd64.deb
 sudo apt-get install -f
 
+# Base16 colorscheme
+git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
+
 # symlinks
 ln -sf "$HOME/dotfiles/.zshenv" "$HOME/.zshenv"
 ln -sf "$HOME/dotfiles/.zshrc" "$HOME/.zshrc"
@@ -162,4 +165,4 @@ sudo apt autoclean
 sudo apt clean
 
 # change shell to zsh
-chsh -s `which zsh`
+chsh -s "$(which zsh)"
