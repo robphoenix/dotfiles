@@ -40,7 +40,8 @@ alias gl="g l"
 alias gpm="g pom"
 alias gpd="g pod"
 alias gc="g c"
-alias ga="g aa"
+alias ga="g a"
+alias gaa="g aa"
 
 # exercism
 alias exf="exercism fetch"

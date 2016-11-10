@@ -8,6 +8,7 @@
 
     s = status -s
     c = commit -S -m
+    a = add
     aa = add --all
     po = push origin
     pom = push origin master

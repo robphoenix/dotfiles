@@ -95,6 +95,7 @@ set $ws4 ""
 set $ws5 ""
 
 assign [class="URxvt"] $ws1
+for_window [class="URxvt"] enable border pixel 0 sizehints disable
 assign [class="google-chrome"] $ws2
 assign [class="^Spotify$"] $ws3
 assign [class="^Spotify Premium$"] $ws3
@@ -166,22 +167,22 @@ bar {
         tray_output none
 
         colors {
-            separator  $base03
-            background $base03
-            statusline $base05
+            separator  #000000
+            background #000000
+            statusline #ffffff
             #                  border  background text
-            focused_workspace  $base02 $base02    $base06
-            active_workspace   $base03 $base03    $base05
-            inactive_workspace $base03 $base03    $base05
+            focused_workspace  #000000 #000000    #ffffff
+            active_workspace   #000000 #000000    $base05
+            inactive_workspace #000000 #000000    $base05
             urgent_workspace   $base03 $base03    $base05
     }
 }
 
 # Window Colours
 #                         border  background text    indicator
-  client.focused          $base06 $base03    $base06 $base02
-  client.focused_inactive $base02 $base02    $base06 $base02
-  client.unfocused        $base02 $base02    $base05 $base03
+  client.focused          #000000 #000000    $base06 $base02
+  client.focused_inactive #000000 #000000    $base06 $base02
+  client.unfocused        #000000 #000000    $base05 $base03
   client.urgent           $base03 $base06    $base03 $base06
 
 # i3lock
