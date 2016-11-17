@@ -124,15 +124,13 @@ set noerrorbells                " don't bell or blink
 set hidden                      " hide buffers, don't close
 set autowrite                   " Automatically save before :next, :make etc.
 set virtualedit=onemore         " allow for cursor beyond last character
-set history=1000                " Store a ton of history (default is 20)
+set history=1000                " Store a ton of commands/search history (default is 20)
 set spell                       " spell checking on
-set spelllang=en_gb
+set spelllang=en_gb             " jolly good spelling chap
 set noundofile                  " no annoying .un~ files
 set modelines=1
-set cursorline
-
-" incremental command live feedback
-set inccommand=split
+set cursorline                  " let's highlight the line the cursor is on
+set inccommand=split            " incremental command live feedback
 
 " Time out on key codes but not mappings.
 " Basically this makes terminal Vim work sanely.
@@ -312,6 +310,13 @@ nnoremap <silent> <a-h> :vertical resize +10<cr>
 nnoremap <silent> <a-l> :vertical resize -10<cr>
 nnoremap <silent> <a-j> :res -10<cr>
 nnoremap <silent> <a-k> :res -10<cr>
+
+" navigating commands history
+cnoremap <c-k> <Up>
+cnoremap <c-j> <Down>
+
+" read output of shell commands to file
+nnoremap <leader>r :read !
 
 " }
 
