@@ -88,11 +88,11 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
-set $ws1 ""
-set $ws2 ""
-set $ws3 ""
-set $ws4 ""
-set $ws5 ""
+set $ws1 "1:"
+set $ws2 "2:"
+set $ws3 "3:"
+set $ws4 "4:"
+set $ws5 "5:"
 
 assign [class="URxvt"] $ws1
 for_window [class="URxvt"] enable border pixel 0 sizehints disable
@@ -165,11 +165,15 @@ bindsym $mod+r mode " "
 bar {
         status_command i3status --config ~/dotfiles/.i3/status.conf
         tray_output none
+        mode hide
+        hidden_state show
+        modifier Mod4
+        strip_workspace_numbers yes
 
         colors {
             separator  #000000
             background #000000
-            statusline #ffffff
+            statusline #daddd8
             #                  border  background text
             focused_workspace  #000000 #000000    #ffffff
             active_workspace   #000000 #000000    $base05
