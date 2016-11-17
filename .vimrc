@@ -83,7 +83,7 @@ set autoread                    " Automatically reread changed files without ask
 set relativenumber              " relative line numbers - combined with `set number` gives hybrid mode
 set number                      " line numbers - combined with `set relativenumber` gives hybrid mode
 set wildmenu                    " show list instead of just completing
-set wildmode=list:longest,full  " list matches, then longest common part, then all
+set wildmode=full               " list matches, then longest common part, then all
 au FocusLost * :wa              " Set vim to save the file on focus out.
 set fileformats=unix,dos,mac    " Prefer Unix over Windows over OS 9 formats
 set noshowmatch                 " Do not show matching brackets by flickering
