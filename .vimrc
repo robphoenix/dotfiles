@@ -83,7 +83,7 @@ set autoread                    " Automatically reread changed files without ask
 set relativenumber              " relative line numbers - combined with `set number` gives hybrid mode
 set number                      " line numbers - combined with `set relativenumber` gives hybrid mode
 set wildmenu                    " show list instead of just completing
-set wildmode=full               " list matches, then longest common part, then all
+set wildmode=full               " zsh-like autcomplete menu for Ex commands
 au FocusLost * :wa              " Set vim to save the file on focus out.
 set fileformats=unix,dos,mac    " Prefer Unix over Windows over OS 9 formats
 set noshowmatch                 " Do not show matching brackets by flickering
@@ -268,7 +268,7 @@ vnoremap k gk
 nmap <silent> <leader>/ :nohlsearch<CR>
 
 " substitution
-nnoremap <leader>s :%s/
+nnoremap <leader>s :%s/<C-r><C-w>/
 
 " deal with quickfix easily
 map <leader>cn :cnext<CR>
@@ -294,10 +294,6 @@ map <leader>ev :vsp %%
 " Allow using the repeat operator with a visual selection (!)
 " http://stackoverflow.com/a/8064607/127816
 vnoremap . :normal .<CR>
-
-" find files
-nnoremap <leader>ff :CtrlP<CR>
-nnoremap <leader>fm :CtrlPMRU<CR>
 
 " make current C program, output has same name
 autocmd FileType c nnoremap <silent> <leader>mc :!clear;gcc % -o %:r.out<CR>
@@ -505,6 +501,9 @@ let g:ctrlp_cache_dir = $HOME.'/.cache/ctrlp'
 let g:ctrlp_follow_symlinks = 1
 let g:ctrlp_line_prefix = '>'
 let g:ctrlp_buftag_types = {'go' : '--language-force=go --golang-types=ftv'}
+" find files
+nnoremap <leader>ff :CtrlP<CR>
+nnoremap <leader>fm :CtrlPMRU<CR>
 
 " }
 
