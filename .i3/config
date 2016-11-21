@@ -72,9 +72,9 @@ bindsym $mod+v split v
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+#bindsym $mod+s layout stacking
+bindsym $mod+t layout tabbed
+bindsym $mod+s layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -95,7 +95,6 @@ set $ws4 "4:"
 set $ws5 "5:"
 
 assign [class="URxvt"] $ws1
-for_window [class="URxvt"] enable border pixel 0 sizehints disable
 assign [class="google-chrome"] $ws2
 assign [class="^Spotify$"] $ws3
 assign [class="^Spotify Premium$"] $ws3
@@ -166,7 +165,7 @@ bar {
         status_command i3status --config ~/dotfiles/.i3/status.conf
         tray_output none
         mode hide
-        hidden_state show
+        #hidden_state show
         modifier Mod4
         strip_workspace_numbers yes
 
