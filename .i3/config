@@ -1,22 +1,34 @@
-set $mod Mod4
+# ~/.i3/config
+# i3 config template
+# Base16 Eighties by Chris Kempson (http://chriskempson.com)
+# template by Matt Parnell, @parnmatt
 
-# Colour constants
-set $base00        #657b83
-set $base01        #586e75
-set $base02        #073642
-set $base03        #002b36
-set $base04        #839496
-set $base05        #93a1a1
-set $base06        #eee8d5
-set $base07        #fdf6e3
-set $base_yellow   #b58900
-set $base_orange   #cb4b16
-set $base_red      #dc322f
-set $base_magenta  #d33682
-set $base_violet   #6c71c4
-set $base_blue     #268bd2
-set $base_cyan     #2aa198
-set $base_green    #859900
+set $base00 #2d2d2d
+set $base01 #393939
+set $base02 #515151
+set $base03 #747369
+set $base04 #a09f93
+set $base05 #d3d0c8
+set $base06 #e8e6df
+set $base07 #f2f0ec
+set $base08 #f2777a
+set $base09 #f99157
+set $base0A #ffcc66
+set $base0B #99cc99
+set $base0C #66cccc
+set $base0D #6699cc
+set $base0E #cc99cc
+set $base0F #d27b53
+
+# Window Colours
+#                           border  bg      text    indicator
+client.focused              $base0D $base0D $base00 $base01
+client.focused_inactive     $base02 $base02 $base03 $base01
+client.unfocused            $base01 $base01 $base03 $base01
+client.urgent               $base02 $base08 $base07 $base08
+
+# Windows key as modifier
+set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -164,32 +176,24 @@ bindsym $mod+r mode " "
 bar {
         status_command i3status --config ~/dotfiles/.i3/status.conf
         tray_output none
-        mode hide
-        #hidden_state show
-        modifier Mod4
         strip_workspace_numbers yes
 
         colors {
-            separator  #000000
-            background #000000
-            statusline #daddd8
-            #                  border  background text
-            focused_workspace  #000000 #000000    #ffffff
-            active_workspace   #000000 #000000    $base05
-            inactive_workspace #000000 #000000    $base05
-            urgent_workspace   $base03 $base03    $base05
+
+        separator   $base01
+        background  $base01
+        statusline  $base05
+
+        #                   border  bg      text
+        focused_workspace   $base0D $base0D $base00
+        active_workspace    $base02 $base02 $base07
+        inactive_workspace  $base01 $base01 $base03
+        urgent_workspace    $base08 $base08 $base07
     }
 }
 
-# Window Colours
-#                         border  background text    indicator
-  client.focused          #000000 #000000    $base06 $base02
-  client.focused_inactive #000000 #000000    $base06 $base02
-  client.unfocused        #000000 #000000    $base05 $base03
-  client.urgent           $base03 $base06    $base03 $base06
-
 # i3lock
-bindsym $mod+semicolon exec i3lock --color '$base_yellow'
+bindsym $mod+semicolon exec i3lock --color '$base0F'
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume

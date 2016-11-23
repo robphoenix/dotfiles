@@ -1,37 +1,37 @@
-! Base16 Default
+! Base16 Eighties
 ! Scheme: Chris Kempson (http://chriskempson.com)
 
-URxvt*background:                     #000000
-URxvt*foreground:                     #d8d8d8
-URxvt*cursorColor:                    #d8d8d8
+URxvt*background:                     #393939
+URxvt*foreground:                     #d3d0c8
+URxvt*cursorColor:                    #d3d0c8
 
-URxvt*scrollColor:                    #d8d8d8
-URxvt*highlightColor:                 #383838
-URxvt*highlightTextColor:             #b8b8b8
+URxvt*scrollColor:                    #d3d0c8
+URxvt*highlightColor:                 #515151
+URxvt*highlightTextColor:             #a09f93
 
-URxvt*color0:                         #181818
-URxvt*color1:                         #ab4642
-URxvt*color2:                         #a1b56c
-URxvt*color3:                         #f7ca88
-URxvt*color4:                         #7cafc2
-URxvt*color5:                         #ba8baf
-URxvt*color6:                         #86c1b9
-URxvt*color7:                         #d8d8d8
-URxvt*color8:                         #585858
-URxvt*color9:                         #ab4642
-URxvt*color10:                        #a1b56c
-URxvt*color11:                        #f7ca88
-URxvt*color12:                        #7cafc2
-URxvt*color13:                        #ba8baf
-URxvt*color14:                        #86c1b9
-URxvt*color15:                        #f8f8f8
+URxvt*color0:                         #2d2d2d
+URxvt*color1:                         #f2777a
+URxvt*color2:                         #99cc99
+URxvt*color3:                         #ffcc66
+URxvt*color4:                         #6699cc
+URxvt*color5:                         #cc99cc
+URxvt*color6:                         #66cccc
+URxvt*color7:                         #d3d0c8
+URxvt*color8:                         #747369
+URxvt*color9:                         #f2777a
+URxvt*color10:                        #99cc99
+URxvt*color11:                        #ffcc66
+URxvt*color12:                        #6699cc
+URxvt*color13:                        #cc99cc
+URxvt*color14:                        #66cccc
+URxvt*color15:                        #f2f0ec
 
-URxvt*color16:                        #dc9656
-URxvt*color17:                        #a16946
-URxvt*color18:                        #282828
-URxvt*color19:                        #383838
-URxvt*color20:                        #b8b8b8
-URxvt*color21:                        #e8e8e8
+URxvt*color16:                        #f99157
+URxvt*color17:                        #d27b53
+URxvt*color18:                        #393939
+URxvt*color19:                        #515151
+URxvt*color20:                        #a09f93
+URxvt*color21:                        #e8e6df
 
 !-- Xft settings -- !
 Xft.dpi:        184
@@ -50,7 +50,8 @@ URxvt.boldFont:xft:input:style=Bold,pixelsize=35
 
 ! -- Borders -- !
 URxvt*internalBorder: 0
-URxvt*externalBorder: 0
+URxvt*externalBorder: 1
+URxvt*background.border: false
 
 !! scroll
 !! do not scroll with output
@@ -79,3 +80,13 @@ URxvt.keysym.M-Left:        \033[1;5D
 URxvt.keysym.M-Right:       \033[1;5C
 URxvt.keysym.Control-Left:  \033[1;5D
 URxvt.keysym.Control-Right: \033[1;5C
+
+URxvt.perl-ext-common: font-size
+
+!! Increase/Decrease font size
+URxvt.keysym.C-Up:     font-size:increase
+URxvt.keysym.C-Down:   font-size:decrease
+URxvt.keysym.C-S-Up:   font-size:incglobal
+URxvt.keysym.C-S-Down: font-size:decglobal
+URxvt.keysym.C-equal:  font-size:reset
+URxvt.keysym.C-slash:  font-size:show
