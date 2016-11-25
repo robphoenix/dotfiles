@@ -29,7 +29,8 @@ alias pty="ptpython"
 alias pyt="py.test"
 alias mkv="mkvirtualenv -a ."
 alias off="deactivate"
-alias on="source ./bin/activate"
+alias pi="sudo -H pip install -U"
+alias pu="sudo -H pip uninstall"
 
 # go
 alias gt="go test -v -cover"

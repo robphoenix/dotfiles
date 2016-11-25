@@ -420,7 +420,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " let g:go_fmt_fail_silently = 1
 let g:go_list_type = "quickfix"
 let g:go_fmt_command = "goimports"
-let g:go_metalinter_autosave = 0
+let g:go_metalinter_autosave = 1
 let g:go_autodetect_gopath = 1
 let g:go_term_enabled = 1
 let g:go_highlight_types = 1
@@ -433,11 +433,12 @@ let g:go_highlight_build_constraints = 1
 let g:go_highlight_space_tab_error = 1
 let g:go_highlight_array_whitespace_error = 1
 let g:go_highlight_trailing_whitespace_error = 1
-let g:go_highlight_extra_types = 0
+let g:go_highlight_extra_types = 1
 let g:go_term_width = 30
 let g:go_term_enabled = 1
 let g:go_auto_sameids = 1
 let g:go_auto_type_info = 1
+let g:go_snippet_engine = "ultisnips"
 set updatetime=100
 
 autocmd FileType go nmap <Leader>gl  <Plug>(go-metalinter)
@@ -463,7 +464,7 @@ let g:delimitMate_smart_matchpairs = '^\%(\w\|\$\)'
 
 " --> Syntastic {
 
-let g:syntastic_go_checkers = ['golint']
+let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
 let g:syntastic_sh_checkers = ['shellcheck']
 let g:syntastic_c_checkers = ['splint', 'make', 'gcc']
 let g:syntastic_yaml_checkers = ['yamllint']
@@ -474,7 +475,7 @@ set statusline+=%*
 " let python-mode handle syntax checking
 let g:syntastic_mode_map = {
         \ "mode": "active",
-        \ "passive_filetypes": ["python"] }
+        \ "passive_filetypes": ["python", "go"] }
 
 nmap <leader>ee :Errors<cr>
 let g:syntastic_always_populate_loc_list = 1
