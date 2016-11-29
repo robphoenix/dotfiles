@@ -131,6 +131,7 @@ set noundofile                  " no annoying .un~ files
 set modelines=1
 set cursorline                  " let's highlight the line the cursor is on
 set inccommand=split            " incremental command live feedback
+set grepprg=pt
 
 " Time out on key codes but not mappings.
 " Basically this makes terminal Vim work sanely.
@@ -265,13 +266,20 @@ vnoremap k gk
 " clear highlighted search
 nmap <silent> <leader>/ :nohlsearch<CR>
 
-" substitution
-nnoremap <leader>s :%s/<C-r><C-w>/
+" substitution (replace)
+nnoremap <leader>r :%s/<C-r><C-w>/
+
+" grep with pt
+nnoremap <leader>st :grep! <C-r><C-w> %<CR>:cw<CR>
+nnoremap <leader>sa :grep! <C-r><C-w> <CR>:cw<CR>
+command -nargs=+ -complete=file -bar Pt silent! grep! <args>|cwindow|redraw!
+nnoremap \ :Pt<space>
 
 " deal with quickfix easily
-map <leader>cn :cnext<CR>
-map <leader>cp :cprevious<CR>
-nnoremap <leader>a :cclose<CR>
+map <C-j> :cnext<CR>
+map <C-k> :cprevious<CR>
+nnoremap <C-l> :cclose<CR>
+nnoremap <C-h> :copen<CR>
 
 " close location list
 map <leader>ln :lnext<CR>
