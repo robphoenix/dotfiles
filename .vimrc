@@ -10,7 +10,8 @@ Plug 'Xuyuanp/nerdtree-git-plugin'      " Git gutter markers in NERDTree
 Plug 'ctrlpvim/ctrlp.vim'               " Fuzzy Finder
 Plug 'ntpeters/vim-better-whitespace'   " Remove whitespace
 Plug 'Raimondi/delimitMate'             " Auto-insert closing delimiters
-Plug 'itchyny/lightline.vim'            " Sweet statusline
+Plug 'vim-airline/vim-airline'          " Sweet statusline
+Plug 'vim-airline/vim-airline-themes'   " Sweet statusline themes
 Plug 'scrooloose/nerdtree'              " File explorer
 Plug 'klen/python-mode'                 " Python
 Plug 'davidhalter/jedi-vim'             " Extra Python
@@ -26,7 +27,6 @@ Plug 'majutsushi/tagbar'                " Overview of Structure
 Plug 'mhinz/vim-startify'               " Fancy start screen
 Plug 'terryma/vim-expand-region'        " Visually select increasingly larger regions of text using the same key combination
 Plug 'ervandew/supertab'                " Use tab to for completions
-Plug 'ap/vim-buftabline'                " Buffer info in tabs
 Plug 'scrooloose/nerdcommenter'         " Comments
 Plug 'Yggdroot/indentLine'              " Visualize indentation levels
 Plug 'mhinz/vim-sayonara'               " Easy buffer closing
@@ -40,7 +40,6 @@ Plug 'crosbymichael/vim-cfmt'           " Auto-format C code
 Plug 'vim-scripts/cisco.vim'            " Cisco config highlighting
 Plug 'chriskempson/base16-vim'
 Plug 'kien/rainbow_parentheses.vim'
-Plug 'daviesjamie/vim-base16-lightline'
 
 call plug#end()
 
@@ -276,10 +275,10 @@ command -nargs=+ -complete=file -bar Pt silent! grep! <args>|cwindow|redraw!
 nnoremap \ :Pt<space>
 
 " deal with quickfix easily
-map <C-j> :cnext<CR>
-map <C-k> :cprevious<CR>
-nnoremap <C-l> :cclose<CR>
-nnoremap <C-h> :copen<CR>
+map <leader>f :cnext<CR>
+map <leader>d :cprevious<CR>
+nnoremap <leader>a :cclose<CR>
+nnoremap <leader>ss :copen<CR>
 
 " close location list
 map <leader>ln :lnext<CR>
@@ -326,9 +325,48 @@ cnoremap <c-j> <Down>
 " read output of shell commands to file
 nnoremap <leader>r :read !
 
+" Exercism
+nnoremap <leader>exs :!exercism submit ./%<CR>
+
 " }
 
 " --> Plugins {
+
+" --> vim-airline {
+
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ''
+let g:airline#extensions#tabline#left_alt_sep = ''
+let g:airline#extensions#tabline#right_sep = ''
+let g:airline#extensions#tabline#right_alt_sep = ''
+let g:airline_left_sep=''
+let g:airline_right_sep=''
+let g:airline_powerline_fonts=1
+let g:airline#extensions#tabline#buffer_nr_show = 0
+let g:airline_mode_map = {
+      \ '__' : '-',
+      \ 'n'  : 'N',
+      \ 'i'  : 'I',
+      \ 'R'  : 'R',
+      \ 'c'  : 'C',
+      \ 'v'  : 'V',
+      \ 'V'  : 'V',
+      \ '' : 'V',
+      \ 's'  : 'S',
+      \ 'S'  : 'S',
+      \ '' : 'S',
+      \ }
+let g:airline#extensions#tabline#buffer_idx_mode = 1
+  nmap <leader>1 <Plug>AirlineSelectTab1
+  nmap <leader>2 <Plug>AirlineSelectTab2
+  nmap <leader>3 <Plug>AirlineSelectTab3
+  nmap <leader>4 <Plug>AirlineSelectTab4
+  nmap <leader>5 <Plug>AirlineSelectTab5
+  nmap <leader>6 <Plug>AirlineSelectTab6
+  nmap <leader>7 <Plug>AirlineSelectTab7
+  nmap <leader>8 <Plug>AirlineSelectTab8
+  nmap <leader>9 <Plug>AirlineSelectTab9
+"  }
 
 " --> Rainbow Parentheses {
 let g:rbpt_colorpairs = [
@@ -383,22 +421,6 @@ let g:SuperTabDefaultCompletionType = "<c-n>"
 let g:SuperTabMappingBackward = '<c-k>'
 
 " }
-
-" --> vim-buftabline {
-let g:buftabline_show = 2
-let g:buftabline_numbers = 2
-let g:buftabline_indicators = 1
-nmap <leader>1 <Plug>BufTabLine.Go(1)
-nmap <leader>2 <Plug>BufTabLine.Go(2)
-nmap <leader>3 <Plug>BufTabLine.Go(3)
-nmap <leader>4 <Plug>BufTabLine.Go(4)
-nmap <leader>5 <Plug>BufTabLine.Go(5)
-nmap <leader>6 <Plug>BufTabLine.Go(6)
-nmap <leader>7 <Plug>BufTabLine.Go(7)
-nmap <leader>8 <Plug>BufTabLine.Go(8)
-nmap <leader>9 <Plug>BufTabLine.Go(9)
-nmap <leader>0 <Plug>BufTabLine.Go(10)
-"  }
 
 " --> vim-expand-region {
 vmap v <Plug>(expand_region_expand)
@@ -623,154 +645,8 @@ let g:startify_custom_header = [
 " --> vim-markdown {
 
 let g:vim_markdown_frontmatter = 1
-"let g:vim_markdown_conceal = 0
+let g:vim_markdown_conceal = 0
 
 " }
-
-" --> Lightline {
-let g:lightline = {
-      \ 'colorscheme': 'base16',
-      \ 'active': {
-      \   'left': [[ 'mode', 'paste' ], [ 'ctrlpmark' ],
-      \            [ 'fugitive', 'virtualenv', 'filename' ]],
-      \   'right': [ [ 'lineinfo' ],
-      \              [ 'percent' ],
-      \              [ 'fileformat', 'fileencoding', 'filetype' ],
-      \              [ 'syntastic' ]]
-      \ },
-      \ 'inactive': {
-      \ },
-      \ 'component_function': {
-      \   'lineinfo': 'LightLineInfo',
-      \   'percent': 'LightLinePercent',
-      \   'mode': 'LightLineMode',
-      \   'readonly': 'LightLineReadonly',
-      \   'filename': 'LightLineFilename',
-      \   'filetype': 'LightLineFiletype',
-      \   'modified': 'LightLineModified',
-      \   'fugitive': 'LightLineFugitive',
-      \   'ctrlpmark': 'CtrlPMark',
-      \   'virtualenv': 'LightLineVirtualenv',
-      \ },
-      \ 'component_expand': {
-      \   'syntastic': 'SyntasticStatuslineFlag',
-      \ },
-      \ 'component_type': {
-      \   'syntastic': 'error',
-      \ },
-      \ }
-
-function! LightLineModified()
-  if &filetype == "help"
-    return ""
-  elseif &modified
-    return "+"
-  elseif &modifiable
-    return ""
-  else
-    return ""
-  endif
-endfunction
-
-function! LightLineReadonly()
-  if &filetype == "help"
-    return ""
-  elseif &readonly
-    return "⭤"
-  else
-    return ""
-  endif
-endfunction
-
-function! LightLineFilename()
-  return ('' != LightLineReadonly() ? LightLineReadonly() . ' ' : '') .
-       \ ('' != expand('%:t') ? expand('%:t') : '[No Name]') .
-       \ ('' != LightLineModified() ? ' ' . LightLineModified() : '')
-endfunction
-
-function! LightLineInfo()
-  return winwidth(0) > 60 ? printf("%3d:%-2d", line('.'), col('.')) : ''
-endfunction
-
-function! LightLineFileformat()
-  return winwidth(0) > 70 ? &fileformat : ''
-endfunction
-
-function! LightLineFiletype()
-  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
-endfunction
-
-function! LightLineFileencoding()
-  return winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
-endfunction
-
-function! LightLineMode()
-  let fname = expand('%:t')
-  return fname == 'ControlP' ? 'CtrlP' :
-        \ fname =~ 'NERD_tree' ? 'NERDTree' :
-        \ winwidth(0) > 60 ? lightline#mode() : ''
-endfunction
-
-function! LightLinePercent()
-  return &ft =~? 'vimfiler' ? '' : (100 * line('.') / line('$')) . '%'
-endfunction
-
-let g:tagbar_status_func = 'TagbarStatusFunc'
-
-function! TagbarStatusFunc(current, sort, fname, ...) abort
-    let g:lightline.fname = a:fname
-  return lightline#statusline(0)
-endfunction
-
-function! LightLineFugitive()
-  return exists('*fugitive#head') ? fugitive#head() : ''
-endfunction
-
-function! LightLineVirtualenv()
-  "return exists('*virtualenv#statusline') ? virtualenv#statusline() : ''
-  return virtualenv#statusline()
-endfunction
-
-function! LightLineReadonly()
-  return &ft !~? 'help' && &readonly ? '' : ''
-endfunction
-
-function! CtrlPMark()
-  if expand('%:t') =~ 'ControlP'
-    call lightline#link('iR'[g:lightline.ctrlp_regex])
-    return lightline#concatenate([g:lightline.ctrlp_item], 0)
-  else
-    return ''
-  endif
-endfunction
-
-let g:ctrlp_status_func = {
-      \ 'main': 'CtrlPStatusFunc_1',
-      \ 'prog': 'CtrlPStatusFunc_2',
-      \ }
-
-function! CtrlPStatusFunc_1(focus, byfname, regex, prev, item, next, marked)
-  let g:lightline.ctrlp_regex = a:regex
-  let g:lightline.ctrlp_prev = a:prev
-  let g:lightline.ctrlp_item = a:item
-  let g:lightline.ctrlp_next = a:next
-  return lightline#statusline(0)
-endfunction
-
-function! CtrlPStatusFunc_2(str)
-  return lightline#statusline(0)
-endfunction
-
-augroup AutoSyntastic
-  autocmd!
-  autocmd BufWritePost *.sh,*.yaml,*.yml,*.c,*.go,*.py call s:syntastic()
-augroup END
-function! s:syntastic()
-  SyntasticCheck
-  call lightline#update()
-endfunction
-
-" }
-
 
 " vim: set foldmarker={,} foldlevel=0 foldmethod=marker spell:
