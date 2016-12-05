@@ -124,7 +124,7 @@ set hidden                      " hide buffers, don't close
 set autowrite                   " Automatically save before :next, :make etc.
 set virtualedit=onemore         " allow for cursor beyond last character
 set history=1000                " Store a ton of commands/search history (default is 20)
-set spell                       " spell checking on
+set nospell                     " spell checking off by default
 set spelllang=en_gb             " jolly good spelling chap
 set noundofile                  " no annoying .un~ files
 set modelines=1
@@ -343,6 +343,7 @@ let g:airline_left_sep=''
 let g:airline_right_sep=''
 let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#buffer_nr_show = 0
+let g:airline#extensions#tabline#buffers_label = '<'
 let g:airline_mode_map = {
       \ '__' : '-',
       \ 'n'  : 'N',
@@ -357,15 +358,25 @@ let g:airline_mode_map = {
       \ '' : 'S',
       \ }
 let g:airline#extensions#tabline#buffer_idx_mode = 1
-  nmap <leader>1 <Plug>AirlineSelectTab1
-  nmap <leader>2 <Plug>AirlineSelectTab2
-  nmap <leader>3 <Plug>AirlineSelectTab3
-  nmap <leader>4 <Plug>AirlineSelectTab4
-  nmap <leader>5 <Plug>AirlineSelectTab5
-  nmap <leader>6 <Plug>AirlineSelectTab6
-  nmap <leader>7 <Plug>AirlineSelectTab7
-  nmap <leader>8 <Plug>AirlineSelectTab8
-  nmap <leader>9 <Plug>AirlineSelectTab9
+nmap <leader>1 <Plug>AirlineSelectTab1
+nmap <leader>2 <Plug>AirlineSelectTab2
+nmap <leader>3 <Plug>AirlineSelectTab3
+nmap <leader>4 <Plug>AirlineSelectTab4
+nmap <leader>5 <Plug>AirlineSelectTab5
+nmap <leader>6 <Plug>AirlineSelectTab6
+nmap <leader>7 <Plug>AirlineSelectTab7
+nmap <leader>8 <Plug>AirlineSelectTab8
+nmap <leader>9 <Plug>AirlineSelectTab9
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+let g:airline_symbols.linenr = ''
+let g:airline_symbols.maxlinenr = ''
+let g:airline_symbols.spell = 'Ꞩ'
+let g:airline_symbols.paste = 'ρ'
+let g:airline_section_z = '%l/%L:%c'
+"let g:airline_section_y = ''
+
 "  }
 
 " --> Rainbow Parentheses {
