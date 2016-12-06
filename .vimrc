@@ -612,14 +612,14 @@ let g:jedi#popup_on_dot = 0
 
 " --> Fugitive {
 
-nnoremap <leader>ga :Git add --all<CR>
+nnoremap <leader>ga :Git aa<CR>
 nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gb :Gbrowse<CR>
 nnoremap <leader>gpm :Gpush origin master<CR>
 nnoremap <leader>gpd :Gpush origin develop<CR>
 nnoremap <leader>gpp :Gpush<Space>
-nnoremap <leader>gc :Gcommit<CR>
-nnoremap <leader>go :Git checkout<Space>
+nnoremap <leader>gc :Git ca<CR>
+nnoremap <leader>go :Git go<Space>
 nnoremap <leader>gdsf :Git dsf<CR>
 nnoremap <leader>gl :Git l<CR>
 
