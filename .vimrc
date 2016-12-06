@@ -55,20 +55,12 @@ set fillchars=fold:\ ,vert:\ ,
 autocmd ColorScheme * highlight VertSplit cterm=NONE ctermfg=NONE ctermbg=NONE
 " set design of fold
 autocmd ColorScheme * highlight Folded cterm=BOLD ctermfg=NONE ctermbg=NONE
-" set design of BufTabLine
-autocmd ColorScheme * highlight BufTabLineFill cterm=BOLD
-autocmd ColorScheme * highlight BufTabLineCurrent cterm=NONE ctermfg=015 ctermbg=000
-autocmd ColorScheme * highlight BufTabLineActive cterm=NONE ctermfg=248 ctermbg=000
-autocmd ColorScheme * highlight BufTabLineHidden cterm=NONE ctermfg=011 ctermbg=000
 
-" Solarized Colours
+" Colourscheme
 syntax enable
 set background=dark
 let base16colorspace=256  " Access colors present in 256 colorspace
 colorscheme base16-default-dark
-"colorscheme solarized
-" toggle background light/dark
-"call togglebg#map("<F5>")
 
 set ruler                       " show the cursor position all the time
 set showcmd                     " show partial commands in status line and selected characters/lines in visual mode
@@ -163,7 +155,7 @@ au Bufread,BufNewFile *.md setlocal filetype=markdown textwidth=80 wrap
 au BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4
 
 " Python settings
-au BufNewFile,BufRead *.py setlocal ts=4 sts=4 sw=4 tw=79 list lcs=tab:▸\
+au BufNewFile,BufRead *.py setlocal et ts=4 sts=4 sw=4 tw=79 list lcs=tab:▸\
 let g:python3_host_prog = '/usr/bin/python3'
 let python_highlight_all=1
 
@@ -205,7 +197,6 @@ tnoremap <C-l> <C-\><C-n><C-w>l
 " Buffer switching
 nnoremap <TAB> :bn<CR>
 nnoremap <S-TAB> :bp<CR>
-
 " Buffer closing
 nnoremap <silent> <leader>q :Sayonara<CR>
 nnoremap <leader>bq :bd!<CR>
@@ -266,7 +257,7 @@ vnoremap k gk
 nmap <silent> <leader>/ :nohlsearch<CR>
 
 " substitution (replace)
-nnoremap <leader>r :%s/<C-r><C-w>/
+nnoremap <C-s> :%s/<C-r><C-w>/
 
 " grep with pt
 nnoremap <leader>st :grep! <C-r><C-w> %<CR>:cw<CR>
@@ -345,7 +336,7 @@ let g:airline_left_alt_sep = '|'
 let g:airline_right_alt_sep = '|'
 let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#buffer_nr_show = 0
-let g:airline#extensions#tabline#buffers_label = '<'
+let g:airline#extensions#tabline#buffers_label = 'b'
 let g:airline_mode_map = {
       \ '__' : '-',
       \ 'n'  : 'N',
@@ -376,6 +367,8 @@ let g:airline_symbols.linenr = ''
 let g:airline_symbols.maxlinenr = ''
 let g:airline_symbols.spell = 'Ꞩ'
 let g:airline_symbols.paste = 'ρ'
+
+let g:airline#extensions#syntastic#enabled = 1
 
 let g:airline_section_z = '%l/%L:%c'
 "let g:airline_section_y = ''
@@ -513,13 +506,13 @@ let g:syntastic_sh_checkers = ['shellcheck']
 let g:syntastic_c_checkers = ['splint', 'make', 'gcc']
 let g:syntastic_yaml_checkers = ['yamllint']
 let g:syntastic_ansible_checkers = ['ansible_lint', 'yamllint']
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-" let python-mode handle syntax checking
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+" let vim-go handle syntax checking
 let g:syntastic_mode_map = {
         \ "mode": "active",
-        \ "passive_filetypes": ["python", "go"] }
+        \ "passive_filetypes": ["go"] }
 
 nmap <leader>ee :Errors<cr>
 let g:syntastic_always_populate_loc_list = 1
