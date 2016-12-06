@@ -8,6 +8,8 @@
 
     s = status -s
     c = commit -S -m
+    # Commit all changes
+	ca = !git add -A && git commit -av
     a = add
     aa = add --all
     po = push origin
@@ -24,6 +26,8 @@
     m = merge
     co = checkout
     con = checkout -b
+    # Switch to a branch, creating it if necessary
+	go = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
     com = checkout master
     cod = checkout develop
     cl = clone
@@ -38,10 +42,15 @@
     unmerge = reset --merge
     remotes = remote -v
     dr = push origin --delete
-    l = log --graph --oneline --decorate --pretty=format:"%C(green)%h\\ %C(cyan)(%ar)%C(red)%d\\ %C(yellow)%s"
+    l = log -n 20 --graph --oneline --decorate --pretty=format:"%C(green)%h\\ %C(cyan)(%ar)%C(red)%d\\ %C(yellow)%s"
     ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]\\ %C(yellow)(%ar)" --decorate --numstat
+    # Show the diff between the latest commit and the current state
+	d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
     dsf = "!f() { [ -z \"$GIT_PREFIX\" ] || cd \"$GIT_PREFIX\" && git diff --color \"$@\" | diff-so-fancy  | less --tabs=4 -RFX; }; f"
     dsfl = "!f() { [ -z \"$GIT_PREFIX\" ] || cd \"$GIT_PREFIX\" && git show --color \"$@\" | diff-so-fancy  | less --tabs=4 -RFX; }; f"
+    # Remove branches that have already been merged with master
+	# a.k.a. ‘delete merged’
+	dm = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d; git remote -v update -p"
 
 [color]
 
