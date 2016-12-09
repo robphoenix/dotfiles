@@ -16,7 +16,6 @@ Plug 'scrooloose/nerdtree'              " File explorer
 Plug 'klen/python-mode'                 " Python
 Plug 'davidhalter/jedi-vim'             " Extra Python
 Plug 'zchee/deoplete-jedi'              " Python autocomplete
-Plug 'alfredodeza/pytest.vim'           " Python testing
 Plug 'jmcantrell/vim-virtualenv'        " Python Virtualenvs
 Plug 'scrooloose/syntastic'             " Syntax checker
 Plug 'SirVer/ultisnips'                 " Code snippets
@@ -257,7 +256,7 @@ vnoremap k gk
 nmap <silent> <leader>/ :nohlsearch<CR>
 
 " substitution (replace)
-nnoremap <C-s> :%s/<C-r><C-w>/
+nnoremap <C-s> :%s/<C-r><C-w>//gc<left><left><left>
 
 " grep with pt
 nnoremap <leader>st :grep! <C-r><C-w> %<CR>:cw<CR>
@@ -307,7 +306,7 @@ tnoremap <leader>e <c-\><c-n>
 nnoremap <silent> <a-h> :vertical resize +10<cr>
 nnoremap <silent> <a-l> :vertical resize -10<cr>
 nnoremap <silent> <a-j> :res -10<cr>
-nnoremap <silent> <a-k> :res -10<cr>
+nnoremap <silent> <a-k> :res +10<cr>
 
 " navigating commands history
 cnoremap <c-k> <Up>
@@ -319,9 +318,18 @@ nnoremap <leader>r :read !
 " Exercism
 nnoremap <leader>exs :!exercism submit ./%<CR>
 
+" PyTest
+nnoremap <leader>tp :!cd .. && pytest<CR>
 " }
 
 " --> Plugins {
+
+" --> vim-virtualenv {
+
+let g:virtualenv_auto_activate = 1
+let g:virtualenv_stl_format = '(venv: %n)'
+
+"  }
 
 " --> vim-airline {
 
@@ -408,12 +416,6 @@ au Syntax * RainbowParenthesesLoadBraces
 let g:ansible_attribute_highlight = "ab"
 let g:ansible_name_highlight = 'b'
 let g:ansible_extra_keywords_highlight = 1
-"  }
-
-" --> pytest.vim {
-nmap <silent><Leader>tp :Pytest project<CR>
-nmap <silent><Leader>ts :Pytest session<CR>
-nmap <silent><Leader>te :Pytest error<CR>
 "  }
 
 " --> vim-cfmt {
@@ -546,6 +548,7 @@ let g:ctrlp_line_prefix = '>'
 let g:ctrlp_buftag_types = {'go' : '--language-force=go --golang-types=ftv'}
 " find files
 nnoremap <leader>ff :CtrlP<CR>
+nnoremap <leader>fb :CtrlPBuffer<CR>
 nnoremap <leader>fm :CtrlPMRU<CR>
 
 " }
@@ -612,13 +615,13 @@ let g:jedi#popup_on_dot = 0
 
 " --> Fugitive {
 
-nnoremap <leader>ga :Git aa<CR>
+nnoremap <leader>ga :Git add --all<CR>
 nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gb :Gbrowse<CR>
 nnoremap <leader>gpm :Gpush origin master<CR>
 nnoremap <leader>gpd :Gpush origin develop<CR>
 nnoremap <leader>gpp :Gpush<Space>
-nnoremap <leader>gc :Git ca<CR>
+nnoremap <leader>gc :Gcommit<CR>
 nnoremap <leader>go :Git go<Space>
 nnoremap <leader>gdsf :Git dsf<CR>
 nnoremap <leader>gl :Git l<CR>
