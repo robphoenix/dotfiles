@@ -201,10 +201,7 @@ nnoremap <silent> <leader>q :Sayonara<CR>
 nnoremap <leader>bq :bd!<CR>
 
 " open buffer in vertical split
-nnoremap <leader>bs :vert sb<Space>
-
-" list buffers
-nnoremap <leader>bl :ls<CR>
+nnoremap <leader>vb :vert sb<Space>
 
 " Remap H and L (top, bottom of screen to left and right end of line)
 nnoremap H ^
@@ -246,7 +243,7 @@ vnoremap <C-d> <C-d>zz
 vnoremap <C-f> <C-f>zz
 vnoremap <C-b> <C-b>zz
 
-" Visual linewise up and down by default (and use gj gk to go quicker)
+" Visual linewise up and down by default
 nnoremap j gj
 nnoremap k gk
 vnoremap j gj
@@ -255,29 +252,25 @@ vnoremap k gk
 " clear highlighted search
 nmap <silent> <leader>/ :nohlsearch<CR>
 
-" substitution (replace)
+" substitution (replace) word under cursor
 nnoremap <C-s> :%s/<C-r><C-w>//gc<left><left><left>
 
 " grep with pt
+" st: Search This (file) for word under cursor
 nnoremap <leader>st :grep! <C-r><C-w> %<CR>:cw<CR>
+" sa: Search All (files) for word under cursor
 nnoremap <leader>sa :grep! <C-r><C-w> <CR>:cw<CR>
 command -nargs=+ -complete=file -bar Pt silent! grep! <args>|cwindow|redraw!
 nnoremap \ :Pt<space>
 
 " deal with quickfix easily
-map <leader>f :cnext<CR>
-map <leader>d :cprevious<CR>
 nnoremap <leader>a :cclose<CR>
-nnoremap <leader>ss :copen<CR>
 
 " close location list
-map <leader>ln :lnext<CR>
-map <leader>lp :lprevious<CR>
-nnoremap <leader>lc :lclose<CR>
-nnoremap <leader>lo :lopen<CR>
+nnoremap <leader>l :lclose<CR>
 
 " tagbar
-nmap <leader>tt :TagbarToggle<CR>
+nmap <leader>t :TagbarToggle<CR>
 
 " Some helpers to edit mode
 " http://vimcasts.org/e/14
@@ -290,23 +283,20 @@ map <leader>ev :vsp %%
 " http://stackoverflow.com/a/8064607/127816
 vnoremap . :normal .<CR>
 
-" make current C program, output has same name
+" build current C program, output has same name
 autocmd FileType c nnoremap <silent> <leader>mc :!clear;gcc % -o %:r.out<CR>
 
-" travis-ci
-nnoremap <leader>th :!travis history --limit 3<CR>
-
 " integrated terminal
-nnoremap <leader>tr :50vsp term://zsh<CR>
-nnoremap <leader>ty :50vsp term://bpython<CR>
-tnoremap <leader>e <c-\><c-n>
-:au BufEnter * if &buftype == 'terminal' | :startinsert | endif
+"nnoremap <leader>tr :50vsp term://zsh<CR>
+"nnoremap <leader>ty :50vsp term://bpython<CR>
+"tnoremap <leader>e <c-\><c-n>
+":au BufEnter * if &buftype == 'terminal' | :startinsert | endif
 
-" resizing
+" resizing splits
 nnoremap <silent> <a-h> :vertical resize +10<cr>
 nnoremap <silent> <a-l> :vertical resize -10<cr>
-nnoremap <silent> <a-j> :res -10<cr>
-nnoremap <silent> <a-k> :res +10<cr>
+nnoremap <silent> <a-j> :res +10<cr>
+nnoremap <silent> <a-k> :res -10<cr>
 
 " navigating commands history
 cnoremap <c-k> <Up>
@@ -315,11 +305,6 @@ cnoremap <c-j> <Down>
 " read output of shell commands to file
 nnoremap <leader>r :read !
 
-" Exercism
-nnoremap <leader>exs :!exercism submit ./%<CR>
-
-" PyTest
-nnoremap <leader>tp :!cd .. && pytest<CR>
 " }
 
 " --> Plugins {
@@ -425,7 +410,7 @@ autocmd BufWritePre *.c,*.h Cfmt
 
 " --> SuperTab {
 
-let g:SuperTabDefaultCompletionType = "<c-n>"
+let g:SuperTabDefaultCompletionType = "<c-j>"
 " we need to remap this to not interfere with delimitMate
 let g:SuperTabMappingBackward = '<c-k>'
 
@@ -437,20 +422,14 @@ vmap <C-v> <Plug>(expand_region_shrink)
 " }
 
 " --> NerdTree {
-noremap <Leader>nn :NERDTreeToggle<cr>
+noremap <Leader>n :NERDTreeToggle<cr>
 
 let NERDTreeShowHidden=1
 let NERDTreeIgnore=['\.cache$', '__pycache__', '\.pyc$', '\.vagrant$', '\~$', '\.git$', '.DS_Store']
 let NERDTreeQuitOnOpen=1
 
-" Windows garbled NERDTree's arrows
-if !has('nvim')
-    let g:NERDTreeDirArrowExpandable = '►'
-    let g:NERDTreeDirArrowCollapsible = '▼'
-endif
-
 " close vim if the only window left open is NERDTree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " }
 
@@ -508,9 +487,6 @@ let g:syntastic_sh_checkers = ['shellcheck']
 let g:syntastic_c_checkers = ['splint', 'make', 'gcc']
 let g:syntastic_yaml_checkers = ['yamllint']
 let g:syntastic_ansible_checkers = ['ansible_lint', 'yamllint']
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
 " let vim-go handle syntax checking
 let g:syntastic_mode_map = {
         \ "mode": "active",
@@ -527,7 +503,7 @@ let g:syntastic_loc_list_height = 5
 
 let g:UltiSnipsUsePythonVersion = 3
 let g:ultisnips_python_style = "google"
-let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsExpandTrigger="<tab>"
 
 " }
 
@@ -546,10 +522,6 @@ let g:ctrlp_cache_dir = $HOME.'/.cache/ctrlp'
 let g:ctrlp_follow_symlinks = 1
 let g:ctrlp_line_prefix = '>'
 let g:ctrlp_buftag_types = {'go' : '--language-force=go --golang-types=ftv'}
-" find files
-nnoremap <leader>ff :CtrlP<CR>
-nnoremap <leader>fb :CtrlPBuffer<CR>
-nnoremap <leader>fm :CtrlPMRU<CR>
 
 " }
 
@@ -585,7 +557,7 @@ let g:pymode_doc = 1
 let g:pymode_doc_bind = 'K'
 let g:pymode_virtualenv = 0
 let g:pymode_run = 1
-let g:pymode_run_bind = '<leader>pr'
+let g:pymode_run_bind = '<leader>r'
 let g:pymode_lint = 1
 let g:pymode_lint_on_write = 1
 let g:pymode_lint_message = 1
@@ -609,22 +581,19 @@ let g:pymode_syntax_doctests = g:pymode_syntax_all
 " --> Jedi {
 
 let g:jedi#force_py_version = 3
-let g:jedi#popup_on_dot = 0
+"let g:jedi#popup_on_dot = 0
+let g:jedi#rename_command = "<leader>jr"
 
 " }
 
 " --> Fugitive {
 
 nnoremap <leader>ga :Git add --all<CR>
+nnoremap <leader>gc :Gcommit<CR>
 nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gb :Gbrowse<CR>
 nnoremap <leader>gpm :Gpush origin master<CR>
 nnoremap <leader>gpd :Gpush origin develop<CR>
-nnoremap <leader>gpp :Gpush<Space>
-nnoremap <leader>gc :Gcommit<CR>
-nnoremap <leader>go :Git go<Space>
-nnoremap <leader>gdsf :Git dsf<CR>
-nnoremap <leader>gl :Git l<CR>
 
 " }
 
