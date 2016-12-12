@@ -201,7 +201,7 @@ nnoremap <silent> <leader>q :Sayonara<CR>
 nnoremap <leader>bq :bd!<CR>
 
 " open buffer in vertical split
-nnoremap <leader>vb :vert sb<Space>
+nnoremap <leader>sb :vert sb<Space>
 
 " Remap H and L (top, bottom of screen to left and right end of line)
 nnoremap H ^
@@ -308,6 +308,19 @@ nnoremap <leader>r :read !
 " }
 
 " --> Plugins {
+
+" --> nerdcommenter {
+
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+" Align line-wise comment delimiters flush left instead of following code indentation
+let g:NERDDefaultAlign = 'left'
+" Allow commenting and inverting empty lines (useful when commenting a region)
+let g:NERDCommentEmptyLines = 1
+" Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1
+
+"  }
 
 " --> vim-virtualenv {
 
