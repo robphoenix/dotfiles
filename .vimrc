@@ -37,8 +37,9 @@ Plug 'Shougo/deoplete.nvim'             " NeoVim autocomplete
 Plug 'zchee/deoplete-go'                " Go autocomplete
 Plug 'crosbymichael/vim-cfmt'           " Auto-format C code
 Plug 'vim-scripts/cisco.vim'            " Cisco config highlighting
-Plug 'chriskempson/base16-vim'
-Plug 'kien/rainbow_parentheses.vim'
+Plug 'chriskempson/base16-vim'          " Base16 colourscheme
+Plug 'kien/rainbow_parentheses.vim'     " Fancy matching parens+
+Plug 'robertmeta/nofrils'               " minimal syntax highlighting
 
 call plug#end()
 
@@ -152,6 +153,8 @@ au Bufread,BufNewFile *.md setlocal filetype=markdown textwidth=80 wrap
 
 " Go settings
 au BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4
+autocmd BufEnter *.go colorscheme nofrils-dark
+autocmd BufLeave *.go colorscheme base16-default-dark
 
 " Python settings
 au BufNewFile,BufRead *.py setlocal et ts=4 sts=4 sw=4 tw=79 list lcs=tab:▸\
@@ -308,6 +311,14 @@ nnoremap <leader>r :read !
 " }
 
 " --> Plugins {
+
+" --> no-frils {
+
+let g:nofrils_strbackgrounds=1
+nmap <leader>fc :NofrilsFocusCode<CR>
+nmap <leader>fd :NofrilsFocusComments<CR>
+
+"  }
 
 " --> nerdcommenter {
 
