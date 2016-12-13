@@ -2,7 +2,6 @@
 
 call plug#begin()
 
-Plug 'altercation/vim-colors-solarized' " Solarized Colour Scheme
 Plug 'tpope/vim-surround'               " Add quotes/parenthesis etc.
 Plug 'tpope/vim-fugitive'               " Git wrapper
 Plug 'airblade/vim-gitgutter'           " Gutter markers for Git
@@ -33,13 +32,18 @@ Plug 'terryma/vim-multiple-cursors'     " Like Sublime Text
 Plug 'Konfekt/FastFold'                 " Fold updating
 Plug 'fatih/vim-go'                     " Golang
 Plug 'pearofducks/ansible-vim'          " Ansible
-Plug 'Shougo/deoplete.nvim'             " NeoVim autocomplete
-Plug 'zchee/deoplete-go'                " Go autocomplete
-Plug 'crosbymichael/vim-cfmt'           " Auto-format C code
 Plug 'vim-scripts/cisco.vim'            " Cisco config highlighting
 Plug 'chriskempson/base16-vim'          " Base16 colourscheme
 Plug 'kien/rainbow_parentheses.vim'     " Fancy matching parens+
 Plug 'robertmeta/nofrils'               " minimal syntax highlighting
+
+if has('nvim')
+    Plug 'Shougo/deoplete.nvim'         " NeoVim autocomplete
+    Plug 'zchee/deoplete-go'            " Go autocomplete
+    Plug 'crosbymichael/vim-cfmt'       " Auto-format C code
+else
+    Plug 'Shougo/neocomplete.vim'       " Vim autocomplete
+endif
 
 call plug#end()
 
@@ -121,14 +125,16 @@ set spelllang=en_gb             " jolly good spelling chap
 set noundofile                  " no annoying .un~ files
 set modelines=1
 set cursorline                  " let's highlight the line the cursor is on
-set inccommand=split            " incremental command live feedback
-set grepprg=pt
-
+set grepprg=pt                  " Use PT for grepping
 " Time out on key codes but not mappings.
 " Basically this makes terminal Vim work sanely.
 set notimeout
 set ttimeout
 set ttimeoutlen=10
+
+if has('nvim')
+    set inccommand=split            " incremental command live feedback
+endif
 
 " Better Completion
 set complete=.,w,b,u,t
@@ -191,10 +197,13 @@ nnoremap <C-J> <C-W>j
 nnoremap <C-K> <C-W>k
 nnoremap <C-L> <C-W>l
 nnoremap <C-H> <C-W>h
-tnoremap <C-h> <C-\><C-n><C-w>h
-tnoremap <C-j> <C-\><C-n><C-w>j
-tnoremap <C-k> <C-\><C-n><C-w>k
-tnoremap <C-l> <C-\><C-n><C-w>l
+
+if has('nvim')
+    tnoremap <C-h> <C-\><C-n><C-w>h
+    tnoremap <C-j> <C-\><C-n><C-w>j
+    tnoremap <C-k> <C-\><C-n><C-w>k
+    tnoremap <C-l> <C-\><C-n><C-w>l
+endif
 
 " Buffer switching
 nnoremap <TAB> :bn<CR>
@@ -549,19 +558,26 @@ let g:ctrlp_buftag_types = {'go' : '--language-force=go --golang-types=ftv'}
 
 " }
 
-" --> Deoplete {
+" --> Autocompletion {
 
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#sources#go#gocode_binary="$GOPATH.'/bin/gocode'"
-let g:deoplete#sources#go#pointer=1
-let g:deoplete#sources#go#sort_class = ['func', 'type', 'var', 'const']
-let g:deoplete#sources#go#align_class = 1
-let deoplete#sources#jedi#show_docstring = 1
+if has('nvim')
+    let g:deoplete#enable_at_startup = 1
+    let g:deoplete#sources#go#gocode_binary="$GOPATH.'/bin/gocode'"
+    let g:deoplete#sources#go#pointer = 1
+    let g:deoplete#sources#go#sort_class = ['func', 'type', 'var', 'const']
+    let g:deoplete#sources#go#align_class = 1
+    let deoplete#sources#jedi#show_docstring = 1
 
-" Use partial fuzzy matches like YouCompleteMe
-call deoplete#custom#set('_', 'matchers', ['matcher_fuzzy'])
-call deoplete#custom#set('_', 'converters', ['converter_remove_paren'])
-call deoplete#custom#set('_', 'disabled_syntaxes', ['Comment', 'String'])
+    " Use partial fuzzy matches like YouCompleteMe
+    call deoplete#custom#set('_', 'matchers', ['matcher_fuzzy'])
+    call deoplete#custom#set('_', 'converters', ['converter_remove_paren'])
+    call deoplete#custom#set('_', 'disabled_syntaxes', ['Comment', 'String'])
+else
+    let g:acp_enableAtStartup = 0 " Disable AutoComplPop.
+    let g:neocomplete#enable_at_startup = 1 " Use neocomplete
+    let g:neocomplete#enable_auto_delimiter = 1 " insert delimiter automatically
+    autocmd Filetype python setlocal omnifunc=pythoncomplete#Complete
+endif
 
 " }
 

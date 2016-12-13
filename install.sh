@@ -39,6 +39,7 @@ sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys BBEBDCB31
 echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list
 
 # Apt
+sudo apt remove --purge vim
 apt update
 apt -y upgrade
 
@@ -85,7 +86,9 @@ apt install -y \
     dos2unix \
     openvpn \
     clamav \
-    spotify-client
+    spotify-client \
+    vim-gnome \
+    vim-nox
 
 # oh-my-zsh
 wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
