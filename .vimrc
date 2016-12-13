@@ -499,7 +499,6 @@ autocmd FileType go nmap <leader>gt  <Plug>(go-test)
 autocmd FileType go nmap <leader>gd :GoDecls<CR>
 autocmd FileType go nmap <leader>cd :GoDeclsDir<CR>
 autocmd FileType go nmap <leader>rn :GoRename<space>
-autocmd FileType go nmap <leader>gp :GoPlay<space>
 
 " }
 
