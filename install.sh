@@ -17,6 +17,9 @@ mkdir -p "${XDG_CONFIG_HOME:=$HOME/.config}"
 mkdir -p /etc/apt/apt.conf.d
 echo 'Acquire::Languages "none";' > /etc/apt/apt.conf.d/99translations
 
+# To be able to use add-apt-repository you may need to install software-properties-common
+sudo apt install -y software-properties-common
+
 # Neovim repo
 sudo add-apt-repository ppa:neovim-ppa/unstable
 
@@ -39,57 +42,58 @@ sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys BBEBDCB31
 echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list
 
 # Apt
-sudo apt remove --purge vim
-apt update
-apt -y upgrade
+sudo apt remove --purge vim # necessary to install vim with lua support
+sudo apt update
+sudo apt -y upgrade
 
-apt install -y \
-    apt-transport-https \
-    ca-certificates \
-    neovim \
-    feh \
-    libxss1 \
-    libappindicator1 \
-    libindicator7 \
-    rxvt-unicode-256color \
-    ranger \
-    caca-utils \
-    highlight \
-    atool \
-    w3m \
-    poppler-utils \
-    mediainfo \
-    xclip \
-    exuberant-ctags \
-    zsh \
-    i3 \
-    google-chrome-stable \
-    tlp \
-    tlp-rdw \
-    tree \
-    nodejs \
-    htop \
-    zeal \
-    screen \
-    virtualenvwrapper \
-    ruby \
-    ruby-dev \
-    make \
-    gcc \
-    vagrant \
-    virtualbox \
-    bridge-utils \
-    gnupg2 \
-    inetutils-traceroute \
-    shellcheck \
-    splint \
-    dos2unix \
-    openvpn \
-    clamav \
-    spotify-client \
-    vim-gnome \
-    vim-nox
+sudo apt install -y \
+     apt-transport-https \
+     ca-certificates \
+     neovim \
+     feh \
+     libxss1 \
+     libappindicator1 \
+     libindicator7 \
+     rxvt-unicode-256color \
+     ranger \
+     caca-utils \
+     highlight \
+     atool \
+     w3m \
+     poppler-utils \
+     mediainfo \
+     xclip \
+     exuberant-ctags \
+     zsh \
+     i3 \
+     google-chrome-stable \
+     tlp \
+     tlp-rdw \
+     tree \
+     nodejs \
+     htop \
+     zeal \
+     screen \
+     virtualenvwrapper \
+     ruby \
+     ruby-dev \
+     make \
+     gcc \
+     vagrant \
+     virtualbox \
+     bridge-utils \
+     gnupg2 \
+     inetutils-traceroute \
+     shellcheck \
+     splint \
+     dos2unix \
+     openvpn \
+     clamav \
+     spotify-client \
+     vim-gnome \
+     vim-nox
 
+# ZSH
 # oh-my-zsh
 wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
 # zsh syntax highlighting
@@ -106,11 +110,10 @@ sudo groupadd docker
 sudo usermod -aG docker rob
 
 # Golang
-curl -O https://storage.googleapis.com/golang/go1.6.2.linux-amd64.tar.gz
-tar xvf go1.6.2.linux-amd64.tar.gz
-sudo chown -R root:root ./go
-sudo mv go /usr/local
-rm go1.6.2.linux-amd64.tar.gz
+export GO_VERSION=1.7.4
+curl -O https://storage.googleapis.com/golang/go${GO_VERSION}.linux-amd64.tar.gz
+sudo tar -C /usr/local -xzf go${GO_VERSION}.linux-amd64.tar.gz
+rm go${GO_VERSION}.linux-amd64.tar.gz
 
 go get -u golang.org/x/tools/cmd/goimports
 go get -u golang.org/x/tools/cmd/vet
@@ -118,21 +121,29 @@ go get -u golang.org/x/tools/cmd/oracle
 go get -u golang.org/x/tools/cmd/godoc
 go get -u github.com/golang/lint/golint
 go get -u github.com/odeke-em/drive/cmd/drive
+go get -u golang.org/x/tools/cmd/cover
+go get -u golang.org/x/tools/cmd/gorename
+go get -u golang.org/x/tools/cmd/guru
 
 # Exercism
 go get -u github.com/exercism/cli/exercism
 exercism configure --dir=~/code/exercism
 
 # Python
-sudo apt -y install python-pip python-dev build-essential pip3 python3-pip
-sudo pip install --upgrade pip
+sudo apt -y install python-pip \
+                    python-dev \
+                    build-essential \
+                    pip3 \
+                    python3-pip
+sudo -H pip install --upgrade pip
 pip install -r requirements.txt
 pip3 install -r requirements3.txt
 
 # Tor Browser
-sudo wget https://www.torproject.org/dist/torbrowser/6.0.5/tor-browser-linux64-6.0.5_en-US.tar.xz
-tar -xvJf ~/Downloads/tor-browser-linux64-6.0.5_en-US.tar.xz
-rm tor-browser-linux64-6.0.5_en-US.tar.xz
+export TOR_VERSION=6.0.5
+sudo wget https://www.torproject.org/dist/torbrowser/${TOR_VERSION}/tor-browser-linux64-${TOR_VERSION}_en-US.tar.xz
+tar -xvJf ~/Downloads/tor-browser-linux64-${TOR_VERSION}_en-US.tar.xz
+rm tor-browser-linux64-${TOR_VERSION}_en-US.tar.xz
 
 # Private Internet Access VPN
 cd /etc/openvpn
@@ -143,6 +154,9 @@ sudo unzip openvpn.zip
 curl -O https://prerelease.keybase.io/keybase_amd64.deb
 sudo dpkg -i keybase_amd64.deb
 sudo apt-get install -f
+
+# Travis CI
+gem install travis -v 1.8.5 --no-rdoc --no-ri
 
 # Base16 colorscheme
 git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell

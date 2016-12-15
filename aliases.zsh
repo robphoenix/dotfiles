@@ -82,3 +82,6 @@ alias th="travis history --limit 5"
 alias tw="travis whatsup"
 alias tl="travis logs"
 alias to="travis open"
+
+# speedtest-cli
+alias st="speedtest-cli"
