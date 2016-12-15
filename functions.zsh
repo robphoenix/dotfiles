@@ -10,3 +10,16 @@ function usb() {
     U="$(sudo fdisk -l | grep FAT | awk -F' ' '{print $1}')"
     sudo mount -t vfat $U /media/usb -o uid=1000,gid=1000,utf8,dmask=027,fmask=137
 }
+
+# Fancy ctrl+z
+# https://github.com/pjg/dotfiles/blob/master/.zshrc#L522-L533
+function fancy-ctrl-z () {
+  if [[ $#BUFFER -eq 0 ]]; then
+    fg
+    zle redisplay
+  else
+    zle push-input
+    zle clear-screen
+  fi
+}
+zle -N fancy-ctrl-z

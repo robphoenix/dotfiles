@@ -27,30 +27,41 @@
 #
 #############################################################################
 
-# Exit code
+## exit code ################################################################
+
 local exit_code="%(?,,%{$fg[red]%}[%?]%{$reset_color%})"
 
-# Python Virtualenv info
+## python virtualenv info ###################################################
+
 function virtualenv_info {
-    [ $VIRTUAL_ENV ] && echo ' ('`basename $VIRTUAL_ENV`')'
+    [ $VIRTUAL_ENV ] && echo " ("`basename $VIRTUAL_ENV`")"
 }
 
-# Setup Vi-mode indicator in prompt
-# this will display two blue
+## setup vi-mode indicator in prompt ########################################
+#
+# to have an indicator when in insert mode also, use:
+# ${${KEYMAP/vicmd/\$NORMAL_MODE}/(main|viins)/\$INSERT_MODE}
+# instead of:
+# ${${KEYMAP/vicmd/\$NORMAL_MODE}/(main|viins)/}
+
 function zle-line-init zle-keymap-select {
-  VIM_PROMPT=" %{$bg[blue]%}%{$fg[black]%} N %{$reset_color%}"
-  PS1="
+    NORMAL_MODE="%{$bg[blue]$fg[black]%} N %{$reset_color%}"
+    INSERT_MODE="%{$bg[green]$fg[black]%} I %{$reset_color%}"
+    PROMPT="
 %{$fg[green]%}%2~\
 $(__posh_git_echo)\
-%{$fg[magenta]%}\$(virtualenv_info)\
-${${KEYMAP/vicmd/\$VIM_PROMPT}/(main|viins)/}
+%{$fg[magenta]%}\$(virtualenv_info) \
+${${KEYMAP/vicmd/\$NORMAL_MODE}/(main|viins)/}
 %{$fg[magenta]%}> \
 %{$reset_color%}"
   zle reset-prompt
 }
 
-# Right Prompt
-RPS1="$exit_code"
-
 zle -N zle-line-init
 zle -N zle-keymap-select
+
+## right prompt #############################################################
+
+RPROMPT="$exit_code"
+
+#############################################################################
