@@ -1,9 +1,31 @@
-# 2016 Rob Phoenix @bordeltabernacle
-# Adapted from Yad Smood's ys.zsh-theme
-# Makes use of https://github.com/lyze/posh-git-sh
+#############################################################################
 #
-# Colors: black, red, green, yellow, *blue, magenta, cyan, and white.
+# 2016 Rob Phoenix @bordeltabernacle
+# Heavily adapted from Yad Smood's ys.zsh-theme
+#
+## Makes use of #############################################################
+#
+#  - https://github.com/lyze/posh-git-sh
+#       (posh git status info in prompt)
+#  - https://github.com/zanshin/dotfiles/blob/master/zsh/prompt.zsh#L132
+#       (indicates when in Normal mode)
+#
+## Colours ##################################################################
+#
+# black, red, green, yellow, *blue, magenta, cyan, and white.
 # Modify the colors and symbols in these variables as desired.
+#
+## Prompt format ############################################################
+#
+# DIRECTORY [git:BRANCH STATE] (VIRTUALENV) VI-MODE
+# > COMMAND                                             [LAST_EXIT_CODE]
+#
+# For example:
+#
+# python/diffios [master ≡ +0 ~1 -0] (diffios) N
+# >                                                     [127]
+#
+#############################################################################
 
 # Exit code
 local exit_code="%(?,,%{$fg[red]%}[%?]%{$reset_color%})"
@@ -14,8 +36,9 @@ function virtualenv_info {
 }
 
 # Setup Vi-mode indicator in prompt
+# this will display two blue
 function zle-line-init zle-keymap-select {
-  VIM_PROMPT="%{$fg[blue]%} ••%{$reset_color%}"
+  VIM_PROMPT=" %{$bg[blue]%}%{$fg[black]%} N %{$reset_color%}"
   PS1="
 %{$fg[green]%}%2~\
 $(__posh_git_echo)\
