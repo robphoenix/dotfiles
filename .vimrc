@@ -324,8 +324,8 @@ nnoremap <leader>r :read !
 " --> no-frils {
 
 let g:nofrils_strbackgrounds=1
-nmap <leader>fc :NofrilsFocusCode<CR>
-nmap <leader>fd :NofrilsFocusComments<CR>
+nmap <leader>cf :NofrilsFocusCode<CR>
+nmap <leader>fc :NofrilsFocusComments<CR>
 
 "  }
 
