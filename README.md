@@ -14,7 +14,15 @@ files for the following:
 
 ### installation
 
-[WIP] totally at the top of my todo list.
+the `install.sh` script is currently untested, so use caution my
+friend...
+
+```bash
+git clone https://github.com/bordeltabernacle/dotfiles ~/dotfiles
+cd ~/dotfiles
+chmod +x install.sh
+./install.sh
+```
 
 ###[giving propers to](https://www.youtube.com/watch?v=cYbs_O_iMfU)
 
