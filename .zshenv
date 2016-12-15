@@ -23,5 +23,5 @@ source /usr/local/bin/virtualenvwrapper.sh
 export PROJECT_HOME=$HOME/code/python
 
 # GOPATH
-export GOPATH=$HOME/code/go:
+export GOPATH=$HOME/code/go
 export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
