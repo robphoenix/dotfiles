@@ -22,7 +22,6 @@ eval `dircolors ~/.dircolors`
 [ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
 
 # vi mode in the terminal
-# set -o vi
 bindkey -v
 
 # fancy ctrl-z
