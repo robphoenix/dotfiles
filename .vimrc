@@ -535,7 +535,8 @@ let g:syntastic_loc_list_height = 5
 
 let g:UltiSnipsUsePythonVersion = 3
 let g:ultisnips_python_style = "google"
-let g:UltiSnipsExpandTrigger="<tab>"
+" let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsExpandTrigger="<c-j>"
 
 " }
 
