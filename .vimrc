@@ -2,6 +2,12 @@
 
 call plug#begin()
 
+" colours
+Plug 'chriskempson/base16-vim'          " Base16 colourscheme
+Plug 'vim-scripts/cisco.vim'            " Cisco config highlighting
+Plug 'robertmeta/nofrils'               " minimal syntax highlighting
+Plug 'kien/rainbow_parentheses.vim'     " Fancy matching parens+
+
 Plug 'tpope/vim-surround'               " Add quotes/parenthesis etc.
 Plug 'tpope/vim-fugitive'               " Git wrapper
 Plug 'airblade/vim-gitgutter'           " Gutter markers for Git
@@ -32,10 +38,6 @@ Plug 'terryma/vim-multiple-cursors'     " Like Sublime Text
 Plug 'Konfekt/FastFold'                 " Fold updating
 Plug 'fatih/vim-go'                     " Golang
 Plug 'pearofducks/ansible-vim'          " Ansible
-Plug 'vim-scripts/cisco.vim'            " Cisco config highlighting
-Plug 'chriskempson/base16-vim'          " Base16 colourscheme
-Plug 'kien/rainbow_parentheses.vim'     " Fancy matching parens+
-Plug 'robertmeta/nofrils'               " minimal syntax highlighting
 
 if has('nvim')
     Plug 'Shougo/deoplete.nvim'         " NeoVim autocomplete
@@ -155,7 +157,7 @@ autocmd InsertLeave * :set relativenumber number
 ":autocmd InsertEnter,InsertLeave * set cul!
 
 " Vim interprets .md as 'modula2' otherwise, see :set filetype?
-au Bufread,BufNewFile *.md setlocal filetype=markdown textwidth=80 wrap
+au Bufread,BufNewFile *.md setlocal filetype=markdown tw=80 wrap
 
 " Go settings
 au BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4
@@ -443,7 +445,7 @@ autocmd BufWritePre *.c,*.h Cfmt
 
 " --> SuperTab {
 
-let g:SuperTabDefaultCompletionType = "<c-j>"
+let g:SuperTabDefaultCompletionType = "<tab>"
 " we need to remap this to not interfere with delimitMate
 let g:SuperTabMappingBackward = '<c-k>'
 
@@ -535,7 +537,6 @@ let g:syntastic_loc_list_height = 5
 
 let g:UltiSnipsUsePythonVersion = 3
 let g:ultisnips_python_style = "google"
-" let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsExpandTrigger="<c-j>"
 
 " }

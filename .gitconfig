@@ -28,8 +28,6 @@
     con = checkout -b
     # Switch to a branch, creating it if necessary
 	go = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
-    com = checkout master
-    cod = checkout develop
     cl = clone
     branches = branch -a
     tags = tag
@@ -42,6 +40,7 @@
     unmerge = reset --merge
     remotes = remote -v
     dr = push origin --delete
+    dl = branch -D
     l = log -n 20 --graph --oneline --decorate --pretty=format:"%C(green)%h\\ %C(cyan)(%ar)%C(red)%d\\ %C(yellow)%s"
     ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]\\ %C(yellow)(%ar)" --decorate --numstat
     # Show the diff between the latest commit and the current state
