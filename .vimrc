@@ -496,7 +496,7 @@ set updatetime=100
 
 autocmd FileType go nmap <Leader>gl  <Plug>(go-metalinter)
 autocmd FileType go nmap <leader>gb  <Plug>(go-build)
-autocmd FileType go nmap <leader>gr  <Plug>(go-run)
+au FileType go nmap <Leader>gr <Plug>(go-run-split)
 autocmd FileType go nmap <leader>gt  <Plug>(go-test)
 autocmd FileType go nmap <leader>gd :GoDecls<CR>
 autocmd FileType go nmap <leader>cd :GoDeclsDir<CR>
@@ -537,7 +537,7 @@ let g:syntastic_loc_list_height = 5
 
 let g:UltiSnipsUsePythonVersion = 3
 let g:ultisnips_python_style = "google"
-let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsExpandTrigger="<c-l>"
 
 " }
 
@@ -619,11 +619,12 @@ let g:pymode_syntax_doctests = g:pymode_syntax_all
 
 " }
 
-" --> Jedi {
+" --> jedi-vim {
 
 let g:jedi#force_py_version = 3
 "let g:jedi#popup_on_dot = 0
 let g:jedi#rename_command = "<leader>jr"
+let g:jedi#usages_command = "<leader>ju"
 
 " }
 

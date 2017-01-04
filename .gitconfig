@@ -41,7 +41,7 @@
     remotes = remote -v
     dr = push origin --delete
     dl = branch -D
-    l = log -n 20 --graph --oneline --decorate --pretty=format:"%C(green)%h\\ %C(cyan)(%ar)%C(red)%d\\ %C(yellow)%s"
+    l = log -n 20 --graph --oneline --decorate --pretty=format:"%C(green)%h\\ %C(cyan)(%ar)%C(red)%d\\ %C(yellow)%s\\ %C(green)[%an/%cn]"
     ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]\\ %C(yellow)(%ar)" --decorate --numstat
     # Show the diff between the latest commit and the current state
 	d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
