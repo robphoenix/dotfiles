@@ -16,11 +16,13 @@
     pom = push origin master
     pod = push origin develop
     fom = fetch origin master
+    fum = fetch upstream master
     fod = fetch origin develop
     fo = fetch origin
     mom = merge origin/master
     mod = merge origin/develop
     rom = rebase origin/master
+    rum = rebase upstream/master
     rod = rebase origin/develop
     h = reflog
     m = merge

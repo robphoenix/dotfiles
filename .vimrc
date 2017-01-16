@@ -535,9 +535,13 @@ let g:syntastic_loc_list_height = 5
 
 " --> UltiSnips {
 
-let g:UltiSnipsUsePythonVersion = 3
+if has('nvim')
+    let g:UltiSnipsUsePythonVersion = 3
+else
+    let g:UltiSnipsUsePythonVersion = 2
+endif
 let g:ultisnips_python_style = "google"
-let g:UltiSnipsExpandTrigger="<c-l>"
+let g:UltiSnipsExpandTrigger = "<c-l>"
 
 " }
 
