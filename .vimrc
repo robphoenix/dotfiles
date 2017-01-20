@@ -27,7 +27,7 @@ Plug 'SirVer/ultisnips'                 " Code snippets
 Plug 'honza/vim-snippets'               " Code snippets
 Plug 'godlygeek/tabular'                " Line up tabular data
 Plug 'plasticboy/vim-markdown'          " Markdown
-Plug 'majutsushi/tagbar'                " Overview of Structure
+" Plug 'majutsushi/tagbar'                " Overview of Structure
 Plug 'mhinz/vim-startify'               " Fancy start screen
 Plug 'terryma/vim-expand-region'        " Visually select increasingly larger regions of text using the same key combination
 Plug 'ervandew/supertab'                " Use tab to for completions
@@ -77,8 +77,8 @@ set nowritebackup
 set splitright                  " Split vertical windows right to the current windows
 set splitbelow                  " Split horizontal windows below to the current windows
 set autoread                    " Automatically reread changed files without asking me anything
-set relativenumber              " relative line numbers - combined with `set number` gives hybrid mode
-set number                      " line numbers - combined with `set relativenumber` gives hybrid mode
+set norelativenumber            " no relative line numbers
+set number                      " line numbers
 set wildmenu                    " show list instead of just completing
 set wildmode=full               " zsh-like autcomplete menu for Ex commands
 au FocusLost * :wa              " Set vim to save the file on focus out.
@@ -127,6 +127,7 @@ set spelllang=en_gb             " jolly good spelling chap
 set noundofile                  " no annoying .un~ files
 set modelines=1
 set cursorline                  " let's highlight the line the cursor is on
+set colorcolumn=79,119          " highlight columns
 set grepprg=pt                  " Use PT for grepping
 " Time out on key codes but not mappings.
 " Basically this makes terminal Vim work sanely.
@@ -144,17 +145,6 @@ set completeopt=longest,menuone
 
 " save no history or bookmarks in netrw
 :let g:netrw_dirhistmax = 0
-
-" highlight column only in INSERT mode
-autocmd InsertEnter * setlocal colorcolumn=79,119
-autocmd InsertLeave * setlocal colorcolumn=0
-
-" relative line numbers off in insert mode
-autocmd InsertEnter * :set number norelativenumber
-autocmd InsertLeave * :set relativenumber number
-
-" highlight cursorline only in INSERT mode
-":autocmd InsertEnter,InsertLeave * set cul!
 
 " Vim interprets .md as 'modula2' otherwise, see :set filetype?
 au Bufread,BufNewFile *.md setlocal filetype=markdown tw=80 wrap
@@ -194,13 +184,14 @@ nmap <leader>v :edit $MYVIMRC<CR>
 " enter visual line mode
 nmap <leader><leader> V
 
-"split navigations
+" split navigations
 nnoremap <C-J> <C-W>j
 nnoremap <C-K> <C-W>k
 nnoremap <C-L> <C-W>l
 nnoremap <C-H> <C-W>h
 
 if has('nvim')
+    " in terminal mode
     tnoremap <C-h> <C-\><C-n><C-w>h
     tnoremap <C-j> <C-\><C-n><C-w>j
     tnoremap <C-k> <C-\><C-n><C-w>k
