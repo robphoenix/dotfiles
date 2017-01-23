@@ -27,7 +27,7 @@ Plug 'SirVer/ultisnips'                 " Code snippets
 Plug 'honza/vim-snippets'               " Code snippets
 Plug 'godlygeek/tabular'                " Line up tabular data
 Plug 'plasticboy/vim-markdown'          " Markdown
-" Plug 'majutsushi/tagbar'                " Overview of Structure
+Plug 'majutsushi/tagbar'                " Overview of Structure
 Plug 'mhinz/vim-startify'               " Fancy start screen
 Plug 'terryma/vim-expand-region'        " Visually select increasingly larger regions of text using the same key combination
 Plug 'ervandew/supertab'                " Use tab to for completions
