@@ -117,20 +117,20 @@ go get -u golang.org/x/tools/cmd/guru
 
 # Exercism
 export EXERCISM_VERSION=2.3.0
-curl -O https://github.com/exercism/cli/releases/download/v${EXERCISM_VERSION}/exercism-linux-64bit.tgz
+wget https://github.com/exercism/cli/releases/download/v${EXERCISM_VERSION}/exercism-linux-64bit.tgz
 tar -xzvf exercism-linux-64bit.tgz
 mv exercism /usr/local/bin/
+rm exercism-linux-64bit.tgz
 exercism configure --dir=~/code/exercism
 
 # Python
 sudo apt -y install python-pip \
                     python-dev \
                     build-essential \
-                    pip3 \
                     python3-pip
 sudo -H pip install --upgrade pip
-pip install -r requirements.txt
-pip3 install -r requirements3.txt
+pip install -r ~/dotfiles/requirements.txt
+pip3 install -r ~/dotfiles/requirements3.txt
 
 # Tor Browser
 export TOR_VERSION=6.0.5
