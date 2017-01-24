@@ -87,7 +87,8 @@ sudo apt install -y \
      clamav \
      spotify-client \
      vim-gnome \
-     vim-nox
+     vim-nox \
+     gdebi
 
 # ZSH
 # oh-my-zsh
@@ -150,6 +151,11 @@ sudo apt-get install -f
 
 # Travis CI
 gem install travis -v 1.8.5 --no-rdoc --no-ri
+
+# MEGASync
+sudo apt-get install -y libc-ares2 libcrypto++9v5
+wget https://mega.nz/linux/MEGAsync/xUbuntu_16.04/amd64/megasync-xUbuntu_16.04_amd64.deb
+sudo gdebi -n megasync-xUbuntu_16.04_amd64.deb
 
 # Base16 colorscheme
 git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
