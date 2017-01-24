@@ -91,6 +91,7 @@ sudo apt install -y \
      vim-gnome \
      vim-nox \
      gdebi
+     haveged
 
 # ZSH
 # oh-my-zsh
