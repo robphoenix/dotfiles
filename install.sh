@@ -25,14 +25,10 @@ sudo add-apt-repository ppa:neovim-ppa/unstable
 
 # Chrome
 wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-# sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
 
 # tlp repo
 sudo add-apt-repository ppa:linrunner/tlp
-
-# Docker
-sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
-echo "deb https://apt.dockerproject.org/repo ubuntu-xenial main" | sudo tee /etc/apt/sources.list.d/docker.list
 
 # NodeJS
 curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
@@ -97,22 +93,16 @@ sudo apt install -y \
 # oh-my-zsh
 wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
 # zsh syntax highlighting
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting"
 # zsh history substring search
 wget https://raw.githubusercontent.com/zsh-users/zsh-history-substring-search/master/zsh-history-substring-search.zsh
-
-# Docker
-apt-cache policy docker-engine
-sudo apt -y install "linux-image-extra-$(uname -r)"
-sudo apt -y install docker-engine
-sudo service docker start
-sudo groupadd docker
-sudo usermod -aG docker rob
 
 # Golang
 export GO_VERSION=1.7.4
 curl -O https://storage.googleapis.com/golang/go${GO_VERSION}.linux-amd64.tar.gz
 sudo tar -C /usr/local -xzf go${GO_VERSION}.linux-amd64.tar.gz
+export PATH=$PATH:/usr/local/go/bin
+export GOPATH=$HOME/code/go
 rm go${GO_VERSION}.linux-amd64.tar.gz
 
 go get -u golang.org/x/tools/cmd/goimports
