@@ -118,6 +118,7 @@ go get -u github.com/odeke-em/drive/cmd/drive
 go get -u golang.org/x/tools/cmd/cover
 go get -u golang.org/x/tools/cmd/gorename
 go get -u golang.org/x/tools/cmd/guru
+go get -u github.com/monochromegane/the_platinum_searcher/...
 
 # Exercism
 export EXERCISM_VERSION=2.3.0
