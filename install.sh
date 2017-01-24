@@ -12,6 +12,8 @@ mkdir ~/code/go/bin
 mkdir ~/code/python
 mkdir ~/code/ansible
 mkdir -p "${XDG_CONFIG_HOME:=$HOME/.config}"
+mkdir ~/.config/i3
+mkdir ~/.config/ranger
 
 # turn off translations, speed up apt-get update
 mkdir -p /etc/apt/apt.conf.d
@@ -133,6 +135,9 @@ sudo -H pip install --upgrade pip
 pip install -r ~/dotfiles/requirements.txt
 pip3 install -r ~/dotfiles/requirements3.txt
 
+# npm
+sudo npm install g diff-so-fancy
+
 # Tor Browser
 export TOR_VERSION=6.0.5
 sudo wget https://www.torproject.org/dist/torbrowser/${TOR_VERSION}/tor-browser-linux64-${TOR_VERSION}_en-US.tar.xz
@@ -175,8 +180,8 @@ ln -sf "$HOME/dotfiles/.dircolors" "$HOME/.dircolors"
 ln -sf "$HOME/dotfiles/rc.conf" "$HOME/.config/ranger/rc.conf"
 ln -snf "$HOME/dotfiles/.vim" "$HOME/.config/nvim"
 ln -snf "$HOME/dotfiles/.vimrc" "$HOME/.config/nvim/init.vim"
-ln -sf "$HOME/dotfiles/aliases" "$HOME/.oh-my-zsh/custom/aliases.zsh"
-ln -sf "$HOME/dotfiles/functions" "$HOME/.oh-my-zsh/custom/functions.zsh"
+ln -sf "$HOME/dotfiles/aliases.zsh" "$HOME/.oh-my-zsh/custom/aliases.zsh"
+ln -sf "$HOME/dotfiles/functions.zsh" "$HOME/.oh-my-zsh/custom/functions.zsh"
 ln -sf "$HOME/dotfiles/.gnupg/gpg.conf" "$HOME/.gnupg/gpg.conf"
 ln -sf "$HOME/dotfiles/.gnupg/gpg-agent.conf" "$HOME/.gnupg/gpg-agent.conf"
 
@@ -186,3 +191,7 @@ sudo apt clean
 
 # change shell to zsh
 chsh -s "$(which zsh)"
+
+# change colourscheme
+base16-eighties
+
