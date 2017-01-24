@@ -116,7 +116,10 @@ go get -u golang.org/x/tools/cmd/gorename
 go get -u golang.org/x/tools/cmd/guru
 
 # Exercism
-go get -u github.com/exercism/cli/exercism
+export EXERCISM_VERSION=2.3.0
+curl -O https://github.com/exercism/cli/releases/download/v${EXERCISM_VERSION}/exercism-linux-64bit.tgz
+tar -xzvf exercism-linux-64bit.tgz
+mv exercism /usr/local/bin/
 exercism configure --dir=~/code/exercism
 
 # Python
