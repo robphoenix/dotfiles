@@ -27,7 +27,7 @@ Plug 'SirVer/ultisnips'                 " Code snippets
 Plug 'honza/vim-snippets'               " Code snippets
 Plug 'godlygeek/tabular'                " Line up tabular data
 Plug 'plasticboy/vim-markdown'          " Markdown
-Plug 'majutsushi/tagbar'                " Overview of Structure
+Plug 'vim-scripts/taglist.vim'          " Source Code Browser
 Plug 'mhinz/vim-startify'               " Fancy start screen
 Plug 'terryma/vim-expand-region'        " Visually select increasingly larger regions of text using the same key combination
 Plug 'ervandew/supertab'                " Use tab to for completions
@@ -274,9 +274,6 @@ nnoremap <leader>a :cclose<CR>
 " close location list
 nnoremap <leader>l :lclose<CR>
 
-" tagbar
-nmap <leader>t :TagbarToggle<CR>
-
 " Some helpers to edit mode
 " http://vimcasts.org/e/14
 cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
@@ -313,6 +310,12 @@ nnoremap <leader>r :read !
 " }
 
 " --> Plugins {
+
+" --> taglist {
+
+nmap <leader>t :TlistToggle<CR>
+
+" }
 
 " --> no-frils {
 
@@ -526,11 +529,13 @@ let g:syntastic_loc_list_height = 5
 
 " --> UltiSnips {
 
-if has('nvim')
-    let g:UltiSnipsUsePythonVersion = 3
-else
-    let g:UltiSnipsUsePythonVersion = 2
-endif
+" if has('nvim')
+"     let g:UltiSnipsUsePythonVersion = 3
+" else
+"     let g:UltiSnipsUsePythonVersion = 2
+" endif
+" let g:UltiSnipsUsePythonVersion = 2
+let g:UltiSnipsUsePythonVersion = 2
 let g:ultisnips_python_style = "google"
 let g:UltiSnipsExpandTrigger = "<c-l>"
 
