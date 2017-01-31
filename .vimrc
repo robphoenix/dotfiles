@@ -2,12 +2,10 @@
 
 call plug#begin()
 
-" colours
 Plug 'chriskempson/base16-vim'          " Base16 colourscheme
 Plug 'vim-scripts/cisco.vim'            " Cisco config highlighting
 Plug 'robertmeta/nofrils'               " minimal syntax highlighting
 Plug 'kien/rainbow_parentheses.vim'     " Fancy matching parens+
-
 Plug 'tpope/vim-surround'               " Add quotes/parenthesis etc.
 Plug 'tpope/vim-fugitive'               " Git wrapper
 Plug 'airblade/vim-gitgutter'           " Gutter markers for Git
@@ -314,6 +312,9 @@ nnoremap <leader>r :read !
 " --> taglist {
 
 nmap <leader>t :TlistToggle<CR>
+let Tlist_GainFocus_On_ToggleOpen = 1
+let Tlist_Use_Right_Window = 1
+let Tlist_WinWidth = 50
 
 " }
 
@@ -456,6 +457,8 @@ noremap <Leader>n :NERDTreeToggle<cr>
 let NERDTreeShowHidden=1
 let NERDTreeIgnore=['\.cache$', '__pycache__', '\.pyc$', '\.vagrant$', '\~$', '\.git$', '.DS_Store']
 let NERDTreeQuitOnOpen=1
+let NERDTreeWinPos = "right"
+let NERDTreeWinSize = 50
 
 " close vim if the only window left open is NERDTree
 "autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
