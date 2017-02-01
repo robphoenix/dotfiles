@@ -17,9 +17,9 @@ Plug 'vim-airline/vim-airline'          " Sweet statusline
 Plug 'vim-airline/vim-airline-themes'   " Sweet statusline themes
 Plug 'scrooloose/nerdtree'              " File explorer
 Plug 'klen/python-mode'                 " Python
-Plug 'davidhalter/jedi-vim'             " Extra Python
 Plug 'zchee/deoplete-jedi'              " Python autocomplete
 Plug 'jmcantrell/vim-virtualenv'        " Python Virtualenvs
+Plug 'fisadev/vim-isort'                " Sort Python imports
 Plug 'scrooloose/syntastic'             " Syntax checker
 Plug 'SirVer/ultisnips'                 " Code snippets
 Plug 'honza/vim-snippets'               " Code snippets
@@ -36,6 +36,7 @@ Plug 'terryma/vim-multiple-cursors'     " Like Sublime Text
 Plug 'Konfekt/FastFold'                 " Fold updating
 Plug 'fatih/vim-go'                     " Golang
 Plug 'pearofducks/ansible-vim'          " Ansible
+Plug 'Chiel92/vim-autoformat'           " Code formatting
 
 if has('nvim')
     Plug 'Shougo/deoplete.nvim'         " NeoVim autocomplete
@@ -305,9 +306,19 @@ cnoremap <c-j> <Down>
 " read output of shell commands to file
 nnoremap <leader>r :read !
 
+" Python code formatting with google/yapf
+autocmd FileType python nnoremap <leader>= :0,$!yapf<CR>
+
 " }
 
 " --> Plugins {
+
+" --> autoformatter {
+
+let g:formatter_yapf_style = 'google'
+au BufWrite *.py,*.md,*.markdown :Autoformat
+
+" }
 
 " --> taglist {
 
@@ -361,18 +372,18 @@ let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#buffer_nr_show = 0
 let g:airline#extensions#tabline#buffers_label = 'b'
 let g:airline_mode_map = {
-      \ '__' : '-',
-      \ 'n'  : 'N',
-      \ 'i'  : 'I',
-      \ 'R'  : 'R',
-      \ 'c'  : 'C',
-      \ 'v'  : 'V',
-      \ 'V'  : 'V',
-      \ '' : 'V',
-      \ 's'  : 'S',
-      \ 'S'  : 'S',
-      \ '' : 'S',
-      \ }
+            \ '__' : '-',
+            \ 'n'  : 'N',
+            \ 'i'  : 'I',
+            \ 'R'  : 'R',
+            \ 'c'  : 'C',
+            \ 'v'  : 'V',
+            \ 'V'  : 'V',
+            \ '' : 'V',
+            \ 's'  : 'S',
+            \ 'S'  : 'S',
+            \ '' : 'S',
+            \ }
 let g:airline#extensions#tabline#buffer_idx_mode = 1
 nmap <leader>1 <Plug>AirlineSelectTab1
 nmap <leader>2 <Plug>AirlineSelectTab2
@@ -400,23 +411,23 @@ let g:airline_section_z = '%l/%L:%c'
 
 " --> Rainbow Parentheses {
 let g:rbpt_colorpairs = [
-    \ ['brown',       'RoyalBlue3'],
-    \ ['Darkblue',    'SeaGreen3'],
-    \ ['darkgray',    'DarkOrchid3'],
-    \ ['darkgreen',   'firebrick3'],
-    \ ['darkcyan',    'RoyalBlue3'],
-    \ ['darkred',     'SeaGreen3'],
-    \ ['darkmagenta', 'DarkOrchid3'],
-    \ ['brown',       'firebrick3'],
-    \ ['gray',        'RoyalBlue3'],
-    \ ['black',       'SeaGreen3'],
-    \ ['darkmagenta', 'DarkOrchid3'],
-    \ ['Darkblue',    'firebrick3'],
-    \ ['darkgreen',   'RoyalBlue3'],
-    \ ['darkcyan',    'SeaGreen3'],
-    \ ['darkred',     'DarkOrchid3'],
-    \ ['red',         'firebrick3'],
-    \ ]
+            \ ['brown',       'RoyalBlue3'],
+            \ ['Darkblue',    'SeaGreen3'],
+            \ ['darkgray',    'DarkOrchid3'],
+            \ ['darkgreen',   'firebrick3'],
+            \ ['darkcyan',    'RoyalBlue3'],
+            \ ['darkred',     'SeaGreen3'],
+            \ ['darkmagenta', 'DarkOrchid3'],
+            \ ['brown',       'firebrick3'],
+            \ ['gray',        'RoyalBlue3'],
+            \ ['black',       'SeaGreen3'],
+            \ ['darkmagenta', 'DarkOrchid3'],
+            \ ['Darkblue',    'firebrick3'],
+            \ ['darkgreen',   'RoyalBlue3'],
+            \ ['darkcyan',    'SeaGreen3'],
+            \ ['darkred',     'DarkOrchid3'],
+            \ ['red',         'firebrick3'],
+            \ ]
 
 let g:rbpt_max = 16
 let g:rbpt_loadcmd_toggle = 0
@@ -520,8 +531,8 @@ let g:syntastic_yaml_checkers = ['yamllint']
 let g:syntastic_ansible_checkers = ['ansible_lint', 'yamllint']
 " let vim-go handle syntax checking
 let g:syntastic_mode_map = {
-        \ "mode": "active",
-        \ "passive_filetypes": ["go"] }
+            \ "mode": "active",
+            \ "passive_filetypes": ["go"] }
 
 nmap <leader>ee :Errors<cr>
 let g:syntastic_always_populate_loc_list = 1
@@ -654,15 +665,15 @@ highlight ExtraWhitespace ctermbg=DarkGreen
 " --> Startify {
 
 let g:startify_custom_header = [
-    \ '',
-    \ '    , __            _                          _   _',
-    \ '   /|/  \       o  | |    |      ()           | | | |',
-    \ '    | __/          | |  __|      /\_|_        | | | |',
-    \ '    |   \|   |  |  |/  /  |     /  \|  |   |  |/  |/',
-    \ '    |(__/ \_/|_/|_/|__/\_/|_/  /(__/|_/ \_/|_/|__/|__/',
-    \ '                                              |\  |\',
-    \ '                                              |/  |/',
-    \ ]
+            \ '',
+            \ '    , __            _                          _   _',
+            \ '   /|/  \       o  | |    |      ()           | | | |',
+            \ '    | __/          | |  __|      /\_|_        | | | |',
+            \ '    |   \|   |  |  |/  /  |     /  \|  |   |  |/  |/',
+            \ '    |(__/ \_/|_/|_/|__/\_/|_/  /(__/|_/ \_/|_/|__/|__/',
+            \ '                                              |\  |\',
+            \ '                                              |/  |/',
+            \ ]
 
 " }
 
