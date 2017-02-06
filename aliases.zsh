@@ -85,3 +85,6 @@ alias to="travis open"
 
 # speedtest-cli
 alias st="speedtest-cli"
+
+# lua
+alias lua="lua5.3"

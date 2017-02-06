@@ -10,6 +10,8 @@ mkdir ~/code/go/src
 mkdir ~/code/go/pkg
 mkdir ~/code/go/bin
 mkdir ~/code/python
+mkdir ~/code/lua
+mkdir ~/code/C
 mkdir ~/code/ansible
 mkdir -p "${XDG_CONFIG_HOME:=$HOME/.config}"
 mkdir ~/.config/i3
@@ -90,8 +92,10 @@ sudo apt install -y \
      spotify-client \
      vim-gnome \
      vim-nox \
-     gdebi
-     haveged
+     gdebi \
+     haveged \
+     lua5.3 \
+     luarocks
 
 # ZSH
 # oh-my-zsh
@@ -166,6 +170,9 @@ sudo gdebi -n megasync-xUbuntu_16.04_amd64.deb
 
 # Base16 colorscheme
 git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
+
+# LuaRocks
+sudo luarocks install busted
 
 # symlinks
 ln -sf "$HOME/dotfiles/.zshenv" "$HOME/.zshenv"

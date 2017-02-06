@@ -162,6 +162,9 @@ let python_highlight_all=1
 au BufNewFile,BufRead *.yaml setlocal ts=2 sw=2 sts=2
 au BufNewFile,BufRead *.yml setlocal ts=2 sw=2 sts=2
 
+" lua settings
+autocmd BufNewFile,BufRead *.lua setlocal noet ts=4 sw=4 sts=4
+
 " Cisco config files
 au BufRead,BufNewFile *.cfg set filetype=cisco
 au BufRead,BufNewFile *.conf set filetype=cisco
