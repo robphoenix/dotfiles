@@ -316,10 +316,10 @@ autocmd FileType python nnoremap <leader>= :0,$!yapf<CR>
 
 " --> Plugins {
 
-" --> autoformatter {
+" --> vim-autoformat {
 
 let g:formatter_yapf_style = 'google'
-au BufWrite *.py,*.md,*.markdown :Autoformat
+au BufWrite *.py,*.md,*.markdown,*.js :Autoformat
 
 " }
 
