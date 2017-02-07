@@ -163,7 +163,7 @@ au BufNewFile,BufRead *.yaml setlocal ts=2 sw=2 sts=2
 au BufNewFile,BufRead *.yml setlocal ts=2 sw=2 sts=2
 
 " lua settings
-autocmd BufNewFile,BufRead *.lua setlocal noet ts=4 sw=4 sts=4
+au BufNewFile,BufRead *.lua setlocal noet ts=4 sw=4 sts=4
 
 " Cisco config files
 au BufRead,BufNewFile *.cfg set filetype=cisco
@@ -319,7 +319,7 @@ autocmd FileType python nnoremap <leader>= :0,$!yapf<CR>
 " --> vim-autoformat {
 
 let g:formatter_yapf_style = 'google'
-au BufWrite *.py,*.md,*.markdown,*.js :Autoformat
+au BufWrite *.py,*.md,*.markdown,*.js,*.lua :Autoformat
 
 " }
 
