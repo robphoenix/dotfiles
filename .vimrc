@@ -270,6 +270,9 @@ nnoremap <leader>sa :grep! <C-r><C-w> <CR>:cw<CR>
 command -nargs=+ -complete=file -bar Pt silent! grep! <args>|cwindow|redraw!
 nnoremap \ :Pt<space>
 
+" See errors
+nmap <leader>ee :Errors<cr>
+
 " deal with quickfix easily
 nnoremap <leader>a :cclose<CR>
 
@@ -527,20 +530,24 @@ let g:delimitMate_smart_matchpairs = '^\%(\w\|\$\)'
 
 " --> Syntastic {
 
-let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
-let g:syntastic_sh_checkers = ['shellcheck']
-let g:syntastic_c_checkers = ['splint', 'make', 'gcc']
-let g:syntastic_yaml_checkers = ['yamllint']
-let g:syntastic_ansible_checkers = ['ansible_lint', 'yamllint']
+let g:syntastic_check_on_open = 1
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_jump = 3
+let g:syntastic_loc_list_height = 5
+
+"" language checkers
 " let vim-go handle syntax checking
 let g:syntastic_mode_map = {
             \ "mode": "active",
             \ "passive_filetypes": ["go"] }
-
-nmap <leader>ee :Errors<cr>
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_jump = 3
-let g:syntastic_loc_list_height = 5
+" let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
+let g:syntastic_sh_checkers = ['shellcheck']
+let g:syntastic_c_checkers = ['splint', 'make', 'gcc']
+let g:syntastic_yaml_checkers = ['yamllint']
+let g:syntastic_ansible_checkers = ['ansible_lint', 'yamllint']
+let g:syntastic_lua_checkers = ["luac", "luacheck"]
+let g:syntastic_lua_luacheck_args = "--no-unused-args"
+let g:syntastic_markdown_checkers = ["markdownlint"]
 
 " }
 
