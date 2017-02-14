@@ -149,7 +149,7 @@ set completeopt=longest,menuone
 au Bufread,BufNewFile *.md setlocal filetype=markdown tw=80 wrap
 
 " Go settings
-au BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4
+au BufNewFile,BufRead *.go setlocal noet ts=8 sw=8 sts=8
 autocmd BufEnter *.go colorscheme nofrils-dark
 autocmd BufLeave *.go colorscheme base16-default-dark
 
@@ -322,7 +322,7 @@ autocmd FileType python nnoremap <leader>= :0,$!yapf<CR>
 " --> vim-autoformat {
 
 let g:formatter_yapf_style = 'google'
-au BufWrite *.py,*.md,*.markdown,*.js,*.lua :Autoformat
+au BufWrite *.py,*.js,*.lua :Autoformat
 
 " }
 
