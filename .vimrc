@@ -163,7 +163,7 @@ au BufNewFile,BufRead *.yaml setlocal ts=2 sw=2 sts=2
 au BufNewFile,BufRead *.yml setlocal ts=2 sw=2 sts=2
 
 " lua settings
-au BufNewFile,BufRead *.lua setlocal noet ts=4 sw=4 sts=4
+au BufNewFile,BufRead *.lua setlocal ts=2 sw=2 sts=2
 
 " Cisco config files
 au BufRead,BufNewFile *.cfg set filetype=cisco
