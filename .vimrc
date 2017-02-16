@@ -165,6 +165,9 @@ au BufNewFile,BufRead *.yml setlocal ts=2 sw=2 sts=2
 " lua settings
 au BufNewFile,BufRead *.lua setlocal ts=2 sw=2 sts=2
 
+" js settings
+au BufNewFile,BufRead *.js setlocal ts=2 sw=2 sts=2
+
 " Cisco config files
 au BufRead,BufNewFile *.cfg set filetype=cisco
 au BufRead,BufNewFile *.conf set filetype=cisco
@@ -260,15 +263,7 @@ vnoremap k gk
 nmap <silent> <leader>/ :nohlsearch<CR>
 
 " substitution (replace) word under cursor
-nnoremap <C-s> :%s/<C-r><C-w>//gc<left><left><left>
-
-" grep with pt
-" st: Search This (file) for word under cursor
-nnoremap <leader>st :grep! <C-r><C-w> %<CR>:cw<CR>
-" sa: Search All (files) for word under cursor
-nnoremap <leader>sa :grep! <C-r><C-w> <CR>:cw<CR>
-command -nargs=+ -complete=file -bar Pt silent! grep! <args>|cwindow|redraw!
-nnoremap \ :Pt<space>
+nnoremap <C-s> :%s/\<<C-r><C-w>\>//c<left><left>
 
 " See errors
 nmap <leader>ee :Errors<cr>
@@ -313,7 +308,10 @@ cnoremap <c-j> <Down>
 nnoremap <leader>r :read !
 
 " Python code formatting with google/yapf
-autocmd FileType python nnoremap <leader>= :0,$!yapf<CR>
+" autocmd FileType python nnoremap <leader>= :0,$!yapf<CR>
+
+" Startify any time
+nnoremap <leader>ss :Startify<CR>
 
 " }
 
@@ -674,6 +672,20 @@ highlight ExtraWhitespace ctermbg=DarkGreen
 
 " --> Startify {
 
+let g:startify_list_order = [
+            \ ['   Current directory:'],
+            \ 'dir',
+            \ ['   Most recently used'],
+            \ 'files',
+            \ ['   Bookmarks:'],
+            \ 'bookmarks',
+            \ ]
+let g:startify_bookmarks = [ {'v': '~/.vimrc'}, {'d': '~/dotfiles/'} ]
+let g:startify_files_number = 5
+let g:startify_change_to_dir = 1
+let g:startify_enable_special = 0
+let g:startify_change_to_dir = 1
+let g:startify_custom_indices = map(range(1,100), 'string(v:val)')
 let g:startify_custom_header = [
             \ '',
             \ '    , __            _                          _   _',
@@ -684,6 +696,13 @@ let g:startify_custom_header = [
             \ '                                              |\  |\',
             \ '                                              |/  |/',
             \ ]
+" open NERDTree as well
+" autocmd VimEnter *
+"                 \   if !argc()
+"                 \ |   Startify
+"                 \ |   NERDTree
+"                 \ |   wincmd w
+"                 \ | endif
 
 " }
 
