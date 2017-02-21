@@ -36,7 +36,8 @@ alias pu="sudo -H pip uninstall"
 alias gt="go test -v -cover"
 
 # git
-alias g="git"
+alias git="hub"
+alias g="hub"
 alias gs="g s"
 alias gl="g l"
 alias gpm="g pom"
@@ -88,3 +89,6 @@ alias st="speedtest-cli"
 
 # lua
 alias lua="lua5.3"
+
+# wunderlist
+alias wl="wunderline"

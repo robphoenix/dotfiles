@@ -142,7 +142,11 @@ pip install -r ~/dotfiles/requirements.txt
 pip3 install -r ~/dotfiles/requirements3.txt
 
 # npm
-sudo npm install g diff-so-fancy
+sudo npm install -g diff-so-fancy
+sudo npm install -g wunderline
+sudo npm install -g netlify-cli
+sudo npm install -g jasmine-node
+sudo npm install -g gulp-cli
 
 # Tor Browser
 export TOR_VERSION=6.0.5
@@ -173,6 +177,16 @@ git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shel
 
 # LuaRocks
 sudo luarocks install busted
+
+# GitHub Hub
+export HUB_VERSION=2.3.0-pre9
+wget https://github.com/github/hub/releases/download/v${HUB_VERSION}/hub-linux-amd64-${HUB_VERSION}.tgz
+tar zxvf hub-linux-amd64-${HUB_VERSION}.tgz
+sudo ./hub-linux-amd64-${HUB_VERSION}/install
+mkdir -p ~/.zsh/completions
+mv ./hub-linux-amd64-${HUB_VERSION}/etc/hub.zsh_completion ~/.zsh/completions/_hub
+rm -rf hub-linux-amd64-${HUB_VERSION}
+rm hub-linux-amd64-${HUB_VERSION}.tgz
 
 # symlinks
 ln -sf "$HOME/dotfiles/.zshenv" "$HOME/.zshenv"
