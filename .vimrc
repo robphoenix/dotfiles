@@ -213,11 +213,9 @@ nnoremap <leader>bq :bd!<CR>
 " open buffer in vertical split
 nnoremap <leader>sb :vert sb<Space>
 
-" Remap H and L (top, bottom of screen to left and right end of line)
-nnoremap H ^
-nnoremap L $
-vnoremap H ^
-vnoremap L g_
+" Remap - to move to end of line (0 to move to beginning)
+nnoremap - $
+vnoremap - $
 
 " spell checking
 nnoremap <F6> :setlocal spell! spell?<CR>
