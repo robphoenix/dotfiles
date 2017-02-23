@@ -207,6 +207,7 @@ nnoremap <leader>sb :vert sb<Space>
 " Remap - to move to end of line (0 to move to beginning)
 nnoremap - $
 vnoremap - $
+onoremap - $
 
 " spell checking
 nnoremap <F6> :setlocal spell! spell?<CR>
