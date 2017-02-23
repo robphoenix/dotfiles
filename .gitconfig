@@ -9,16 +9,14 @@
     s = status -s
     c = commit -S -m
     # Commit all changes
-	ca = !git add -A && git commit -av
-    a = add
+    ca = !git add -A && git commit -av
     aa = add --all
+    p = push
     po = push origin
     pom = push origin master
     pod = push origin develop
     fom = fetch origin master
     fum = fetch upstream master
-    fod = fetch origin develop
-    fo = fetch origin
     mom = merge origin/master
     mod = merge origin/develop
     # rebase
@@ -30,7 +28,7 @@
     h = reflog
     m = merge
     # Switch to a branch, creating it if necessary
-	go = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
+    go = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
     cl = clone
     b = branch -a
     rp = remote prune
@@ -52,7 +50,8 @@
     # more detailed log
     ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]\\ %C(yellow)(%ar)" --decorate --numstat
     # Show the diff between the latest commit and the current state
-	d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
+    d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
+    # use diff-so-fancy https://github.com/so-fancy/diff-so-fancy
     dsf = "!f() { [ -z \"$GIT_PREFIX\" ] || cd \"$GIT_PREFIX\" && git diff --color \"$@\" | diff-so-fancy  | less --tabs=4 -RFX; }; f"
     dsfl = "!f() { [ -z \"$GIT_PREFIX\" ] || cd \"$GIT_PREFIX\" && git show --color \"$@\" | diff-so-fancy  | less --tabs=4 -RFX; }; f"
 
@@ -67,8 +66,8 @@
 [core]
 
     excludesfile = ~/.gitignore
-	editor = nvim
-	trustctime = false
+    editor = nvim
+    trustctime = false
 
 [github]
 
@@ -85,4 +84,4 @@
 
 [push]
 
-	default = matching
+    default = matching

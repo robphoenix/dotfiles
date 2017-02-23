@@ -263,7 +263,7 @@ vnoremap k gk
 nmap <silent> <leader>/ :nohlsearch<CR>
 
 " substitution (replace) word under cursor
-nnoremap <C-s> :%s/\<<C-r><C-w>\>//c<left><left>
+nnoremap <C-s> :%s/<C-r><C-w>//c<left><left>
 
 " See errors
 nmap <leader>ee :Errors<cr>
