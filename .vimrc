@@ -19,7 +19,6 @@ Plug 'scrooloose/nerdtree'              " File explorer
 Plug 'klen/python-mode'                 " Python
 Plug 'zchee/deoplete-jedi'              " Python autocomplete
 Plug 'jmcantrell/vim-virtualenv'        " Python Virtualenvs
-Plug 'fisadev/vim-isort'                " Sort Python imports
 Plug 'scrooloose/syntastic'             " Syntax checker
 Plug 'SirVer/ultisnips'                 " Code snippets
 Plug 'honza/vim-snippets'               " Code snippets
@@ -196,8 +195,8 @@ nnoremap <C-L> <C-W>l
 nnoremap <C-H> <C-W>h
 
 " Buffer switching
-nnoremap <TAB> :bn<CR>
-nnoremap <S-TAB> :bp<CR>
+nnoremap L :bn<CR>
+nnoremap H :bp<CR>
 " Buffer closing
 nnoremap <silent> <leader>q :Sayonara<CR>
 nnoremap <leader>bq :bd!<CR>
@@ -436,7 +435,7 @@ autocmd BufWritePre *.c,*.h Cfmt
 
 " --> SuperTab {
 
-let g:SuperTabDefaultCompletionType = "<tab>"
+let g:SuperTabDefaultCompletionType = "<TAB>"
 " we need to remap this to not interfere with delimitMate
 let g:SuperTabMappingBackward = '<c-k>'
 
