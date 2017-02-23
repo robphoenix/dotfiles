@@ -28,7 +28,7 @@ Plug 'vim-scripts/taglist.vim'          " Source Code Browser
 Plug 'mhinz/vim-startify'               " Fancy start screen
 Plug 'terryma/vim-expand-region'        " Visually select increasingly larger regions of text using the same key combination
 Plug 'ervandew/supertab'                " Use tab to for completions
-Plug 'scrooloose/nerdcommenter'         " Comments
+Plug 'tpope/vim-commentary'             " Commenting
 Plug 'Yggdroot/indentLine'              " Visualize indentation levels
 Plug 'mhinz/vim-sayonara'               " Easy buffer closing
 Plug 'terryma/vim-multiple-cursors'     " Like Sublime Text
@@ -319,19 +319,6 @@ let Tlist_WinWidth = 50
 let g:nofrils_strbackgrounds=1
 nmap <leader>cf :NofrilsFocusCode<CR>
 nmap <leader>fc :NofrilsFocusComments<CR>
-
-"  }
-
-" --> nerdcommenter {
-
-" Add spaces after comment delimiters by default
-let g:NERDSpaceDelims = 1
-" Align line-wise comment delimiters flush left instead of following code indentation
-let g:NERDDefaultAlign = 'left'
-" Allow commenting and inverting empty lines (useful when commenting a region)
-let g:NERDCommentEmptyLines = 1
-" Enable trimming of trailing whitespace when uncommenting
-let g:NERDTrimTrailingWhitespace = 1
 
 "  }
 
