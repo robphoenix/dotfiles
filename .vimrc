@@ -195,14 +195,6 @@ nnoremap <C-K> <C-W>k
 nnoremap <C-L> <C-W>l
 nnoremap <C-H> <C-W>h
 
-if has('nvim')
-    " in terminal mode
-    tnoremap <C-h> <C-\><C-n><C-w>h
-    tnoremap <C-j> <C-\><C-n><C-w>j
-    tnoremap <C-k> <C-\><C-n><C-w>k
-    tnoremap <C-l> <C-\><C-n><C-w>l
-endif
-
 " Buffer switching
 nnoremap <TAB> :bn<CR>
 nnoremap <S-TAB> :bp<CR>
@@ -286,12 +278,6 @@ vnoremap . :normal .<CR>
 " build current C program, output has same name
 autocmd FileType c nnoremap <silent> <leader>mc :!clear;gcc % -o %:r.out<CR>
 
-" integrated terminal
-"nnoremap <leader>tr :50vsp term://zsh<CR>
-"nnoremap <leader>ty :50vsp term://bpython<CR>
-"tnoremap <leader>e <c-\><c-n>
-":au BufEnter * if &buftype == 'terminal' | :startinsert | endif
-
 " resizing splits
 nnoremap <silent> <a-h> :vertical resize +10<cr>
 nnoremap <silent> <a-l> :vertical resize -10<cr>
@@ -304,9 +290,6 @@ cnoremap <c-j> <Down>
 
 " read output of shell commands to file
 nnoremap <leader>r :read !
-
-" Python code formatting with google/yapf
-" autocmd FileType python nnoremap <leader>= :0,$!yapf<CR>
 
 " Startify any time
 nnoremap <leader>ss :Startify<CR>
