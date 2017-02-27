@@ -294,6 +294,9 @@ nnoremap <leader>r :read !
 " Startify any time
 nnoremap <leader>ss :Startify<CR>
 
+" vim-plug
+nnoremap <silent> <a-p> :PlugUpgrade<CR> :PlugUpdate<CR>
+
 " }
 
 " --> Plugins {
