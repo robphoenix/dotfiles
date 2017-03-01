@@ -42,6 +42,9 @@ bindkey -M vicmd 'j' history-substring-search-down
 fpath=(~/.zsh/completions /home/rob/.oh-my-zsh/plugins/colored-man-pages /home/rob/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting /home/rob/.oh-my-zsh/plugins/gpg-agent /home/rob/.oh-my-zsh/plugins/ssh-agent /home/rob/.oh-my-zsh/plugins/virtualenvwrapper /home/rob/.oh-my-zsh/plugins/thefuck /home/rob/.oh-my-zsh/plugins/z /home/rob/.oh-my-zsh/functions /home/rob/.oh-my-zsh/completions /usr/local/share/zsh/site-functions /usr/share/zsh/vendor-functions /usr/share/zsh/vendor-completions /usr/share/zsh/functions/Calendar /usr/share/zsh/functions/Chpwd /usr/share/zsh/functions/Completion /usr/share/zsh/functions/Completion/AIX /usr/share/zsh/functions/Completion/BSD /usr/share/zsh/functions/Completion/Base /usr/share/zsh/functions/Completion/Cygwin /usr/share/zsh/functions/Completion/Darwin /usr/share/zsh/functions/Completion/Debian /usr/share/zsh/functions/Completion/Linux /usr/share/zsh/functions/Completion/Mandriva /usr/share/zsh/functions/Completion/Redhat /usr/share/zsh/functions/Completion/Solaris /usr/share/zsh/functions/Completion/Unix /usr/share/zsh/functions/Completion/X /usr/share/zsh/functions/Completion/Zsh /usr/share/zsh/functions/Completion/openSUSE /usr/share/zsh/functions/Exceptions /usr/share/zsh/functions/MIME /usr/share/zsh/functions/Misc /usr/share/zsh/functions/Newuser /usr/share/zsh/functions/Prompts /usr/share/zsh/functions/TCP /usr/share/zsh/functions/VCS_Info /usr/share/zsh/functions/VCS_Info/Backends /usr/share/zsh/functions/Zftp /usr/share/zsh/functions/Zle)
 autoload -U compinit && compinit
 
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+
 # Set Options
 
 # ===== Basics
