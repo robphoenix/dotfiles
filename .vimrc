@@ -36,6 +36,7 @@ Plug 'Konfekt/FastFold'                 " Fold updating
 Plug 'fatih/vim-go'                     " Golang
 Plug 'pearofducks/ansible-vim'          " Ansible
 Plug 'Chiel92/vim-autoformat'           " Code formatting
+Plug 'Rykka/riv.vim'                    " reStructured Text
 
 if has('nvim')
     Plug 'Shougo/deoplete.nvim'         " NeoVim autocomplete
