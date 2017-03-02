@@ -106,7 +106,7 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "${ZSH_CUSTOM
 wget https://raw.githubusercontent.com/zsh-users/zsh-history-substring-search/master/zsh-history-substring-search.zsh
 
 # Golang
-export GO_VERSION=1.7.4
+export GO_VERSION=1.8
 curl -O https://storage.googleapis.com/golang/go${GO_VERSION}.linux-amd64.tar.gz
 sudo tar -C /usr/local -xzf go${GO_VERSION}.linux-amd64.tar.gz
 export PATH=$PATH:/usr/local/go/bin
@@ -147,6 +147,10 @@ sudo npm install -g wunderline
 sudo npm install -g netlify-cli
 sudo npm install -g jasmine-node
 sudo npm install -g gulp-cli
+
+# RVM
+gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
+\curl -sSL https://get.rvm.io | bash -s stable
 
 # Tor Browser
 export TOR_VERSION=6.0.5

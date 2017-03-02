@@ -17,4 +17,5 @@ _site/
 __pycache__
 *.beam
 tags
+.debris/
 
