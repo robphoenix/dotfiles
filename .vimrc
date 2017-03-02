@@ -21,7 +21,7 @@ Plug 'zchee/deoplete-jedi'              " Python autocomplete
 Plug 'jmcantrell/vim-virtualenv'        " Python Virtualenvs
 Plug 'scrooloose/syntastic'             " Syntax checker
 Plug 'SirVer/ultisnips'                 " Code snippets
-" Plug 'honza/vim-snippets'               " Code snippets
+Plug 'honza/vim-snippets'               " Code snippets
 Plug 'godlygeek/tabular'                " Line up tabular data
 Plug 'plasticboy/vim-markdown'          " Markdown
 Plug 'vim-scripts/taglist.vim'          " Source Code Browser
