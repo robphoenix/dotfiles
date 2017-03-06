@@ -24,7 +24,7 @@ Plug 'SirVer/ultisnips'                 " Code snippets
 Plug 'honza/vim-snippets'               " Code snippets
 Plug 'godlygeek/tabular'                " Line up tabular data
 Plug 'plasticboy/vim-markdown'          " Markdown
-Plug 'vim-scripts/taglist.vim'          " Source Code Browser
+Plug 'majutsushi/tagbar'                " Source Code Browser
 Plug 'mhinz/vim-startify'               " Fancy start screen
 Plug 'terryma/vim-expand-region'        " Visually select increasingly larger regions of text using the same key combination
 Plug 'ervandew/supertab'                " Use tab to for completions
@@ -79,7 +79,7 @@ set autoread                    " Automatically reread changed files without ask
 set norelativenumber            " no relative line numbers
 set number                      " line numbers
 set wildmenu                    " show list instead of just completing
-set wildmode=full               " zsh-like autcomplete menu for Ex commands
+set wildmode=longest,list:longest               " zsh-like autcomplete menu for Ex commands
 au FocusLost * :wa              " Set vim to save the file on focus out.
 set fileformats=unix,dos,mac    " Prefer Unix over Windows over OS 9 formats
 set noshowmatch                 " Do not show matching brackets by flickering
@@ -139,8 +139,9 @@ if has('nvim')
 endif
 
 " Better Completion
-set complete=.,w,b,u,t
-set completeopt=longest,menuone,noinsert
+set complete=.,b,u,]
+set completeopt=longest,menuone,noselect
+set omnifunc=syntaxcomplete#Complete
 
 " save no history or bookmarks in netrw
 :let g:netrw_dirhistmax = 0
@@ -172,6 +173,8 @@ au BufNewFile,BufRead *.js setlocal ts=2 sw=2 sts=2
 au BufRead,BufNewFile *.cfg set filetype=cisco
 au BufRead,BufNewFile *.conf set filetype=cisco
 
+" Thesaurus https://github.com/zeke/moby
+set thesaurus+=./.vim/thesaurus.txt
 " }
 
 " --> Key (re)Mappings {
@@ -309,12 +312,11 @@ au BufWrite *.py,*.js,*.lua :Autoformat
 
 " }
 
-" --> taglist {
+" --> tagbar {
 
-nmap <leader>t :TlistToggle<CR>
-let Tlist_GainFocus_On_ToggleOpen = 1
-let Tlist_Use_Right_Window = 1
-let Tlist_WinWidth = 50
+nnoremap <silent> <leader>t :TagbarToggle<CR>
+let g:tagbar_autoclose = 0
+let g:tagbar_autofocus = 1
 
 " }
 
@@ -563,7 +565,6 @@ if has('nvim')
     let g:deoplete#sources#go#sort_class = ['func', 'type', 'var', 'const']
     let g:deoplete#sources#go#align_class = 1
     let deoplete#sources#jedi#show_docstring = 1
-    let g:deoplete#disable_auto_complete = 0
 
     " Use partial fuzzy matches like YouCompleteMe
     call deoplete#custom#set('_', 'matchers', ['matcher_fuzzy'])
