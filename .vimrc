@@ -140,7 +140,7 @@ endif
 
 " Better Completion
 set complete=.,w,b,u,t
-set completeopt=longest,menuone
+set completeopt=longest,menuone,noinsert
 
 " save no history or bookmarks in netrw
 :let g:netrw_dirhistmax = 0
@@ -557,11 +557,13 @@ let g:ctrlp_buftag_types = {'go' : '--language-force=go --golang-types=ftv'}
 
 if has('nvim')
     let g:deoplete#enable_at_startup = 1
+    let g:deoplete#enable_smart_case = 1
     let g:deoplete#sources#go#gocode_binary="$GOPATH.'/bin/gocode'"
     let g:deoplete#sources#go#pointer = 1
     let g:deoplete#sources#go#sort_class = ['func', 'type', 'var', 'const']
     let g:deoplete#sources#go#align_class = 1
     let deoplete#sources#jedi#show_docstring = 1
+    let g:deoplete#disable_auto_complete = 0
 
     " Use partial fuzzy matches like YouCompleteMe
     call deoplete#custom#set('_', 'matchers', ['matcher_fuzzy'])
