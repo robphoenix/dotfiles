@@ -18,4 +18,5 @@ __pycache__
 *.beam
 tags
 .debris/
+.vim/plugged/
 
