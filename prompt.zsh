@@ -48,7 +48,8 @@ function zle-line-init zle-keymap-select {
     NORMAL_MODE="%{$bg[blue]$fg[black]%} N %{$reset_color%}"
     INSERT_MODE="%{$bg[green]$fg[black]%} I %{$reset_color%}"
     PROMPT="
-%{$fg[green]%}%~\
+%{$fg[yellow]%}[%n@%m] \
+%{$fg[green]%}%3~\
 $(__posh_git_echo)\
 %{$fg[magenta]%}\$(virtualenv_info) \
 ${${KEYMAP/vicmd/\$NORMAL_MODE}/(main|viins)/}
