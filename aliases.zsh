@@ -1,6 +1,6 @@
 # Personal aliases
 
-alias l="ls -I.debris -I.cache -I__pycache__ -I.git -Inode_modules -I.vagrant -I.DS_Store -lAh "
+alias l="ls -lAhF -I.debris -I.cache -I__pycache__ -I.git -Inode_modules -I.vagrant -I.DS_Store "
 
 alias web="google-chrome"
 alias open="xdg-open"
