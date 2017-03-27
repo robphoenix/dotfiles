@@ -147,6 +147,8 @@ sudo npm install -g wunderline
 sudo npm install -g netlify-cli
 sudo npm install -g jasmine-node
 sudo npm install -g gulp-cli
+sudo npm install -g trash-cli
+sudo npm install -g empty-trash-cli
 
 # RVM
 gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3

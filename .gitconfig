@@ -54,6 +54,13 @@
     # use diff-so-fancy https://github.com/so-fancy/diff-so-fancy
     dsf = "!f() { [ -z \"$GIT_PREFIX\" ] || cd \"$GIT_PREFIX\" && git diff --color \"$@\" | diff-so-fancy  | less --tabs=4 -RFX; }; f"
     dsfl = "!f() { [ -z \"$GIT_PREFIX\" ] || cd \"$GIT_PREFIX\" && git show --color \"$@\" | diff-so-fancy  | less --tabs=4 -RFX; }; f"
+    # golang codereview
+    change = codereview change
+	gofmt = codereview gofmt
+	mail = codereview mail
+	pending = codereview pending
+	submit = codereview submit
+	sync = codereview sync
 
 [color]
 
@@ -85,3 +92,5 @@
 [push]
 
     default = matching
+[http]
+	cookiefile = /home/rob/.gitcookies

@@ -1,11 +1,32 @@
 # Personal aliases
 
+# system
 alias l="ls -lAhF -I.debris -I.cache -I__pycache__ -I.git -Inode_modules -I.vagrant -I.DS_Store "
-
+alias mv="mv -ivu"
+alias cp="cp -ivu"
+alias rm="trash"
+alias say="sudo apt -y"
+alias sarepo="sudo add-apt-repository"
+alias sudo="sudo "
+alias su="sudo -i"
+alias s="sudo"
+alias up="sudo apt -y update && sudo apt -y upgrade && sudo apt autoremove"
+alias rd="sudo rm -r"
+alias cpd="sudo cp -r"
+alias bye="sudo shutdown now"
+alias reup="sudo reboot now"
 alias web="google-chrome"
 alias open="xdg-open"
 alias f="fuck"
 alias gpg="gpg2"
+# usb
+alias u="usb"
+alias uu="sudo umount /media/usb"
+# start vpn
+alias vpnu="sudo openvpn ~/pia &"
+alias vpnd="sudo killall openvpn"
+# zsh
+alias relo="source ~/.zshrc"
 
 # vagrant
 alias vup="vagrant up && vagrant ssh"
@@ -14,13 +35,6 @@ alias vd="vagrant destroy -f"
 
 # ansible
 alias apb="ansible-playbook"
-
-# start vpn
-alias vpnu="sudo openvpn ~/pia &"
-alias vpnd="sudo killall openvpn"
-
-# zsh
-alias relo="source ~/.zshrc"
 
 # python
 alias p="python3"
@@ -55,27 +69,11 @@ alias v="nvim"
 alias dot="nvim ~/dotfiles"
 alias factoryvim="vim -u ~/dotfiles/.vim/essential.vim"
 
-# general system stuff
-alias say="sudo apt -y"
-alias sarepo="sudo add-apt-repository"
-alias sudo="sudo "
-alias su="sudo -i"
-alias s="sudo"
-alias up="sudo apt -y update && sudo apt -y upgrade"
-alias rd="sudo rm -r"
-alias cpd="sudo cp -r"
-alias bye="sudo shutdown now"
-alias reup="sudo reboot now"
-
 # ranger
 alias rng="ranger"
 
 # cisco console connection
 alias cscon="sudo screen /dev/ttyUSB0 9600"
-
-# usb
-alias u="usb"
-alias uu="sudo umount /media/usb"
 
 # travis
 alias ts="travis show"
