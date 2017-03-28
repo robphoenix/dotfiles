@@ -55,12 +55,6 @@ call plug#end()
 set nocompatible    " be iMproved, required
 set t_Co=256        " ensure vim uses 256 colours, just in case TERM is not xterm-256color
 
-" set design of vertical split divider
-set fillchars=fold:\ ,vert:\ ,
-autocmd ColorScheme * highlight VertSplit cterm=NONE ctermfg=NONE ctermbg=NONE
-" set design of fold
-autocmd ColorScheme * highlight Folded cterm=BOLD ctermfg=NONE ctermbg=NONE
-
 " Colourscheme
 syntax enable
 set background=dark

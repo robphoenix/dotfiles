@@ -23,7 +23,7 @@ alias gpg="gpg2"
 alias u="usb"
 alias uu="sudo umount /media/usb"
 # start vpn
-alias vpnu="sudo openvpn ~/pia &"
+alias vpnu="sudo openvpn /etc/openvpn/uk-01.protonvpn.conf &"
 alias vpnd="sudo killall openvpn"
 # zsh
 alias relo="source ~/.zshrc"
