@@ -53,9 +53,9 @@ call plug#end()
 " --> Settings {
 
 set nocompatible    " be iMproved, required
-set t_Co=256        " ensure vim uses 256 colours, just in case TERM is not xterm-256color
 
 " Colourscheme
+set t_Co=256        " ensure vim uses 256 colours, just in case TERM is not xterm-256color
 syntax enable
 set background=dark
 let base16colorspace=256  " Access colors present in 256 colorspace
@@ -519,12 +519,6 @@ let g:syntastic_markdown_checkers = ["markdownlint"]
 
 " --> UltiSnips {
 
-" if has('nvim')
-"     let g:UltiSnipsUsePythonVersion = 3
-" else
-"     let g:UltiSnipsUsePythonVersion = 2
-" endif
-" let g:UltiSnipsUsePythonVersion = 2
 let g:UltiSnipsUsePythonVersion = 2
 let g:ultisnips_python_style = "google"
 let g:UltiSnipsExpandTrigger = "<c-l>"
