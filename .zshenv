@@ -23,3 +23,6 @@ export PROJECT_HOME=$HOME/code/python
 # GOPATH
 export GOPATH=$HOME/code/go
 export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
+
+# CDPATH
+export CDPATH=~:~/code/python:~/code/go/src/github.com/robphoenix/:~/sites:~/code/exercism:~/code/luapythonpython
