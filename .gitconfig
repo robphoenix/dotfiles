@@ -16,6 +16,7 @@
     pom = push origin master
     pod = push origin develop
     fom = fetch origin master
+    fod = fetch origin develop
     fum = fetch upstream master
     mom = merge origin/master
     mod = merge origin/develop
