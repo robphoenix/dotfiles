@@ -25,4 +25,4 @@ export GOPATH=$HOME/code/go
 export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
 
 # CDPATH
-export CDPATH=~:~/code/python:~/code/go/src/github.com/robphoenix/:~/sites:~/code/exercism:~/code/luapythonpython
+export CDPATH=~:~/code/python:~/code/go/src/github.com/robphoenix/::~/code/go/src/github.com/:~/sites:~/code/exercism:~/code/lua:~/code/python

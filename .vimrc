@@ -1,7 +1,6 @@
 " --> vim-plug {
 
 call plug#begin()
-
 Plug 'chriskempson/base16-vim'          " Base16 colourscheme
 Plug 'vim-scripts/cisco.vim'            " Cisco config highlighting
 Plug 'robertmeta/nofrils'               " minimal syntax highlighting
@@ -342,7 +341,10 @@ let g:airline_left_alt_sep = '|'
 let g:airline_right_alt_sep = '|'
 let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#buffer_nr_show = 0
-let g:airline#extensions#tabline#buffers_label = 'b'
+let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
+let g:airline#extensions#tabline#buffers_label = 'buffers'
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+let g:airline#extensions#tabline#fnamecollapse = 1
 let g:airline_mode_map = {
             \ '__' : '-',
             \ 'n'  : 'N',
@@ -374,7 +376,7 @@ let g:airline_symbols.maxlinenr = ''
 let g:airline_symbols.spell = 'Ꞩ'
 let g:airline_symbols.paste = 'ρ'
 
-let g:airline#extensions#syntastic#enabled = 1
+let g:airline#extensions#tagbar#flags = 'f'
 
 let g:airline_section_z = '%l/%L:%c'
 "let g:airline_section_y = ''
