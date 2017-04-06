@@ -308,7 +308,7 @@ au BufWrite *.py,*.js,*.lua :Autoformat
 " --> tagbar {
 
 nnoremap <silent> <leader>t :TagbarToggle<CR>
-let g:tagbar_autoclose = 0
+let g:tagbar_autoclose = 1
 let g:tagbar_autofocus = 1
 
 " }

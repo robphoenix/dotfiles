@@ -35,6 +35,7 @@
     rp = remote prune
     tags = tag
     stashes = stash list
+    stash-all = stash save --include-untracked
     unstage = reset -q HEAD --
     discard = checkout -- .
     uncommit = reset --mixed HEAD~
@@ -57,11 +58,11 @@
     dsfl = "!f() { [ -z \"$GIT_PREFIX\" ] || cd \"$GIT_PREFIX\" && git show --color \"$@\" | diff-so-fancy  | less --tabs=4 -RFX; }; f"
     # golang codereview
     change = codereview change
-	gofmt = codereview gofmt
-	mail = codereview mail
-	pending = codereview pending
-	submit = codereview submit
-	sync = codereview sync
+    gofmt = codereview gofmt
+    mail = codereview mail
+    pending = codereview pending
+    submit = codereview submit
+    sync = codereview sync
 
 [color]
 
@@ -93,5 +94,12 @@
 [push]
 
     default = matching
+    followTags = true
+
+[status]
+
+    showUntrackedFiles = all
+
 [http]
-	cookiefile = /home/rob/.gitcookies
+
+    cookiefile = /home/rob/.gitcookies
