@@ -1,7 +1,7 @@
 # Personal aliases
 
 # system
-alias l="ls -lAhF -I.debris -I.cache -I__pycache__ -I.git -Inode_modules -I.vagrant -I.DS_Store "
+alias l="ls -lAhF -I.debris -I.cache -I__pycache__ -I.git -Inode_modules -I.vagrant -I.DS_Store"
 alias mv="mv -ivu"
 alias cp="cp -ivu"
 alias rm="trash"
@@ -14,7 +14,7 @@ alias up="sudo apt -y update && sudo apt -y upgrade && sudo apt -y autoremove"
 alias rd="sudo rm -r"
 alias cpd="sudo cp -r"
 alias bye="sudo shutdown now"
-alias reup="sudo reboot now"
+alias restart="sudo reboot now"
 alias web="google-chrome"
 alias open="xdg-open"
 alias f="fuck"
