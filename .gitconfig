@@ -22,14 +22,15 @@
     mod = merge origin/develop
     # rebase
     ri = rebase --interactive
+    rca = commit --amend '-S'
     rc = rebase --continue
     rom = rebase origin/master
     rum = rebase upstream/master
     rod = rebase origin/develop
     h = reflog
     m = merge
-    # Switch to a branch, creating it if necessary
-    go = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
+    co = checkout
+    cn = checkout -b
     cl = clone
     b = branch -a
     rp = remote prune

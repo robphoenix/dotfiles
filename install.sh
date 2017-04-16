@@ -123,6 +123,8 @@ go get -u golang.org/x/tools/cmd/cover
 go get -u golang.org/x/tools/cmd/gorename
 go get -u golang.org/x/tools/cmd/guru
 go get -u github.com/monochromegane/the_platinum_searcher/...
+go get -u github.com/mitchellh/gox
+go get -u github.com/tcnksm/ghr
 
 # Exercism
 export EXERCISM_VERSION=2.3.0
