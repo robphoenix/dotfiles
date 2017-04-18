@@ -49,8 +49,8 @@
     # delete local branch
     dl = branch -D
     # simple log
-    # b625af7 3 weeks ago    Rob Phoenix     bump version (tag: v0.1.4)
-    l = log --oneline --decorate --pretty=format:"\\ %C(red)%h\\ %C(cyan)%ar%x09%C(green)%an%x09%C(yellow)%s%C(blue)%d"
+    # b4e84f6d  8 minutes ago Rob Phoenix improve git log (origin/master, origin/HEAD)
+    l = log --oneline --decorate --pretty=format:"%C(yellow)%h%C(cyan)%>(15)%ar%C(green)%>(12)%an\\ %C(yellow)%s%C(blue)%d"
     # more detailed log
     # b625af7 (tag: v0.1.4) bump version [Rob Phoenix] (3 weeks ago)
     # 1       1       main.go
