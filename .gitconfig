@@ -49,8 +49,11 @@
     # delete local branch
     dl = branch -D
     # simple log
-    l = log -n 20 --graph --oneline --decorate --pretty=format:"%C(green)%h\\ %C(cyan)(%ar)%C(red)%d\\ %C(yellow)%s\\ %C(green)[%an/%cn]"
+    # b625af7 3 weeks ago    Rob Phoenix     bump version (tag: v0.1.4)
+    l = log --oneline --decorate --pretty=format:"\\ %C(red)%h\\ %C(cyan)%ar%x09%C(green)%an%x09%C(yellow)%s%C(blue)%d"
     # more detailed log
+    # b625af7 (tag: v0.1.4) bump version [Rob Phoenix] (3 weeks ago)
+    # 1       1       main.go
     ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]\\ %C(yellow)(%ar)" --decorate --numstat
     # Show the diff between the latest commit and the current state
     d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
