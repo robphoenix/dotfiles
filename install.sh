@@ -126,6 +126,10 @@ go get -u github.com/monochromegane/the_platinum_searcher/...
 go get -u github.com/mitchellh/gox
 go get -u github.com/tcnksm/ghr
 
+#fzf
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+# ~/.fzf/install
+
 # Exercism
 export EXERCISM_VERSION=2.3.0
 wget https://github.com/exercism/cli/releases/download/v${EXERCISM_VERSION}/exercism-linux-64bit.tgz

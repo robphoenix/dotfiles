@@ -27,7 +27,7 @@ Plug 'majutsushi/tagbar'                " Source Code Browser
 Plug 'mhinz/vim-startify'               " Fancy start screen
 Plug 'terryma/vim-expand-region'        " Visually select increasingly larger regions of text using the same key combination
 Plug 'ervandew/supertab'                " Use tab to for completions
-Plug 'tpope/vim-commentary'             " Commenting
+Plug 'scrooloose/nerdcommenter'         " Commenting
 Plug 'Yggdroot/indentLine'              " Visualize indentation levels
 Plug 'mhinz/vim-sayonara'               " Easy buffer closing
 Plug 'terryma/vim-multiple-cursors'     " Like Sublime Text
@@ -41,6 +41,7 @@ if has('nvim')
     Plug 'Shougo/deoplete.nvim'         " NeoVim autocomplete
     Plug 'zchee/deoplete-go'            " Go autocomplete
     Plug 'crosbymichael/vim-cfmt'       " Auto-format C code
+    Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 else
     Plug 'Shougo/neocomplete.vim'       " Vim autocomplete
 endif
@@ -297,6 +298,21 @@ nnoremap <silent> <a-p> :PlugUpgrade<CR> :PlugUpdate<CR>
 " }
 
 " --> Plugins {
+
+" --> nerdcommenter {
+
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+" Use compact syntax for prettified multi-line comments
+let g:NERDCompactSexyComs = 1
+" Align line-wise comment delimiters flush left instead of following code indentation
+let g:NERDDefaultAlign = 'left'
+" Allow commenting and inverting empty lines (useful when commenting a region)
+let g:NERDCommentEmptyLines = 1
+" Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1
+
+" }
 
 " --> vim-autoformat {
 

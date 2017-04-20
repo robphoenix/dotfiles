@@ -19,6 +19,8 @@ alias web="google-chrome"
 alias open="xdg-open"
 alias f="fuck"
 alias gpg="gpg2"
+# wifi
+alias lswifi="nmcli d wifi list"
 # usb
 alias u="usb"
 alias uu="sudo umount /media/usb"
