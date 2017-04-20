@@ -2,7 +2,6 @@
 
 call plug#begin()
 Plug 'chriskempson/base16-vim'          " Base16 colourscheme
-Plug 'vim-scripts/cisco.vim'            " Cisco config highlighting
 Plug 'robertmeta/nofrils'               " minimal syntax highlighting
 Plug 'kien/rainbow_parentheses.vim'     " Fancy matching parens+
 Plug 'tpope/vim-surround'               " Add quotes/parenthesis etc.
@@ -163,10 +162,6 @@ au BufNewFile,BufRead *.lua setlocal ts=2 sw=2 sts=2
 " js settings
 au BufNewFile,BufRead *.js setlocal ts=2 sw=2 sts=2
 
-" Cisco config files
-au BufRead,BufNewFile *.cfg set filetype=cisco
-au BufRead,BufNewFile *.conf set filetype=cisco
-
 " Thesaurus https://github.com/zeke/moby
 set thesaurus+=./.vim/thesaurus.txt
 " }
@@ -198,9 +193,6 @@ nnoremap H :bp<CR>
 " Buffer closing
 nnoremap <silent> <leader>q :Sayonara<CR>
 nnoremap <leader>bq :bd!<CR>
-
-" open buffer in vertical split
-nnoremap <leader>sb :vert sb<Space>
 
 " Remap - to move to end of line (0 to move to beginning)
 nnoremap - $
@@ -236,10 +228,6 @@ nnoremap <C-u> <C-u>zz
 nnoremap <C-d> <C-d>zz
 nnoremap <C-f> <C-f>zz
 nnoremap <C-b> <C-b>zz
-vnoremap <C-u> <C-u>zz
-vnoremap <C-d> <C-d>zz
-vnoremap <C-f> <C-f>zz
-vnoremap <C-b> <C-b>zz
 
 " Visual linewise up and down by default
 nnoremap j gj
@@ -288,9 +276,6 @@ cnoremap <c-j> <Down>
 
 " read output of shell commands to file
 nnoremap <leader>r :read !
-
-" Startify any time
-nnoremap <leader>ss :Startify<CR>
 
 " vim-plug
 nnoremap <silent> <a-p> :PlugUpgrade<CR> :PlugClean<CR> :PlugUpdate<CR>
@@ -476,7 +461,6 @@ let g:go_list_type = "quickfix"
 let g:go_fmt_command = "goimports"
 let g:go_metalinter_autosave = 1
 let g:go_autodetect_gopath = 1
-let g:go_term_enabled = 1
 let g:go_highlight_types = 1
 let g:go_highlight_fields = 1
 let g:go_highlight_operators = 1
@@ -495,13 +479,12 @@ let g:go_auto_type_info = 1
 let g:go_snippet_engine = "ultisnips"
 set updatetime=100
 
-autocmd FileType go nmap <Leader>gl  <Plug>(go-metalinter)
-autocmd FileType go nmap <leader>gb  <Plug>(go-build)
-au FileType go nmap <Leader>gr <Plug>(go-run-split)
-autocmd FileType go nmap <leader>gt  <Plug>(go-test)
+autocmd FileType go nmap <leader>gl <Plug>(go-metalinter)
+autocmd FileType go nmap <leader>gr <Plug>(go-run-split)
+autocmd FileType go nmap <leader>gt <Plug>(go-test)
 autocmd FileType go nmap <leader>gd :GoDecls<CR>
-autocmd FileType go nmap <leader>cd :GoDeclsDir<CR>
-autocmd FileType go nmap <leader>rn :GoRename<space>
+autocmd FileType go nmap <leader>gf :GoDeclsDir<CR>
+autocmd FileType go nmap <leader>gn :GoRename<space>
 
 " }
 
