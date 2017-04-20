@@ -293,7 +293,10 @@ nnoremap <leader>r :read !
 nnoremap <leader>ss :Startify<CR>
 
 " vim-plug
-nnoremap <silent> <a-p> :PlugUpgrade<CR> :PlugUpdate<CR>
+nnoremap <silent> <a-p> :PlugUpgrade<CR> :PlugClean<CR> :PlugUpdate<CR>
+
+" FZF
+nnoremap <leader>zf :FZF<CR>
 
 " }
 
@@ -332,7 +335,7 @@ let g:tagbar_autofocus = 1
 " --> no-frils {
 
 let g:nofrils_strbackgrounds=1
-nmap <leader>cf :NofrilsFocusCode<CR>
+nmap <leader>ff :NofrilsFocusCode<CR>
 nmap <leader>fc :NofrilsFocusComments<CR>
 
 "  }
