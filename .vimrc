@@ -445,9 +445,9 @@ autocmd BufWritePre *.c,*.h Cfmt
 
 " --> SuperTab {
 
-let g:SuperTabDefaultCompletionType = "<TAB>"
+let g:SuperTabDefaultCompletionType = "<tab>"
 " we need to remap this to not interfere with delimitMate
-let g:SuperTabMappingBackward = '<c-k>'
+let g:SuperTabMappingBackward = '<a-tab>'
 
 " }
 
@@ -540,8 +540,10 @@ let g:syntastic_markdown_checkers = ["markdownlint"]
 " --> UltiSnips {
 
 let g:UltiSnipsUsePythonVersion = 2
-let g:ultisnips_python_style = "google"
-let g:UltiSnipsExpandTrigger = "<c-l>"
+let g:ultisnips_python_style = 'google'
+let g:UltiSnipsExpandTrigger = '<c-l>'
+let g:UltiSnipsJumpForwardTrigger = '<c-n>'
+let g:UltiSnipsJumpBackwardTrigger = '<c-b>'
 
 " }
 
