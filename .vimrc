@@ -35,12 +35,13 @@ Plug 'fatih/vim-go'                     " Golang
 Plug 'pearofducks/ansible-vim'          " Ansible
 Plug 'Chiel92/vim-autoformat'           " Code formatting
 Plug 'Rykka/riv.vim'                    " reStructured Text
+Plug 'mbbill/undotree'                  " undo history visualizer
 
 if has('nvim')
     Plug 'Shougo/deoplete.nvim'         " NeoVim autocomplete
     Plug 'zchee/deoplete-go'            " Go autocomplete
     Plug 'crosbymichael/vim-cfmt'       " Auto-format C code
-    Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+    Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " fuzzy finder
 else
     Plug 'Shougo/neocomplete.vim'       " Vim autocomplete
 endif
@@ -286,6 +287,21 @@ nnoremap <leader>zf :FZF<CR>
 " }
 
 " --> Plugins {
+
+" --> undotree {
+
+nnoremap <leader>u :UndotreeToggle<CR>
+
+if has("persistent_undo")
+    set undodir=~/.undodir/
+    set undofile
+endif
+
+let g:undotree_WindowLayout = 3
+let g:undotree_SplitWidth = 60
+let g:undotree_SetFocusWhenToggle = 1
+
+"  }
 
 " --> nerdcommenter {
 
