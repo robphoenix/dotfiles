@@ -24,5 +24,8 @@ export PROJECT_HOME=$HOME/code/python
 export GOPATH=$HOME/code/go
 export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
 
+# RUST
+export PATH="$HOME/.cargo/bin:$PATH"
+
 # CDPATH
 export CDPATH=~:~/code/python:~/code/go/src/github.com/robphoenix/::~/code/go/src/github.com/:~/sites:~/code/exercism:~/code/lua:~/code/python

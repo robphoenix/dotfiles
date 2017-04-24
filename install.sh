@@ -105,7 +105,7 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "${ZSH_CUSTOM
 # zsh history substring search
 wget https://raw.githubusercontent.com/zsh-users/zsh-history-substring-search/master/zsh-history-substring-search.zsh
 
-# Golang
+# Go
 export GO_VERSION=1.8
 curl -O https://storage.googleapis.com/golang/go${GO_VERSION}.linux-amd64.tar.gz
 sudo tar -C /usr/local -xzf go${GO_VERSION}.linux-amd64.tar.gz
@@ -126,9 +126,12 @@ go get -u github.com/monochromegane/the_platinum_searcher/...
 go get -u github.com/mitchellh/gox
 go get -u github.com/tcnksm/ghr
 
-#fzf
+# fzf
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 # ~/.fzf/install
+
+# Rust
+curl https://sh.rustup.rs -sSf | sh
 
 # Exercism
 export EXERCISM_VERSION=2.3.0
