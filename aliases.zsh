@@ -27,8 +27,15 @@ alias uu="sudo umount /media/usb"
 # start vpn
 alias vpnu="sudo openvpn /etc/openvpn/uk-proton.conf &"
 alias vpnd="sudo killall openvpn"
+
 # zsh
 alias relo="source ~/.zshrc"
+
+# tmux
+alias tls="tmux ls"
+alias tn="tmux new -s"
+alias ta="tmux attach -t"
+alias tk="tmux kill-session -t"
 
 # vagrant
 alias vup="vagrant up && vagrant ssh"
