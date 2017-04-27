@@ -165,6 +165,10 @@ sudo npm install -g empty-trash-cli
 gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
 \curl -sSL https://get.rvm.io | bash -s stable
 
+# Rubygems
+sudo gem install tmuxinator
+sudo gem install travis
+
 # Tor Browser
 export TOR_VERSION=6.0.5
 sudo wget https://www.torproject.org/dist/torbrowser/${TOR_VERSION}/tor-browser-linux64-${TOR_VERSION}_en-US.tar.xz

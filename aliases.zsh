@@ -36,6 +36,9 @@ alias tls="tmux ls"
 alias tn="tmux new -s"
 alias ta="tmux attach -t"
 alias tk="tmux kill-session -t"
+# alias mux="tmuxinator"
+# alias trn="tmuxinator new"
+# alias trs="tmuxinator start"
 
 # vagrant
 alias vup="vagrant up && vagrant ssh"

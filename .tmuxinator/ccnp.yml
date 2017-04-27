@@ -1,0 +1,9 @@
+# ~/.tmuxinator/ccnp.yml
+
+name: ccnp
+root: ~/
+windows:
+  - ccnp-01: ssh ccnp-01
+  - ccnp-02: ssh ccnp-02
+  - ccnp-03: ssh ccnp-03
+  - ccnp-04: ssh ccnp-04
