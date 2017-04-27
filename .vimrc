@@ -36,6 +36,8 @@ Plug 'pearofducks/ansible-vim'          " Ansible
 Plug 'Chiel92/vim-autoformat'           " Code formatting
 Plug 'Rykka/riv.vim'                    " reStructured Text
 Plug 'mbbill/undotree'                  " undo history visualizer
+Plug 'xolox/vim-easytags'               " ctags
+Plug 'xolox/vim-misc'                   " ctags
 
 if has('nvim')
     Plug 'Shougo/deoplete.nvim'         " NeoVim autocomplete
@@ -445,8 +447,9 @@ autocmd BufWritePre *.c,*.h Cfmt
 
 " --> SuperTab {
 
-let g:SuperTabDefaultCompletionType = "<tab>"
+let g:SuperTabDefaultCompletionType = "<context>"
 " we need to remap this to not interfere with delimitMate
+let g:SuperTabMappingForward = '<tab>'
 let g:SuperTabMappingBackward = '<a-tab>'
 
 " }
@@ -542,8 +545,8 @@ let g:syntastic_markdown_checkers = ["markdownlint"]
 let g:UltiSnipsUsePythonVersion = 2
 let g:ultisnips_python_style = 'google'
 let g:UltiSnipsExpandTrigger = '<c-l>'
-let g:UltiSnipsJumpForwardTrigger = '<c-n>'
-let g:UltiSnipsJumpBackwardTrigger = '<c-b>'
+let g:UltiSnipsJumpForwardTrigger = '<c-k>'
+let g:UltiSnipsJumpBackwardTrigger = '<c-m>'
 
 " }
 

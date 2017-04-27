@@ -95,7 +95,9 @@ sudo apt install -y \
      gdebi \
      haveged \
      lua5.3 \
-     luarocks
+     luarocks \
+     moc \
+     moc-ffmpeg-plugin
 
 # ZSH
 # oh-my-zsh
@@ -202,6 +204,12 @@ mkdir -p ~/.zsh/completions
 mv ./hub-linux-amd64-${HUB_VERSION}/etc/hub.zsh_completion ~/.zsh/completions/_hub
 rm -rf hub-linux-amd64-${HUB_VERSION}
 rm hub-linux-amd64-${HUB_VERSION}.tgz
+
+# fancy i3 lock screen
+cd ~
+git clone https://github.com/meskarune/i3lock-fancy.git
+sudo cp i3lock-fancy/lock /usr/local/bin
+sudo cp -r i3lock-fancy/icons /usr/local/bin
 
 # symlinks
 ln -sf "$HOME/dotfiles/.zshenv" "$HOME/.zshenv"

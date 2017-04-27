@@ -194,8 +194,9 @@ bar {
     }
 }
 
-# i3lock
-bindsym $mod+semicolon exec i3lock --color '$base0F'
+# lock screen
+# bindsym $mod+semicolon exec i3lock --color '$base0F'
+bindsym $mod+semicolon exec lock -t ""
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
