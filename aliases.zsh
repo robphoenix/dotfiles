@@ -36,9 +36,6 @@ alias tls="tmux ls"
 alias tn="tmux new -s"
 alias ta="tmux attach -t"
 alias tk="tmux kill-session -t"
-# alias mux="tmuxinator"
-# alias trn="tmuxinator new"
-# alias trs="tmuxinator start"
 
 # vagrant
 alias vup="vagrant up && vagrant ssh"
@@ -64,14 +61,7 @@ alias gox="gox -output="bin/{{.Dir}}_{{.OS}}_{{.Arch}}""
 
 # git
 alias git="hub"
-alias g="hub"
-alias gs="g s"
-alias gl="g l"
-alias gpm="g pom"
-alias gpd="g pod"
-alias gc="g c"
-alias ga="g a"
-alias gaa="g aa"
+alias g="git"
 
 # exercism
 alias exf="exercism fetch"

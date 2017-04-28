@@ -13,15 +13,14 @@
     aa = add --all
     p = push
     po = push origin
-    pom = push origin master
-    pod = push origin develop
     fom = fetch origin master
     fod = fetch origin develop
     fum = fetch upstream master
     mom = merge origin/master
     mod = merge origin/develop
     # rebase
-    ri = rebase --interactive
+    # Interactive rebase with the given number of latest commits
+	ri = "!r() { git rebase -i HEAD~$1; }; r"
     rca = commit --amend '-S'
     rc = rebase --continue
     rom = rebase origin/master
@@ -55,6 +54,8 @@
     # b625af7 (tag: v0.1.4) bump version [Rob Phoenix] (3 weeks ago)
     # 1       1       main.go
     ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]\\ %C(yellow)(%ar)" --decorate --numstat
+    # Color graph log view
+	graph = log --graph --color --pretty=format:"%C(yellow)%H%C(green)%d%C(reset)%n%x20%cd%n%x20%cn%x20(%ce)%n%x20%s%n"
     # Show the diff between the latest commit and the current state
     d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
     # use diff-so-fancy https://github.com/so-fancy/diff-so-fancy
@@ -97,7 +98,7 @@
 
 [push]
 
-    default = matching
+    default = current
     followTags = true
 
 [status]

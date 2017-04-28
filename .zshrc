@@ -6,7 +6,7 @@ ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
 HIST_STAMPS="dd.mm.yyyy"
 
-plugins=(z thefuck virtualenvwrapper ssh-agent gpg-agent zsh-syntax-highlighting colored-man-pages tmuxinator)
+plugins=(gitfast git-extras z thefuck virtualenvwrapper ssh-agent gpg-agent zsh-syntax-highlighting colored-man-pages tmuxinator)
 
 source $ZSH/oh-my-zsh.sh
 source ~/dotfiles/git-prompt.sh
