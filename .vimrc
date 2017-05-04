@@ -193,6 +193,11 @@ nnoremap <C-J> <C-W>j
 nnoremap <C-K> <C-W>k
 nnoremap <C-L> <C-W>l
 nnoremap <C-H> <C-W>h
+" for integrated terminal as well
+tnoremap <C-h> <C-\><C-n><C-w>h
+tnoremap <C-j> <C-\><C-n><C-w>j
+tnoremap <C-k> <C-\><C-n><C-w>k
+tnoremap <C-l> <C-\><C-n><C-w>l
 
 " Buffer switching
 nnoremap L :bn<CR>
@@ -267,14 +272,19 @@ map <leader>ev :vsp %%
 " http://stackoverflow.com/a/8064607/127816
 vnoremap . :normal .<CR>
 
-" build current C program, output has same name
-autocmd FileType c nnoremap <silent> <leader>mc :!clear;gcc % -o %:r.out<CR>
+" integrated terminal
+nnoremap <leader>z :15sp term://zsh<CR>
+tnoremap <leader>e <c-\><c-n>
+:au BufEnter * if &buftype == 'terminal' | :startinsert | endif
 
 " resizing splits
 nnoremap <silent> <a-h> :vertical resize +10<cr>
 nnoremap <silent> <a-l> :vertical resize -10<cr>
 nnoremap <silent> <a-j> :res +10<cr>
 nnoremap <silent> <a-k> :res -10<cr>
+
+" build current C program, output has same name
+autocmd FileType c nnoremap <silent> <leader>mc :!clear;gcc % -o %:r.out<CR>
 
 " navigating commands history
 cnoremap <c-k> <Up>
@@ -285,9 +295,6 @@ nnoremap <leader>r :read !
 
 " vim-plug
 nnoremap <silent> <a-p> :PlugUpgrade<CR> :PlugClean<CR> :PlugUpdate<CR>
-
-" FZF
-nnoremap <leader>zf :FZF<CR>
 
 " Goyo & Limelight
 nmap <c-l> :Goyo<CR> :Limelight!!<CR> :<CR><ESC>
