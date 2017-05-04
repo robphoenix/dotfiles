@@ -1,6 +1,7 @@
 " --> vim-plug {
 
 call plug#begin()
+
 Plug 'chriskempson/base16-vim'          " Base16 colourscheme
 Plug 'robertmeta/nofrils'               " minimal syntax highlighting
 Plug 'kien/rainbow_parentheses.vim'     " Fancy matching parens+
@@ -38,6 +39,9 @@ Plug 'Rykka/riv.vim'                    " reStructured Text
 Plug 'mbbill/undotree'                  " undo history visualizer
 Plug 'xolox/vim-easytags'               " ctags
 Plug 'xolox/vim-misc'                   " ctags
+Plug 'junegunn/goyo.vim'                " distraction free writing
+Plug 'junegunn/limelight.vim'           " section highlighting
+Plug 'jeetsukumaran/vim-buffergator'    " buffer menu
 
 if has('nvim')
     Plug 'Shougo/deoplete.nvim'         " NeoVim autocomplete
@@ -195,7 +199,6 @@ nnoremap L :bn<CR>
 nnoremap H :bp<CR>
 " Buffer closing
 nnoremap <silent> <leader>q :Sayonara<CR>
-nnoremap <leader>bq :bd!<CR>
 
 " Remap - to move to end of line (0 to move to beginning)
 nnoremap - $
@@ -286,9 +289,26 @@ nnoremap <silent> <a-p> :PlugUpgrade<CR> :PlugClean<CR> :PlugUpdate<CR>
 " FZF
 nnoremap <leader>zf :FZF<CR>
 
+" Goyo & Limelight
+nmap <c-l> :Goyo<CR> :Limelight!!<CR> :<CR><ESC>
+
 " }
 
 " --> Plugins {
+
+" --> buffergator {
+
+nmap <leader>b :BuffergatorToggle<CR>
+" Use the right side of the screen
+let g:buffergator_viewport_split_policy = 'R'
+" I want my own keymappings...
+let g:buffergator_suppress_keymaps = 1
+" Go to the previous buffer open
+nmap <leader>jj :BuffergatorMruCyclePrev<cr>
+" Go to the next buffer open
+nmap <leader>kk :BuffergatorMruCycleNext<cr>
+
+"  }
 
 " --> undotree {
 
@@ -338,8 +358,6 @@ let g:tagbar_autofocus = 1
 " --> no-frils {
 
 let g:nofrils_strbackgrounds=1
-nmap <leader>ff :NofrilsFocusCode<CR>
-nmap <leader>fc :NofrilsFocusComments<CR>
 
 "  }
 
@@ -352,21 +370,11 @@ let g:virtualenv_stl_format = '(venv: %n)'
 
 " --> vim-airline {
 
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_sep = ''
-let g:airline#extensions#tabline#left_alt_sep = '|'
-let g:airline#extensions#tabline#right_sep = ''
-let g:airline#extensions#tabline#right_alt_sep = '|'
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 let g:airline_left_alt_sep = '|'
 let g:airline_right_alt_sep = '|'
 let g:airline_powerline_fonts=1
-let g:airline#extensions#tabline#buffer_nr_show = 0
-let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
-let g:airline#extensions#tabline#buffers_label = 'buffers'
-let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
-let g:airline#extensions#tabline#fnamecollapse = 1
 let g:airline_mode_map = {
             \ '__' : '-',
             \ 'n'  : 'N',
@@ -380,16 +388,7 @@ let g:airline_mode_map = {
             \ 'S'  : 'S',
             \ '' : 'S',
             \ }
-let g:airline#extensions#tabline#buffer_idx_mode = 1
-nmap <leader>1 <Plug>AirlineSelectTab1
-nmap <leader>2 <Plug>AirlineSelectTab2
-nmap <leader>3 <Plug>AirlineSelectTab3
-nmap <leader>4 <Plug>AirlineSelectTab4
-nmap <leader>5 <Plug>AirlineSelectTab5
-nmap <leader>6 <Plug>AirlineSelectTab6
-nmap <leader>7 <Plug>AirlineSelectTab7
-nmap <leader>8 <Plug>AirlineSelectTab8
-nmap <leader>9 <Plug>AirlineSelectTab9
+
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
@@ -551,6 +550,14 @@ let g:UltiSnipsJumpBackwardTrigger = '<c-m>'
 " }
 
 " --> CtrlP {
+
+" Use a leader instead of the actual named binding
+nmap <leader>f :CtrlP<cr>
+
+" Easy bindings for its various modes
+" nmap <leader>bb :CtrlPBuffer<cr>
+" nmap <leader>bm :CtrlPMixed<cr>
+" nmap <leader>br :CtrlPMRU<cr>
 
 let g:ctrlp_by_filename = 1
 let g:ctrlp_show_hidden = 1
