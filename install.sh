@@ -37,9 +37,10 @@ sudo add-apt-repository ppa:linrunner/tlp
 # NodeJS
 curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
 
-# Spotify
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys BBEBDCB318AD50EC6865090613B00F1FD2C19886
-echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list
+# add docker gpg key
+sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
+# add the docker repository
+sudo apt-add-repository 'deb https://apt.dockerproject.org/repo ubuntu-xenial main'
 
 # Apt
 sudo apt remove --purge vim # necessary to install vim with lua support
@@ -128,9 +129,16 @@ go get -u github.com/monochromegane/the_platinum_searcher/...
 go get -u github.com/mitchellh/gox
 go get -u github.com/tcnksm/ghr
 
+# docker
+apt-cache policy docker-engine
+sudo apt-get install -y docker-engine
+sudo systemctl status docker
+# execute the docker command without sudo
+"sudo usermod -aG docker $(whoami)"
+
 # fzf
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-# ~/.fzf/install
+echo "run ~/.fzf/install"
 
 # Rust
 curl https://sh.rustup.rs -sSf | sh

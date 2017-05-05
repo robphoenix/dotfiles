@@ -25,7 +25,7 @@ alias lswifi="nmcli d wifi list"
 alias u="usb"
 alias uu="sudo umount /media/usb"
 # start vpn
-alias vpnu="sudo openvpn /etc/openvpn/uk-proton.conf &"
+alias vpnu="sudo openvpn /etc/openvpn/pia-london.conf &"
 alias vpnd="sudo killall openvpn"
 
 # zsh
