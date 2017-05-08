@@ -15,8 +15,6 @@ Plug 'Raimondi/delimitMate'             " Auto-insert closing delimiters
 Plug 'vim-airline/vim-airline'          " Sweet statusline
 Plug 'vim-airline/vim-airline-themes'   " Sweet statusline themes
 Plug 'scrooloose/nerdtree'              " File explorer
-Plug 'klen/python-mode'                 " Python
-Plug 'zchee/deoplete-jedi'              " Python autocomplete
 Plug 'jmcantrell/vim-virtualenv'        " Python Virtualenvs
 Plug 'scrooloose/syntastic'             " Syntax checker
 Plug 'SirVer/ultisnips'                 " Code snippets
@@ -37,8 +35,6 @@ Plug 'pearofducks/ansible-vim'          " Ansible
 Plug 'Chiel92/vim-autoformat'           " Code formatting
 Plug 'Rykka/riv.vim'                    " reStructured Text
 Plug 'mbbill/undotree'                  " undo history visualizer
-Plug 'xolox/vim-easytags'               " ctags
-Plug 'xolox/vim-misc'                   " ctags
 Plug 'junegunn/goyo.vim'                " distraction free writing
 Plug 'junegunn/limelight.vim'           " section highlighting
 Plug 'jeetsukumaran/vim-buffergator'    " buffer menu
@@ -46,8 +42,8 @@ Plug 'jeetsukumaran/vim-buffergator'    " buffer menu
 if has('nvim')
     Plug 'Shougo/deoplete.nvim'         " NeoVim autocomplete
     Plug 'zchee/deoplete-go'            " Go autocomplete
+    Plug 'zchee/deoplete-jedi'          " Python autocomplete
     Plug 'crosbymichael/vim-cfmt'       " Auto-format C code
-    Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " fuzzy finder
 else
     Plug 'Shougo/neocomplete.vim'       " Vim autocomplete
 endif
@@ -193,11 +189,6 @@ nnoremap <C-J> <C-W>j
 nnoremap <C-K> <C-W>k
 nnoremap <C-L> <C-W>l
 nnoremap <C-H> <C-W>h
-" for integrated terminal as well
-tnoremap <C-h> <C-\><C-n><C-w>h
-tnoremap <C-j> <C-\><C-n><C-w>j
-tnoremap <C-k> <C-\><C-n><C-w>k
-tnoremap <C-l> <C-\><C-n><C-w>l
 
 " Buffer switching
 nnoremap L :bn<CR>
@@ -272,10 +263,17 @@ map <leader>ev :vsp %%
 " http://stackoverflow.com/a/8064607/127816
 vnoremap . :normal .<CR>
 
-" integrated terminal
-nnoremap <leader>z :15sp term://zsh<CR>
-tnoremap <leader>e <c-\><c-n>
-:au BufEnter * if &buftype == 'terminal' | :startinsert | endif
+if has('nvim')
+    " integrated terminal
+    nnoremap <leader>z :15sp term://zsh<CR>
+    tnoremap <leader>e <c-\><c-n>
+    :au BufEnter * if &buftype == 'terminal' | :startinsert | endif
+    " split navigations
+    tnoremap <C-h> <C-\><C-n><C-w>h
+    tnoremap <C-j> <C-\><C-n><C-w>j
+    tnoremap <C-k> <C-\><C-n><C-w>k
+    tnoremap <C-l> <C-\><C-n><C-w>l
+endif
 
 " resizing splits
 nnoremap <silent> <a-h> :vertical resize +10<cr>
@@ -297,7 +295,7 @@ nnoremap <leader>r :read !
 nnoremap <silent> <a-p> :PlugUpgrade<CR> :PlugClean<CR> :PlugUpdate<CR>
 
 " Goyo & Limelight
-nmap <c-l> :Goyo<CR> :Limelight!!<CR> :<CR><ESC>
+nmap <c-g> :Goyo<CR> :Limelight!!<CR> :<CR><ESC>
 
 " }
 
@@ -548,7 +546,7 @@ let g:syntastic_markdown_checkers = ["markdownlint"]
 
 " --> UltiSnips {
 
-let g:UltiSnipsUsePythonVersion = 2
+let g:UltiSnipsUsePythonVersion = 3
 let g:ultisnips_python_style = 'google'
 let g:UltiSnipsExpandTrigger = '<c-l>'
 let g:UltiSnipsJumpForwardTrigger = '<c-k>'

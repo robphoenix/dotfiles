@@ -23,6 +23,7 @@ export PROJECT_HOME=$HOME/code/python
 # GOPATH
 export GOPATH=$HOME/code/go
 export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
+export GOROOT=/usr/local/go
 
 # RUST
 export PATH="$HOME/.cargo/bin:$PATH"
