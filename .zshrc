@@ -27,6 +27,9 @@ bindkey -v
 # fancy ctrl-z
 bindkey '^Z' fancy-ctrl-z
 
+# FZF
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 # Base16 colour schemes
 BASE16_SHELL=$HOME/.config/base16-shell/
 [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
@@ -48,9 +51,6 @@ source ~/dotfiles/tmuxinator.zsh
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 source ~/.rvm/scripts/rvm
-
-# FZF
-# bindkey '^p' 'vim $(fzf);'
 
 # Set Options
 
@@ -91,5 +91,3 @@ unsetopt correct # turn off spelling correction for commands
 
 # ===== Scripts and Functions
 setopt multios # perform implicit tees or cats when multiple redirections are attempted
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

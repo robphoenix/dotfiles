@@ -1,6 +1,7 @@
 " --> vim-plug {
 
 call plug#begin()
+
 Plug 'chriskempson/base16-vim'          " Base16 colourscheme
 Plug 'robertmeta/nofrils'               " minimal syntax highlighting
 Plug 'kien/rainbow_parentheses.vim'     " Fancy matching parens+
@@ -303,25 +304,19 @@ nmap <c-g> :Goyo<CR> :Limelight!!<CR> :<CR><ESC>
 
 " --> Plugins {
 
-" --> buffergator {
+" --> vim-gitgutter {
 
-" nmap <leader>b :BuffergatorToggle<CR>
-" " Use the right side of the screen
-" let g:buffergator_viewport_split_policy = 'R'
-" " I want my own keymappings...
-" let g:buffergator_suppress_keymaps = 1
-" " Go to the previous buffer open
-" nmap <leader>jj :BuffergatorMruCyclePrev<cr>
-" " Go to the next buffer open
-" nmap <leader>kk :BuffergatorMruCycleNext<cr>
+let g:gitgutter_map_keys = 0
 
 "  }
 
 " --> fzf {
 
-nmap <leader>f :Files<CR>
-nmap <leader>b :Buffers<CR>
-nmap <leader>s :Find<CR>
+nmap <silent> <leader>f :Files<CR>
+nmap <silent> <leader>b :Buffers<CR>
+nmap <silent> <leader>s :Find<CR>
+nnoremap <silent> <leader>h :History<CR>
+nmap <silent> <leader>gs :GFiles?<CR>
 
 " This is the default extra key bindings
 let g:fzf_action = {
@@ -332,21 +327,6 @@ let g:fzf_action = {
 " Default fzf layout
 " - down / up / left / right
 let g:fzf_layout = { 'down': '~40%' }
-
-" Customize fzf colors to match your color scheme
-let g:fzf_colors =
-\ { 'fg':      ['fg', 'Normal'],
-  \ 'bg':      ['bg', 'Normal'],
-  \ 'hl':      ['fg', 'Comment'],
-  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-  \ 'hl+':     ['fg', 'Statement'],
-  \ 'info':    ['fg', 'PreProc'],
-  \ 'prompt':  ['fg', 'Conditional'],
-  \ 'pointer': ['fg', 'Exception'],
-  \ 'marker':  ['fg', 'Keyword'],
-  \ 'spinner': ['fg', 'Label'],
-  \ 'header':  ['fg', 'Comment'] }
 
 " [Buffers] Jump to the existing window if possible
 let g:fzf_buffers_jump = 1
@@ -547,7 +527,7 @@ let NERDTreeShowHidden=1
 let NERDTreeIgnore=['\.cache$', '__pycache__', '\.pyc$', '\.vagrant$', '\~$', '\.git$', '.DS_Store']
 let NERDTreeQuitOnOpen=1
 let NERDTreeWinPos = "right"
-let NERDTreeWinSize = 50
+let NERDTreeWinSize = 30
 
 " close vim if the only window left open is NERDTree
 "autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
@@ -631,38 +611,6 @@ let g:UltiSnipsJumpBackwardTrigger = '<c-m>'
 
 " }
 
-" --> CtrlP {
-
-" Use a leader instead of the actual named binding
-" nmap <leader>f :CtrlP<cr>
-
-" Easy bindings for its various modes
-" nmap <leader>bb :CtrlPBuffer<cr>
-" nmap <leader>bm :CtrlPMixed<cr>
-" nmap <leader>br :CtrlPMRU<cr>
-
-" let g:ctrlp_by_filename = 0
-" let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:20'
-" let g:ctrlp_show_hidden = 1
-" let g:ctrlp_working_path_mode = 'r'
-" let g:ctrlp_switch_buffer = 'et'    " jump to a file if it's open already
-" let g:ctrlp_mruf_max=450            " number of recently opened files
-" let g:ctrlp_max_files=0             " do not limit the number of searchable files
-" let g:ctrlp_clear_cache_on_exit = 0
-" let g:ctrlp_cache_dir = $HOME.'/.cache/ctrlp'
-" let g:ctrlp_follow_symlinks = 1
-" let g:ctrlp_line_prefix = '>'
-" let g:ctrlp_buftag_types = {'go' : '--language-force=go --golang-types=ftv'}
-" let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
-"
-" if executable('rg')
-"   set grepprg=rg\ --color=never
-"   let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
-"   let g:ctrlp_use_caching = 0
-" endif
-
-" }
-
 " --> Autocompletion {
 
 if has('nvim')
@@ -737,7 +685,6 @@ let g:jedi#usages_command = "<leader>ju"
 
 nnoremap <leader>ga :Git add --all<CR>
 nnoremap <leader>gc :Gcommit<CR>
-nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gb :Gbrowse<CR>
 nnoremap <leader>gpm :Gpush origin master<CR>
 nnoremap <leader>gpd :Gpush origin develop<CR>
