@@ -2,10 +2,8 @@
 
 call plug#begin()
 
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'chriskempson/base16-vim'          " Base16 colourscheme
 Plug 'robertmeta/nofrils'               " minimal syntax highlighting
-Plug 'kien/rainbow_parentheses.vim'     " Fancy matching parens+
 Plug 'tpope/vim-surround'               " Add quotes/parenthesis etc.
 Plug 'tpope/vim-fugitive'               " Git wrapper
 Plug 'airblade/vim-gitgutter'           " Gutter markers for Git
@@ -19,7 +17,6 @@ Plug 'jmcantrell/vim-virtualenv'        " Python Virtualenvs
 Plug 'scrooloose/syntastic'             " Syntax checker
 Plug 'SirVer/ultisnips'                 " Code snippets
 Plug 'honza/vim-snippets'               " Code snippets
-Plug 'godlygeek/tabular'                " Line up tabular data
 Plug 'plasticboy/vim-markdown'          " Markdown
 Plug 'majutsushi/tagbar'                " Source Code Browser
 Plug 'mhinz/vim-startify'               " Fancy start screen
@@ -28,7 +25,6 @@ Plug 'ervandew/supertab'                " Use tab to for completions
 Plug 'scrooloose/nerdcommenter'         " Commenting
 Plug 'Yggdroot/indentLine'              " Visualize indentation levels
 Plug 'mhinz/vim-sayonara'               " Easy buffer closing
-Plug 'terryma/vim-multiple-cursors'     " Like Sublime Text
 Plug 'Konfekt/FastFold'                 " Fold updating
 Plug 'fatih/vim-go'                     " Golang
 Plug 'pearofducks/ansible-vim'          " Ansible
@@ -37,6 +33,7 @@ Plug 'Rykka/riv.vim'                    " reStructured Text
 Plug 'mbbill/undotree'                  " undo history visualizer
 Plug 'junegunn/goyo.vim'                " distraction free writing
 Plug 'junegunn/limelight.vim'           " section highlighting
+Plug 'ctrlpvim/ctrlp.vim'               " fuzzy finder
 Plug 'cespare/vim-toml'
 Plug 'elzr/vim-json'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -184,7 +181,8 @@ let g:mapleader = "\<Space>"
 inoremap jk <ESC>
 
 " easily edit .vimrc in new buffer
-nmap <leader>v :edit $MYVIMRC<CR>
+nmap <leader>vv :edit $MYVIMRC<CR>
+nmap <leader>vs :source $MYVIMRC<CR>
 
 " enter visual line mode
 nmap <leader><leader> V
@@ -306,48 +304,9 @@ nmap <c-g> :Goyo<CR> :Limelight!!<CR> :<CR><ESC>
 
 " --> Plugins {
 
-" --> vim-gitgutter {
+" --> fzf.vim {
 
-let g:gitgutter_map_keys = 0
-
-"  }
-
-" --> fzf {
-
-nmap <silent> <leader>f :Files<CR>
-nmap <silent> <leader>b :Buffers<CR>
-nmap <silent> <leader>s :Find<CR>
-nnoremap <silent> <leader>h :History<CR>
-nmap <silent> <leader>gs :GFiles?<CR>
-
-" This is the default extra key bindings
-let g:fzf_action = {
-  \ 'ctrl-t': 'tab split',
-  \ 'ctrl-x': 'split',
-  \ 'ctrl-v': 'vsplit' }
-
-" Default fzf layout
-" - down / up / left / right
-let g:fzf_layout = { 'down': '~40%' }
-
-" [Buffers] Jump to the existing window if possible
-let g:fzf_buffers_jump = 1
-
-" Mapping selecting mappings
-nmap <leader><tab> <plug>(fzf-maps-n)
-xmap <leader><tab> <plug>(fzf-maps-x)
-omap <leader><tab> <plug>(fzf-maps-o)
-
-" Insert mode completion
-imap <c-x><c-k> <plug>(fzf-complete-word)
-imap <c-x><c-f> <plug>(fzf-complete-path)
-" imap <c-x><c-j> <plug>(fzf-complete-file-ag)
-imap <c-x><c-l> <plug>(fzf-complete-line)
-
-" Advanced customization using autoload functions
-inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'right': '20%'})
-
-" Similarly, we can apply it to fzf#vim#grep. To use ripgrep instead of ag:
+" Use ripgrep to search
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
   \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
@@ -355,23 +314,45 @@ command! -bang -nargs=* Rg
   \           : fzf#vim#with_preview('right:50%:hidden', '?'),
   \   <bang>0)
 
-" Likewise, Files command with preview window
-command! -bang -nargs=? -complete=dir Files
-  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+nmap <silent> <leader>s :Rg<CR>
 
-" --column: Show column number
-" --line-number: Show line number
-" --no-heading: Do not show file headings in results
-" --fixed-strings: Search term as a literal string
-" --ignore-case: Case insensitive search
-" --no-ignore: Do not respect .gitignore, etc...
-" --hidden: Search hidden files and folders
-" --follow: Follow symlinks
-" --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
-" --color: Search color options
-command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
+"  }
 
-set grepprg=rg\ --vimgrep
+" --> CtrlP {
+
+" Easy bindings for its various modes
+nmap <silent> <leader>f :CtrlP<cr>
+nmap <silent> <leader>b :CtrlPBuffer<cr>
+nmap <silent> <leader>m :CtrlPMRU<cr>
+
+let g:ctrlp_by_filename = 0
+let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:40'
+let g:ctrlp_show_hidden = 1
+let g:ctrlp_working_path_mode = 'r'
+let g:ctrlp_switch_buffer = 'et'    " jump to a file if it's open already
+let g:ctrlp_mruf_max=450            " number of recently opened files
+let g:ctrlp_max_files=0             " do not limit the number of searchable files
+let g:ctrlp_clear_cache_on_exit = 0
+let g:ctrlp_cache_dir = $HOME.'/.cache/ctrlp'
+let g:ctrlp_follow_symlinks = 1
+let g:ctrlp_line_prefix = '>'
+let g:ctrlp_buftag_types = {'go' : '--language-force=go --golang-types=ftv'}
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+
+if executable('rg')
+  " set grepprg=rg\ --color=never
+  set grepprg=rg\ --vimgrep\ --no-heading
+  set grepformat=%f:%l:%c:%m,%f:%l:%m
+  let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
+  let g:ctrlp_use_caching = 0
+endif
+
+" }
+
+" --> vim-gitgutter {
+
+let g:gitgutter_map_keys = 0
+
 "  }
 
 " --> undotree {
@@ -407,7 +388,7 @@ let g:NERDTrimTrailingWhitespace = 1
 " --> vim-autoformat {
 
 let g:formatter_yapf_style = 'google'
-au BufWrite *.py,*.js,*.lua :Autoformat
+au BufWrite *.py,*.js,*.lua,*.json :Autoformat
 
 " }
 
@@ -428,7 +409,7 @@ let g:nofrils_strbackgrounds=1
 " --> vim-virtualenv {
 
 let g:virtualenv_auto_activate = 1
-let g:virtualenv_stl_format = '(venv: %n)'
+let g:virtualenv_stl_format = '(%n)'
 
 "  }
 
@@ -464,37 +445,7 @@ let g:airline_symbols.paste = 'ρ'
 let g:airline#extensions#tagbar#flags = 'f'
 
 let g:airline_section_z = '%l/%L:%c'
-"let g:airline_section_y = ''
 
-"  }
-
-" --> Rainbow Parentheses {
-let g:rbpt_colorpairs = [
-            \ ['brown',       'RoyalBlue3'],
-            \ ['Darkblue',    'SeaGreen3'],
-            \ ['darkgray',    'DarkOrchid3'],
-            \ ['darkgreen',   'firebrick3'],
-            \ ['darkcyan',    'RoyalBlue3'],
-            \ ['darkred',     'SeaGreen3'],
-            \ ['darkmagenta', 'DarkOrchid3'],
-            \ ['brown',       'firebrick3'],
-            \ ['gray',        'RoyalBlue3'],
-            \ ['black',       'SeaGreen3'],
-            \ ['darkmagenta', 'DarkOrchid3'],
-            \ ['Darkblue',    'firebrick3'],
-            \ ['darkgreen',   'RoyalBlue3'],
-            \ ['darkcyan',    'SeaGreen3'],
-            \ ['darkred',     'DarkOrchid3'],
-            \ ['red',         'firebrick3'],
-            \ ]
-
-let g:rbpt_max = 16
-let g:rbpt_loadcmd_toggle = 0
-
-au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
 "  }
 
 " --> ansible-vim {
@@ -512,33 +463,35 @@ autocmd BufWritePre *.c,*.h Cfmt
 
 let g:SuperTabDefaultCompletionType = "context"
 " we need to remap this to not interfere with delimitMate
-let g:SuperTabMappingForward = '<a-tab>'
-let g:SuperTabMappingBackward = '<tab>'
+let g:SuperTabMappingForward = '<tab>'
+let g:SuperTabMappingBackward = '<a-tab>'
 
 " }
 
 " --> vim-expand-region {
+
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
+
 " }
 
 " --> NerdTree {
+
 noremap <Leader>n :NERDTreeToggle<cr>
 
 let NERDTreeShowHidden=1
 let NERDTreeIgnore=['\.cache$', '__pycache__', '\.pyc$', '\.vagrant$', '\~$', '\.git$', '.DS_Store']
 let NERDTreeQuitOnOpen=1
 let NERDTreeWinPos = "right"
-let NERDTreeWinSize = 50
+let NERDTreeWinSize = 30
 
 " close vim if the only window left open is NERDTree
-"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " }
 
 " --> vim-go {
 
-" let g:go_fmt_fail_silently = 1
 let g:go_list_type = "quickfix"
 let g:go_fmt_command = "goimports"
 let g:go_metalinter_autosave = 1
@@ -592,7 +545,6 @@ let g:syntastic_loc_list_height = 5
 let g:syntastic_mode_map = {
             \ "mode": "active",
             \ "passive_filetypes": ["go"] }
-" let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
 let g:syntastic_sh_checkers = ['shellcheck']
 let g:syntastic_c_checkers = ['splint', 'make', 'gcc']
 let g:syntastic_yaml_checkers = ['yamllint']
@@ -637,47 +589,9 @@ endif
 
 " }
 
-" --> Python-Mode {
-
-let g:pymode = 1
-let g:pymode_trim_whitespaces = 1
-let g:pymode_options = 1
-let g:pymode_options_max_line_length = 79
-let g:pymode_quickfix_minheight = 3
-let g:pymode_quickfix_maxheight = 6
-let g:pymode_python = 'python3'
-let g:pymode_indent = 1
-let g:pymode_folding = 1
-let g:pymode_motion = 1
-let g:pymode_doc = 1
-let g:pymode_doc_bind = 'K'
-let g:pymode_virtualenv = 0
-let g:pymode_run = 1
-let g:pymode_run_bind = '<leader>r'
-let g:pymode_lint = 1
-let g:pymode_lint_on_write = 1
-let g:pymode_lint_message = 1
-let g:pymode_lint_checkers = ['flake8']
-let g:pymode_lint_ignore = "E501,F0002,E115,E116"
-let g:pymode_lint_cwindow = 1
-let g:pymode_lint_signs = 1
-let g:pymode_rope = 0
-let g:pymode_syntax = 1
-let g:pymode_syntax_all = 1
-let g:pymode_syntax_print_as_function = 1
-let g:pymode_syntax_indent_errors = g:pymode_syntax_all
-let g:pymode_syntax_space_errors = g:pymode_syntax_all
-let g:pymode_syntax_string_formatting = g:pymode_syntax_all
-let g:pymode_syntax_string_format = g:pymode_syntax_all
-let g:pymode_syntax_string_templates = g:pymode_syntax_all
-let g:pymode_syntax_doctests = g:pymode_syntax_all
-
-" }
-
 " --> jedi-vim {
 
 let g:jedi#force_py_version = 3
-"let g:jedi#popup_on_dot = 0
 let g:jedi#rename_command = "<leader>jr"
 let g:jedi#usages_command = "<leader>ju"
 
@@ -685,11 +599,12 @@ let g:jedi#usages_command = "<leader>ju"
 
 " --> Fugitive {
 
-nnoremap <leader>ga :Git add --all<CR>
+" nnoremap <leader>ga :Git add --all<CR>
+nnoremap <leader>ga :Git add %:p<CR><CR>
 nnoremap <leader>gc :Gcommit<CR>
-nnoremap <leader>gb :Gbrowse<CR>
-nnoremap <leader>gpm :Gpush origin master<CR>
-nnoremap <leader>gpd :Gpush origin develop<CR>
+nnoremap <leader>gp :Gpush<CR>
+nnoremap <leader>gs :Gstatus<CR>
+vnoremap <leader>gb :Gblame<CR>
 
 " }
 
@@ -698,7 +613,7 @@ nnoremap <leader>gpd :Gpush origin develop<CR>
 " auto strip whitespace except for file with extension blacklisted
 let blacklist = ['markdown', 'md']
 autocmd BufWritePre * StripWhitespace
-highlight ExtraWhitespace ctermbg=DarkGreen
+highlight ExtraWhitespace ctermbg=Yellow
 
 " }
 
@@ -728,13 +643,6 @@ let g:startify_custom_header = [
             \ '                                              |\  |\',
             \ '                                              |/  |/',
             \ ]
-" open NERDTree as well
-" autocmd VimEnter *
-"                 \   if !argc()
-"                 \ |   Startify
-"                 \ |   NERDTree
-"                 \ |   wincmd w
-"                 \ | endif
 
 " }
 
