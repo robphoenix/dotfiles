@@ -1,7 +1,6 @@
 " --> vim-plug {
 
 call plug#begin()
-
 Plug 'chriskempson/base16-vim'          " Base16 colourscheme
 Plug 'robertmeta/nofrils'               " minimal syntax highlighting
 Plug 'kien/rainbow_parentheses.vim'     " Fancy matching parens+
@@ -9,7 +8,6 @@ Plug 'tpope/vim-surround'               " Add quotes/parenthesis etc.
 Plug 'tpope/vim-fugitive'               " Git wrapper
 Plug 'airblade/vim-gitgutter'           " Gutter markers for Git
 Plug 'Xuyuanp/nerdtree-git-plugin'      " Git gutter markers in NERDTree
-Plug 'ctrlpvim/ctrlp.vim'               " Fuzzy Finder
 Plug 'ntpeters/vim-better-whitespace'   " Remove whitespace
 Plug 'Raimondi/delimitMate'             " Auto-insert closing delimiters
 Plug 'vim-airline/vim-airline'          " Sweet statusline
@@ -37,7 +35,9 @@ Plug 'Rykka/riv.vim'                    " reStructured Text
 Plug 'mbbill/undotree'                  " undo history visualizer
 Plug 'junegunn/goyo.vim'                " distraction free writing
 Plug 'junegunn/limelight.vim'           " section highlighting
-Plug 'jeetsukumaran/vim-buffergator'    " buffer menu
+Plug 'cespare/vim-toml'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 
 if has('nvim')
     Plug 'Shougo/deoplete.nvim'         " NeoVim autocomplete
@@ -63,67 +63,68 @@ set background=dark
 let base16colorspace=256  " Access colors present in 256 colorspace
 colorscheme base16-default-dark
 
-set ruler                       " show the cursor position all the time
-set showcmd                     " show partial commands in status line and selected characters/lines in visual mode
-set nolazyredraw                " turn off lazy redraw
-set noswapfile                  " Don't use swapfile
-set nobackup                    " Don't create annoying backup files
+set ruler                          " show the cursor position all the time
+set showcmd                        " show partial commands in status line and selected characters/lines in visual mode
+set nolazyredraw                   " turn off lazy redraw
+set noswapfile                     " Don't use swapfile
+set nobackup                       " Don't create annoying backup files
 set nowritebackup
-set splitright                  " Split vertical windows right to the current windows
-set splitbelow                  " Split horizontal windows below to the current windows
-set autoread                    " Automatically reread changed files without asking me anything
-set norelativenumber            " no relative line numbers
-set number                      " line numbers
-set wildmenu                    " show list instead of just completing
-set wildmode=longest,list:longest               " zsh-like autcomplete menu for Ex commands
-au FocusLost * :wa              " Set vim to save the file on focus out.
-set fileformats=unix,dos,mac    " Prefer Unix over Windows over OS 9 formats
-set noshowmatch                 " Do not show matching brackets by flickering
-set noshowmode                  " We show the mode with lightline
-set incsearch                   " Shows the match while typing
-set hlsearch                    " Highlight found searches
-set ch=2                        " command line height
-set backspace=2                 " allow backspacing over everything in insert mode
-set whichwrap+=<,>,h,l,[,]      " backspace and cursor keys wrap to
-set shortmess+=filmnrxoOtT      " abbrev. of messages (avoids 'hit enter')
-set report=0                    " tell us about changes
-set nostartofline               " don't jump to the start of line when scrolling
-set incsearch                   " show search matches as you type
-set laststatus=2                " always show the status line
-set ignorecase                  " ignore case when searching
-set hlsearch                    " highlight searches
-set autoindent                  " automatic indent new lines
-set smartindent                 " be smart about it
-set nowrap                      " dont't wrap lines
+set splitright                     " Split vertical windows right to the current windows
+set splitbelow                     " Split horizontal windows below to the current windows
+set autoread                       " Automatically reread changed files without asking me anything
+set norelativenumber               " no relative line numbers
+set number                         " line numbers
+set wildmenu                       " show list instead of just completing
+set wildmode=longest,list:longest  " zsh-like autcomplete menu for Ex commands
+set wildignore+=*/.git/*,*/tmp/*,*.swp
+au FocusLost * :wa                 " Set vim to save the file on focus out.
+set fileformats=unix,dos,mac       " Prefer Unix over Windows over OS 9 formats
+set noshowmatch                    " Do not show matching brackets by flickering
+set noshowmode                     " We show the mode with lightline
+set incsearch                      " Shows the match while typing
+set hlsearch                       " Highlight found searches
+set ch=2                           " command line height
+set backspace=2                    " allow backspacing over everything in insert mode
+set whichwrap+=<,>,h,l,[,]         " backspace and cursor keys wrap to
+set shortmess+=filmnrxoOtT         " abbrev. of messages (avoids 'hit enter')
+set report=0                       " tell us about changes
+set nostartofline                  " don't jump to the start of line when scrolling
+set incsearch                      " show search matches as you type
+set laststatus=2                   " always show the status line
+set ignorecase                     " ignore case when searching
+set hlsearch                       " highlight searches
+set autoindent                     " automatic indent new lines
+set smartindent                    " be smart about it
+set nowrap                         " dont't wrap lines
 set showbreak=↪
-set scrolljump=5                " lines to scroll when cursor leaves screen
-set scrolloff=3                 " minimum lines to keep above and below cursor
-set nofoldenable                " don't auto fold code
-set foldnestmax=10              " 10 nested fold max
-set foldmethod=indent           " fold based on indent
-set gdefault                    " the /g flag on :s substitutions by default
-set autochdir                   " automatically change window's cwd to file's dir
-set shiftwidth=4                " use indents of 4 spaces
-set tabstop=4                   " an indentation every four columns
-set expandtab                   " tabs are spaces, not tabs
-set softtabstop=4               " let backspace delete indent
-set pastetoggle=<F2>            " pastetoggle (sane indentation on pastes)
+set scrolljump=5                   " lines to scroll when cursor leaves screen
+set scrolloff=3                    " minimum lines to keep above and below cursor
+set nofoldenable                   " don't auto fold code
+set foldnestmax=10                 " 10 nested fold max
+set foldmethod=indent              " fold based on indent
+set foldcolumn=1                   " show foldcolumn
+set gdefault                       " the /g flag on :s substitutions by default
+set autochdir                      " automatically change window's cwd to file's dir
+set shiftwidth=4                   " use indents of 4 spaces
+set tabstop=4                      " an indentation every four columns
+set expandtab                      " tabs are spaces, not tabs
+set softtabstop=4                  " let backspace delete indent
+set pastetoggle=<F2>               " pastetoggle (sane indentation on pastes)
 set smarttab
-set formatoptions+=n            " support for numbered/bullet lists
-set virtualedit=block           " allow virtual edit in visual block ..
+set formatoptions+=n               " support for numbered/bullet lists
+set virtualedit=block              " allow virtual edit in visual block
 set linebreak
-set noerrorbells                " don't bell or blink
-set hidden                      " hide buffers, don't close
-set autowrite                   " Automatically save before :next, :make etc.
-set virtualedit=onemore         " allow for cursor beyond last character
-set history=1000                " Store a ton of commands/search history (default is 20)
-set nospell                     " spell checking off by default
-set spelllang=en_gb             " jolly good spelling chap
-set noundofile                  " no annoying .un~ files
+set noerrorbells                   " don't bell or blink
+set hidden                         " hide buffers, don't close
+set autowrite                      " Automatically save before :next, :make etc.
+set virtualedit=onemore            " allow for cursor beyond last character
+set history=1000                   " Store a ton of commands/search history (default is 20)
+set nospell                        " spell checking off by default
+set spelllang=en_gb                " jolly good spelling chap
+set noundofile                     " no annoying .un~ files
 set modelines=1
-set cursorline                  " let's highlight the line the cursor is on
-set colorcolumn=79,119          " highlight columns
-set grepprg=pt                  " Use PT for grepping
+set cursorline                     " let's highlight the line the cursor is on
+set colorcolumn=79,119             " highlight columns
 " Time out on key codes but not mappings.
 " Basically this makes terminal Vim work sanely.
 set notimeout
@@ -167,6 +168,7 @@ au BufNewFile,BufRead *.js setlocal ts=2 sw=2 sts=2
 
 " Thesaurus https://github.com/zeke/moby
 set thesaurus+=./.vim/thesaurus.txt
+
 " }
 
 " --> Key (re)Mappings {
@@ -303,16 +305,91 @@ nmap <c-g> :Goyo<CR> :Limelight!!<CR> :<CR><ESC>
 
 " --> buffergator {
 
-nmap <leader>b :BuffergatorToggle<CR>
-" Use the right side of the screen
-let g:buffergator_viewport_split_policy = 'R'
-" I want my own keymappings...
-let g:buffergator_suppress_keymaps = 1
-" Go to the previous buffer open
-nmap <leader>jj :BuffergatorMruCyclePrev<cr>
-" Go to the next buffer open
-nmap <leader>kk :BuffergatorMruCycleNext<cr>
+" nmap <leader>b :BuffergatorToggle<CR>
+" " Use the right side of the screen
+" let g:buffergator_viewport_split_policy = 'R'
+" " I want my own keymappings...
+" let g:buffergator_suppress_keymaps = 1
+" " Go to the previous buffer open
+" nmap <leader>jj :BuffergatorMruCyclePrev<cr>
+" " Go to the next buffer open
+" nmap <leader>kk :BuffergatorMruCycleNext<cr>
 
+"  }
+
+" --> fzf {
+
+nmap <leader>f :Files<CR>
+nmap <leader>b :Buffers<CR>
+nmap <leader>s :Find<CR>
+
+" This is the default extra key bindings
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit' }
+
+" Default fzf layout
+" - down / up / left / right
+let g:fzf_layout = { 'down': '~40%' }
+
+" Customize fzf colors to match your color scheme
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
+
+" [Buffers] Jump to the existing window if possible
+let g:fzf_buffers_jump = 1
+
+" Mapping selecting mappings
+nmap <leader><tab> <plug>(fzf-maps-n)
+xmap <leader><tab> <plug>(fzf-maps-x)
+omap <leader><tab> <plug>(fzf-maps-o)
+
+" Insert mode completion
+imap <c-x><c-k> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+imap <c-x><c-j> <plug>(fzf-complete-file-ag)
+imap <c-x><c-l> <plug>(fzf-complete-line)
+
+" Advanced customization using autoload functions
+inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'right': '20%'})
+
+" Similarly, we can apply it to fzf#vim#grep. To use ripgrep instead of ag:
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview('up:60%')
+  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \   <bang>0)
+
+" Likewise, Files command with preview window
+command! -bang -nargs=? -complete=dir Files
+  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+
+" --column: Show column number
+" --line-number: Show line number
+" --no-heading: Do not show file headings in results
+" --fixed-strings: Search term as a literal string
+" --ignore-case: Case insensitive search
+" --no-ignore: Do not respect .gitignore, etc...
+" --hidden: Search hidden files and folders
+" --follow: Follow symlinks
+" --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
+" --color: Search color options
+command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
+
+set grepprg=rg\ --vimgrep
 "  }
 
 " --> undotree {
@@ -451,10 +528,10 @@ autocmd BufWritePre *.c,*.h Cfmt
 
 " --> SuperTab {
 
-let g:SuperTabDefaultCompletionType = "<context>"
+let g:SuperTabDefaultCompletionType = "context"
 " we need to remap this to not interfere with delimitMate
-let g:SuperTabMappingForward = '<tab>'
-let g:SuperTabMappingBackward = '<a-tab>'
+let g:SuperTabMappingForward = '<a-tab>'
+let g:SuperTabMappingBackward = '<tab>'
 
 " }
 
@@ -557,26 +634,32 @@ let g:UltiSnipsJumpBackwardTrigger = '<c-m>'
 " --> CtrlP {
 
 " Use a leader instead of the actual named binding
-nmap <leader>f :CtrlP<cr>
+" nmap <leader>f :CtrlP<cr>
 
 " Easy bindings for its various modes
 " nmap <leader>bb :CtrlPBuffer<cr>
 " nmap <leader>bm :CtrlPMixed<cr>
 " nmap <leader>br :CtrlPMRU<cr>
 
-let g:ctrlp_by_filename = 1
-let g:ctrlp_show_hidden = 1
-let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_max_height = 10         " maxiumum height of match window
-let g:ctrlp_switch_buffer = 'et'    " jump to a file if it's open already
-let g:ctrlp_mruf_max=450            " number of recently opened files
-let g:ctrlp_max_files=0             " do not limit the number of searchable files
-let g:ctrlp_use_caching = 1
-let g:ctrlp_clear_cache_on_exit = 0
-let g:ctrlp_cache_dir = $HOME.'/.cache/ctrlp'
-let g:ctrlp_follow_symlinks = 1
-let g:ctrlp_line_prefix = '>'
-let g:ctrlp_buftag_types = {'go' : '--language-force=go --golang-types=ftv'}
+" let g:ctrlp_by_filename = 0
+" let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:20'
+" let g:ctrlp_show_hidden = 1
+" let g:ctrlp_working_path_mode = 'r'
+" let g:ctrlp_switch_buffer = 'et'    " jump to a file if it's open already
+" let g:ctrlp_mruf_max=450            " number of recently opened files
+" let g:ctrlp_max_files=0             " do not limit the number of searchable files
+" let g:ctrlp_clear_cache_on_exit = 0
+" let g:ctrlp_cache_dir = $HOME.'/.cache/ctrlp'
+" let g:ctrlp_follow_symlinks = 1
+" let g:ctrlp_line_prefix = '>'
+" let g:ctrlp_buftag_types = {'go' : '--language-force=go --golang-types=ftv'}
+" let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+"
+" if executable('rg')
+"   set grepprg=rg\ --color=never
+"   let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
+"   let g:ctrlp_use_caching = 0
+" endif
 
 " }
 

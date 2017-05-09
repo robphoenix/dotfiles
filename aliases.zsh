@@ -1,6 +1,8 @@
 # Personal aliases
 
 # system
+alias kill="kill -9"
+alias grep="rg"
 alias l="ls -lAhF -I.debris -I.cache -I__pycache__ -I.git -Inode_modules -I.vagrant -I.DS_Store"
 alias mv="mv -ivu"
 alias cp="cp -ivu"
@@ -93,3 +95,7 @@ alias lua="lua5.3"
 
 # wunderlist
 alias wl="wunderline"
+
+# z
+alias j=z
+alias jj=zz

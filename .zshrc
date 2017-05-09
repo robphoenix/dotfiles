@@ -49,6 +49,9 @@ source ~/dotfiles/tmuxinator.zsh
 export PATH="$PATH:$HOME/.rvm/bin"
 source ~/.rvm/scripts/rvm
 
+# FZF
+# bindkey '^p' 'vim $(fzf);'
+
 # Set Options
 
 # ===== Basics
