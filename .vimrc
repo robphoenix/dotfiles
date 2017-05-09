@@ -315,6 +315,7 @@ command! -bang -nargs=* Rg
   \   <bang>0)
 
 nmap <silent> <leader>s :Rg<CR>
+nmap <silent> <leader>i :Colors<CR>
 
 "  }
 
