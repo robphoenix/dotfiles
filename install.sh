@@ -116,18 +116,23 @@ export PATH=$PATH:/usr/local/go/bin
 export GOPATH=$HOME/code/go
 rm go${GO_VERSION}.linux-amd64.tar.gz
 
-go get -u golang.org/x/tools/cmd/goimports
-go get -u golang.org/x/tools/cmd/vet
-go get -u golang.org/x/tools/cmd/oracle
-go get -u golang.org/x/tools/cmd/godoc
-go get -u github.com/golang/lint/golint
-go get -u github.com/odeke-em/drive/cmd/drive
-go get -u golang.org/x/tools/cmd/cover
-go get -u golang.org/x/tools/cmd/gorename
-go get -u golang.org/x/tools/cmd/guru
-go get -u github.com/monochromegane/the_platinum_searcher/...
-go get -u github.com/mitchellh/gox
-go get -u github.com/tcnksm/ghr
+go get -u -v golang.org/x/tools/cmd/cover
+go get -u -v golang.org/x/tools/cmd/guru
+go get -u -v golang.org/x/tools
+go get -u -v golang.org/x/tools/cmd/gorename
+go get -u -v golang.org/x/tools/cmd/godoc
+go get -u -v golang.org/x/tools/cmd/vet
+go get -u -v golang.org/x/tools/cmd/goimports
+go get -u -v golang.org/x/tools/cmd/oracle
+go get -u -v golang.org/x/tools/cmd/gotype
+go get -u -v github.com/golang/lint/golint
+go get -u -v github.com/golang/dep/...
+go get -u -v github.com/mitchellh/gox
+go get -u -v github.com/tcnksm/ghr
+go get -u -v github.com/ChimeraCoder/gojson/gojson
+go get -u -v github.com/odeke-em/drive/cmd/drive
+go get -u -v golang.org/x/review/git-codereview
+go get -u -v honnef.co/go/tools/cmd/staticcheck
 
 # docker
 apt-cache policy docker-engine
