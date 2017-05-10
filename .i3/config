@@ -21,11 +21,11 @@ set $base0E #cc99cc
 set $base0F #d27b53
 
 # Window Colours
-#                           border  bg      text    indicator
-client.focused              $base0D $base0D $base00 $base01
-client.focused_inactive     $base02 $base02 $base03 $base01
-client.unfocused            $base01 $base01 $base03 $base01
-client.urgent               $base02 $base08 $base07 $base08
+#                           border  bg      text    indicator child_border
+client.focused              $base00 $base00 $base00 $base01   $base00
+client.focused_inactive     $base00 $base00 $base03 $base01   $base00
+client.unfocused            $base00 $base00 $base03 $base01   $base00
+client.urgent               $base00 $base00 $base07 $base08   $base00
 
 # Windows key as modifier
 set $mod Mod4
@@ -187,8 +187,8 @@ bar {
         statusline  $base05
 
         #                   border  bg      text
-        focused_workspace   $base0D $base0D $base00
-        active_workspace    $base02 $base02 $base07
+        focused_workspace   $base01 $base01 $base05
+        active_workspace    $base01 $base01 $base07
         inactive_workspace  $base01 $base01 $base03
         urgent_workspace    $base08 $base08 $base07
     }
@@ -209,6 +209,4 @@ exec_always feh --bg-scale /home/rob/dotfiles/images/kaydendmello_cloudbreaker.j
 # load terminal on start
 exec --no-startup-id rxvt-unicode
 
-bindsym $mod+c exec google-chrome-stable
-bindsym $mod+m exec spotify
-bindsym $mod+z exec zeal
+bindsym $mod+w exec google-chrome-stable

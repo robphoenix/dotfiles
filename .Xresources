@@ -49,8 +49,8 @@ URxvt.boldFont:xft:input:style=Bold,pixelsize=35
 *bellIsUrgent:          true
 
 ! -- Borders -- !
-URxvt*internalBorder: 2
-URxvt*externalBorder: 2
+URxvt*internalBorder: 1
+URxvt*externalBorder: 1
 URxvt*background.border: false
 
 !! scroll
