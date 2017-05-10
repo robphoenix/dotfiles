@@ -23,7 +23,6 @@ Plug 'terryma/vim-expand-region'        " Visually select increasingly larger re
 Plug 'scrooloose/nerdcommenter'         " Commenting
 Plug 'Yggdroot/indentLine'              " Visualize indentation levels
 Plug 'mhinz/vim-sayonara'               " Easy buffer closing
-Plug 'fatih/vim-go'                     " Golang
 Plug 'pearofducks/ansible-vim'          " Ansible
 Plug 'Chiel92/vim-autoformat'           " Code formatting
 Plug 'Rykka/riv.vim'                    " reStructured Text
@@ -31,8 +30,10 @@ Plug 'mbbill/undotree'                  " undo history visualizer
 Plug 'junegunn/goyo.vim'                " distraction free writing
 Plug 'junegunn/limelight.vim'           " section highlighting
 Plug 'ctrlpvim/ctrlp.vim'               " fuzzy finder
-Plug 'cespare/vim-toml'
-Plug 'elzr/vim-json'
+Plug 'cespare/vim-toml'                 " TOML
+Plug 'elzr/vim-json'                    " JSON
+Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+Plug 'AndrewRadev/splitjoin.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
@@ -258,6 +259,8 @@ nnoremap <C-s> :%s/<C-r><C-w>//c<left><left>
 nmap <leader>ee :Errors<cr>
 
 " deal with quickfix easily
+map <c-u> :cnext<CR>
+map <c-i> :cprevious<CR>
 nnoremap <leader>a :cclose<CR>
 
 " close location list
@@ -496,31 +499,31 @@ let g:go_list_type = "quickfix"
 let g:go_fmt_command = "goimports"
 let g:go_metalinter_autosave = 1
 let g:go_autodetect_gopath = 1
-let g:go_highlight_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_build_constraints = 1
-let g:go_highlight_space_tab_error = 1
-let g:go_highlight_array_whitespace_error = 1
-let g:go_highlight_trailing_whitespace_error = 1
-let g:go_highlight_extra_types = 1
 let g:go_term_width = 30
 let g:go_term_enabled = 1
 let g:go_auto_sameids = 1
 let g:go_auto_type_info = 1
 let g:go_snippet_engine = "ultisnips"
+let g:go_gorename_prefill = 0
 set updatetime=100
 
-autocmd FileType go nmap <leader>gl <Plug>(go-metalinter)
-autocmd FileType go nmap <leader>gr <Plug>(go-run-split)
-autocmd FileType go nmap <leader>gt <Plug>(go-test)
-autocmd FileType go nmap <leader>gd :GoDecls<CR>
-autocmd FileType go nmap <leader>gf :GoDeclsDir<CR>
-autocmd FileType go nmap <leader>gn :GoRename<space>
+au FileType go nmap <leader>gi <Plug>(go-info)
+au FileType go nmap <leader>gr <Plug>(go-run)
+au FileType go nmap <leader>gb <Plug>(go-build)
+au FileType go nmap <leader>gt <Plug>(go-test)
+au FileType go nmap <leader>gd <Plug>(go-doc)
+au FileType go nmap <leader>gn <Plug>(go-rename)
+au FileType go nmap <c-s> :GoDefStack<CR>
+au FileType go nmap <c-d> :GoDeclsDir<CR>
 
+" use :A/:AV/:AS to altenate between code & test files
+augroup go
+    autocmd!
+    autocmd Filetype go
+        \  command! -bang A call go#alternate#Switch(<bang>0, 'edit')
+        \| command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
+        \| command! -bang AS call go#alternate#Switch(<bang>0, 'split')
+augroup END
 " }
 
 " --> delimitMate {
