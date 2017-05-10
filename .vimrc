@@ -21,7 +21,6 @@ Plug 'plasticboy/vim-markdown'          " Markdown
 Plug 'majutsushi/tagbar'                " Source Code Browser
 Plug 'mhinz/vim-startify'               " Fancy start screen
 Plug 'terryma/vim-expand-region'        " Visually select increasingly larger regions of text using the same key combination
-Plug 'ervandew/supertab'                " Use tab to for completions
 Plug 'scrooloose/nerdcommenter'         " Commenting
 Plug 'Yggdroot/indentLine'              " Visualize indentation levels
 Plug 'mhinz/vim-sayonara'               " Easy buffer closing
@@ -460,15 +459,6 @@ let g:cfmt_style = '-linux'
 autocmd BufWritePre *.c,*.h Cfmt
 "  }
 
-" --> SuperTab {
-
-let g:SuperTabDefaultCompletionType = "context"
-" we need to remap this to not interfere with delimitMate
-let g:SuperTabMappingForward = '<tab>'
-let g:SuperTabMappingBackward = '<a-tab>'
-
-" }
-
 " --> vim-expand-region {
 
 vmap v <Plug>(expand_region_expand)
@@ -561,8 +551,9 @@ let g:syntastic_markdown_checkers = ["markdownlint"]
 let g:UltiSnipsUsePythonVersion = 3
 let g:ultisnips_python_style = 'google'
 let g:UltiSnipsExpandTrigger = '<c-l>'
-let g:UltiSnipsJumpForwardTrigger = '<c-k>'
-let g:UltiSnipsJumpBackwardTrigger = '<c-m>'
+let g:UltiSnipsListSnippets = '<c-h>'
+let g:UltiSnipsJumpForwardTrigger = '<c-j>'
+let g:UltiSnipsJumpBackwardTrigger = '<c-k>'
 
 " }
 
@@ -601,7 +592,7 @@ let g:jedi#usages_command = "<leader>ju"
 " --> Fugitive {
 
 " nnoremap <leader>ga :Git add --all<CR>
-nnoremap <leader>ga :Git add %:p<CR><CR>
+nnoremap <leader>ga :Git add %:p<CR>
 nnoremap <leader>gc :Gcommit<CR>
 nnoremap <leader>gp :Gpush<CR>
 nnoremap <leader>gs :Gstatus<CR>
