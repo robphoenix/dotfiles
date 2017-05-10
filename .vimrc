@@ -8,7 +8,6 @@ Plug 'tpope/vim-surround'               " Add quotes/parenthesis etc.
 Plug 'tpope/vim-fugitive'               " Git wrapper
 Plug 'airblade/vim-gitgutter'           " Gutter markers for Git
 Plug 'Xuyuanp/nerdtree-git-plugin'      " Git gutter markers in NERDTree
-Plug 'ntpeters/vim-better-whitespace'   " Remove whitespace
 Plug 'Raimondi/delimitMate'             " Auto-insert closing delimiters
 Plug 'vim-airline/vim-airline'          " Sweet statusline
 Plug 'vim-airline/vim-airline-themes'   " Sweet statusline themes
@@ -24,7 +23,6 @@ Plug 'terryma/vim-expand-region'        " Visually select increasingly larger re
 Plug 'scrooloose/nerdcommenter'         " Commenting
 Plug 'Yggdroot/indentLine'              " Visualize indentation levels
 Plug 'mhinz/vim-sayonara'               " Easy buffer closing
-Plug 'Konfekt/FastFold'                 " Fold updating
 Plug 'fatih/vim-go'                     " Golang
 Plug 'pearofducks/ansible-vim'          " Ansible
 Plug 'Chiel92/vim-autoformat'           " Code formatting
@@ -141,6 +139,17 @@ set omnifunc=syntaxcomplete#Complete
 
 " save no history or bookmarks in netrw
 :let g:netrw_dirhistmax = 0
+
+" visually highlight trailing whitespace
+highlight ExtraWhitespace ctermbg=yellow
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
+" strip trailing whitespace on save
+autocmd FileType vim,git,c,go,python,javascript,rust,lua autocmd BufWritePre <buffer> %s/\s\+$//e
+autocmd BufWritePre *.git* %s/\s\+$//e
 
 " Vim interprets .md as 'modula2' otherwise, see :set filetype?
 au Bufread,BufNewFile *.md setlocal filetype=markdown tw=80 wrap
@@ -343,7 +352,7 @@ if executable('rg')
   " set grepprg=rg\ --color=never
   set grepprg=rg\ --vimgrep\ --no-heading
   set grepformat=%f:%l:%c:%m,%f:%l:%m
-  let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
+  let g:ctrlp_user_command = 'rg %s --files --color=never --hidden --glob ""'
   let g:ctrlp_use_caching = 0
 endif
 
@@ -591,21 +600,12 @@ let g:jedi#usages_command = "<leader>ju"
 
 " --> Fugitive {
 
-" nnoremap <leader>ga :Git add --all<CR>
+nnoremap <leader>ge :Git add --all<CR>
 nnoremap <leader>ga :Git add %:p<CR>
 nnoremap <leader>gc :Gcommit<CR>
 nnoremap <leader>gp :Gpush<CR>
 nnoremap <leader>gs :Gstatus<CR>
 vnoremap <leader>gb :Gblame<CR>
-
-" }
-
-" --> vim-better-whitespace {
-
-" auto strip whitespace except for file with extension blacklisted
-let blacklist = ['markdown', 'md']
-autocmd BufWritePre * StripWhitespace
-highlight ExtraWhitespace ctermbg=Yellow
 
 " }
 
@@ -645,4 +645,4 @@ let g:vim_markdown_conceal = 0
 
 " }
 
-" vim: set foldmarker={,} foldlevel=0 foldmethod=marker spell:
+" vim: set foldmarker={,} foldlevel=0 foldmethod=marker filetype=vim spell:
