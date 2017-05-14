@@ -134,6 +134,7 @@ go get -u -v github.com/odeke-em/drive/cmd/drive
 go get -u -v golang.org/x/review/git-codereview
 go get -u -v honnef.co/go/tools/cmd/staticcheck
 go get -u -v github.com/asciimoo/wuzz
+go get -u -v github.com/google/gopacket
 
 # docker
 apt-cache policy docker-engine

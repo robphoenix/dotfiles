@@ -9,6 +9,7 @@ Plug 'tpope/vim-fugitive'               " Git wrapper
 Plug 'airblade/vim-gitgutter'           " Gutter markers for Git
 Plug 'Xuyuanp/nerdtree-git-plugin'      " Git gutter markers in NERDTree
 Plug 'Raimondi/delimitMate'             " Auto-insert closing delimiters
+Plug 'ntpeters/vim-better-whitespace'   " better whitespace highlighting and removal
 Plug 'vim-airline/vim-airline'          " Sweet statusline
 Plug 'vim-airline/vim-airline-themes'   " Sweet statusline themes
 Plug 'scrooloose/nerdtree'              " File explorer
@@ -36,6 +37,7 @@ Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'tpope/vim-unimpaired'
 
 if has('nvim')
     Plug 'Shougo/deoplete.nvim'         " NeoVim autocomplete
@@ -61,6 +63,7 @@ set background=dark
 let base16colorspace=256  " Access colors present in 256 colorspace
 colorscheme base16-default-dark
 
+set modifiable                     " make a buffer modifiable
 set ruler                          " show the cursor position all the time
 set showcmd                        " show partial commands in status line and selected characters/lines in visual mode
 set nolazyredraw                   " turn off lazy redraw
@@ -121,8 +124,6 @@ set nospell                        " spell checking off by default
 set spelllang=en_gb                " jolly good spelling chap
 set noundofile                     " no annoying .un~ files
 set modelines=1
-set cursorline                     " let's highlight the line the cursor is on
-set colorcolumn=79,119             " highlight columns
 " Time out on key codes but not mappings.
 " Basically this makes terminal Vim work sanely.
 set notimeout
@@ -140,17 +141,6 @@ set omnifunc=syntaxcomplete#Complete
 
 " save no history or bookmarks in netrw
 :let g:netrw_dirhistmax = 0
-
-" visually highlight trailing whitespace
-highlight ExtraWhitespace ctermbg=yellow
-match ExtraWhitespace /\s\+$/
-autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-autocmd BufWinLeave * call clearmatches()
-" strip trailing whitespace on save
-autocmd FileType vim,git,c,go,python,javascript,rust,lua autocmd BufWritePre <buffer> %s/\s\+$//e
-autocmd BufWritePre *.git* %s/\s\+$//e
 
 " Vim interprets .md as 'modula2' otherwise, see :set filetype?
 au Bufread,BufNewFile *.md setlocal filetype=markdown tw=80 wrap
@@ -202,16 +192,16 @@ nnoremap <C-K> <C-W>k
 nnoremap <C-L> <C-W>l
 nnoremap <C-H> <C-W>h
 
-" Buffer switching
-nnoremap L :bn<CR>
-nnoremap H :bp<CR>
 " Buffer closing
 nnoremap <silent> <leader>q :Sayonara<CR>
 
 " Remap - to move to end of line (0 to move to beginning)
-nnoremap - $
-vnoremap - $h
-onoremap - $
+nnoremap L $
+vnoremap L $h
+onoremap L $
+nnoremap H ^
+vnoremap H ^
+onoremap H ^
 
 " spell checking
 nnoremap <F6> :setlocal spell! spell?<CR>
@@ -258,9 +248,7 @@ nnoremap <C-s> :%s/<C-r><C-w>//c<left><left>
 " See errors
 nmap <leader>ee :Errors<cr>
 
-" deal with quickfix easily
-map <c-u> :cnext<CR>
-map <c-i> :cprevious<CR>
+" close quickfix easily
 nnoremap <leader>a :cclose<CR>
 
 " close location list
@@ -314,6 +302,14 @@ nmap <c-g> :Goyo<CR> :Limelight!!<CR> :<CR><ESC>
 " }
 
 " --> Plugins {
+
+" --> vim-better-whitespace {
+
+highlight ExtraWhitespace ctermbg=yellow
+autocmd BufEnter * EnableStripWhitespaceOnSave
+let blacklist = ['markdown', 'md']
+
+"  }
 
 " --> fzf.vim {
 
@@ -513,8 +509,8 @@ au FileType go nmap <leader>gb <Plug>(go-build)
 au FileType go nmap <leader>gt <Plug>(go-test)
 au FileType go nmap <leader>gd <Plug>(go-doc)
 au FileType go nmap <leader>gn <Plug>(go-rename)
-au FileType go nmap <c-s> :GoDefStack<CR>
-au FileType go nmap <c-d> :GoDeclsDir<CR>
+au FileType go nmap <a-s> :GoDefStack<CR>
+au FileType go nmap <a-d> :GoDeclsDir<CR>
 
 " use :A/:AV/:AS to altenate between code & test files
 augroup go
@@ -648,4 +644,4 @@ let g:vim_markdown_conceal = 0
 
 " }
 
-" vim: set foldmarker={,} foldlevel=0 foldmethod=marker filetype=vim spell:
+" vim: set foldmarker={,} foldlevel=0 foldmethod=marker spell:
