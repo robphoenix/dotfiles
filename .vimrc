@@ -194,6 +194,8 @@ nnoremap <C-H> <C-W>h
 
 " Buffer closing
 nnoremap <silent> <leader>q :Sayonara<CR>
+" Buffer switching
+nnoremap <silent> <leader>d :buffer<space>
 
 " Remap - to move to end of line (0 to move to beginning)
 nnoremap L $
