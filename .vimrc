@@ -38,6 +38,8 @@ Plug 'AndrewRadev/splitjoin.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-unimpaired'
+Plug 'thinca/vim-quickrun'
+
 
 if has('nvim')
     Plug 'Shougo/deoplete.nvim'         " NeoVim autocomplete
@@ -531,6 +533,8 @@ let g:delimitMate_expand_space = 1
 let g:delimitMate_smart_quotes = 1
 let g:delimitMate_expand_inside_quotes = 0
 let g:delimitMate_smart_matchpairs = '^\%(\w\|\$\)'
+imap <c-space> <Plug>delimitMateS-Tab
+imap <a-space> <Plug>delimitMateJumpMany
 
 " }
 
@@ -561,9 +565,8 @@ let g:syntastic_markdown_checkers = ["markdownlint"]
 let g:UltiSnipsUsePythonVersion = 3
 let g:ultisnips_python_style = 'google'
 let g:UltiSnipsExpandTrigger = '<c-l>'
-let g:UltiSnipsListSnippets = '<c-h>'
-let g:UltiSnipsJumpForwardTrigger = '<c-j>'
-let g:UltiSnipsJumpBackwardTrigger = '<c-k>'
+let g:UltiSnipsJumpForwardTrigger = '<tab>'
+let g:UltiSnipsJumpBackwardTrigger = '<a-tab>'
 
 " }
 
