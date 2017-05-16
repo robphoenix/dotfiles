@@ -104,16 +104,16 @@ bindsym $mod+a focus parent
 
 set $ws1 "1:"
 set $ws2 "2:"
-set $ws3 "3:"
-set $ws4 "4:"
-set $ws5 "5:"
+set $ws3 "3:"
+set $ws4 "4:"
+set $ws5 "5:"
 
 assign [class="URxvt"] $ws1
 assign [class="google-chrome"] $ws2
-assign [class="^Spotify$"] $ws3
-assign [class="^Spotify Premium$"] $ws3
-assign [class="Tor Browser"] $ws4
-assign [class="Zeal"] $ws5
+assign [class="Zeal"] $ws3
+assign [class="^Spotify$"] $ws4
+assign [class="^Spotify Premium$"] $ws4
+assign [class="Tor Browser"] $ws5
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -195,8 +195,7 @@ bar {
 }
 
 # lock screen
-# bindsym $mod+semicolon exec i3lock --color '$base0F'
-bindsym $mod+semicolon exec lock -t ""
+bindsym $mod+semicolon exec i3lock --color '$base0C'
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
@@ -210,3 +209,4 @@ exec_always feh --bg-scale /home/rob/dotfiles/images/kaydendmello_cloudbreaker.j
 exec --no-startup-id rxvt-unicode
 
 bindsym $mod+w exec google-chrome-stable
+bindsym $mod+z exec zeal
