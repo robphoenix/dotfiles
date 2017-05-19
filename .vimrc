@@ -188,12 +188,6 @@ nmap <leader>vs :source $MYVIMRC<CR>
 " enter visual line mode
 nmap <leader><leader> V
 
-" split navigations
-nnoremap <C-J> <C-W>j
-nnoremap <C-K> <C-W>k
-nnoremap <C-L> <C-W>l
-nnoremap <C-H> <C-W>h
-
 " Buffer closing
 nnoremap <silent> <leader>q :Sayonara<CR>
 " Buffer switching
@@ -513,6 +507,7 @@ au FileType go nmap <leader>gb <Plug>(go-build)
 au FileType go nmap <leader>gt <Plug>(go-test)
 au FileType go nmap <leader>gd <Plug>(go-doc)
 au FileType go nmap <leader>gn <Plug>(go-rename)
+au FileType go nmap <leader>gl <Plug>(go-metalinter)
 au FileType go nmap <a-s> :GoDefStack<CR>
 au FileType go nmap <a-d> :GoDeclsDir<CR>
 
@@ -533,7 +528,8 @@ let g:delimitMate_expand_space = 1
 let g:delimitMate_smart_quotes = 1
 let g:delimitMate_expand_inside_quotes = 0
 let g:delimitMate_smart_matchpairs = '^\%(\w\|\$\)'
-imap <c-space> <Plug>delimitMateS-Tab
+" clashes with tmux
+" imap <c-space> <Plug>delimitMateS-Tab
 imap <a-space> <Plug>delimitMateJumpMany
 
 " }
@@ -565,8 +561,8 @@ let g:syntastic_markdown_checkers = ["markdownlint"]
 let g:UltiSnipsUsePythonVersion = 3
 let g:ultisnips_python_style = 'google'
 let g:UltiSnipsExpandTrigger = '<c-l>'
-let g:UltiSnipsJumpForwardTrigger = '<tab>'
-let g:UltiSnipsJumpBackwardTrigger = '<a-tab>'
+let g:UltiSnipsJumpForwardTrigger = '<c-j>'
+let g:UltiSnipsJumpBackwardTrigger = '<c-k>'
 
 " }
 
