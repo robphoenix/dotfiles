@@ -2,52 +2,46 @@
 
 call plug#begin()
 
- Plug 'chriskempson/base16-vim'          " Base16 colourscheme
- Plug 'robertmeta/nofrils'               " minimal syntax highlighting
- Plug 'tpope/vim-surround'               " Add quotes/parenthesis etc.
- Plug 'tpope/vim-fugitive'               " Git wrapper
- Plug 'airblade/vim-gitgutter'           " Gutter markers for Git
- Plug 'Xuyuanp/nerdtree-git-plugin'      " Git gutter markers in NERDTree
- Plug 'Raimondi/delimitMate'             " Auto-insert closing delimiters
- Plug 'ntpeters/vim-better-whitespace'   " better whitespace highlighting and removal
- Plug 'vim-airline/vim-airline'          " Sweet statusline
- Plug 'vim-airline/vim-airline-themes'   " Sweet statusline themes
- Plug 'scrooloose/nerdtree'              " File explorer
- Plug 'jmcantrell/vim-virtualenv'        " Python Virtualenvs
- Plug 'scrooloose/syntastic'             " Syntax checker
- Plug 'SirVer/ultisnips'                 " Code snippets
- Plug 'honza/vim-snippets'               " Code snippets
- Plug 'plasticboy/vim-markdown'          " Markdown
- Plug 'majutsushi/tagbar'                " Source Code Browser
- Plug 'mhinz/vim-startify'               " Fancy start screen
- Plug 'terryma/vim-expand-region'        " Visually select increasingly larger regions of text using the same key combination
- Plug 'scrooloose/nerdcommenter'         " Commenting
- Plug 'Yggdroot/indentLine'              " Visualize indentation levels
- Plug 'mhinz/vim-sayonara'               " Easy buffer closing
- Plug 'pearofducks/ansible-vim'          " Ansible
- Plug 'Chiel92/vim-autoformat'           " Code formatting
- Plug 'Rykka/riv.vim'                    " reStructured Text
- Plug 'mbbill/undotree'                  " undo history visualizer
- Plug 'junegunn/goyo.vim'                " distraction free writing
- Plug 'junegunn/limelight.vim'           " section highlighting
- Plug 'ctrlpvim/ctrlp.vim'               " fuzzy finder
- Plug 'cespare/vim-toml'                 " TOML
- Plug 'elzr/vim-json'                    " JSON
- Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
- Plug 'AndrewRadev/splitjoin.vim'
- Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
- Plug 'junegunn/fzf.vim'
- Plug 'tpope/vim-unimpaired'
- Plug 'tpope/vim-capslock'
+Plug 'chriskempson/base16-vim'          " Base16 colourscheme
+Plug 'robertmeta/nofrils'               " minimal syntax highlighting
+Plug 'tpope/vim-surround'               " Add quotes/parenthesis etc.
+Plug 'tpope/vim-fugitive'               " Git wrapper
+Plug 'airblade/vim-gitgutter'           " Gutter markers for Git
+Plug 'Raimondi/delimitMate'             " Auto-insert closing delimiters
+Plug 'ntpeters/vim-better-whitespace'   " better whitespace highlighting and removal
+Plug 'vim-airline/vim-airline'          " Sweet statusline
+Plug 'vim-airline/vim-airline-themes'   " Sweet statusline themes
+Plug 'scrooloose/nerdtree'              " File explorer
+Plug 'jmcantrell/vim-virtualenv'        " Python Virtualenvs
+Plug 'scrooloose/syntastic'             " Syntax checker
+Plug 'SirVer/ultisnips'                 " Code snippets
+Plug 'honza/vim-snippets'               " Code snippets
+Plug 'plasticboy/vim-markdown'          " Markdown
+Plug 'majutsushi/tagbar'                " Source Code Browser
+Plug 'mhinz/vim-startify'               " Fancy start screen
+Plug 'scrooloose/nerdcommenter'         " Commenting
+Plug 'mhinz/vim-sayonara'               " Easy buffer closing
+Plug 'pearofducks/ansible-vim'          " Ansible
+Plug 'Rykka/riv.vim'                    " reStructured Text
+Plug 'mbbill/undotree'                  " undo history visualizer
+Plug 'junegunn/goyo.vim'                " distraction free writing
+Plug 'junegunn/limelight.vim'           " section highlighting
+Plug 'ctrlpvim/ctrlp.vim'               " fuzzy finder
+Plug 'cespare/vim-toml'                 " TOML
+Plug 'elzr/vim-json'                    " JSON
+Plug 'junegunn/fzf.vim'                 " search with ripgrep
+Plug 'tpope/vim-unimpaired'             " pairs of handy bracket mappings
+Plug 'tpope/vim-capslock'               " Software caps lock
+Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
-
- if has('nvim')
-     Plug 'Shougo/deoplete.nvim'         " NeoVim autocomplete
-     Plug 'zchee/deoplete-go'            " Go autocomplete
-     Plug 'zchee/deoplete-jedi'          " Python autocomplete
-     Plug 'crosbymichael/vim-cfmt'       " Auto-format C code
- else
-     Plug 'Shougo/neocomplete.vim'       " Vim autocomplete
+if has('nvim')
+    Plug 'Shougo/deoplete.nvim'         " NeoVim autocomplete
+    Plug 'zchee/deoplete-go'            " Go autocomplete
+    Plug 'zchee/deoplete-jedi'          " Python autocomplete
+    Plug 'crosbymichael/vim-cfmt'       " Auto-format C code
+else
+    Plug 'Shougo/neocomplete.vim'       " Vim autocomplete
 endif
 
 call plug#end()
@@ -66,7 +60,7 @@ let base16colorspace=256  " Access colors present in 256 colorspace
 colorscheme base16-default-dark
 
 set modifiable                     " make a buffer modifiable
-set ruler                          " show the cursor position all the time
+set noruler                        " don't show the cursor position all the time
 set showcmd                        " show partial commands in status line and selected characters/lines in visual mode
 set nolazyredraw                   " turn off lazy redraw
 set noswapfile                     " Don't use swapfile
@@ -82,9 +76,9 @@ set wildmode=longest,list:longest  " zsh-like autcomplete menu for Ex commands
 set wildignore+=*/.git/*,*/tmp/*,*.swp
 au FocusLost * :wa                 " Set vim to save the file on focus out.
 set fileformats=unix,dos,mac       " Prefer Unix over Windows over OS 9 formats
-set noshowmatch                    " Do not show matching brackets by flickering
-set noshowmode                     " We show the mode with lightline
-set incsearch                      " Shows the match while typing
+set showmatch                      " show matching brackets by flickering
+set noshowmode                     " We show the mode with airline
+set incsearch                      " show search matches as you type
 set hlsearch                       " Highlight found searches
 set ch=2                           " command line height
 set backspace=2                    " allow backspacing over everything in insert mode
@@ -92,10 +86,8 @@ set whichwrap+=<,>,h,l,[,]         " backspace and cursor keys wrap to
 set shortmess+=filmnrxoOtT         " abbrev. of messages (avoids 'hit enter')
 set report=0                       " tell us about changes
 set nostartofline                  " don't jump to the start of line when scrolling
-set incsearch                      " show search matches as you type
 set laststatus=2                   " always show the status line
 set ignorecase                     " ignore case when searching
-set hlsearch                       " highlight searches
 set autoindent                     " automatic indent new lines
 set smartindent                    " be smart about it
 set nowrap                         " dont't wrap lines
@@ -181,9 +173,6 @@ let g:mapleader = "\<Space>"
 " remap ESC
 inoremap jk <ESC>
 
-" enter visual line mode
-nmap <leader><leader> V
-
 " Buffer closing
 nnoremap <silent> <leader>q :Sayonara<CR>
 
@@ -237,7 +226,7 @@ nmap <silent> <leader>/ :nohlsearch<CR>
 " substitution (replace) word under cursor
 nnoremap <C-s> :%s/<C-r><C-w>//c<left><left>
 
-" close quickfix easily
+" navigate & close quickfix easily
 nnoremap <leader>a :cclose<CR>
 nnoremap <c-n> :cnext<CR>
 nnoremap <c-p> :cprevious<CR>
@@ -271,9 +260,6 @@ cnoremap <c-j> <Down>
 
 " read output of shell commands to file
 nnoremap <leader>r :read !
-
-" vim-plug
-nnoremap <silent> <a-p> :PlugUpgrade<CR> :PlugClean<CR> :PlugUpdate<CR>
 
 " Goyo & Limelight
 nmap <leader>gg :Goyo<CR> :Limelight!!<CR> :<CR><ESC>
@@ -373,13 +359,6 @@ let g:NERDTrimTrailingWhitespace = 1
 
 " }
 
-" --> vim-autoformat {
-
-let g:formatter_yapf_style = 'google'
-au BufWrite *.py,*.js,*.lua,*.json :Autoformat
-
-" }
-
 " --> tagbar {
 
 nnoremap <silent> <leader>t :TagbarToggle<CR>
@@ -454,16 +433,11 @@ let g:ansible_extra_keywords_highlight = 1
 "  }
 
 " --> vim-cfmt {
+
 let g:cfmt_style = '-linux'
 autocmd BufWritePre *.c,*.h Cfmt
+
 "  }
-
-" --> vim-expand-region {
-
-vmap v <Plug>(expand_region_expand)
-vmap <C-v> <Plug>(expand_region_shrink)
-
-" }
 
 " --> NerdTree {
 
@@ -472,8 +446,8 @@ noremap <Leader>n :NERDTreeToggle<cr>
 let NERDTreeShowHidden=1
 let NERDTreeIgnore=['\.cache$', '__pycache__', '\.pyc$', '\.vagrant$', '\~$', '\.git$', '.DS_Store']
 let NERDTreeQuitOnOpen=1
-let NERDTreeWinPos = "right"
-let NERDTreeWinSize = 30
+let NERDTreeWinPos="right"
+let NERDTreeWinSize=40
 
 " close vim if the only window left open is NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
@@ -491,7 +465,7 @@ let g:go_term_width = 30
 let g:go_snippet_engine = "ultisnips"
 let g:go_gorename_prefill = 0
 let g:go_auto_type_info = 0
-let g:go_auto_sameids = 1
+let g:go_auto_sameids = 0
 set updatetime=100
 
 au FileType go nmap <leader>gi <Plug>(go-info)
@@ -502,10 +476,9 @@ au FileType go nmap <leader>gd <Plug>(go-doc)
 au FileType go nmap <leader>gn <Plug>(go-rename)
 au FileType go nmap <leader>gl <Plug>(go-metalinter)
 au FileType go nmap <leader>gs :GoSameIds<CR>
-au FileType go nmap <a-s> :GoDefStack<CR>
 au FileType go nmap <a-d> :GoDeclsDir<CR>
 
-" use :A/:AV/:AS to altenate between code & test files
+" use :A/:AV/:AS to alternate between code & test files
 augroup go
     autocmd!
     autocmd Filetype go
@@ -522,9 +495,9 @@ let g:delimitMate_expand_space = 1
 let g:delimitMate_smart_quotes = 1
 let g:delimitMate_expand_inside_quotes = 0
 let g:delimitMate_smart_matchpairs = '^\%(\w\|\$\)'
-" clashes with tmux
-" imap <c-space> <Plug>delimitMateS-Tab
-imap <a-space> <Plug>delimitMateJumpMany
+" jump outside delimiters
+imap <c-o> <Plug>delimitMateS-Tab
+imap <a-o> <Plug>delimitMateJumpMany
 
 " }
 
@@ -554,9 +527,6 @@ let g:syntastic_markdown_checkers = ["markdownlint"]
 
 let g:UltiSnipsUsePythonVersion = 3
 let g:ultisnips_python_style = 'google'
-let g:UltiSnipsExpandTrigger = '<c-l>'
-let g:UltiSnipsJumpForwardTrigger = '<c-j>'
-let g:UltiSnipsJumpBackwardTrigger = '<c-k>'
 
 " }
 
@@ -638,4 +608,4 @@ let g:vim_markdown_conceal = 0
 
 " }
 
-" vim: set foldmarker={,} foldlevel=0 foldmethod=marker spell:
+" vim: set foldmarker={,} foldlevel=0 foldmethod=marker
