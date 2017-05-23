@@ -21,14 +21,14 @@ source /usr/local/bin/virtualenvwrapper.sh
 export PROJECT_HOME=$HOME/code/python
 
 # GOPATH
-export GOPATH=$HOME/code/go
+export GOPATH=$HOME/code/gopath
 export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
 
 # RUST
 export PATH="$HOME/.cargo/bin:$PATH"
 
 # CDPATH
-export CDPATH=~:~/code/python:~/code/go/src/github.com/robphoenix/::~/code/go/src/github.com/:~/sites:~/code/exercism:~/code/lua:~/code/python
+export CDPATH=$GOPATH:~/code/python:~/sites:~/code/exercism:~/code/lua
 
 # FZF
 export FZF_COMPLETION_TRIGGER=',,'

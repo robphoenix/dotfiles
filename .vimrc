@@ -2,52 +2,52 @@
 
 call plug#begin()
 
-Plug 'chriskempson/base16-vim'          " Base16 colourscheme
-Plug 'robertmeta/nofrils'               " minimal syntax highlighting
-Plug 'tpope/vim-surround'               " Add quotes/parenthesis etc.
-Plug 'tpope/vim-fugitive'               " Git wrapper
-Plug 'airblade/vim-gitgutter'           " Gutter markers for Git
-Plug 'Xuyuanp/nerdtree-git-plugin'      " Git gutter markers in NERDTree
-Plug 'Raimondi/delimitMate'             " Auto-insert closing delimiters
-Plug 'ntpeters/vim-better-whitespace'   " better whitespace highlighting and removal
-Plug 'vim-airline/vim-airline'          " Sweet statusline
-Plug 'vim-airline/vim-airline-themes'   " Sweet statusline themes
-Plug 'scrooloose/nerdtree'              " File explorer
-Plug 'jmcantrell/vim-virtualenv'        " Python Virtualenvs
-Plug 'scrooloose/syntastic'             " Syntax checker
-Plug 'SirVer/ultisnips'                 " Code snippets
-Plug 'honza/vim-snippets'               " Code snippets
-Plug 'plasticboy/vim-markdown'          " Markdown
-Plug 'majutsushi/tagbar'                " Source Code Browser
-Plug 'mhinz/vim-startify'               " Fancy start screen
-Plug 'terryma/vim-expand-region'        " Visually select increasingly larger regions of text using the same key combination
-Plug 'scrooloose/nerdcommenter'         " Commenting
-Plug 'Yggdroot/indentLine'              " Visualize indentation levels
-Plug 'mhinz/vim-sayonara'               " Easy buffer closing
-Plug 'pearofducks/ansible-vim'          " Ansible
-Plug 'Chiel92/vim-autoformat'           " Code formatting
-Plug 'Rykka/riv.vim'                    " reStructured Text
-Plug 'mbbill/undotree'                  " undo history visualizer
-Plug 'junegunn/goyo.vim'                " distraction free writing
-Plug 'junegunn/limelight.vim'           " section highlighting
-Plug 'ctrlpvim/ctrlp.vim'               " fuzzy finder
-Plug 'cespare/vim-toml'                 " TOML
-Plug 'elzr/vim-json'                    " JSON
-Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
-Plug 'AndrewRadev/splitjoin.vim'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-Plug 'tpope/vim-unimpaired'
-Plug 'thinca/vim-quickrun'
+ Plug 'chriskempson/base16-vim'          " Base16 colourscheme
+ Plug 'robertmeta/nofrils'               " minimal syntax highlighting
+ Plug 'tpope/vim-surround'               " Add quotes/parenthesis etc.
+ Plug 'tpope/vim-fugitive'               " Git wrapper
+ Plug 'airblade/vim-gitgutter'           " Gutter markers for Git
+ Plug 'Xuyuanp/nerdtree-git-plugin'      " Git gutter markers in NERDTree
+ Plug 'Raimondi/delimitMate'             " Auto-insert closing delimiters
+ Plug 'ntpeters/vim-better-whitespace'   " better whitespace highlighting and removal
+ Plug 'vim-airline/vim-airline'          " Sweet statusline
+ Plug 'vim-airline/vim-airline-themes'   " Sweet statusline themes
+ Plug 'scrooloose/nerdtree'              " File explorer
+ Plug 'jmcantrell/vim-virtualenv'        " Python Virtualenvs
+ Plug 'scrooloose/syntastic'             " Syntax checker
+ Plug 'SirVer/ultisnips'                 " Code snippets
+ Plug 'honza/vim-snippets'               " Code snippets
+ Plug 'plasticboy/vim-markdown'          " Markdown
+ Plug 'majutsushi/tagbar'                " Source Code Browser
+ Plug 'mhinz/vim-startify'               " Fancy start screen
+ Plug 'terryma/vim-expand-region'        " Visually select increasingly larger regions of text using the same key combination
+ Plug 'scrooloose/nerdcommenter'         " Commenting
+ Plug 'Yggdroot/indentLine'              " Visualize indentation levels
+ Plug 'mhinz/vim-sayonara'               " Easy buffer closing
+ Plug 'pearofducks/ansible-vim'          " Ansible
+ Plug 'Chiel92/vim-autoformat'           " Code formatting
+ Plug 'Rykka/riv.vim'                    " reStructured Text
+ Plug 'mbbill/undotree'                  " undo history visualizer
+ Plug 'junegunn/goyo.vim'                " distraction free writing
+ Plug 'junegunn/limelight.vim'           " section highlighting
+ Plug 'ctrlpvim/ctrlp.vim'               " fuzzy finder
+ Plug 'cespare/vim-toml'                 " TOML
+ Plug 'elzr/vim-json'                    " JSON
+ Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+ Plug 'AndrewRadev/splitjoin.vim'
+ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+ Plug 'junegunn/fzf.vim'
+ Plug 'tpope/vim-unimpaired'
+ Plug 'tpope/vim-capslock'
 
 
-if has('nvim')
-    Plug 'Shougo/deoplete.nvim'         " NeoVim autocomplete
-    Plug 'zchee/deoplete-go'            " Go autocomplete
-    Plug 'zchee/deoplete-jedi'          " Python autocomplete
-    Plug 'crosbymichael/vim-cfmt'       " Auto-format C code
-else
-    Plug 'Shougo/neocomplete.vim'       " Vim autocomplete
+ if has('nvim')
+     Plug 'Shougo/deoplete.nvim'         " NeoVim autocomplete
+     Plug 'zchee/deoplete-go'            " Go autocomplete
+     Plug 'zchee/deoplete-jedi'          " Python autocomplete
+     Plug 'crosbymichael/vim-cfmt'       " Auto-format C code
+ else
+     Plug 'Shougo/neocomplete.vim'       " Vim autocomplete
 endif
 
 call plug#end()
@@ -181,17 +181,14 @@ let g:mapleader = "\<Space>"
 " remap ESC
 inoremap jk <ESC>
 
-" easily edit .vimrc in new buffer
-nmap <leader>vv :edit $MYVIMRC<CR>
-nmap <leader>vs :source $MYVIMRC<CR>
-
 " enter visual line mode
 nmap <leader><leader> V
 
 " Buffer closing
 nnoremap <silent> <leader>q :Sayonara<CR>
-" Buffer switching
-nnoremap <silent> <leader>d :buffer<space>
+
+" Fast saving
+nmap <leader>w :w!<cr>
 
 " Remap - to move to end of line (0 to move to beginning)
 nnoremap L $
@@ -211,9 +208,6 @@ nmap <Leader>p "+p
 nmap <Leader>P "+P
 vmap <Leader>p "+p
 vmap <Leader>P "+P
-
-" Fast saving
-nmap <leader>w :w!<cr>
 
 " visual shifting (does not exit Visual mode)
 vnoremap < <gv
@@ -243,11 +237,10 @@ nmap <silent> <leader>/ :nohlsearch<CR>
 " substitution (replace) word under cursor
 nnoremap <C-s> :%s/<C-r><C-w>//c<left><left>
 
-" See errors
-nmap <leader>ee :Errors<cr>
-
 " close quickfix easily
 nnoremap <leader>a :cclose<CR>
+nnoremap <c-n> :cnext<CR>
+nnoremap <c-p> :cprevious<CR>
 
 " close location list
 nnoremap <leader>l :lclose<CR>
@@ -262,18 +255,6 @@ map <leader>ev :vsp %%
 " Allow using the repeat operator with a visual selection (!)
 " http://stackoverflow.com/a/8064607/127816
 vnoremap . :normal .<CR>
-
-if has('nvim')
-    " integrated terminal
-    nnoremap <leader>z :15sp term://zsh<CR>
-    tnoremap <leader>e <c-\><c-n>
-    :au BufEnter * if &buftype == 'terminal' | :startinsert | endif
-    " split navigations
-    tnoremap <C-h> <C-\><C-n><C-w>h
-    tnoremap <C-j> <C-\><C-n><C-w>j
-    tnoremap <C-k> <C-\><C-n><C-w>k
-    tnoremap <C-l> <C-\><C-n><C-w>l
-endif
 
 " resizing splits
 nnoremap <silent> <a-h> :vertical resize +10<cr>
@@ -295,7 +276,7 @@ nnoremap <leader>r :read !
 nnoremap <silent> <a-p> :PlugUpgrade<CR> :PlugClean<CR> :PlugUpdate<CR>
 
 " Goyo & Limelight
-nmap <c-g> :Goyo<CR> :Limelight!!<CR> :<CR><ESC>
+nmap <leader>gg :Goyo<CR> :Limelight!!<CR> :<CR><ESC>
 
 " }
 
@@ -327,6 +308,7 @@ nmap <silent> <leader>i :Colors<CR>
 " --> CtrlP {
 
 " Easy bindings for its various modes
+let g:ctrlp_map = ''
 nmap <silent> <leader>f :CtrlP<cr>
 nmap <silent> <leader>b :CtrlPBuffer<cr>
 nmap <silent> <leader>m :CtrlPMRU<cr>
@@ -447,10 +429,21 @@ let g:airline_symbols.linenr = ''
 let g:airline_symbols.maxlinenr = ''
 let g:airline_symbols.spell = 'Ꞩ'
 let g:airline_symbols.paste = 'ρ'
-
+let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
+let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#hunks#enabled=0
+let g:airline#extensions#syntastic#enabled = 0
+let g:airline_skip_empty_sections = 1
 let g:airline#extensions#tagbar#flags = 'f'
+let g:airline#extensions#ctrlp#show_adjacent_modes = 0
+let g:airline#extensions#ctrlp#color_template = 'normal'
+let g:airline#extensions#capslock#enabled = 1
 
-let g:airline_section_z = '%l/%L:%c'
+" let g:airline_section_b = ''
+let g:airline_section_c = '%t'
+let g:airline_section_x = ''
+let g:airline_section_z = ''
+" let g:airline_section_z = '%l/%L:%c'
 
 "  }
 
@@ -493,12 +486,12 @@ let g:go_list_type = "quickfix"
 let g:go_fmt_command = "goimports"
 let g:go_metalinter_autosave = 1
 let g:go_autodetect_gopath = 1
-let g:go_term_width = 30
 let g:go_term_enabled = 1
-let g:go_auto_sameids = 1
-let g:go_auto_type_info = 1
+let g:go_term_width = 30
 let g:go_snippet_engine = "ultisnips"
 let g:go_gorename_prefill = 0
+let g:go_auto_type_info = 0
+let g:go_auto_sameids = 0
 set updatetime=100
 
 au FileType go nmap <leader>gi <Plug>(go-info)
@@ -508,6 +501,7 @@ au FileType go nmap <leader>gt <Plug>(go-test)
 au FileType go nmap <leader>gd <Plug>(go-doc)
 au FileType go nmap <leader>gn <Plug>(go-rename)
 au FileType go nmap <leader>gl <Plug>(go-metalinter)
+au FileType go nmap <leader>gs :GoSameIds<CR>
 au FileType go nmap <a-s> :GoDefStack<CR>
 au FileType go nmap <a-d> :GoDeclsDir<CR>
 
@@ -604,7 +598,6 @@ nnoremap <leader>ge :Git add --all<CR>
 nnoremap <leader>ga :Git add %:p<CR>
 nnoremap <leader>gc :Gcommit<CR>
 nnoremap <leader>gp :Gpush<CR>
-nnoremap <leader>gs :Gstatus<CR>
 vnoremap <leader>gb :Gblame<CR>
 
 " }
