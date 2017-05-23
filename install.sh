@@ -97,8 +97,7 @@ sudo apt install -y \
      haveged \
      lua5.3 \
      luarocks \
-     moc \
-     moc-ffmpeg-plugin
+     cmus
 
 # ZSH
 # oh-my-zsh
