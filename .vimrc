@@ -491,7 +491,7 @@ let g:go_term_width = 30
 let g:go_snippet_engine = "ultisnips"
 let g:go_gorename_prefill = 0
 let g:go_auto_type_info = 0
-let g:go_auto_sameids = 0
+let g:go_auto_sameids = 1
 set updatetime=100
 
 au FileType go nmap <leader>gi <Plug>(go-info)
