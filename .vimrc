@@ -18,9 +18,10 @@ Plug 'SirVer/ultisnips'                 " Code snippets
 Plug 'honza/vim-snippets'               " Code snippets
 Plug 'plasticboy/vim-markdown'          " Markdown
 Plug 'majutsushi/tagbar'                " Source Code Browser
-Plug 'mhinz/vim-startify'               " Fancy start screen
 Plug 'scrooloose/nerdcommenter'         " Commenting
+Plug 'mhinz/vim-startify'               " fancy start screen
 Plug 'mhinz/vim-sayonara'               " Easy buffer closing
+Plug 'mhinz/vim-grepper'
 Plug 'pearofducks/ansible-vim'          " Ansible
 Plug 'Rykka/riv.vim'                    " reStructured Text
 Plug 'mbbill/undotree'                  " undo history visualizer
@@ -33,7 +34,6 @@ Plug 'junegunn/fzf.vim'                 " search with ripgrep
 Plug 'tpope/vim-unimpaired'             " pairs of handy bracket mappings
 Plug 'tpope/vim-capslock'               " Software caps lock
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
 if has('nvim')
     Plug 'Shougo/deoplete.nvim'         " NeoVim autocomplete
@@ -223,6 +223,12 @@ vnoremap k gk
 " clear highlighted search
 nmap <silent> <leader>/ :nohlsearch<CR>
 
+" folding
+inoremap <F9> <C-O>za
+nnoremap <F9> za
+onoremap <F9> <C-C>za
+vnoremap <F9> zf
+
 " substitution (replace) word under cursor
 nnoremap <C-s> :%s/<C-r><C-w>//c<left><left>
 
@@ -268,26 +274,24 @@ nmap <leader>gg :Goyo<CR> :Limelight!!<CR> :<CR><ESC>
 
 " --> Plugins {
 
+" --> vim-grepper {
+
+let g:grepper = {}            " initialize g:grepper with empty dictionary
+runtime autoload/grepper.vim  " initialize g:grepper with default values
+let g:grepper.highlight = 1
+let g:grepper.simple_prompt = 1
+let g:grepper.tools = ['rg', 'pt', 'git']
+let g:grepper.dir = 'repo,file'
+nnoremap <leader>s :Grepper<cr>
+let g:grepper.next_tool = '<leader>s'
+
+"  }
+
 " --> vim-better-whitespace {
 
 highlight ExtraWhitespace ctermbg=yellow
 autocmd BufEnter * EnableStripWhitespaceOnSave
 let blacklist = ['markdown', 'md']
-
-"  }
-
-" --> fzf.vim {
-
-" Use ripgrep to search
-command! -bang -nargs=* Rg
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
-  \   <bang>0 ? fzf#vim#with_preview('up:60%')
-  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
-  \   <bang>0)
-
-nmap <silent> <leader>s :Rg<CR>
-nmap <silent> <leader>i :Colors<CR>
 
 "  }
 
@@ -608,4 +612,5 @@ let g:vim_markdown_conceal = 0
 
 " }
 
-" vim: set foldmarker={,} foldlevel=0 foldmethod=marker
+" Modeline
+" vim: set sw=4 ts=4 sts=4 et tw=78 foldmarker={,} foldlevel=0 foldmethod=marker spell:
