@@ -173,6 +173,12 @@ let g:mapleader = "\<Space>"
 " remap ESC
 inoremap jk <ESC>
 
+" split navigations
+nnoremap <C-J> <C-W>j
+nnoremap <C-K> <C-W>k
+nnoremap <C-L> <C-W>l
+nnoremap <C-H> <C-W>h
+
 " Buffer closing
 nnoremap <silent> <leader>q :Sayonara<CR>
 
@@ -289,7 +295,7 @@ let g:grepper.next_tool = '<leader>s'
 
 " --> vim-better-whitespace {
 
-highlight ExtraWhitespace ctermbg=yellow
+highlight ExtraWhitespace ctermbg=red
 autocmd BufEnter * EnableStripWhitespaceOnSave
 let blacklist = ['markdown', 'md']
 
@@ -531,6 +537,10 @@ let g:syntastic_markdown_checkers = ["markdownlint"]
 
 let g:UltiSnipsUsePythonVersion = 3
 let g:ultisnips_python_style = 'google'
+" Trigger configuration.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " }
 
