@@ -295,7 +295,7 @@ let g:grepper.next_tool = '<leader>s'
 
 " --> vim-better-whitespace {
 
-highlight ExtraWhitespace ctermbg=red
+highlight ExtraWhitespace ctermbg=white
 autocmd BufEnter * EnableStripWhitespaceOnSave
 let blacklist = ['markdown', 'md']
 
