@@ -13,7 +13,7 @@ Plug 'vim-airline/vim-airline'          " Sweet statusline
 Plug 'vim-airline/vim-airline-themes'   " Sweet statusline themes
 Plug 'scrooloose/nerdtree'              " File explorer
 Plug 'jmcantrell/vim-virtualenv'        " Python Virtualenvs
-Plug 'scrooloose/syntastic'             " Syntax checker
+Plug 'w0rp/ale'                         " linter
 Plug 'SirVer/ultisnips'                 " Code snippets
 Plug 'honza/vim-snippets'               " Code snippets
 Plug 'plasticboy/vim-markdown'          " Markdown
@@ -21,7 +21,7 @@ Plug 'majutsushi/tagbar'                " Source Code Browser
 Plug 'scrooloose/nerdcommenter'         " Commenting
 Plug 'mhinz/vim-startify'               " fancy start screen
 Plug 'mhinz/vim-sayonara'               " Easy buffer closing
-Plug 'mhinz/vim-grepper'
+Plug 'mhinz/vim-grepper'                " easy grepping
 Plug 'pearofducks/ansible-vim'          " Ansible
 Plug 'Rykka/riv.vim'                    " reStructured Text
 Plug 'mbbill/undotree'                  " undo history visualizer
@@ -30,7 +30,6 @@ Plug 'junegunn/limelight.vim'           " section highlighting
 Plug 'ctrlpvim/ctrlp.vim'               " fuzzy finder
 Plug 'cespare/vim-toml'                 " TOML
 Plug 'elzr/vim-json'                    " JSON
-Plug 'junegunn/fzf.vim'                 " search with ripgrep
 Plug 'tpope/vim-unimpaired'             " pairs of handy bracket mappings
 Plug 'tpope/vim-capslock'               " Software caps lock
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
@@ -290,6 +289,14 @@ nmap <leader>gg :Goyo<CR> :Limelight!!<CR> :<CR><ESC>
 
 " --> Plugins {
 
+" --> ale {
+
+let g:ale_sign_column_always = 1
+let g:ale_set_loclist = 0
+let g:ale_set_quickfix = 1
+
+"  }
+
 " --> vim-grepper {
 
 let g:grepper = {}            " initialize g:grepper with empty dictionary
@@ -519,28 +526,6 @@ let g:delimitMate_smart_matchpairs = '^\%(\w\|\$\)'
 " jump outside delimiters
 imap <c-o> <Plug>delimitMateS-Tab
 imap <a-o> <Plug>delimitMateJumpMany
-
-" }
-
-" --> Syntastic {
-
-let g:syntastic_check_on_open = 1
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_jump = 3
-let g:syntastic_loc_list_height = 5
-
-"" language checkers
-" let vim-go handle syntax checking
-let g:syntastic_mode_map = {
-            \ "mode": "active",
-            \ "passive_filetypes": ["go"] }
-let g:syntastic_sh_checkers = ['shellcheck']
-let g:syntastic_c_checkers = ['splint', 'make', 'gcc']
-let g:syntastic_yaml_checkers = ['yamllint']
-let g:syntastic_ansible_checkers = ['ansible_lint', 'yamllint']
-let g:syntastic_lua_checkers = ["luac", "luacheck"]
-let g:syntastic_lua_luacheck_args = "--no-unused-args"
-let g:syntastic_markdown_checkers = ["markdownlint"]
 
 " }
 
