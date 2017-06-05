@@ -178,6 +178,11 @@ nnoremap <C-J> <C-W>j
 nnoremap <C-K> <C-W>k
 nnoremap <C-L> <C-W>l
 nnoremap <C-H> <C-W>h
+" for integrated terminal as well
+tnoremap <C-h> <C-\><C-n><C-w>h
+tnoremap <C-j> <C-\><C-n><C-w>j
+tnoremap <C-k> <C-\><C-n><C-w>k
+tnoremap <C-l> <C-\><C-n><C-w>l
 
 " Buffer closing
 nnoremap <silent> <leader>q :Sayonara<CR>
@@ -185,7 +190,7 @@ nnoremap <silent> <leader>q :Sayonara<CR>
 " Fast saving
 nmap <leader>w :w!<cr>
 
-" Remap - to move to end of line (0 to move to beginning)
+" Remap L to move to end of line & H to move to beginning
 nnoremap L $
 vnoremap L $h
 onoremap L $
@@ -234,6 +239,11 @@ inoremap <F9> <C-O>za
 nnoremap <F9> za
 onoremap <F9> <C-C>za
 vnoremap <F9> zf
+
+" integrated terminal
+nnoremap <leader>z :term<CR>
+tnoremap <leader>e <c-\><c-n>
+:au BufEnter * if &buftype == 'terminal' | :startinsert | endif
 
 " substitution (replace) word under cursor
 nnoremap <C-s> :%s/<C-r><C-w>//c<left><left>
@@ -458,6 +468,7 @@ let NERDTreeIgnore=['\.cache$', '__pycache__', '\.pyc$', '\.vagrant$', '\~$', '\
 let NERDTreeQuitOnOpen=1
 let NERDTreeWinPos="right"
 let NERDTreeWinSize=40
+let NERDTreeChDirMode=1
 
 " close vim if the only window left open is NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
