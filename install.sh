@@ -89,7 +89,6 @@ sudo apt install -y \
      splint \
      dos2unix \
      openvpn \
-     clamav \
      spotify-client \
      vim-gnome \
      vim-nox \
@@ -168,7 +167,6 @@ pip3 install -r ~/dotfiles/requirements3.txt
 
 # npm
 sudo npm install -g diff-so-fancy
-sudo npm install -g wunderline
 sudo npm install -g netlify-cli
 sudo npm install -g jasmine-node
 sudo npm install -g gulp-cli
@@ -181,7 +179,6 @@ gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB8
 
 # Rubygems
 sudo gem install tmuxinator
-sudo gem install travis
 
 # Tor Browser
 export TOR_VERSION=6.0.5
@@ -199,14 +196,6 @@ curl -O https://prerelease.keybase.io/keybase_amd64.deb
 sudo dpkg -i keybase_amd64.deb
 sudo apt-get install -f
 
-# Travis CI
-gem install travis -v 1.8.5 --no-rdoc --no-ri
-
-# MEGASync
-sudo apt-get install -y libc-ares2 libcrypto++9v5
-wget https://mega.nz/linux/MEGAsync/xUbuntu_16.04/amd64/megasync-xUbuntu_16.04_amd64.deb
-sudo gdebi -n megasync-xUbuntu_16.04_amd64.deb
-
 # Base16 colorscheme
 git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
 
@@ -223,32 +212,26 @@ mv ./hub-linux-amd64-${HUB_VERSION}/etc/hub.zsh_completion ~/.zsh/completions/_h
 rm -rf hub-linux-amd64-${HUB_VERSION}
 rm hub-linux-amd64-${HUB_VERSION}.tgz
 
-# fancy i3 lock screen
-cd ~
-git clone https://github.com/meskarune/i3lock-fancy.git
-sudo cp i3lock-fancy/lock /usr/local/bin
-sudo cp -r i3lock-fancy/icons /usr/local/bin
-
 # symlinks
-ln -sf "$HOME/dotfiles/.zshenv" "$HOME/.zshenv"
-ln -sf "$HOME/dotfiles/.zshrc" "$HOME/.zshrc"
-ln -sf "$HOME/dotfiles/prompt.zsh" "$HOME/prompt.zsh"
-ln -sf "$HOME/dotfiles/.xsessionrc" "$HOME/.xsessionrc"
-ln -sf "$HOME/dotfiles/.Xresources" "$HOME/.Xresources"
-ln -sf "$HOME/dotfiles/.gitconfig" "$HOME/.gitconfig"
-ln -sf "$HOME/dotfiles/.fonts" "$HOME/.fonts"
-ln -sf "$HOME/dotfiles/.bashrc" "$HOME/.bashrc"
-ln -sf "$HOME/dotfiles/.i3/config" "$HOME/.config/i3/config"
-ln -sf "$HOME/dotfiles/.gitignore" "$HOME/.gitignore"
-ln -sf "$HOME/dotfiles/.dircolors" "$HOME/.dircolors"
-ln -sf "$HOME/dotfiles/rc.conf" "$HOME/.config/ranger/rc.conf"
-ln -snf "$HOME/dotfiles/.vim" "$HOME/.config/nvim"
-ln -snf "$HOME/dotfiles/.vimrc" "$HOME/.config/nvim/init.vim"
-ln -sf "$HOME/dotfiles/aliases.zsh" "$HOME/.oh-my-zsh/custom/aliases.zsh"
-ln -sf "$HOME/dotfiles/functions.zsh" "$HOME/.oh-my-zsh/custom/functions.zsh"
-ln -sf "$HOME/dotfiles/secrets.zsh" "$HOME/.oh-my-zsh/custom/secrets.zsh"
-ln -sf "$HOME/dotfiles/.gnupg/gpg.conf" "$HOME/.gnupg/gpg.conf"
-ln -sf "$HOME/dotfiles/.gnupg/gpg-agent.conf" "$HOME/.gnupg/gpg-agent.conf"
+ln -sf "$HOME/Dropbox/dotfiles/.zshenv" "$HOME/.zshenv"
+ln -sf "$HOME/Dropbox/dotfiles/.zshrc" "$HOME/.zshrc"
+ln -sf "$HOME/Dropbox/dotfiles/prompt.zsh" "$HOME/prompt.zsh"
+ln -sf "$HOME/Dropbox/dotfiles/.xsessionrc" "$HOME/.xsessionrc"
+ln -sf "$HOME/Dropbox/dotfiles/.Xresources" "$HOME/.Xresources"
+ln -sf "$HOME/Dropbox/dotfiles/.gitconfig" "$HOME/.gitconfig"
+ln -sf "$HOME/Dropbox/dotfiles/.fonts" "$HOME/.fonts"
+ln -sf "$HOME/Dropbox/dotfiles/.bashrc" "$HOME/.bashrc"
+ln -sf "$HOME/Dropbox/dotfiles/.i3/config" "$HOME/.config/i3/config"
+ln -sf "$HOME/Dropbox/dotfiles/.gitignore" "$HOME/.gitignore"
+ln -sf "$HOME/Dropbox/dotfiles/.dircolors" "$HOME/.dircolors"
+ln -sf "$HOME/Dropbox/dotfiles/rc.conf" "$HOME/.config/ranger/rc.conf"
+ln -snf "$HOME/Dropbox/dotfiles/.vim" "$HOME/.config/nvim"
+ln -snf "$HOME/Dropbox/dotfiles/.vimrc" "$HOME/.config/nvim/init.vim"
+ln -sf "$HOME/Dropbox/dotfiles/aliases.zsh" "$HOME/.oh-my-zsh/custom/aliases.zsh"
+ln -sf "$HOME/Dropbox/dotfiles/functions.zsh" "$HOME/.oh-my-zsh/custom/functions.zsh"
+ln -sf "$HOME/Dropbox/dotfiles/secrets.zsh" "$HOME/.oh-my-zsh/custom/secrets.zsh"
+ln -sf "$HOME/Dropbox/dotfiles/.gnupg/gpg.conf" "$HOME/.gnupg/gpg.conf"
+ln -sf "$HOME/Dropbox/dotfiles/.gnupg/gpg-agent.conf" "$HOME/.gnupg/gpg-agent.conf"
 
 sudo apt autoremove
 sudo apt autoclean
