@@ -96,7 +96,10 @@ sudo apt install -y \
      haveged \
      lua5.3 \
      luarocks \
-     cmus
+     cmus \
+     clang \
+     libclang-dev \
+     clang-format
 
 # ZSH
 # oh-my-zsh

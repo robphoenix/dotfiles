@@ -32,13 +32,13 @@ Plug 'cespare/vim-toml'                 " TOML
 Plug 'elzr/vim-json'                    " JSON
 Plug 'tpope/vim-unimpaired'             " pairs of handy bracket mappings
 Plug 'tpope/vim-capslock'               " Software caps lock
+Plug 'rhysd/vim-clang-format'           " C formatting
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 
 if has('nvim')
     Plug 'Shougo/deoplete.nvim'         " NeoVim autocomplete
-    Plug 'zchee/deoplete-go'            " Go autocomplete
     Plug 'zchee/deoplete-jedi'          " Python autocomplete
-    Plug 'crosbymichael/vim-cfmt'       " Auto-format C code
+    Plug 'Rip-Rip/clang_complete'       " C autocomplete
 else
     Plug 'Shougo/neocomplete.vim'       " Vim autocomplete
 endif
@@ -142,6 +142,11 @@ au Bufread,BufNewFile *.md setlocal filetype=markdown tw=80 wrap
 au BufNewFile,BufRead *.go setlocal noet ts=8 sw=8 sts=8
 autocmd BufEnter *.go colorscheme nofrils-dark
 autocmd BufLeave *.go colorscheme base16-default-dark
+
+" C settings
+au BufNewFile,BufRead *.c setlocal noet ts=2 sw=2 sts=2
+autocmd BufEnter *.c colorscheme nofrils-dark
+autocmd BufLeave *.c colorscheme base16-default-dark
 
 " Python settings
 au BufNewFile,BufRead *.py setlocal et ts=4 sts=4 sw=4 tw=79 list lcs=tab:▸\
@@ -273,7 +278,7 @@ nnoremap <silent> <a-j> :res +10<cr>
 nnoremap <silent> <a-k> :res -10<cr>
 
 " build current C program, output has same name
-autocmd FileType c nnoremap <silent> <leader>mc :!clear;gcc % -o %:r.out<CR>
+autocmd FileType c nnoremap <silent> <leader>cb :!clear;gcc % -o %:r.o<CR>
 
 " navigating commands history
 cnoremap <c-k> <Up>
@@ -454,15 +459,18 @@ let g:airline_section_z = ''
 "  }
 
 " --> ansible-vim {
+
 let g:ansible_attribute_highlight = "ab"
 let g:ansible_name_highlight = 'b'
 let g:ansible_extra_keywords_highlight = 1
+
 "  }
 
-" --> vim-cfmt {
+" --> clang-format {
 
-let g:cfmt_style = '-linux'
-autocmd BufWritePre *.c,*.h Cfmt
+let g:clang_format#auto_format=1
+let g:clang_format#auto_format_on_insert_leave=1
+let g:clang_format#code_style='google'
 
 "  }
 
@@ -545,10 +553,6 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 if has('nvim')
     let g:deoplete#enable_at_startup = 1
     let g:deoplete#enable_smart_case = 1
-    let g:deoplete#sources#go#gocode_binary="$GOPATH.'/bin/gocode'"
-    let g:deoplete#sources#go#pointer = 1
-    let g:deoplete#sources#go#sort_class = ['func', 'type', 'var', 'const']
-    let g:deoplete#sources#go#align_class = 1
     let deoplete#sources#jedi#show_docstring = 1
 
     " Use partial fuzzy matches like YouCompleteMe
@@ -563,6 +567,18 @@ else
 endif
 
 " }
+
+" --> clang-complete {
+
+" path to directory where library can be found
+let g:clang_library_path='/usr/lib/llvm-3.8/lib'
+let g:clang_auto_select=2
+let g:clang_complete_copen=1
+let g:clang_snippets=1
+let g:clang_snippets_engine='ultisnips'
+let g:clang_close_preview=1
+
+"  }
 
 " --> jedi-vim {
 
