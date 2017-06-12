@@ -183,10 +183,12 @@ nnoremap <C-K> <C-W>k
 nnoremap <C-L> <C-W>l
 nnoremap <C-H> <C-W>h
 " for integrated terminal as well
-tnoremap <C-h> <C-\><C-n><C-w>h
-tnoremap <C-j> <C-\><C-n><C-w>j
-tnoremap <C-k> <C-\><C-n><C-w>k
-tnoremap <C-l> <C-\><C-n><C-w>l
+if has('nvim')
+    tnoremap <C-h> <C-\><C-n><C-w>h
+    tnoremap <C-j> <C-\><C-n><C-w>j
+    tnoremap <C-k> <C-\><C-n><C-w>k
+    tnoremap <C-l> <C-\><C-n><C-w>l
+endif
 
 " Buffer closing
 nnoremap <silent> <leader>q :Sayonara<CR>
@@ -245,9 +247,11 @@ onoremap <F9> <C-C>za
 vnoremap <F9> zf
 
 " integrated terminal
-nnoremap <leader>z :term<CR>
-tnoremap <leader>e <c-\><c-n>
-:au BufEnter * if &buftype == 'terminal' | :startinsert | endif
+if has('nvim')
+    nnoremap <leader>z :term<CR>
+    tnoremap <leader>e <c-\><c-n>
+    :au BufEnter * if &buftype == 'terminal' | :startinsert | endif
+endif
 
 " substitution (replace) word under cursor
 nnoremap <C-s> :%s/<C-r><C-w>//c<left><left>
