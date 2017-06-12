@@ -89,7 +89,7 @@
 
 [commit]
 
-    gpgsign = true
+    gpgsign = false
     verbose = true
 
 [gpg]
