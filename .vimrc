@@ -33,6 +33,7 @@ Plug 'elzr/vim-json'                    " JSON
 Plug 'tpope/vim-unimpaired'             " pairs of handy bracket mappings
 Plug 'tpope/vim-capslock'               " Software caps lock
 Plug 'rhysd/vim-clang-format'           " C formatting
+Plug 'godlygeek/tabular'
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 
 if has('nvim')
@@ -162,6 +163,9 @@ au BufNewFile,BufRead *.lua setlocal ts=2 sw=2 sts=2
 
 " js settings
 au BufNewFile,BufRead *.js setlocal ts=2 sw=2 sts=2
+
+" csv settings
+au! BufNewFile,BufRead *.csv setf csv
 
 " Thesaurus https://github.com/zeke/moby
 set thesaurus+=./.vim/thesaurus.txt
