@@ -8,7 +8,6 @@ files for the following:
  - [neovim](https://neovim.io/)
  - [i3wm](https://i3wm.org/)
  - [git](https://git-scm.com/)
- - [gpg](https://linux.die.net/man/1/gpg2)
 
 ![cli screenshot](/images/cli-screenshot.png "Screenshot of CLI")
 
@@ -24,7 +23,7 @@ chmod +x install.sh
 ./install.sh
 ```
 
-###[giving propers to](https://www.youtube.com/watch?v=cYbs_O_iMfU)
+### [giving propers to](https://www.youtube.com/watch?v=cYbs_O_iMfU)
 
  - [Jess Frazelle](https://github.com/jessfraz/dotfiles)
  - [Alex Booker](https://www.youtube.com/watch?v=j1I63wGcvU4)
