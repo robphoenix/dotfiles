@@ -1,7 +1,7 @@
 # Personal aliases
 
 # system
-alias l="ls -lAhF -I.dropbox -I.dropbox.cache -I.cache -I__pycache__ -I.git -Inode_modules -I.vagrant -I.DS_Store"
+alias l="LC_COLLATE=C ls -lAhF -I.dropbox -I.dropbox.cache -I.cache -I__pycache__ -I.git -Inode_modules -I.vagrant -I.DS_Store --group-directories-first"
 alias mv="mv -ivu"
 alias cp="cp -ivu"
 alias rm="trash"

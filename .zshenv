@@ -19,6 +19,8 @@ export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 export WORKON_HOME="$HOME/.virtualenvs"
 source /usr/local/bin/virtualenvwrapper.sh
 export PROJECT_HOME=$HOME/code/python
+# disable virtualenvwrapper prompt
+export VIRTUAL_ENV_DISABLE_PROMPT=1
 
 # GOPATH
 export GOPATH=$HOME/code/gopath
