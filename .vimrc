@@ -286,7 +286,9 @@ nnoremap <silent> <a-j> :res +10<cr>
 nnoremap <silent> <a-k> :res -10<cr>
 
 " build current C program, output has same name
-autocmd FileType c nnoremap <silent> <leader>cb :!clear;gcc % -o %:r.o<CR>
+autocmd FileType c nnoremap <silent> <leader>cb :!clear;gcc % -o %:r.out<CR>
+" cs50 specific command, linking to cs50 lib
+autocmd FileType c nnoremap <silent> <leader>50 :!clear;gcc % ~/code/C/cs50/libcs50/src/cs50.c -o %:r.out<CR>
 
 " navigating commands history
 cnoremap <c-k> <Up>
@@ -478,7 +480,7 @@ let g:ansible_extra_keywords_highlight = 1
 
 let g:clang_format#auto_format=1
 let g:clang_format#auto_format_on_insert_leave=1
-let g:clang_format#code_style='google'
+let g:clang_format#code_style='llvm'
 
 "  }
 
