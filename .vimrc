@@ -208,9 +208,6 @@ nnoremap H ^
 vnoremap H ^
 onoremap H ^
 
-" spell checking
-nnoremap <F6> :setlocal spell! spell?<CR>
-
 " copy & paste to system clipboard
 vmap <Leader>y "+y
 vmap <Leader>d "+d
@@ -262,8 +259,6 @@ nnoremap <C-s> :%s/<C-r><C-w>//c<left><left>
 
 " navigate & close quickfix easily
 nnoremap <leader>a :cclose<CR>
-nnoremap <c-n> :cnext<CR>
-nnoremap <c-p> :cprevious<CR>
 
 " close location list
 nnoremap <leader>l :lclose<CR>
@@ -479,7 +474,7 @@ let g:ansible_extra_keywords_highlight = 1
 " --> clang-format {
 
 let g:clang_format#auto_format=1
-let g:clang_format#auto_format_on_insert_leave=1
+let g:clang_format#auto_format_on_insert_leave=0
 let g:clang_format#code_style='llvm'
 
 "  }
@@ -555,6 +550,7 @@ let g:ultisnips_python_style = 'google'
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+inoremap <c-x><c-k> <c-x><c-k>
 
 " }
 
@@ -583,8 +579,8 @@ endif
 " path to directory where library can be found
 let g:clang_library_path='/usr/lib/llvm-3.8/lib'
 let g:clang_auto_select=2
-let g:clang_complete_copen=1
-let g:clang_snippets=1
+let g:clang_complete_copen=0
+let g:clang_snippets=0
 let g:clang_snippets_engine='ultisnips'
 let g:clang_close_preview=1
 
