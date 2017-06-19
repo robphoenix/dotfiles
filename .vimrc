@@ -11,7 +11,7 @@ Plug 'Raimondi/delimitMate'             " Auto-insert closing delimiters
 Plug 'ntpeters/vim-better-whitespace'   " better whitespace highlighting and removal
 Plug 'vim-airline/vim-airline'          " Sweet statusline
 Plug 'vim-airline/vim-airline-themes'   " Sweet statusline themes
-Plug 'scrooloose/nerdtree'              " File explorer
+Plug 'tpope/vim-vinegar'
 Plug 'jmcantrell/vim-virtualenv'        " Python Virtualenvs
 Plug 'w0rp/ale'                         " linter
 Plug 'SirVer/ultisnips'                 " Code snippets
@@ -478,22 +478,6 @@ let g:clang_format#auto_format_on_insert_leave=0
 let g:clang_format#code_style='llvm'
 
 "  }
-
-" --> NerdTree {
-
-noremap <Leader>n :NERDTreeToggle<cr>
-
-let NERDTreeShowHidden=1
-let NERDTreeIgnore=['\.cache$', '__pycache__', '\.pyc$', '\.vagrant$', '\~$', '\.git$', '.DS_Store']
-let NERDTreeQuitOnOpen=1
-let NERDTreeWinPos="right"
-let NERDTreeWinSize=40
-let NERDTreeChDirMode=1
-
-" close vim if the only window left open is NERDTree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-" }
 
 " --> vim-go {
 
