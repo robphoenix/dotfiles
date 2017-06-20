@@ -74,12 +74,12 @@ set number                         " line numbers
 set wildmenu                       " show list instead of just completing
 set wildmode=longest,list:longest  " zsh-like autcomplete menu for Ex commands
 set wildignore+=*/.git/*,*/tmp/*,*.swp
-au FocusLost * :wa                 " Set vim to save the file on focus out.
-set fileformats=unix,dos,mac       " Prefer Unix over Windows over OS 9 formats
+au FocusLost * :wa                 " Set vim to save the file on focus out
+set fileformats=unix,dos,mac       " prefer Unix over Windows over OS 9 formats
 set showmatch                      " show matching brackets by flickering
-set noshowmode                     " We show the mode with airline
+set noshowmode                     " we show the mode with airline
 set incsearch                      " show search matches as you type
-set hlsearch                       " Highlight found searches
+set nohlsearch                     " don't highlight found searches
 set ch=2                           " command line height
 set backspace=2                    " allow backspacing over everything in insert mode
 set whichwrap+=<,>,h,l,[,]         " backspace and cursor keys wrap to
@@ -148,6 +148,8 @@ autocmd BufLeave *.go colorscheme base16-default-dark
 au BufNewFile,BufRead *.c setlocal noet ts=2 sw=2 sts=2
 autocmd BufEnter *.c colorscheme nofrils-dark
 autocmd BufLeave *.c colorscheme base16-default-dark
+autocmd BufEnter *.h colorscheme nofrils-dark
+autocmd BufLeave *.h colorscheme base16-default-dark
 
 " Python settings
 au BufNewFile,BufRead *.py setlocal et ts=4 sts=4 sw=4 tw=79 list lcs=tab:▸\
@@ -237,9 +239,6 @@ nnoremap j gj
 nnoremap k gk
 vnoremap j gj
 vnoremap k gk
-
-" clear highlighted search
-nmap <silent> <leader>/ :nohlsearch<CR>
 
 " folding
 inoremap <F9> <C-O>za

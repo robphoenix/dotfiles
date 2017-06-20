@@ -5,6 +5,9 @@ DISABLE_AUTO_TITLE="true"
 ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
 HIST_STAMPS="dd.mm.yyyy"
+HISTCONTROL=ignoredups:ignorespace
+HISTFILE=$HOME/.zsh_history
+HISTSIZE=2000
 
 plugins=(z virtualenvwrapper ssh-agent gpg-agent zsh-syntax-highlighting colored-man-pages tmuxinator)
 
