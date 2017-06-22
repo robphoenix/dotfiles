@@ -28,6 +28,9 @@ alias uu="sudo umount /media/usb"
 alias vpnu="sudo openvpn /etc/openvpn/pia-london.conf &"
 alias vpnd="sudo killall openvpn"
 
+# restic backup
+alias backup="restic -r ~/Dropbox/agnesmartin/backup backup ~/Dropbox/code && restic -r ~/Dropbox/agnesmartin/backup backup ~/Dropbox/dotfiles && restic -r ~/Dropbox/agnesmartin/backup backup ~/Dropbox/sites"
+
 # zsh
 alias relo="source ~/.zshrc"
 

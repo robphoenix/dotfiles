@@ -130,14 +130,21 @@ endif
 
 " Better Completion
 set complete=.,b,u,]
+set complete+=kspell
 set completeopt=longest,menuone,noselect
 set omnifunc=syntaxcomplete#Complete
 
 " save no history or bookmarks in netrw
-:let g:netrw_dirhistmax = 0
+" :let g:netrw_dirhistmax = 0
 
-" Vim interprets .md as 'modula2' otherwise, see :set filetype?
-au Bufread,BufNewFile *.md setlocal filetype=markdown tw=80 wrap
+" Markdown settings
+au Bufread,BufNewFile *.md setlocal filetype=markdown tw=80 wrap spell
+
+" Article filetype settings (used by Go tour)
+au Bufread,BufNewFile *.article setlocal spell
+
+" Gitcommit settings
+autocmd FileType gitcommit setlocal spell
 
 " Go settings
 au BufNewFile,BufRead *.go setlocal noet ts=8 sw=8 sts=8
@@ -519,9 +526,6 @@ let g:delimitMate_expand_space = 1
 let g:delimitMate_smart_quotes = 1
 let g:delimitMate_expand_inside_quotes = 0
 let g:delimitMate_smart_matchpairs = '^\%(\w\|\$\)'
-" jump outside delimiters
-imap <c-o> <Plug>delimitMateS-Tab
-imap <a-o> <Plug>delimitMateJumpMany
 
 " }
 
