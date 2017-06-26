@@ -4,18 +4,19 @@
 # basically ripped off from the inimitable Jessie Frazelle
 # https://github.com/jfrazelle/dotfiles/blob/master/bin/install.sh
 
-mkdir ~/code
-mkdir ~/code/go
-mkdir ~/code/go/src
-mkdir ~/code/go/pkg
-mkdir ~/code/go/bin
-mkdir ~/code/python
-mkdir ~/code/lua
-mkdir ~/code/C
-mkdir ~/code/ansible
-mkdir -p "${XDG_CONFIG_HOME:=$HOME/.config}"
-mkdir ~/.config/i3
-mkdir ~/.config/ranger
+TODO: update dir creation
+# mkdir ~/code
+# mkdir ~/code/go
+# mkdir ~/code/go/src
+# mkdir ~/code/go/pkg
+# mkdir ~/code/go/bin
+# mkdir ~/code/python
+# mkdir ~/code/lua
+# mkdir ~/code/C
+# mkdir ~/code/ansible
+# mkdir -p "${XDG_CONFIG_HOME:=$HOME/.config}"
+# mkdir ~/.config/i3
+# mkdir ~/.config/ranger
 
 # turn off translations, speed up apt-get update
 mkdir -p /etc/apt/apt.conf.d
@@ -157,7 +158,7 @@ wget https://github.com/exercism/cli/releases/download/v${EXERCISM_VERSION}/exer
 tar -xzvf exercism-linux-64bit.tgz
 mv exercism /usr/local/bin/
 rm exercism-linux-64bit.tgz
-exercism configure --dir=~/code/exercism
+exercism configure --dir=~/Dropbox/code/exercism
 
 # Python
 sudo apt -y install python-pip \
