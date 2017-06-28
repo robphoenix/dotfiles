@@ -1,10 +1,10 @@
 let g:netrw_dirhistmax  =10
 let g:netrw_dirhist_cnt =8
-let g:netrw_dirhist_1='/home/rob/Dropbox/code/exercism/erlang/hello-world/src'
-let g:netrw_dirhist_2='/home/rob/Dropbox/code/exercism/erlang/hello-world'
-let g:netrw_dirhist_3='/home/rob/Dropbox/code/exercism/erlang'
-let g:netrw_dirhist_4='/home/rob/Dropbox/code/exercism'
-let g:netrw_dirhist_5='/home/rob/Dropbox/code'
-let g:netrw_dirhist_6='/home/rob/Dropbox/code/exercism/erlang/hello-world'
-let g:netrw_dirhist_7='/home/rob/Dropbox/code/exercism/erlang/hello-world/src'
+let g:netrw_dirhist_1='/home/rob/Dropbox/dotfiles/.vim'
+let g:netrw_dirhist_2='/home/rob/Dropbox/dotfiles/.vim/ftplugin'
+let g:netrw_dirhist_3='/home/rob/Dropbox/dotfiles/.vim'
+let g:netrw_dirhist_4='/home/rob/Dropbox/dotfiles/.vim/syntax'
+let g:netrw_dirhist_5='/home/rob/Dropbox/dotfiles/.vim'
+let g:netrw_dirhist_6='/home/rob/Dropbox/dotfiles'
+let g:netrw_dirhist_7='/home/rob/Dropbox'
 let g:netrw_dirhist_8='/home/rob/dotfiles'

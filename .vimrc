@@ -123,6 +123,7 @@ set modelines=1
 set notimeout
 set ttimeout
 set ttimeoutlen=10
+filetype plugin indent on
 
 if has('nvim')
     set inccommand=split            " incremental command live feedback
@@ -581,13 +582,15 @@ let g:jedi#usages_command = "<leader>ju"
 
 " }
 
-" --> Fugitive {
+" --> vim-fugitive {
 
 nnoremap <leader>ge :Git add --all<CR>
 nnoremap <leader>ga :Git add %:p<CR>
 nnoremap <leader>gc :Gcommit<CR>
+nnoremap <leader>gd :Gvdiff<CR>
 nnoremap <leader>gp :Gpush<CR>
 vnoremap <leader>gb :Gblame<CR>
+nnoremap <leader>gb :Gblame<CR>
 
 " }
 
