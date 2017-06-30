@@ -34,6 +34,7 @@ Plug 'tpope/vim-unimpaired'             " pairs of handy bracket mappings
 Plug 'tpope/vim-capslock'               " Software caps lock
 Plug 'rhysd/vim-clang-format'           " C formatting
 Plug 'godlygeek/tabular'
+Plug 'jeetsukumaran/vim-buffergator'
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 
 if has('nvim')
@@ -306,6 +307,17 @@ nmap <leader>gg :Goyo<CR> :Limelight!!<CR> :<CR><ESC>
 
 " --> Plugins {
 
+" --> vim-buffergator {
+
+
+let g:buffergator_suppress_keymaps=1
+nmap <silent> <leader>b :BuffergatorOpen<cr>
+let g:buffergator_viewport_split_policy="B"
+let g:buffergator_hsplit_size=10
+let g:buffergator_sort_regime="mru"
+
+"  }
+
 " --> ale {
 
 let g:ale_sign_column_always = 1
@@ -340,7 +352,7 @@ let blacklist = ['markdown', 'md']
 " Easy bindings for its various modes
 let g:ctrlp_map = ''
 nmap <silent> <leader>f :CtrlP<cr>
-nmap <silent> <leader>b :CtrlPBuffer<cr>
+" nmap <silent> <leader>b :CtrlPBuffer<cr>
 nmap <silent> <leader>m :CtrlPMRU<cr>
 
 let g:ctrlp_by_filename = 0
@@ -408,6 +420,7 @@ let g:NERDTrimTrailingWhitespace = 1
 nnoremap <silent> <leader>t :TagbarToggle<CR>
 let g:tagbar_autoclose = 1
 let g:tagbar_autofocus = 1
+let g:tagbar_width = 50
 
 " }
 
@@ -587,7 +600,7 @@ let g:jedi#usages_command = "<leader>ju"
 nnoremap <leader>ge :Git add --all<CR>
 nnoremap <leader>ga :Git add %:p<CR>
 nnoremap <leader>gc :Gcommit<CR>
-nnoremap <leader>gd :Gvdiff<CR>
+nnoremap <leader>gv :Gvdiff<CR>
 nnoremap <leader>gp :Gpush<CR>
 vnoremap <leader>gb :Gblame<CR>
 nnoremap <leader>gb :Gblame<CR>
