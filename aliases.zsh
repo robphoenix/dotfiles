@@ -40,11 +40,6 @@ alias tn="tmux new -s"
 alias ta="tmux attach -t"
 alias tk="tmux kill-session -t"
 
-# vagrant
-alias vup="vagrant up && vagrant ssh"
-alias vh="vagrant halt"
-alias vd="vagrant destroy -f"
-
 # ansible
 alias apb="ansible-playbook"
 

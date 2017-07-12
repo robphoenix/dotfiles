@@ -517,11 +517,11 @@ au FileType go nmap <leader>gi <Plug>(go-info)
 au FileType go nmap <leader>gr <Plug>(go-run)
 au FileType go nmap <leader>gb <Plug>(go-build)
 au FileType go nmap <leader>gt <Plug>(go-test)
-au FileType go nmap <leader>gd <Plug>(go-doc)
+au FileType go nmap <leader>gk <Plug>(go-doc)
 au FileType go nmap <leader>gn <Plug>(go-rename)
 au FileType go nmap <leader>gl <Plug>(go-metalinter)
 au FileType go nmap <leader>gs :GoSameIds<CR>
-au FileType go nmap <a-d> :GoDeclsDir<CR>
+au FileType go nmap <leader>gd :GoDeclsDir<CR>
 
 " use :A/:AV/:AS to alternate between code & test files
 augroup go
