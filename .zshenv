@@ -23,7 +23,7 @@ export PROJECT_HOME=$HOME/code/python
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 
 # GOPATH
-export GOPATH=$HOME/code/gopath
+export GOPATH=$HOME/Dropbox/code/gopath
 export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
 
 # RUST
