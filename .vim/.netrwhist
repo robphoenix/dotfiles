@@ -1,4 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =2
+let g:netrw_dirhist_cnt =5
 let g:netrw_dirhist_1='/home/rob/Dropbox/code/gopath/src/github.com/robphoenix/trawl'
 let g:netrw_dirhist_2='/home/rob/dotfiles'
+let g:netrw_dirhist_3='/home/rob/Dropbox/code/gopath/src/github.com/robphoenix/go-aci/aci'
+let g:netrw_dirhist_4='/home/rob/Dropbox/code/gopath/src/github.com/robphoenix/go-aci'
+let g:netrw_dirhist_5='/home/rob/Dropbox/code/gopath/src/github.com/robphoenix/go-aci/aci'

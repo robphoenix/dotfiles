@@ -599,7 +599,7 @@ let g:jedi#usages_command = "<leader>ju"
 
 nnoremap <leader>ge :Git add --all<CR>
 nnoremap <leader>ga :Git add %:p<CR>
-nnoremap <leader>gc :Gcommit<CR>
+nnoremap <leader>gc :Gcommit -v<CR>
 nnoremap <leader>gv :Gvdiff<CR>
 nnoremap <leader>gp :Gpush<CR>
 vnoremap <leader>gb :Gblame<CR>
