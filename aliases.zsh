@@ -54,8 +54,9 @@ alias pi="sudo -H pip install -U"
 alias pu="sudo -H pip uninstall"
 
 # go
+alias gg="go get -u -v"
 alias gt="go test -v -cover"
-alias gox="gox -output="bin/{{.Dir}}_{{.OS}}_{{.Arch}}""
+alias gox="gox -output=\"bin/{{.Dir}}_{{.OS}}_{{.Arch}}\""
 
 # git
 alias git="hub"
