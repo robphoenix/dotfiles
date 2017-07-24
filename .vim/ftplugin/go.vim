@@ -10,5 +10,5 @@ function! ToggleFocusColor()
   endif
 endfunc
 
-"Set F6 to toggle
+"Set F8 to toggle
 nmap <silent> <F8> :call ToggleFocusColor()<CR>
