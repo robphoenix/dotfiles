@@ -79,7 +79,7 @@ set fileformats=unix,dos,mac       " prefer Unix over Windows over OS 9 formats
 set showmatch                      " show matching brackets by flickering
 set noshowmode                     " we show the mode with airline
 set incsearch                      " show search matches as you type
-set nohlsearch                     " don't highlight found searches
+set hlsearch                       " do highlight found searches
 set ch=2                           " command line height
 set backspace=2                    " allow backspacing over everything in insert mode
 set whichwrap+=<,>,h,l,[,]         " backspace and cursor keys wrap to
@@ -203,6 +203,9 @@ if has('nvim')
     tnoremap <C-k> <C-\><C-n><C-w>k
     tnoremap <C-l> <C-\><C-n><C-w>l
 endif
+
+" mute highlighting
+nnoremap <silent> <leader>/ :nohlsearch<CR>
 
 " Buffer closing
 nnoremap <silent> <leader>q :Sayonara<CR>
