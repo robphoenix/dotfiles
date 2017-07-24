@@ -19,6 +19,7 @@ alias web="google-chrome"
 alias open="xdg-open"
 alias f="fuck"
 alias gpg="gpg2"
+alias music="cmus"
 # wifi
 alias lswifi="nmcli d wifi list"
 # usb
@@ -30,6 +31,9 @@ alias vpnd="sudo killall openvpn"
 
 # restic backup
 alias backup="restic -r ~/Dropbox/agnesmartin/backup backup ~/Dropbox/code && restic -r ~/Dropbox/agnesmartin/backup backup ~/Dropbox/dotfiles && restic -r ~/Dropbox/agnesmartin/backup backup ~/Dropbox/sites"
+
+# dropbox
+alias drop="dbxcli"
 
 # zsh
 alias relo="source ~/.zshrc"
