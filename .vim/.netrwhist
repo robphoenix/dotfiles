@@ -1,7 +1,11 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
-let g:netrw_dirhist_1='/home/rob/dotfiles/.vim/ftplugin'
+let g:netrw_dirhist_cnt =9
+let g:netrw_dirhist_1='/home/rob/Dropbox/code/gopath/src/github.com/robphoenix/exercism-go/config'
 let g:netrw_dirhist_2='/home/rob/dotfiles'
-let g:netrw_dirhist_3='/home/rob/dotfiles/.vim'
-let g:netrw_dirhist_4='/home/rob/dotfiles/.vim/ftplugin'
-let g:netrw_dirhist_5='/home/rob/dotfiles'
+let g:netrw_dirhist_3='/home/rob/Dropbox/code/gopath/src/github.com/exercism/configlet/cmd'
+let g:netrw_dirhist_4='/home/rob/Dropbox/code/gopath/src/github.com/exercism/configlet'
+let g:netrw_dirhist_5='/home/rob/Dropbox/code/gopath/src/github.com/exercism/configlet/cmd'
+let g:netrw_dirhist_6='/home/rob/Dropbox/code/gopath/src/github.com/exercism/configlet'
+let g:netrw_dirhist_7='/home/rob/Dropbox/code/gopath/src/github.com/exercism/configlet/fixtures'
+let g:netrw_dirhist_8='/home/rob/dotfiles'
+let g:netrw_dirhist_9='/home/rob/Dropbox/code/gopath/src/github.com/robphoenix/trawl'
