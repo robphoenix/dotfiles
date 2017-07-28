@@ -38,6 +38,7 @@ Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 if has('nvim')
     Plug 'Shougo/deoplete.nvim'         " NeoVim autocomplete
     Plug 'zchee/deoplete-jedi'          " Python autocomplete
+    Plug 'zchee/deoplete-go', { 'do': 'make'}
     Plug 'Rip-Rip/clang_complete'       " C autocomplete
 else
     Plug 'Shougo/neocomplete.vim'       " Vim autocomplete
@@ -548,6 +549,8 @@ inoremap <c-x><c-k> <c-x><c-k>
 " --> Autocompletion {
 
 if has('nvim')
+    " deoplete.nvim recommend
+    set completeopt+=noselect
     let g:deoplete#enable_at_startup = 1
     let g:deoplete#enable_smart_case = 1
     let deoplete#sources#jedi#show_docstring = 1
@@ -564,6 +567,14 @@ else
 endif
 
 " }
+
+" --> deoplete-go {
+
+let g:deoplete#sources#go#gocode_binary = '/home/rob/Dropbox/code/gopath/bin/gocode'
+let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
+let g:deoplete#sources#go#pointer = 1
+
+"  }
 
 " --> clang-complete {
 
