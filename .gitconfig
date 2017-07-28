@@ -13,11 +13,13 @@
     aa = add --all
     p = push
     po = push origin
-    fom = fetch origin master
-    fod = fetch origin develop
-    fum = fetch upstream master
+    pl = pull --rebase
+    f = fetch
+    fu = fetch upstream
+    m = merge
     mom = merge origin/master
-    mod = merge origin/develop
+    mum = merge upstream/master
+    mod = merge origin/dev
     # rebase
     # Interactive rebase with the given number of latest commits
 	ri = "!r() { git rebase -i HEAD~$1; }; r"
@@ -25,9 +27,8 @@
     rc = rebase --continue
     rom = rebase origin/master
     rum = rebase upstream/master
-    rod = rebase origin/develop
+    rod = rebase origin/dev
     h = reflog
-    m = merge
     co = checkout
     cn = checkout -b
     cl = clone
@@ -42,24 +43,17 @@
     recommit = commit --amend
     unmerged = diff --name-only --diff-filter=U
     unmerge = reset --merge
-    remotes = remote -v
+    rs = remote -v
     # delete remote branch
     dr = push origin --delete
     # delete local branch
     dl = branch -D
     # simple log
-    # b4e84f6d  8 minutes ago Rob Phoenix improve git log (origin/master, origin/HEAD)
-    l = log --oneline --decorate --pretty=format:"%C(yellow)%h%C(cyan)%>(15)%ar%C(green)%>(18)%an\\ \\ %C(yellow)%s%C(blue)%d"
-    # more detailed log
-    # b625af7 (tag: v0.1.4) bump version [Rob Phoenix] (3 weeks ago)
-    # 1       1       main.go
-    ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]\\ %C(yellow)(%ar)" --decorate --numstat
-    # Color graph log view
-	graph = log --graph --color --pretty=format:"%C(yellow)%H%C(green)%d%C(reset)%n%x20%cd%n%x20%cn%x20(%ce)%n%x20%s%n"
-    # Show the diff between the latest commit and the current state
-    d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
+    l = log --oneline --decorate --pretty=format:"%C(yellow)%h%C(cyan)%>(15)%ar%C(green)%>(18)%an\\ \\ %C(yellow)%s"
+    # Color graph detailed log view
+	gl = log --graph --color --decorate --stat --pretty=format:"%C(yellow)%H%C(green)%d%C(reset)%n%x20%cd%n%x20%cn%x20(%ce)%n%x20%s%n"
     # use diff-so-fancy https://github.com/so-fancy/diff-so-fancy
-    dsf = "!f() { [ -z \"$GIT_PREFIX\" ] || cd \"$GIT_PREFIX\" && git diff --color \"$@\" | diff-so-fancy  | less --tabs=4 -RFX; }; f"
+    d = "!f() { [ -z \"$GIT_PREFIX\" ] || cd \"$GIT_PREFIX\" && git diff --color \"$@\" | diff-so-fancy  | less --tabs=4 -RFX; }; f"
     dsfl = "!f() { [ -z \"$GIT_PREFIX\" ] || cd \"$GIT_PREFIX\" && git show --color \"$@\" | diff-so-fancy  | less --tabs=4 -RFX; }; f"
     # golang codereview
     change = codereview change
