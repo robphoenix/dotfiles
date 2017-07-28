@@ -19,7 +19,6 @@ Plug 'honza/vim-snippets'               " Code snippets
 Plug 'plasticboy/vim-markdown'          " Markdown
 Plug 'majutsushi/tagbar'                " Source Code Browser
 Plug 'scrooloose/nerdcommenter'         " Commenting
-Plug 'mhinz/vim-startify'               " fancy start screen
 Plug 'mhinz/vim-sayonara'               " Easy buffer closing
 Plug 'mhinz/vim-grepper'                " easy grepping
 Plug 'pearofducks/ansible-vim'          " Ansible
@@ -595,35 +594,6 @@ nnoremap <leader>gv :Gvdiff<CR>
 nnoremap <leader>gp :Gpush<CR>
 vnoremap <leader>gb :Gblame<CR>
 nnoremap <leader>gb :Gblame<CR>
-
-" }
-
-" --> Startify {
-
-let g:startify_list_order = [
-            \ ['   Current directory:'],
-            \ 'dir',
-            \ ['   Most recently used'],
-            \ 'files',
-            \ ['   Bookmarks:'],
-            \ 'bookmarks',
-            \ ]
-let g:startify_bookmarks = [ {'v': '~/.vimrc'}, {'d': '~/dotfiles/'} ]
-let g:startify_files_number = 5
-let g:startify_change_to_dir = 1
-let g:startify_enable_special = 0
-let g:startify_change_to_dir = 1
-let g:startify_custom_indices = map(range(1,100), 'string(v:val)')
-let g:startify_custom_header = [
-            \ '',
-            \ '    , __            _                          _   _',
-            \ '   /|/  \       o  | |    |      ()           | | | |',
-            \ '    | __/          | |  __|      /\_|_        | | | |',
-            \ '    |   \|   |  |  |/  /  |     /  \|  |   |  |/  |/',
-            \ '    |(__/ \_/|_/|_/|__/\_/|_/  /(__/|_/ \_/|_/|__/|__/',
-            \ '                                              |\  |\',
-            \ '                                              |/  |/',
-            \ ]
 
 " }
 
