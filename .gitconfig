@@ -20,14 +20,6 @@
     mom = merge origin/master
     mum = merge upstream/master
     mod = merge origin/dev
-    # rebase
-    # Interactive rebase with the given number of latest commits
-	ri = "!r() { git rebase -i HEAD~$1; }; r"
-    rca = commit --amend '-S'
-    rc = rebase --continue
-    rom = rebase origin/master
-    rum = rebase upstream/master
-    rod = rebase origin/dev
     h = reflog
     co = checkout
     cn = checkout -b
@@ -44,17 +36,33 @@
     unmerged = diff --name-only --diff-filter=U
     unmerge = reset --merge
     rs = remote -v
+
+    # rebase
+    # Interactive rebase with the given number of latest commits
+	ri = "!r() { git rebase -i HEAD~$1; }; r"
+    rca = commit --amend '-S'
+    rc = rebase --continue
+    rom = rebase origin/master
+    rum = rebase upstream/master
+    rod = rebase origin/dev
+
     # delete remote branch
     dr = push origin --delete
     # delete local branch
     dl = branch -D
+    # Remove branches that have already been merged with master
+    # a.k.a. ‘delete merged’
+	dm = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d; git remote -v update -p"
+
     # simple log
     l = log --oneline --decorate --pretty=format:"%C(yellow)%h%C(cyan)%>(15)%ar%C(green)%>(18)%an\\ \\ %C(yellow)%s"
     # Color graph detailed log view
 	gl = log --graph --color --decorate --stat --pretty=format:"%C(yellow)%H%C(green)%d%C(reset)%n%x20%cd%n%x20%cn%x20(%ce)%n%x20%s%n"
+
     # use diff-so-fancy https://github.com/so-fancy/diff-so-fancy
     d = "!f() { [ -z \"$GIT_PREFIX\" ] || cd \"$GIT_PREFIX\" && git diff --color \"$@\" | diff-so-fancy  | less --tabs=4 -RFX; }; f"
     dsfl = "!f() { [ -z \"$GIT_PREFIX\" ] || cd \"$GIT_PREFIX\" && git show --color \"$@\" | diff-so-fancy  | less --tabs=4 -RFX; }; f"
+
     # golang codereview
     change = codereview change
     gofmt = codereview gofmt
