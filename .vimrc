@@ -129,6 +129,9 @@ if has('nvim')
     set inccommand=split            " incremental command live feedback
 endif
 
+" no netrw history
+let g:netrw_dirhistmax = 0
+
 " Better Completion
 set complete=.,b,u,]
 set complete+=kspell
@@ -268,6 +271,8 @@ endif
 nnoremap <C-s> :%s/<C-r><C-w>//c<left><left>
 
 " navigate & close quickfix easily
+map <C-n> :cnext<CR>
+map <C-m> :cprevious<CR>
 nnoremap <leader>a :cclose<CR>
 
 " close location list
