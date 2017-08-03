@@ -270,9 +270,8 @@ endif
 " substitution (replace) word under cursor
 nnoremap <C-s> :%s/<C-r><C-w>//c<left><left>
 
-" navigate & close quickfix easily
-map <C-n> :cnext<CR>
-map <C-m> :cprevious<CR>
+" close quickfix easily
+" navigation is taken care of by unimpaired
 nnoremap <leader>a :cclose<CR>
 
 " close location list
