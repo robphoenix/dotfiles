@@ -126,20 +126,17 @@ set ttimeoutlen=10
 filetype plugin indent on
 
 if has('nvim')
-    set inccommand=split            " incremental command live feedback
+    set inccommand=split " incremental command live feedback
 endif
 
-" no netrw history
-let g:netrw_dirhistmax = 0
-
 " Better Completion
-set complete=.,b,u,]
+" set complete=.,b,u,]
 set complete+=kspell
 set completeopt=longest,menuone,noselect
 set omnifunc=syntaxcomplete#Complete
 
 " save no history or bookmarks in netrw
-" :let g:netrw_dirhistmax = 0
+let g:netrw_dirhistmax = 0
 
 " Markdown settings
 au Bufread,BufNewFile *.md setlocal filetype=markdown tw=80 wrap spell
@@ -263,7 +260,8 @@ vnoremap <F9> zf
 " integrated terminal
 if has('nvim')
     nnoremap <leader>z :term<CR>
-    tnoremap <leader>e <c-\><c-n>
+    " exit terminal
+    tnoremap <c-e> <c-\><c-n>
     :au BufEnter * if &buftype == 'terminal' | :startinsert | endif
 endif
 
