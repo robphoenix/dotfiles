@@ -34,6 +34,8 @@ Plug 'tpope/vim-capslock'               " Software caps lock
 Plug 'rhysd/vim-clang-format'           " C formatting
 Plug 'godlygeek/tabular'
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+Plug 'godoctor/godoctor.vim'            " Go refactoring
+Plug 'jodosha/vim-godebug'              " Go debugging
 
 if has('nvim')
     Plug 'Shougo/deoplete.nvim'         " NeoVim autocomplete
@@ -495,7 +497,7 @@ let g:clang_format#code_style='llvm'
 
 "  }
 
-" --> vim-go {
+" --> vim-go et al {
 
 let g:go_list_type = "quickfix"
 let g:go_fmt_command = "goimports"
@@ -505,21 +507,22 @@ let g:go_term_enabled = 1
 let g:go_term_width = 30
 let g:go_snippet_engine = "ultisnips"
 let g:go_gorename_prefill = 0
-let g:go_auto_type_info = 0
+let g:go_auto_type_info = 1
 let g:go_auto_sameids = 0
 set updatetime=100
 
 au FileType go nmap <leader>gi <Plug>(go-info)
-au FileType go nmap <leader>gr <Plug>(go-run)
 au FileType go nmap <leader>gb <Plug>(go-build)
 au FileType go nmap <leader>gt <Plug>(go-test)
-au FileType go nmap <leader>gk <Plug>(go-doc)
-au FileType go nmap <leader>gn <Plug>(go-rename)
 au FileType go nmap <leader>gl <Plug>(go-metalinter)
-au FileType go nmap <leader>gs :GoSameIds<CR>
-au FileType go nmap <leader>gd :GoDeclsDir<CR>
+au FileType go nmap <leader>gd :GoDecls<CR>
+au FileType go nmap <leader>gs :GoDeclsDir<CR>
+
+" use godoctor for refactoring
+au FileType go nmap <leader>gr :Rename<CR>
 
 " use :A/:AV/:AS to alternate between code & test files
+" buffer/vertical split/horizontal split
 augroup go
     autocmd!
     autocmd Filetype go
@@ -527,6 +530,7 @@ augroup go
         \| command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
         \| command! -bang AS call go#alternate#Switch(<bang>0, 'split')
 augroup END
+
 " }
 
 " --> delimitMate {
