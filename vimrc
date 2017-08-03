@@ -125,8 +125,25 @@ set ttimeout
 set ttimeoutlen=10
 filetype plugin indent on
 
+" Neovim specific
 if has('nvim')
-    set inccommand=split " incremental command live feedback
+    " incremental command live feedback
+    set inccommand=split
+
+    " integrated zsh terminal
+    nnoremap <A-z> :term<CR>
+
+    " escape from the Neovim terminal.
+    tnoremap <c-e> <C-\><C-n>
+
+    " Make navigation into and out of Neovim terminal splits nicer.
+    tnoremap <C-h> <C-\><C-N><C-w>h
+    tnoremap <C-j> <C-\><C-N><C-w>j
+    tnoremap <C-k> <C-\><C-N><C-w>k
+    tnoremap <C-l> <C-\><C-N><C-w>l
+
+    " Prefer Neovim terminal insert mode to normal mode.
+    autocmd BufEnter term://* startinsert
 endif
 
 " Better Completion
@@ -196,13 +213,6 @@ nnoremap <C-J> <C-W>j
 nnoremap <C-K> <C-W>k
 nnoremap <C-L> <C-W>l
 nnoremap <C-H> <C-W>h
-" for integrated terminal as well
-if has('nvim')
-    tnoremap <C-h> <C-\><C-n><C-w>h
-    tnoremap <C-j> <C-\><C-n><C-w>j
-    tnoremap <C-k> <C-\><C-n><C-w>k
-    tnoremap <C-l> <C-\><C-n><C-w>l
-endif
 
 " mute highlighting
 nnoremap <silent> <leader>/ :nohlsearch<CR>
@@ -257,14 +267,6 @@ nnoremap <F9> za
 onoremap <F9> <C-C>za
 vnoremap <F9> zf
 
-" integrated terminal
-if has('nvim')
-    nnoremap <leader>z :term<CR>
-    " exit terminal
-    tnoremap <c-e> <c-\><c-n>
-    :au BufEnter * if &buftype == 'terminal' | :startinsert | endif
-endif
-
 " substitution (replace) word under cursor
 nnoremap <C-s> :%s/<C-r><C-w>//c<left><left>
 
@@ -274,6 +276,9 @@ nnoremap <leader>a :cclose<CR>
 
 " close location list
 nnoremap <leader>l :lclose<CR>
+
+" Make
+nnoremap <C-m> :make<CR>
 
 " Some helpers to edit mode
 " http://vimcasts.org/e/14
@@ -294,8 +299,6 @@ nnoremap <silent> <a-k> :res -10<cr>
 
 " build current C program, output has same name
 autocmd FileType c nnoremap <silent> <leader>cb :!clear;gcc % -o %:r.out<CR>
-" cs50 specific command, linking to cs50 lib
-autocmd FileType c nnoremap <silent> <leader>50 :!clear;gcc % ~/code/C/cs50/libcs50/src/cs50.c -o %:r.out<CR>
 
 " navigating commands history
 cnoremap <c-k> <Up>
