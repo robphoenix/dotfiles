@@ -39,10 +39,6 @@ function virtualenv_info {
 
 ## setup vi-mode indicator in prompt ########################################
 #
-# to have an indicator when in insert mode also, use:
-# ${${KEYMAP/vicmd/\$NORMAL_MODE}/(main|viins)/\$INSERT_MODE}
-# instead of:
-# ${${KEYMAP/vicmd/\$NORMAL_MODE}/(main|viins)/}
 
 function zle-line-init zle-keymap-select {
     NORMAL_MODE="%{$bg[black]$fg[white]%}◯ %{$reset_color%}"

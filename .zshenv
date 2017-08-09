@@ -33,7 +33,7 @@ export PATH="$HOME/.cargo/bin:$PATH"
 export CDPATH=$GOPATH:~/code/python:~/sites:~/code/exercism:~/code/lua
 
 # FZF
-export FZF_COMPLETION_TRIGGER=',,'
+export FZF_COMPLETION_TRIGGER=';;'
 export FZF_DEFAULT_OPTS='--height 50% --reverse'
 # --files: List files that would be searched but do not search
 # --no-ignore: Do not respect .gitignore, etc...

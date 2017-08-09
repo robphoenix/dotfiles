@@ -53,6 +53,7 @@ call plug#end()
 " --> Settings {
 
 set nocompatible    " be iMproved, required
+set listchars=eol:$,tab:▸\,
 
 " Colourscheme
 set t_Co=256        " ensure vim uses 256 colours, just in case TERM is not xterm-256color
@@ -92,7 +93,7 @@ set laststatus=2                   " always show the status line
 set ignorecase                     " ignore case when searching
 set autoindent                     " automatic indent new lines
 set smartindent                    " be smart about it
-set nowrap                         " dont't wrap lines
+set nowrap                         " don't wrap lines
 set showbreak=↪
 set scrolljump=5                   " lines to scroll when cursor leaves screen
 set scrolloff=3                    " minimum lines to keep above and below cursor
@@ -101,7 +102,7 @@ set foldnestmax=10                 " 10 nested fold max
 set foldmethod=indent              " fold based on indent
 set foldcolumn=1                   " show foldcolumn
 set gdefault                       " the /g flag on :s substitutions by default
-set autochdir                      " automatically change window's cwd to file's dir
+set noautochdir                      " automatically change window's cwd to file's dir
 set shiftwidth=4                   " use indents of 4 spaces
 set tabstop=4                      " an indentation every four columns
 set expandtab                      " tabs are spaces, not tabs
@@ -158,7 +159,10 @@ set omnifunc=syntaxcomplete#Complete
 let g:netrw_dirhistmax = 0
 
 " Markdown settings
-au Bufread,BufNewFile *.md setlocal filetype=markdown tw=80 wrap spell
+au Bufread,BufNewFile *.md setlocal filetype=markdown textwidth=80 wrap spell wrapmargin=0
+
+" gitconfig settings
+au Bufread,BufNewFile gitconfig setlocal filetype=.gitconfig
 
 " Article filetype settings (used by Go tour)
 au Bufread,BufNewFile *.article setlocal spell

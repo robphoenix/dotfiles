@@ -17,6 +17,9 @@ source ~/prompt.zsh
 
 # vi mode in the terminal
 bindkey -v
+# reduce delay after hitting <ESC>
+export KEYTIMEOUT=1
+bindkey -M viins 'jk' vi-cmd-mode
 
 # fancy ctrl-z
 bindkey '^Z' fancy-ctrl-z
