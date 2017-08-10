@@ -2,46 +2,47 @@
 
 call plug#begin()
 
-Plug 'chriskempson/base16-vim'          " Base16 colourscheme
-Plug 'robertmeta/nofrils'               " minimal syntax highlighting
-Plug 'tpope/vim-surround'               " Add quotes/parenthesis etc.
-Plug 'tpope/vim-fugitive'               " Git wrapper
 Plug 'airblade/vim-gitgutter'           " Gutter markers for Git
-Plug 'Raimondi/delimitMate'             " Auto-insert closing delimiters
-Plug 'ntpeters/vim-better-whitespace'   " better whitespace highlighting and removal
-Plug 'vim-airline/vim-airline'          " Sweet statusline
-Plug 'vim-airline/vim-airline-themes'   " Sweet statusline themes
-Plug 'tpope/vim-vinegar'
-Plug 'jmcantrell/vim-virtualenv'        " Python Virtualenvs
-Plug 'w0rp/ale'                         " linter
-Plug 'SirVer/ultisnips'                 " Code snippets
+Plug 'cespare/vim-toml'                 " TOML
+Plug 'chriskempson/base16-vim'          " Base16 colourscheme
+Plug 'ctrlpvim/ctrlp.vim'               " fuzzy finder
+Plug 'elzr/vim-json'                    " JSON
+Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' } " Go development
+Plug 'godlygeek/tabular'                " text alignment
+Plug 'godoctor/godoctor.vim'            " Go refactoring
 Plug 'honza/vim-snippets'               " Code snippets
-Plug 'plasticboy/vim-markdown'          " Markdown
-Plug 'majutsushi/tagbar'                " Source Code Browser
-Plug 'scrooloose/nerdcommenter'         " Commenting
-Plug 'mhinz/vim-sayonara'               " Easy buffer closing
-Plug 'mhinz/vim-grepper'                " easy grepping
-Plug 'pearofducks/ansible-vim'          " Ansible
-Plug 'Rykka/riv.vim'                    " reStructured Text
-Plug 'mbbill/undotree'                  " undo history visualizer
+Plug 'jmcantrell/vim-virtualenv'        " Python Virtualenvs
+Plug 'jodosha/vim-godebug'              " Go debugging
 Plug 'junegunn/goyo.vim'                " distraction free writing
 Plug 'junegunn/limelight.vim'           " section highlighting
-Plug 'ctrlpvim/ctrlp.vim'               " fuzzy finder
-Plug 'cespare/vim-toml'                 " TOML
-Plug 'elzr/vim-json'                    " JSON
+Plug 'majutsushi/tagbar'                " Source Code Browser
+Plug 'mbbill/undotree'                  " undo history visualizer
+Plug 'mhinz/vim-sayonara'               " Easy buffer closing
+Plug 'mhinz/vim-grepper'                " easy grepping
+Plug 'mhinz/vim-startify'               " fancy start screen
+Plug 'ntpeters/vim-better-whitespace'   " better whitespace highlighting and removal
+Plug 'pearofducks/ansible-vim'          " Ansible
+Plug 'plasticboy/vim-markdown'          " Markdown
+Plug 'Raimondi/delimitMate'             " Auto-insert closing delimiters
+Plug 'rhysd/vim-clang-format'           " C formatting
+Plug 'robertmeta/nofrils'               " minimal syntax highlighting
+Plug 'Rykka/riv.vim'                    " reStructured Text
+Plug 'scrooloose/nerdcommenter'         " Commenting
+Plug 'SirVer/ultisnips'                 " Code snippets
+Plug 'tpope/vim-vinegar'                " file explorer
 Plug 'tpope/vim-unimpaired'             " pairs of handy bracket mappings
 Plug 'tpope/vim-capslock'               " Software caps lock
-Plug 'rhysd/vim-clang-format'           " C formatting
-Plug 'godlygeek/tabular'
-Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
-Plug 'godoctor/godoctor.vim'            " Go refactoring
-Plug 'jodosha/vim-godebug'              " Go debugging
+Plug 'tpope/vim-surround'               " Add quotes/parenthesis etc.
+Plug 'tpope/vim-fugitive'               " Git wrapper
+Plug 'vim-airline/vim-airline'          " Sweet statusline
+Plug 'vim-airline/vim-airline-themes'   " Sweet statusline themes
+Plug 'w0rp/ale'                         " linter
 
 if has('nvim')
+    Plug 'Rip-Rip/clang_complete'       " C autocomplete
     Plug 'Shougo/deoplete.nvim'         " NeoVim autocomplete
     Plug 'zchee/deoplete-jedi'          " Python autocomplete
     Plug 'zchee/deoplete-go', { 'do': 'make'}
-    Plug 'Rip-Rip/clang_complete'       " C autocomplete
 else
     Plug 'Shougo/neocomplete.vim'       " Vim autocomplete
 endif
@@ -618,6 +619,40 @@ nnoremap <leader>gv :Gvdiff<CR>
 nnoremap <leader>gp :Gpush<CR>
 vnoremap <leader>gb :Gblame<CR>
 nnoremap <leader>gb :Gblame<CR>
+
+" }
+
+" --> Startify {
+
+let g:startify_session_dir = '~/Dropbox/dotfiles/nvim/session'
+let g:startify_session_persistence = 1
+let g:startify_session_sort = 1
+let g:startify_list_order = [
+            \ ['   Current directory:'],
+            \ 'dir',
+            \ ['   Most recently used'],
+            \ 'files',
+            \ ['   Sessions:'],
+            \ 'sessions',
+            \ ['   Bookmarks:'],
+            \ 'bookmarks',
+            \ ]
+let g:startify_bookmarks = [ {'v': '~/Dropbox/dotfiles/vimrc'} ]
+let g:startify_files_number = 5
+let g:startify_change_to_dir = 1
+let g:startify_enable_special = 0
+let g:startify_change_to_dir = 1
+let g:startify_custom_indices = map(range(1,100), 'string(v:val)')
+let g:startify_custom_header = [
+            \ '',
+            \ '    , __            _                          _   _',
+            \ '   /|/  \       o  | |    |      ()           | | | |',
+            \ '    | __/          | |  __|      /\_|_        | | | |',
+            \ '    |   \|   |  |  |/  /  |     /  \|  |   |  |/  |/',
+            \ '    |(__/ \_/|_/|_/|__/\_/|_/  /(__/|_/ \_/|_/|__/|__/',
+            \ '                                              |\  |\',
+            \ '                                              |/  |/',
+            \ ]
 
 " }
 
