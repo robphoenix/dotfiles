@@ -638,21 +638,21 @@ let g:startify_list_order = [
             \ 'bookmarks',
             \ ]
 let g:startify_bookmarks = [ {'v': '~/Dropbox/dotfiles/vimrc'} ]
-let g:startify_files_number = 5
+let g:startify_files_number = 8
 let g:startify_change_to_dir = 1
 let g:startify_enable_special = 0
-let g:startify_change_to_dir = 1
 let g:startify_custom_indices = map(range(1,100), 'string(v:val)')
-let g:startify_custom_header = [
-            \ '',
-            \ '    , __            _                          _   _',
-            \ '   /|/  \       o  | |    |      ()           | | | |',
-            \ '    | __/          | |  __|      /\_|_        | | | |',
-            \ '    |   \|   |  |  |/  /  |     /  \|  |   |  |/  |/',
-            \ '    |(__/ \_/|_/|_/|__/\_/|_/  /(__/|_/ \_/|_/|__/|__/',
-            \ '                                              |\  |\',
-            \ '                                              |/  |/',
-            \ ]
+let g:startify_custom_header = ['']
+" let g:startify_custom_header = [
+"             \ '',
+"             \ '    , __            _                          _   _',
+"             \ '   /|/  \       o  | |    |      ()           | | | |',
+"             \ '    | __/          | |  __|      /\_|_        | | | |',
+"             \ '    |   \|   |  |  |/  /  |     /  \|  |   |  |/  |/',
+"             \ '    |(__/ \_/|_/|_/|__/\_/|_/  /(__/|_/ \_/|_/|__/|__/',
+"             \ '                                              |\  |\',
+"             \ '                                              |/  |/',
+"             \ ]
 
 " }
 

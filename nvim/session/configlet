@@ -2,20 +2,23 @@ let SessionLoad = 1
 let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
 let v:this_session=expand("<sfile>:p")
 silent only
-cd ~/Dropbox/code/gopath/src/github.com/robphoenix/go-aci
+cd ~/
 if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +55 aci/node.go
-badd +37 aci/site.go
-badd +1 main.go
-badd +63 aci/apic.go
-badd +94 aci/fabric_membership.go
-badd +1 ~/Dropbox/code/gopath/src/github.com/robphoenix/go-aci
+badd +29 Dropbox/code/gopath/src/github.com/exercism/configlet/cmd/fmt.go
+badd +1 Dropbox/code/gopath/src/github.com/exercism/configlet/cmd/fmt_test.go
+badd +115 Dropbox/code/gopath/src/github.com/exercism/configlet/cmd/lint_test.go
+badd +31 Dropbox/code/gopath/src/github.com/exercism/configlet/cmd/root.go
+badd +6 Dropbox/code/gopath/src/github.com/exercism/configlet/main.go
+badd +21 Dropbox/code/gopath/src/github.com/exercism/configlet/cmd/uuid.go
+badd +34 Dropbox/code/gopath/src/github.com/exercism/configlet/cmd/generate.go
+badd +15 Dropbox/code/gopath/src/github.com/exercism/configlet/cmd/version.go
+badd +15 Dropbox/code/gopath/src/github.com/exercism/configlet/cmd/lint.go
 argglobal
 silent! argdel *
-edit aci/apic.go
+edit Dropbox/code/gopath/src/github.com/exercism/configlet/cmd/generate.go
 set splitbelow splitright
 wincmd t
 set winminheight=1 winminwidth=1 winheight=1 winwidth=1
@@ -28,13 +31,12 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=10
 setlocal nofen
-let s:l = 63 - ((18 * winheight(0) + 18) / 37)
+let s:l = 32 - ((16 * winheight(0) + 18) / 37)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-63
-normal! 0
-lcd ~/Dropbox/code/gopath/src/github.com/robphoenix/go-aci/aci
+32
+normal! 039|
 tabnext 1
 if exists('s:wipebuf') && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf

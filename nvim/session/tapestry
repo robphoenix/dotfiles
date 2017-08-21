@@ -2,20 +2,17 @@ let SessionLoad = 1
 let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
 let v:this_session=expand("<sfile>:p")
 silent only
-cd ~/Dropbox/code/gopath/src/github.com/robphoenix/go-aci
+cd ~/Dropbox/code/gopath/src/github.com/robphoenix/tapestry
 if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +55 aci/node.go
-badd +37 aci/site.go
-badd +1 main.go
-badd +63 aci/apic.go
-badd +94 aci/fabric_membership.go
-badd +1 ~/Dropbox/code/gopath/src/github.com/robphoenix/go-aci
+badd +1 config.toml
+badd +1 Tapestry.toml
+badd +0 tapestry/node.go
 argglobal
 silent! argdel *
-edit aci/apic.go
+edit tapestry/node.go
 set splitbelow splitright
 wincmd t
 set winminheight=1 winminwidth=1 winheight=1 winwidth=1
@@ -28,13 +25,12 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=10
 setlocal nofen
-let s:l = 63 - ((18 * winheight(0) + 18) / 37)
+let s:l = 1 - ((0 * winheight(0) + 18) / 37)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-63
+1
 normal! 0
-lcd ~/Dropbox/code/gopath/src/github.com/robphoenix/go-aci/aci
 tabnext 1
 if exists('s:wipebuf') && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
