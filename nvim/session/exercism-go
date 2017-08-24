@@ -7,6 +7,29 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
+badd +41 Dropbox/code/gopath/src/github.com/robphoenix/exercism-go/config.json
+badd +4 Dropbox/code/gopath/src/github.com/robphoenix/exercism-go/exercises/hello-world/hello_world.go
+badd +15 Dropbox/code/gopath/src/github.com/robphoenix/exercism-go/exercises/hello-world/hello_test.go
+badd +13 Dropbox/code/gopath/src/github.com/robphoenix/exercism-go/exercises/hamming/hamming_test.go
+badd +3 Dropbox/code/gopath/src/github.com/robphoenix/exercism-go/exercises/hamming/example.go
+badd +3 Dropbox/code/gopath/src/github.com/robphoenix/exercism-go/exercises/hamming/hamming.go
+badd +1 Dropbox/code/gopath/src/github.com/robphoenix/exercism-go/exercises/clock/clock.go
+badd +1 Dropbox/code/gopath/src/github.com/robphoenix/exercism-go/exercises/clock
+badd +1 Dropbox/code/gopath/src/github.com/robphoenix/exercism-go/exercises/clock/example_clock_test.go
+badd +1 Dropbox/code/gopath/src/github.com/robphoenix/exercism-go/exercises/two-fer/example_two_fer_test.go
+badd +1 Dropbox/code/gopath/src/github.com/robphoenix/exercism-go/exercises/leap/leap.go
+badd +7 Dropbox/code/gopath/src/github.com/robphoenix/exercism-go/exercises/leap/leap_test.go
+badd +1 Dropbox/code/gopath/src/github.com/robphoenix/exercism-go/exercises/hamming
+badd +2 Dropbox/code/gopath/src/github.com/robphoenix/exercism-go/exercises/raindrops/raindrops.go
+badd +1 Dropbox/code/gopath/src/github.com/robphoenix/exercism-go/exercises/raindrops
+badd +22 Dropbox/code/gopath/src/github.com/robphoenix/exercism-go/exercises/raindrops/raindrops_test.go
+badd +27 Dropbox/code/gopath/src/github.com/robphoenix/exercism-go/exercises/bob/bob_test.go
+badd +1 Dropbox/code/gopath/src/github.com/robphoenix/exercism-go/exercises/bob
+badd +5 Dropbox/code/gopath/src/github.com/robphoenix/exercism-go/exercises/bob/bob.go
+badd +7 Dropbox/code/gopath/src/github.com/robphoenix/exercism-go/exercises/bob/example.go
+badd +1 Dropbox/code/gopath/src/github.com/robphoenix/exercism-go/exercises/bob/cases_test.go
+badd +1 Dropbox/code/gopath/src/github.com/robphoenix/exercism-go/exercises/bob/README.md
+badd +5 Dropbox/code/gopath/src/github.com/robphoenix/exercism-go/exercises/raindrops/example.go
 argglobal
 silent! argdel *
 set splitbelow splitright

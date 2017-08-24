@@ -9,10 +9,11 @@ endif
 set shortmess=aoO
 badd +1 config.toml
 badd +1 Tapestry.toml
-badd +0 tapestry/node.go
+badd +1 tapestry/node.go
+badd +0 cmd/root.go
 argglobal
 silent! argdel *
-edit tapestry/node.go
+edit cmd/root.go
 set splitbelow splitright
 wincmd t
 set winminheight=1 winminwidth=1 winheight=1 winwidth=1
@@ -25,7 +26,7 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=10
 setlocal nofen
-let s:l = 1 - ((0 * winheight(0) + 18) / 37)
+let s:l = 1 - ((0 * winheight(0) + 19) / 38)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt

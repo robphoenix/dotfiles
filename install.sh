@@ -217,6 +217,7 @@ rm -rf hub-linux-amd64-${HUB_VERSION}
 rm hub-linux-amd64-${HUB_VERSION}.tgz
 
 # symlinks
+ln -snf "$HOME/Dropbox/code/gopath" "$HOME/go"
 ln -sf "$HOME/Dropbox/dotfiles/.zshenv" "$HOME/.zshenv"
 ln -sf "$HOME/Dropbox/dotfiles/.zshrc" "$HOME/.zshrc"
 ln -sf "$HOME/Dropbox/dotfiles/prompt.zsh" "$HOME/prompt.zsh"
