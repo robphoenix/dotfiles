@@ -16,6 +16,7 @@ Plug 'jodosha/vim-godebug'              " Go debugging
 Plug 'junegunn/goyo.vim'                " distraction free writing
 Plug 'junegunn/limelight.vim'           " section highlighting
 Plug 'majutsushi/tagbar'                " Source Code Browser
+Plug 'mattn/emmet-vim'                  " HTML
 Plug 'mbbill/undotree'                  " undo history visualizer
 Plug 'mhinz/vim-sayonara'               " Easy buffer closing
 Plug 'mhinz/vim-grepper'                " easy grepping
@@ -36,6 +37,7 @@ Plug 'tpope/vim-surround'               " Add quotes/parenthesis etc.
 Plug 'tpope/vim-fugitive'               " Git wrapper
 Plug 'vim-airline/vim-airline'          " Sweet statusline
 Plug 'vim-airline/vim-airline-themes'   " Sweet statusline themes
+Plug 'vim-scripts/TaskList.vim'         " list TODOs
 Plug 'w0rp/ale'                         " linter
 
 if has('nvim')
@@ -100,7 +102,7 @@ set scrolljump=5                   " lines to scroll when cursor leaves screen
 set scrolloff=3                    " minimum lines to keep above and below cursor
 set nofoldenable                   " don't auto fold code
 set foldnestmax=10                 " 10 nested fold max
-set foldmethod=indent              " fold based on indent
+set foldmethod=syntax              " fold based on syntax
 set foldcolumn=1                   " show foldcolumn
 set gdefault                       " the /g flag on :s substitutions by default
 set noautochdir                      " automatically change window's cwd to file's dir
@@ -188,18 +190,22 @@ au BufNewFile,BufRead *.py setlocal et ts=4 sts=4 sw=4 tw=79 list lcs=tab:▸\
 let g:python3_host_prog = '/usr/bin/python3'
 let python_highlight_all=1
 
-" Yaml settings
+" YAML settings
 au BufNewFile,BufRead *.yaml setlocal ts=2 sw=2 sts=2
 au BufNewFile,BufRead *.yml setlocal ts=2 sw=2 sts=2
 
 " lua settings
 au BufNewFile,BufRead *.lua setlocal ts=2 sw=2 sts=2
 
-" js settings
+" JS settings
 au BufNewFile,BufRead *.js setlocal ts=2 sw=2 sts=2
 
-" csv settings
+" CSV settings
 au! BufNewFile,BufRead *.csv setf csv
+
+" HTML settings
+" indent all tags
+let g:html_indent_inctags = "html,body,head"
 
 " Thesaurus https://github.com/zeke/moby
 set thesaurus+=./.vim/thesaurus.txt
@@ -268,12 +274,6 @@ nnoremap k gk
 vnoremap j gj
 vnoremap k gk
 
-" folding
-inoremap <F9> <C-O>za
-nnoremap <F9> za
-onoremap <F9> <C-C>za
-vnoremap <F9> zf
-
 " substitution (replace) word under cursor
 nnoremap <C-s> :%s/<C-r><C-w>//c<left><left>
 
@@ -285,7 +285,7 @@ nnoremap <leader>a :cclose<CR>
 nnoremap <leader>l :lclose<CR>
 
 " Make
-nnoremap <C-m> :make<CR>
+nnoremap <a-m> :make<CR>
 
 " Some helpers to edit mode
 " http://vimcasts.org/e/14
@@ -420,7 +420,7 @@ let g:NERDTrimTrailingWhitespace = 1
 
 " --> tagbar {
 
-nnoremap <silent> <leader>t :TagbarToggle<CR>
+nnoremap <silent> <leader>ot :TagbarToggle<CR>
 let g:tagbar_autoclose = 1
 let g:tagbar_autofocus = 1
 let g:tagbar_width = 50
@@ -628,12 +628,12 @@ let g:startify_session_dir = '~/Dropbox/dotfiles/nvim/session'
 let g:startify_session_persistence = 1
 let g:startify_session_sort = 1
 let g:startify_list_order = [
+            \ ['   Sessions:'],
+            \ 'sessions',
             \ ['   Current directory:'],
             \ 'dir',
             \ ['   Most recently used'],
             \ 'files',
-            \ ['   Sessions:'],
-            \ 'sessions',
             \ ['   Bookmarks:'],
             \ 'bookmarks',
             \ ]

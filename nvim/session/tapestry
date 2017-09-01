@@ -10,15 +10,31 @@ set shortmess=aoO
 badd +1 config.toml
 badd +1 Tapestry.toml
 badd +1 tapestry/node.go
-badd +0 cmd/root.go
+badd +57 cmd/root.go
+badd +74 cmd/editor.go
+badd +18 cmd/new.go
+badd +14 cmd/status.go
+badd +27 cmd/plan.go
+badd +1 cmd
+badd +13 templates/base.tmpl
+badd +4 templates/index.tmpl
+badd +8 templates/fabric_membership.tmpl
+badd +12 templates/geolocation.tmpl
+badd +22 templates/apic.html.tmpl
+badd +6 templates/index.html.tmpl
+badd +34 templates/base.html.tmpl
+badd +1 templates/geolocation.html.tmpl
+badd +1 templates/fabric_membership.html.tmpl
+badd +20 test.html
+badd +1 templates
 argglobal
 silent! argdel *
-edit cmd/root.go
+edit templates/index.html.tmpl
 set splitbelow splitright
 wincmd t
 set winminheight=1 winminwidth=1 winheight=1 winwidth=1
 argglobal
-setlocal fdm=indent
+setlocal fdm=syntax
 setlocal fde=0
 setlocal fmr={{{,}}}
 setlocal fdi=#
@@ -26,18 +42,19 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=10
 setlocal nofen
-let s:l = 1 - ((0 * winheight(0) + 19) / 38)
+let s:l = 1 - ((0 * winheight(0) + 18) / 37)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
 1
 normal! 0
+lcd ~/Dropbox/code/gopath/src/github.com/robphoenix/tapestry
 tabnext 1
 if exists('s:wipebuf') && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
 endif
 unlet! s:wipebuf
-set winheight=1 winwidth=20 winminheight=1 winminwidth=1 shortmess=filmnrxoOtTI
+set winheight=1 winwidth=20 winminheight=1 winminwidth=1 shortmess=IfilmnrxoOtT
 let s:sx = expand("<sfile>:p:r")."x.vim"
 if file_readable(s:sx)
   exe "source " . fnameescape(s:sx)

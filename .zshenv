@@ -30,7 +30,7 @@ export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
 export PATH="$HOME/.cargo/bin:$PATH"
 
 # CDPATH
-export CDPATH=$GOPATH:~/code/python:~/sites:~/code/exercism:~/code/lua
+export CDPATH=$GOPATH/src/github.com/robphoenix:$GOPATH/src/github.com/exercism:~/sites:~/Dropbox/code
 
 # FZF
 export FZF_COMPLETION_TRIGGER=';;'
