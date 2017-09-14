@@ -15,7 +15,6 @@ badd +1 Dropbox/code/gopath/src/github.com/robphoenix/exercism-go/exercises/hamm
 badd +1 Dropbox/code/gopath/src/github.com/robphoenix/exercism-go/exercises/raindrops
 badd +1 Dropbox/code/gopath/src/github.com/robphoenix/exercism-go/exercises/bob
 badd +1 Dropbox/code/gopath/src/github.com/robphoenix/exercism-go/exercises/nucleotide-count
-badd +1 Dropbox/code/gopath/src/github.com/robphoenix/exercism-go/exercises/rna-transcription
 argglobal
 silent! argdel *
 set splitbelow splitright
@@ -23,7 +22,8 @@ wincmd t
 set winminheight=1 winminwidth=1 winheight=1 winwidth=1
 argglobal
 enew
-setlocal fdm=syntax
+file NERD_tree_2
+setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
 setlocal fdi=#

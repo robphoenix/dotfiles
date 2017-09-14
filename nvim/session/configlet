@@ -2,21 +2,16 @@ let SessionLoad = 1
 let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
 let v:this_session=expand("<sfile>:p")
 silent only
-cd ~/
+cd ~/Dropbox/code/gopath
 if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +29 Dropbox/code/gopath/src/github.com/exercism/configlet/cmd/fmt.go
-badd +21 Dropbox/code/gopath/src/github.com/exercism/configlet/cmd/uuid.go
-badd +31 Dropbox/code/gopath/src/github.com/exercism/configlet/cmd/generate.go
-badd +15 Dropbox/code/gopath/src/github.com/exercism/configlet/cmd/version.go
-badd +15 Dropbox/code/gopath/src/github.com/exercism/configlet/cmd/lint.go
-badd +14 Dropbox/code/gopath/src/github.com/exercism/configlet/cmd/root.go
-badd +1 Dropbox/code/gopath/src/github.com/exercism/configlet/ui/printer.go
+badd +28 src/github.com/exercism/configlet/cmd/lint.go
+badd +1 src/github.com/exercism/configlet/ui/printer.go
 argglobal
 silent! argdel *
-edit Dropbox/code/gopath/src/github.com/exercism/configlet/cmd/lint.go
+edit src/github.com/exercism/configlet/cmd/lint.go
 set splitbelow splitright
 wincmd t
 set winminheight=1 winminwidth=1 winheight=1 winwidth=1
@@ -29,18 +24,18 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=10
 setlocal nofen
-let s:l = 30 - ((29 * winheight(0) + 19) / 38)
+let s:l = 35 - ((30 * winheight(0) + 18) / 37)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-30
-normal! 0
+35
+normal! 02|
 tabnext 1
 if exists('s:wipebuf') && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
 endif
 unlet! s:wipebuf
-set winheight=1 winwidth=20 winminheight=1 winminwidth=1 shortmess=filmnrxoOtTI
+set winheight=1 winwidth=20 winminheight=1 winminwidth=1 shortmess=IfilmnrxoOtT
 let s:sx = expand("<sfile>:p:r")."x.vim"
 if file_readable(s:sx)
   exe "source " . fnameescape(s:sx)

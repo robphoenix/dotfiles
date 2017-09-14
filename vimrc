@@ -12,7 +12,6 @@ Plug 'godlygeek/tabular'                " text alignment
 Plug 'godoctor/godoctor.vim'            " Go refactoring
 Plug 'honza/vim-snippets'               " Code snippets
 Plug 'jmcantrell/vim-virtualenv'        " Python Virtualenvs
-Plug 'jodosha/vim-godebug'              " Go debugging
 Plug 'junegunn/goyo.vim'                " distraction free writing
 Plug 'junegunn/limelight.vim'           " section highlighting
 Plug 'majutsushi/tagbar'                " Source Code Browser
@@ -29,8 +28,8 @@ Plug 'rhysd/vim-clang-format'           " C formatting
 Plug 'robertmeta/nofrils'               " minimal syntax highlighting
 Plug 'Rykka/riv.vim'                    " reStructured Text
 Plug 'scrooloose/nerdcommenter'         " Commenting
+Plug 'scrooloose/nerdtree'              " tree explorer
 Plug 'SirVer/ultisnips'                 " Code snippets
-Plug 'tpope/vim-vinegar'                " file explorer
 Plug 'tpope/vim-unimpaired'             " pairs of handy bracket mappings
 Plug 'tpope/vim-capslock'               " Software caps lock
 Plug 'tpope/vim-surround'               " Add quotes/parenthesis etc.
@@ -39,8 +38,10 @@ Plug 'vim-airline/vim-airline'          " Sweet statusline
 Plug 'vim-airline/vim-airline-themes'   " Sweet statusline themes
 Plug 'vim-scripts/TaskList.vim'         " list TODOs
 Plug 'w0rp/ale'                         " linter
+Plug 'Xuyuanp/nerdtree-git-plugin'
 
 if has('nvim')
+    Plug 'jodosha/vim-godebug'          " Go debugging
     Plug 'Rip-Rip/clang_complete'       " C autocomplete
     Plug 'Shougo/deoplete.nvim'         " NeoVim autocomplete
     Plug 'zchee/deoplete-jedi'          " Python autocomplete
@@ -320,6 +321,23 @@ nmap <leader>gg :Goyo<CR> :Limelight!!<CR> :<CR><ESC>
 " }
 
 " --> Plugins {
+
+" --> NERDTree {
+
+" open NERDTree automatically when vim starts up on opening a directory
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+map - :NERDTreeToggle<CR>
+" close vim if the only window left open is a NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+let NERDTreeChDirMode=2
+let NERDTreeMarkBookmarks=0
+let NERDTreeQuitOnOpen=1
+let NERDTreeWinPos="right"
+let NERDTreeMinimalUI=1
+let NERDTreeAutoDeleteBuffer=1
+
+"  }
 
 " --> ale {
 
@@ -628,16 +646,13 @@ let g:startify_session_dir = '~/Dropbox/dotfiles/nvim/session'
 let g:startify_session_persistence = 1
 let g:startify_session_sort = 1
 let g:startify_list_order = [
-            \ ['   Sessions:'],
-            \ 'sessions',
             \ ['   Current directory:'],
             \ 'dir',
             \ ['   Most recently used'],
             \ 'files',
-            \ ['   Bookmarks:'],
-            \ 'bookmarks',
+            \ ['   Sessions:'],
+            \ 'sessions',
             \ ]
-let g:startify_bookmarks = [ {'v': '~/Dropbox/dotfiles/vimrc'} ]
 let g:startify_files_number = 8
 let g:startify_change_to_dir = 1
 let g:startify_enable_special = 0
