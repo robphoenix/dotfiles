@@ -111,11 +111,11 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "${ZSH_CUSTOM
 wget https://raw.githubusercontent.com/zsh-users/zsh-history-substring-search/master/zsh-history-substring-search.zsh
 
 # Go
-export GO_VERSION=1.8
+export GO_VERSION=1.9
 curl -O https://storage.googleapis.com/golang/go${GO_VERSION}.linux-amd64.tar.gz
 sudo tar -C /usr/local -xzf go${GO_VERSION}.linux-amd64.tar.gz
 export PATH=$PATH:/usr/local/go/bin
-export GOPATH=$HOME/code/go
+export GOPATH=$HOME/Dropbox/code/gopath
 rm go${GO_VERSION}.linux-amd64.tar.gz
 
 go get -u -v golang.org/x/tools/cmd/cover

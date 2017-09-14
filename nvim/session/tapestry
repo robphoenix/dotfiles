@@ -7,29 +7,23 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +1 config.toml
-badd +1 Tapestry.toml
-badd +1 tapestry/node.go
-badd +57 cmd/root.go
-badd +74 cmd/editor.go
-badd +18 cmd/new.go
+badd +9 Tapestry.toml
+badd +48 cmd/new.go
 badd +14 cmd/status.go
 badd +27 cmd/plan.go
 badd +1 cmd
-badd +13 templates/base.tmpl
-badd +4 templates/index.tmpl
-badd +8 templates/fabric_membership.tmpl
-badd +12 templates/geolocation.tmpl
-badd +22 templates/apic.html.tmpl
-badd +6 templates/index.html.tmpl
-badd +34 templates/base.html.tmpl
-badd +1 templates/geolocation.html.tmpl
-badd +1 templates/fabric_membership.html.tmpl
-badd +20 test.html
 badd +1 templates
+badd +12 config/config.go
+badd +26 cmd/root.go
+badd +46 cmd/web.go
+badd +15 cmd/webhtml.go
+badd +1 templates/base.html.tmpl
+badd +17 templates/apic.html.tmpl
+badd +3 templates/fabric_membership.html.tmpl
+badd +0 templates/geolocation.html.tmpl
 argglobal
 silent! argdel *
-edit templates/index.html.tmpl
+edit templates/geolocation.html.tmpl
 set splitbelow splitright
 wincmd t
 set winminheight=1 winminwidth=1 winheight=1 winwidth=1
@@ -42,7 +36,7 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=10
 setlocal nofen
-let s:l = 1 - ((0 * winheight(0) + 18) / 37)
+let s:l = 1 - ((0 * winheight(0) + 19) / 38)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt

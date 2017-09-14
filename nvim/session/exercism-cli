@@ -15,19 +15,15 @@ badd +50 Dropbox/code/gopath/src/github.com/exercism/cli/config/config.go
 badd +24 Dropbox/code/gopath/src/github.com/exercism/cli/cmd/open.go
 badd +28 Dropbox/code/gopath/src/github.com/exercism/cli/cmd/troubleshoot.go
 badd +1 Dropbox/code/gopath/src/github.com/exercism/cli/cli
-badd +48 Dropbox/code/gopath/src/github.com/exercism/cli/api/api.go
-badd +84 Dropbox/code/gopath/src/github.com/exercism/cli/config/api_config.go
-badd +1 Dropbox/code/gopath/src/github.com/exercism/cli/cli/status_test.go
-badd +13 Dropbox/code/gopath/src/github.com/exercism/cli/config/user_config.go
-badd +52 Dropbox/code/gopath/src/github.com/exercism/cli/cli/cli_test.go
+badd +1 Dropbox/code/gopath/src/github.com/exercism/cli/cmd/root.go
 argglobal
 silent! argdel *
-edit Dropbox/code/gopath/src/github.com/exercism/cli/cli/status_test.go
+edit Dropbox/code/gopath/src/github.com/exercism/cli/cmd/root.go
 set splitbelow splitright
 wincmd t
 set winminheight=1 winminwidth=1 winheight=1 winwidth=1
 argglobal
-setlocal fdm=indent
+setlocal fdm=syntax
 setlocal fde=0
 setlocal fmr={{{,}}}
 setlocal fdi=#
@@ -35,19 +31,19 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=10
 setlocal nofen
-let s:l = 19 - ((18 * winheight(0) + 19) / 38)
+let s:l = 27 - ((19 * winheight(0) + 18) / 37)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-19
-normal! 09|
+27
+normal! 0
 lcd ~/Dropbox/code/gopath/src/github.com/exercism/cli
 tabnext 1
 if exists('s:wipebuf') && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
 endif
 unlet! s:wipebuf
-set winheight=1 winwidth=20 winminheight=1 winminwidth=1 shortmess=filmnrxoOtTI
+set winheight=1 winwidth=20 winminheight=1 winminwidth=1 shortmess=IfilmnrxoOtT
 let s:sx = expand("<sfile>:p:r")."x.vim"
 if file_readable(s:sx)
   exe "source " . fnameescape(s:sx)

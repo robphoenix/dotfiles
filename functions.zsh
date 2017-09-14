@@ -2,7 +2,7 @@
 function t() {
   # Defaults to 3 levels deep, do more with `t 5` or `t 1`
   # pass additional args after
-  tree -I '.cache|__pycache__|.git|node_modules|.vagrant|.DS_Store' --dirsfirst --filelimit 30 -L ${1:-3} -aC $2
+  tree -I '.cache|__pycache__|.git|node_modules|.vagrant|.DS_Store' --dirsfirst --filelimit 100 -L ${1:-3} -aC $2
 }
 
 # mount usb
