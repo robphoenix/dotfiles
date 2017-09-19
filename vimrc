@@ -125,6 +125,7 @@ set nospell                        " spell checking off by default
 set spelllang=en_gb                " jolly good spelling chap
 set noundofile                     " no annoying .un~ files
 set modelines=1
+set diffopt+=vertical              " vertical Gdiff
 " Time out on key codes but not mappings.
 " Basically this makes terminal Vim work sanely.
 set notimeout
@@ -327,7 +328,7 @@ nmap <leader>gg :Goyo<CR> :Limelight!!<CR> :<CR><ESC>
 " open NERDTree automatically when vim starts up on opening a directory
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
-map - :NERDTreeToggle<CR>
+map - :NERDTreeFind<CR>
 " close vim if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 let NERDTreeChDirMode=2
@@ -336,6 +337,7 @@ let NERDTreeQuitOnOpen=1
 let NERDTreeWinPos="right"
 let NERDTreeMinimalUI=1
 let NERDTreeAutoDeleteBuffer=1
+let NERDTreeShowHidden=1
 
 "  }
 
