@@ -38,11 +38,6 @@ sudo add-apt-repository ppa:linrunner/tlp
 # NodeJS
 curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
 
-# add docker gpg key
-sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
-# add the docker repository
-sudo apt-add-repository 'deb https://apt.dockerproject.org/repo ubuntu-xenial main'
-
 # Apt
 sudo apt remove --purge vim # necessary to install vim with lua support
 sudo apt update
@@ -81,8 +76,6 @@ sudo apt install -y \
      ruby-dev \
      make \
      gcc \
-     vagrant \
-     virtualbox \
      bridge-utils \
      gnupg2 \
      inetutils-traceroute \
@@ -90,11 +83,9 @@ sudo apt install -y \
      splint \
      dos2unix \
      openvpn \
-     spotify-client \
      vim-gnome \
      vim-nox \
      gdebi \
-     haveged \
      lua5.3 \
      luarocks \
      cmus \
@@ -107,8 +98,6 @@ sudo apt install -y \
 wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
 # zsh syntax highlighting
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting"
-# zsh history substring search
-wget https://raw.githubusercontent.com/zsh-users/zsh-history-substring-search/master/zsh-history-substring-search.zsh
 
 # Go
 export GO_VERSION=1.9
@@ -131,19 +120,8 @@ go get -u -v github.com/golang/lint/golint
 go get -u -v github.com/golang/dep/...
 go get -u -v github.com/mitchellh/gox
 go get -u -v github.com/tcnksm/ghr
-go get -u -v github.com/ChimeraCoder/gojson/gojson
-go get -u -v github.com/odeke-em/drive/cmd/drive
 go get -u -v golang.org/x/review/git-codereview
 go get -u -v honnef.co/go/tools/cmd/staticcheck
-go get -u -v github.com/asciimoo/wuzz
-go get -u -v github.com/google/gopacket
-
-# docker
-apt-cache policy docker-engine
-sudo apt-get install -y docker-engine
-sudo systemctl status docker
-# execute the docker command without sudo
-"sudo usermod -aG docker $(whoami)"
 
 # fzf
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
@@ -151,14 +129,6 @@ echo "run ~/.fzf/install"
 
 # Rust
 curl https://sh.rustup.rs -sSf | sh
-
-# Exercism
-export EXERCISM_VERSION=2.3.0
-wget https://github.com/exercism/cli/releases/download/v${EXERCISM_VERSION}/exercism-linux-64bit.tgz
-tar -xzvf exercism-linux-64bit.tgz
-mv exercism /usr/local/bin/
-rm exercism-linux-64bit.tgz
-exercism configure --dir=~/Dropbox/code/exercism
 
 # Python
 sudo apt -y install python-pip \
@@ -171,11 +141,6 @@ pip3 install -r ~/dotfiles/requirements3.txt
 
 # npm
 sudo npm install -g diff-so-fancy
-sudo npm install -g netlify-cli
-sudo npm install -g jasmine-node
-sudo npm install -g gulp-cli
-sudo npm install -g trash-cli
-sudo npm install -g empty-trash-cli
 
 # RVM
 gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
@@ -184,21 +149,10 @@ gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB8
 # Rubygems
 sudo gem install tmuxinator
 
-# Tor Browser
-export TOR_VERSION=6.0.5
-sudo wget https://www.torproject.org/dist/torbrowser/${TOR_VERSION}/tor-browser-linux64-${TOR_VERSION}_en-US.tar.xz
-tar -xvJf ~/Downloads/tor-browser-linux64-${TOR_VERSION}_en-US.tar.xz
-rm tor-browser-linux64-${TOR_VERSION}_en-US.tar.xz
-
 # Private Internet Access VPN
 cd /etc/openvpn
 sudo wget https://www.privateinternetaccess.com/openvpn/openvpn.zip
 sudo unzip openvpn.zip
-
-# Keybase
-curl -O https://prerelease.keybase.io/keybase_amd64.deb
-sudo dpkg -i keybase_amd64.deb
-sudo apt-get install -f
 
 # Base16 colorscheme
 git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
@@ -247,4 +201,3 @@ chsh -s "$(which zsh)"
 
 # change colourscheme
 base16-eighties
-
