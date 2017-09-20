@@ -91,7 +91,8 @@ sudo apt install -y \
      cmus \
      clang \
      libclang-dev \
-     clang-format
+     clang-format \
+     rofi
 
 # ZSH
 # oh-my-zsh

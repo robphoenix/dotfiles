@@ -5,3 +5,4 @@
 # scale dpi
 xrandr  --output HDMI1 --scale 1.8x1.8
 xrandr  --output eDP1 --dpi 184/eDP1 --mode 3200x1800
+# xrandr --output HDMI1 --mode 1920x1080 --pos 0x0 --rotate normal --output VIRTUAL1 --off --output eDP1 --primary --mode 3200x1800 --pos 104x1944 --rotate normal

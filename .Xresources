@@ -1,6 +1,19 @@
-! Base16 Eighties
-! Scheme: Chris Kempson (http://chriskempson.com)
+! ------------------------------------------------------------------------------
+! ROFI Color theme
+! ------------------------------------------------------------------------------
+rofi.font: Input 24
+rofi.hide-scrollbar: true
+rofi.color-enabled: true
+rofi.fuzzy: true
+rofi.color-window: #f2f0ec, #f2f0ec, #2d2d2d
+rofi.color-normal: #f2f0ec, #2d2d2d, #d3d0c8, #747369, #f2f0ec
+rofi.color-active: #f2f0ec, #6699cc, #d3d0c8, #6699cc, #fdf6e3
+rofi.color-urgent: #f2f0ec, #f2777a, #d3d0c8, #f2777a, #f2f0ec! Base16 Eighties
 
+! ------------------------------------------------------------------------------
+! URxvt Colour theme
+! Base16 Eighties Scheme: Chris Kempson (http://chriskempson.com)
+! ------------------------------------------------------------------------------
 URxvt*background:                     #393939
 URxvt*foreground:                     #d3d0c8
 URxvt*cursorColor:                    #d3d0c8
