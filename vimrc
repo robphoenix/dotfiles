@@ -351,14 +351,15 @@ let g:ale_sign_column_always = 1
 
 " --> vim-grepper {
 
+nnoremap <leader>s :Grepper<cr>
 let g:grepper = {}            " initialize g:grepper with empty dictionary
 runtime autoload/grepper.vim  " initialize g:grepper with default values
 let g:grepper.highlight = 1
 let g:grepper.simple_prompt = 1
 let g:grepper.tools = ['rg', 'pt', 'git']
-let g:grepper.dir = 'repo,file'
-nnoremap <leader>s :Grepper<cr>
-let g:grepper.next_tool = '<leader>s'
+let g:grepper.dir = 'cwd'
+let g:grepper.side = 1
+let g:grepper.next_tool = '<tab>'
 
 "  }
 
