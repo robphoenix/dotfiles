@@ -12,18 +12,23 @@
 #
 ## Colours ##################################################################
 #
-# black, red, green, yellow, *blue, magenta, cyan, and white.
+# black, red, green, yellow, blue, magenta, cyan, and white.
 # Modify the colors and symbols in these variables as desired.
 #
 ## Prompt format ############################################################
 #
 # DIRECTORY [git:BRANCH STATE] (VIRTUALENV) VI-MODE
-# > COMMAND                                             [LAST_EXIT_CODE]
+# > COMMAND
 #
-# For example:
+# For example, with a modified file and stashes, in vi normal mode:
 #
-# python/diffios [master ≡ +0 ~1 -0] (diffios) N
-# >                                                     [127]
+# ~/dotfiles [master ≡ +0 ~1 -0]* ◯
+# >
+#
+# And, with a clean repo, in vi insert mode:
+#
+# ~/dotfiles [master ≡]
+# >
 #
 #############################################################################
 
@@ -43,11 +48,11 @@ function virtualenv_info {
 function zle-line-init zle-keymap-select {
     NORMAL_MODE="%{$bg[black]$fg[white]%}◯ %{$reset_color%}"
     PROMPT="
-%{$fg[green]%}%5~\
+%{$fg[white]%}%3~\
 $(__posh_git_echo)\
 %{$fg[magenta]%}\$(virtualenv_info) \
 ${${KEYMAP/vicmd/\$NORMAL_MODE}/(main|viins)/}
-%{$fg[magenta]%}> \
+%{$fg[white]%}> \
 %{$reset_color%}"
   zle reset-prompt
 }
