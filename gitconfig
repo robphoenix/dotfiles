@@ -57,7 +57,7 @@
     # simple log
     l = log --oneline --decorate --pretty=format:"\\ %C(green)%<(25,trunc)%an\\ %C(cyan)%<(20,trunc)%ar\\ %C(yellow)%<(70,trunc)%s\\ %C(red)%h"
     # Color graph detailed log view
-	gl = log --graph --color --decorate --tags --stat --pretty=format:"%C(yellow)%H%C(green)%d%C(reset)%n%x20%cd%n%x20%cn%x20(%ce)%n%x20%s%n"
+	gl = log --graph --color --decorate --stat --pretty=format:"%C(yellow)%H%C(green)%d%C(reset)%n%x20%cd%n%x20%cn%x20(%ce)%n%x20%s%n"
 
     # use diff-so-fancy https://github.com/so-fancy/diff-so-fancy
     d = "!f() { [ -z \"$GIT_PREFIX\" ] || cd \"$GIT_PREFIX\" && git diff --color \"$@\" | diff-so-fancy  | less --tabs=4 -RFX; }; f"
