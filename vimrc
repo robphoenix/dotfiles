@@ -12,6 +12,7 @@ Plug 'godlygeek/tabular'                " text alignment
 Plug 'godoctor/godoctor.vim'            " Go refactoring
 Plug 'honza/vim-snippets'               " Code snippets
 Plug 'jmcantrell/vim-virtualenv'        " Python Virtualenvs
+Plug 'jreybert/vimagit'
 Plug 'junegunn/goyo.vim'                " distraction free writing
 Plug 'junegunn/limelight.vim'           " section highlighting
 Plug 'majutsushi/tagbar'                " Source Code Browser
@@ -322,6 +323,13 @@ nmap <leader>gg :Goyo<CR> :Limelight!!<CR> :<CR><ESC>
 " }
 
 " --> Plugins {
+
+" --> vimagit {
+
+let g:magit_show_help=0
+let g:magit_default_show_all_files=0
+
+"  }
 
 " --> NERDTree {
 
