@@ -7,9 +7,10 @@
 [alias]
 
     s = status -s
-    c = commit -S -m
+    c = commit -m
     # Commit all changes
     ca = !git add -A && git commit -av
+    a = add -v
     aa = add --all
     p = push
     po = push origin
