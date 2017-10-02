@@ -16,8 +16,9 @@ alias restart="sudo reboot now"
 alias open="xdg-open"
 alias gpg="gpg2"
 alias music="cmus"
-alias home="xrandr --output HDMI1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output VIRTUAL1 --off --output eDP1 --mode 3200x1800 --pos 152x2056 --rotate normal"
-alias laptop="xrandr --output eDP1 --dpi 184/eDP1 --mode 3200x1800 --pos 152x2056 --rotate normal"
+# external monitor at home, and disable touchpad
+alias home="xrandr --output HDMI1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output VIRTUAL1 --off --output eDP1 --mode 3200x1800 --pos 152x2056 --rotate normal && xinput --disable 14"
+alias laptop="xrandr --output eDP1 --dpi 184/eDP1 --mode 3200x1800 --pos 152x2056 --rotate normal && xinput --enable 14"
 # wifi
 alias lswifi="nmcli d wifi list"
 # usb
