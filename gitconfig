@@ -7,7 +7,7 @@
 [alias]
 
     s = status -s
-    c = commit -m
+    c = commit -v
     # Commit all changes
     ca = !git add -A && git commit -av
     a = add -v
