@@ -9,7 +9,7 @@ HISTCONTROL=ignoredups:ignorespace
 HISTFILE=$HOME/.zsh_history
 HISTSIZE=2000
 
-plugins=(z virtualenvwrapper ssh-agent gpg-agent zsh-syntax-highlighting colored-man-pages tmuxinator)
+plugins=(z zsh-autosuggestions ssh-agent gpg-agent zsh-syntax-highlighting colored-man-pages tmuxinator)
 
 source $ZSH/oh-my-zsh.sh
 source ~/dotfiles/git-prompt.sh
