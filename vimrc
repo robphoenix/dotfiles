@@ -35,6 +35,7 @@ Plug 'tpope/vim-unimpaired'             " pairs of handy bracket mappings
 Plug 'tpope/vim-capslock'               " Software caps lock
 Plug 'tpope/vim-surround'               " Add quotes/parenthesis etc.
 Plug 'tpope/vim-fugitive'               " Git wrapper
+Plug 'vimlab/split-term.vim'            " Easier Neovim :terminal
 Plug 'vim-airline/vim-airline'          " Sweet statusline
 Plug 'vim-airline/vim-airline-themes'   " Sweet statusline themes
 Plug 'vim-scripts/TaskList.vim'         " list TODOs
@@ -140,16 +141,7 @@ if has('nvim')
     set inccommand=split
 
     " integrated zsh terminal
-    nnoremap <A-z> :term<CR>
-
-    " escape from the Neovim terminal.
-    tnoremap <c-e> <C-\><C-n>
-
-    " Make navigation into and out of Neovim terminal splits nicer.
-    tnoremap <C-h> <C-\><C-N><C-w>h
-    tnoremap <C-j> <C-\><C-N><C-w>j
-    tnoremap <C-k> <C-\><C-N><C-w>k
-    tnoremap <C-l> <C-\><C-N><C-w>l
+    nnoremap <A-z> :VTerm
 
     " Prefer Neovim terminal insert mode to normal mode.
     autocmd BufEnter term://* startinsert
@@ -290,6 +282,9 @@ nnoremap <leader>l :lclose<CR>
 " Make
 nnoremap <a-m> :make<CR>
 
+" build current C program, output has same name
+autocmd FileType c nnoremap <silent> <leader>cb :!clear;gcc % -o %:r.out<CR>
+
 " Some helpers to edit mode
 " http://vimcasts.org/e/14
 cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
@@ -306,9 +301,6 @@ nnoremap <silent> <a-h> :vertical resize +10<cr>
 nnoremap <silent> <a-l> :vertical resize -10<cr>
 nnoremap <silent> <a-j> :res +10<cr>
 nnoremap <silent> <a-k> :res -10<cr>
-
-" build current C program, output has same name
-autocmd FileType c nnoremap <silent> <leader>cb :!clear;gcc % -o %:r.out<CR>
 
 " navigating commands history
 cnoremap <c-k> <Up>
@@ -547,7 +539,7 @@ set updatetime=100
 
 au FileType go nmap <leader>gi <Plug>(go-info)
 au FileType go nmap <leader>gb <Plug>(go-build)
-au FileType go nmap <leader>gt <Plug>(go-test)
+au FileType go nmap <leader>gt :VTerm gotest -v -cover<CR>
 au FileType go nmap <leader>gl <Plug>(go-metalinter)
 au FileType go nmap <leader>gd :GoDecls<CR>
 au FileType go nmap <leader>gs :GoDeclsDir<CR>
