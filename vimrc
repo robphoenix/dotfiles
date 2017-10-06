@@ -2,54 +2,54 @@
 
 call plug#begin()
 
-Plug 'airblade/vim-gitgutter'           " Gutter markers for Git
-Plug 'cespare/vim-toml'                 " TOML
-Plug 'chriskempson/base16-vim'          " Base16 colourscheme
-Plug 'ctrlpvim/ctrlp.vim'               " fuzzy finder
-Plug 'elzr/vim-json'                    " JSON
-Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' } " Go development
-Plug 'godlygeek/tabular'                " text alignment
-Plug 'godoctor/godoctor.vim'            " Go refactoring
-Plug 'honza/vim-snippets'               " Code snippets
-Plug 'jmcantrell/vim-virtualenv'        " Python Virtualenvs
-Plug 'jreybert/vimagit'
-Plug 'junegunn/goyo.vim'                " distraction free writing
-Plug 'junegunn/limelight.vim'           " section highlighting
-Plug 'majutsushi/tagbar'                " Source Code Browser
-Plug 'mattn/emmet-vim'                  " HTML
-Plug 'mbbill/undotree'                  " undo history visualizer
-Plug 'mhinz/vim-sayonara'               " Easy buffer closing
-Plug 'mhinz/vim-grepper'                " easy grepping
-Plug 'mhinz/vim-startify'               " fancy start screen
-Plug 'ntpeters/vim-better-whitespace'   " better whitespace highlighting and removal
-Plug 'pearofducks/ansible-vim'          " Ansible
-Plug 'plasticboy/vim-markdown'          " Markdown
-Plug 'Raimondi/delimitMate'             " Auto-insert closing delimiters
-Plug 'rhysd/vim-clang-format'           " C formatting
-Plug 'robertmeta/nofrils'               " minimal syntax highlighting
-Plug 'Rykka/riv.vim'                    " reStructured Text
-Plug 'scrooloose/nerdcommenter'         " Commenting
-Plug 'scrooloose/nerdtree'              " tree explorer
-Plug 'SirVer/ultisnips'                 " Code snippets
-Plug 'tpope/vim-unimpaired'             " pairs of handy bracket mappings
-Plug 'tpope/vim-capslock'               " Software caps lock
-Plug 'tpope/vim-surround'               " Add quotes/parenthesis etc.
-Plug 'tpope/vim-fugitive'               " Git wrapper
-Plug 'vimlab/split-term.vim'            " Easier Neovim :terminal
-Plug 'vim-airline/vim-airline'          " Sweet statusline
-Plug 'vim-airline/vim-airline-themes'   " Sweet statusline themes
-Plug 'vim-scripts/TaskList.vim'         " list TODOs
-Plug 'w0rp/ale'                         " linter
+Plug 'airblade/vim-gitgutter'                        " gutter markers for Git
+Plug 'cespare/vim-toml'                              " TOML
+Plug 'chriskempson/base16-vim'                       " base16 colourscheme
+Plug 'ctrlpvim/ctrlp.vim'                            " fuzzy finder
+Plug 'elzr/vim-json'                                 " JSON
+Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }  " go development
+Plug 'gabrielelana/vim-markdown'                     " markdown support
+Plug 'godlygeek/tabular'                             " text alignment
+Plug 'godoctor/godoctor.vim'                         " go refactoring
+Plug 'honza/vim-snippets'                            " code snippets
+Plug 'jmcantrell/vim-virtualenv'                     " python virtualenvs
+Plug 'jreybert/vimagit'                              " emacs magit mode
+Plug 'junegunn/goyo.vim'                             " distraction free writing
+Plug 'majutsushi/tagbar'                             " source code browser
+Plug 'mattn/emmet-vim'                               " HTML
+Plug 'mbbill/undotree'                               " undo history visualizer
+Plug 'mhinz/vim-sayonara'                            " easy buffer closing
+Plug 'mhinz/vim-grepper'                             " easy grepping
+Plug 'mhinz/vim-startify'                            " fancy start screen
+Plug 'ntpeters/vim-better-whitespace'                " better whitespace highlighting and removal
+Plug 'pearofducks/ansible-vim'                       " ansible
+Plug 'Raimondi/delimitMate'                          " auto-insert closing delimiters
+Plug 'reedes/vim-colors-pencil'
+Plug 'rhysd/vim-clang-format'                        " C formatting
+Plug 'robertmeta/nofrils'                            " minimal syntax highlighting
+Plug 'Rykka/riv.vim'                                 " reStructured Text
+Plug 'scrooloose/nerdcommenter'                      " commenting
+Plug 'scrooloose/nerdtree'                           " tree explorer
+Plug 'SirVer/ultisnips'                              " code snippets
+Plug 'tpope/vim-unimpaired'                          " pairs of handy bracket mappings
+Plug 'tpope/vim-capslock'                            " software caps lock
+Plug 'tpope/vim-surround'                            " add quotes/parenthesis etc.
+Plug 'tpope/vim-fugitive'                            " git wrapper
+Plug 'vimlab/split-term.vim'                         " easier Neovim :terminal
+Plug 'vim-airline/vim-airline'                       " sweet statusline
+Plug 'vim-airline/vim-airline-themes'                " sweet statusline themes
+Plug 'vim-scripts/TaskList.vim'                      " list TODOs
+Plug 'w0rp/ale'                                      " linter
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
 if has('nvim')
-    Plug 'jodosha/vim-godebug'          " Go debugging
-    Plug 'Rip-Rip/clang_complete'       " C autocomplete
-    Plug 'Shougo/deoplete.nvim'         " NeoVim autocomplete
-    Plug 'zchee/deoplete-jedi'          " Python autocomplete
-    Plug 'zchee/deoplete-go', { 'do': 'make'}
+    Plug 'jodosha/vim-godebug'                       " go debugging
+    Plug 'Rip-Rip/clang_complete'                    " C autocomplete
+    Plug 'Shougo/deoplete.nvim'                      " neovim autocomplete
+    Plug 'zchee/deoplete-jedi'                       " python autocomplete
+    Plug 'zchee/deoplete-go', { 'do': 'make'}        " go autocomplete
 else
-    Plug 'Shougo/neocomplete.vim'       " Vim autocomplete
+    Plug 'Shougo/neocomplete.vim'                    " Vim autocomplete
 endif
 
 call plug#end()
@@ -60,14 +60,6 @@ call plug#end()
 
 set nocompatible    " be iMproved, required
 set listchars=eol:$,tab:▸\,
-
-" Colourscheme
-set t_Co=256        " ensure vim uses 256 colours, just in case TERM is not xterm-256color
-syntax enable
-set background=dark
-let base16colorspace=256  " Access colors present in 256 colorspace
-colorscheme base16-default-dark
-
 set modifiable                     " make a buffer modifiable
 set noruler                        " don't show the cursor position all the time
 set showcmd                        " show partial commands in status line and selected characters/lines in visual mode
@@ -79,7 +71,7 @@ set splitright                     " Split vertical windows right to the current
 set splitbelow                     " Split horizontal windows below to the current windows
 set autoread                       " Automatically reread changed files without asking me anything
 set norelativenumber               " no relative line numbers
-set number                         " line numbers
+set nonumber                       " no line numbers
 set wildmenu                       " show list instead of just completing
 set wildmode=longest,list:longest  " zsh-like autcomplete menu for Ex commands
 set wildignore+=*/.git/*,*/tmp/*,*.swp
@@ -156,8 +148,17 @@ set omnifunc=syntaxcomplete#Complete
 " save no history or bookmarks in netrw
 let g:netrw_dirhistmax = 0
 
+" Colourscheme
+set t_Co=256        " ensure vim uses 256 colours, just in case TERM is not xterm-256color
+syntax enable
+set background=dark
+let base16colorspace=256  " Access colors present in 256 colorspace
+colorscheme base16-default-dark
+
 " Markdown settings
 au Bufread,BufNewFile *.md setlocal filetype=markdown textwidth=80 wrap spell wrapmargin=0
+autocmd BufEnter *.md colorscheme pencil | let g:airline_theme = 'pencil'
+autocmd BufLeave *.md colorscheme base16-default-dark | let g:airline_theme = 'base16'
 
 " gitconfig settings
 au Bufread,BufNewFile gitconfig setlocal filetype=.gitconfig
@@ -285,13 +286,6 @@ nnoremap <a-m> :make<CR>
 " build current C program, output has same name
 autocmd FileType c nnoremap <silent> <leader>cb :!clear;gcc % -o %:r.out<CR>
 
-" Some helpers to edit mode
-" http://vimcasts.org/e/14
-cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
-map <leader>ew :e %%
-map <leader>es :sp %%
-map <leader>ev :vsp %%
-
 " Allow using the repeat operator with a visual selection (!)
 " http://stackoverflow.com/a/8064607/127816
 vnoremap . :normal .<CR>
@@ -310,7 +304,8 @@ cnoremap <c-j> <Down>
 nnoremap <leader>r :read !
 
 " Goyo & Limelight
-nmap <leader>gg :Goyo<CR> :Limelight!!<CR> :<CR><ESC>
+nmap <F5> :Goyo<CR>
+" :Limelight!!<CR> :<CR><ESC>
 
 " }
 
@@ -325,9 +320,6 @@ let g:magit_default_show_all_files=0
 
 " --> NERDTree {
 
-" open NERDTree automatically when vim starts up on opening a directory
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
 map - :NERDTreeFind<CR>
 " close vim if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
