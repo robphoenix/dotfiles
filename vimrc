@@ -24,7 +24,7 @@ Plug 'mhinz/vim-startify'                            " fancy start screen
 Plug 'ntpeters/vim-better-whitespace'                " better whitespace highlighting and removal
 Plug 'pearofducks/ansible-vim'                       " ansible
 Plug 'Raimondi/delimitMate'                          " auto-insert closing delimiters
-Plug 'reedes/vim-colors-pencil'
+Plug 'reedes/vim-colors-pencil'                      " colours for markdown
 Plug 'rhysd/vim-clang-format'                        " C formatting
 Plug 'robertmeta/nofrils'                            " minimal syntax highlighting
 Plug 'Rykka/riv.vim'                                 " reStructured Text
@@ -38,9 +38,13 @@ Plug 'tpope/vim-fugitive'                            " git wrapper
 Plug 'vimlab/split-term.vim'                         " easier Neovim :terminal
 Plug 'vim-airline/vim-airline'                       " sweet statusline
 Plug 'vim-airline/vim-airline-themes'                " sweet statusline themes
+Plug 'vim-erlang/vim-erlang-tags'                    " erlang Support
+Plug 'vim-erlang/vim-erlang-runtime'                 " erlang Support
+Plug 'vim-erlang/vim-erlang-omnicomplete'            " erlang Support
+Plug 'vim-erlang/vim-erlang-compiler'                " erlang Support
 Plug 'vim-scripts/TaskList.vim'                      " list TODOs
 Plug 'w0rp/ale'                                      " linter
-Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'Xuyuanp/nerdtree-git-plugin'                   " git markers in nerdtree
 
 if has('nvim')
     Plug 'jodosha/vim-godebug'                       " go debugging
