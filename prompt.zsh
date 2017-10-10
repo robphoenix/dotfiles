@@ -48,7 +48,7 @@ function virtualenv_info {
 function zle-line-init zle-keymap-select {
     NORMAL_MODE="%{$bg[black]$fg[white]%}◯ %{$reset_color%}"
     PROMPT="
-%{$fg[white]%}%3~\
+%{$fg[white]%}%1~\
 $(__posh_git_echo)\
 %{$fg[magenta]%}\$(virtualenv_info) \
 ${${KEYMAP/vicmd/\$NORMAL_MODE}/(main|viins)/}

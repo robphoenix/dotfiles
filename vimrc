@@ -133,7 +133,7 @@ if has('nvim')
     set inccommand=split
 
     " integrated zsh terminal
-    nnoremap <A-z> :VTerm
+    nnoremap <A-z> :VTerm<space>
 
     " Prefer Neovim terminal insert mode to normal mode.
     autocmd BufEnter term://* startinsert
