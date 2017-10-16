@@ -81,3 +81,6 @@ unsetopt correct # turn off spelling correction for commands
 
 # ===== Scripts and Functions
 setopt multios # perform implicit tees or cats when multiple redirections are attempted
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /home/rob/Dropbox/code/gopath/bin/gocomplete go

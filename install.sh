@@ -110,21 +110,23 @@ export PATH=$PATH:/usr/local/go/bin
 export GOPATH=$HOME/Dropbox/code/gopath
 rm go${GO_VERSION}.linux-amd64.tar.gz
 
-go get -u -v golang.org/x/tools/cmd/cover
-go get -u -v golang.org/x/tools/cmd/guru
-go get -u -v golang.org/x/tools
-go get -u -v golang.org/x/tools/cmd/gorename
-go get -u -v golang.org/x/tools/cmd/godoc
-go get -u -v golang.org/x/tools/cmd/vet
-go get -u -v golang.org/x/tools/cmd/goimports
-go get -u -v golang.org/x/tools/cmd/oracle
-go get -u -v golang.org/x/tools/cmd/gotype
-go get -u -v github.com/golang/lint/golint
-go get -u -v github.com/golang/dep/...
-go get -u -v github.com/mitchellh/gox
-go get -u -v github.com/tcnksm/ghr
-go get -u -v golang.org/x/review/git-codereview
-go get -u -v honnef.co/go/tools/cmd/staticcheck
+go get -u golang.org/x/tools/cmd/cover
+go get -u golang.org/x/tools/cmd/guru
+go get -u golang.org/x/tools
+go get -u golang.org/x/tools/cmd/gorename
+go get -u golang.org/x/tools/cmd/godoc
+go get -u golang.org/x/tools/cmd/vet
+go get -u golang.org/x/tools/cmd/goimports
+go get -u golang.org/x/tools/cmd/oracle
+go get -u golang.org/x/tools/cmd/gotype
+go get -u github.com/golang/lint/golint
+go get -u github.com/golang/dep/...
+go get -u github.com/mitchellh/gox
+go get -u github.com/tcnksm/ghr
+go get -u golang.org/x/review/git-codereview
+go get -u honnef.co/go/tools/cmd/staticcheck
+go get -u github.com/posener/complete/gocomplete
+gocomplete -y -install
 
 # fzf
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
