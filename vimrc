@@ -309,7 +309,6 @@ nnoremap <leader>r :read !
 
 " Goyo & Limelight
 nmap <F5> :Goyo<CR>
-" :Limelight!!<CR> :<CR><ESC>
 
 " }
 
@@ -334,6 +333,7 @@ let NERDTreeWinPos="right"
 let NERDTreeMinimalUI=1
 let NERDTreeAutoDeleteBuffer=1
 let NERDTreeShowHidden=1
+let NERDTreeIgnore=['\.git$', '\~$']
 
 "  }
 
@@ -515,7 +515,6 @@ let g:ansible_extra_keywords_highlight = 1
 
 let g:clang_format#auto_format=1
 let g:clang_format#auto_format_on_insert_leave=0
-let g:clang_format#code_style='llvm'
 
 "  }
 
@@ -539,7 +538,6 @@ au FileType go nmap <leader>gt :VTerm gotest -v -cover<CR>
 au FileType go nmap <leader>gl <Plug>(go-metalinter)
 au FileType go nmap <leader>gd :GoDecls<CR>
 au FileType go nmap <leader>gs :GoDeclsDir<CR>
-
 " use godoctor for refactoring
 au FileType go nmap <leader>gr :Rename<CR>
 
@@ -657,23 +655,6 @@ let g:startify_change_to_dir = 1
 let g:startify_enable_special = 0
 let g:startify_custom_indices = map(range(1,100), 'string(v:val)')
 let g:startify_custom_header = ['']
-" let g:startify_custom_header = [
-"             \ '',
-"             \ '    , __            _                          _   _',
-"             \ '   /|/  \       o  | |    |      ()           | | | |',
-"             \ '    | __/          | |  __|      /\_|_        | | | |',
-"             \ '    |   \|   |  |  |/  /  |     /  \|  |   |  |/  |/',
-"             \ '    |(__/ \_/|_/|_/|__/\_/|_/  /(__/|_/ \_/|_/|__/|__/',
-"             \ '                                              |\  |\',
-"             \ '                                              |/  |/',
-"             \ ]
-
-" }
-
-" --> vim-markdown {
-
-let g:vim_markdown_frontmatter = 1
-let g:vim_markdown_conceal = 0
 
 " }
 
