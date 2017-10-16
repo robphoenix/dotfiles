@@ -8,6 +8,7 @@ files for the following:
  * [neovim](https://neovim.io/)
  * [i3wm](https://i3wm.org/)
  * [git](https://git-scm.com/)
+ * [font](http://input.fontbureau.com/)
 
 ![cli screenshot](/images/cli-screenshot.png "Screenshot of cli")
 
