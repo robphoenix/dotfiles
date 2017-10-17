@@ -1,39 +1,23 @@
-function insert-mode () {
-    echo "
-%{$fg[blue]%}%1~ \
-$(__posh_git_echo) \
-${${KEYMAP/vicmd/\$NORMAL_MODE}/(main|viins)/}
-%{$fg[magenta]%}❯ %{$reset_color%}"
-}
-
-function normal-mode () {
-    echo "
-%{$fg[blue]%}%1~ \
-$(__posh_git_echo) \
-${${KEYMAP/vicmd/\$NORMAL_MODE}/(main|viins)/}
-%{$fg[yellow]%}❯ %{$reset_color%}"
-}
-
-function set-prompt () {
-    case ${KEYMAP} in
-      (vicmd)      PS1="$(normal-mode)" ;;
-      (main|viins) PS1="$(insert-mode)" ;;
-      (*)          PS1="$(insert-mode)" ;;
-    esac
-}
-
 function zle-line-init zle-keymap-select {
-    set-prompt
+    DIR_DEPTH="1"
+    CWD="%{$fg[blue]%}%$DIR_DEPTH~"
+    NORMAL_MODE="$fg[blue]%}❯"
+    INSERT_MODE="%{$fg[magenta]%}❯"
+    VI_MODE="${${KEYMAP/vicmd/$NORMAL_MODE}/(main|viins)/$INSERT_MODE}%{$reset_color%} "
+    PS1="
+$CWD \
+$(__posh_git_echo)
+$VI_MODE\
+"
     zle reset-prompt
 }
-
 zle -N zle-line-init
 zle -N zle-keymap-select
 
-local exit_code="%(?,,%{$fg[red]%}[%?]%{$reset_color%})"
-RPROMPT="$exit_code"
+local EXIT_CODE="%(?,,%{$fg[red]%}[%?]%{$reset_color%})"
+RPROMPT="$EXIT_CODE"
 
 # posh git status info - https://github.com/lyze/posh-git-sh
-# vi-mode indicator - https://unix.stackexchange.com/a/163645
+# vi-mode indicator - https://stackoverflow.com/a/3791786
 #
 # colours - black, red, green, yellow, blue, magenta, cyan, white.
