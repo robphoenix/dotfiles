@@ -130,7 +130,7 @@ gocomplete -y -install
 
 # fzf
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-echo "run ~/.fzf/install"
+~/.fzf/install
 
 # Rust
 curl https://sh.rustup.rs -sSf | sh
@@ -176,26 +176,26 @@ rm -rf hub-linux-amd64-${HUB_VERSION}
 rm hub-linux-amd64-${HUB_VERSION}.tgz
 
 # symlinks
-ln -snf "$HOME/Dropbox/code/gopath" "$HOME/go"
-ln -sf "$HOME/Dropbox/dotfiles/.zshenv" "$HOME/.zshenv"
-ln -sf "$HOME/Dropbox/dotfiles/.zshrc" "$HOME/.zshrc"
+ln -sf "$HOME/Dropbox/dotfiles/zshenv" "$HOME/.zshenv"
+ln -sf "$HOME/Dropbox/dotfiles/zshrc" "$HOME/.zshrc"
 ln -sf "$HOME/Dropbox/dotfiles/prompt.zsh" "$HOME/prompt.zsh"
-ln -sf "$HOME/Dropbox/dotfiles/.xsessionrc" "$HOME/.xsessionrc"
-ln -sf "$HOME/Dropbox/dotfiles/.Xresources" "$HOME/.Xresources"
+ln -sf "$HOME/Dropbox/dotfiles/xsessionrc" "$HOME/.xsessionrc"
+ln -sf "$HOME/Dropbox/dotfiles/Xresources" "$HOME/.Xresources"
 ln -sf "$HOME/Dropbox/dotfiles/gitconfig" "$HOME/.gitconfig"
-ln -sf "$HOME/Dropbox/dotfiles/fonts" "$HOME/.fonts"
-ln -sf "$HOME/Dropbox/dotfiles/.bashrc" "$HOME/.bashrc"
 ln -sf "$HOME/Dropbox/dotfiles/i3/config" "$HOME/.config/i3/config"
 ln -sf "$HOME/Dropbox/dotfiles/gitignore" "$HOME/.gitignore"
-ln -sf "$HOME/Dropbox/dotfiles/.dircolors" "$HOME/.dircolors"
 ln -sf "$HOME/Dropbox/dotfiles/rc.conf" "$HOME/.config/ranger/rc.conf"
-ln -snf "$HOME/Dropbox/dotfiles/nvim" "$HOME/.config/nvim"
-ln -snf "$HOME/Dropbox/dotfiles/vimrc" "$HOME/.config/nvim/init.vim"
 ln -sf "$HOME/Dropbox/dotfiles/aliases.zsh" "$HOME/.oh-my-zsh/custom/aliases.zsh"
 ln -sf "$HOME/Dropbox/dotfiles/functions.zsh" "$HOME/.oh-my-zsh/custom/functions.zsh"
 ln -sf "$HOME/Dropbox/dotfiles/secrets.zsh" "$HOME/.oh-my-zsh/custom/secrets.zsh"
-ln -sf "$HOME/Dropbox/dotfiles/.gnupg/gpg.conf" "$HOME/.gnupg/gpg.conf"
-ln -sf "$HOME/Dropbox/dotfiles/.gnupg/gpg-agent.conf" "$HOME/.gnupg/gpg-agent.conf"
+ln -sf "$HOME/Dropbox/dotfiles/gnupg/gpg.conf" "$HOME/.gnupg/gpg.conf"
+ln -sf "$HOME/Dropbox/dotfiles/gnupg/gpg-agent.conf" "$HOME/.gnupg/gpg-agent.conf"
+ln -sf "$HOME/Dropbox/dotfiles/tmux.conf" "$HOME/.tmux.conf"
+ln -sf "$HOME/Dropbox/dotfiles/tmuxinator" "$HOME/.tmuxinator"
+ln -sf "$HOME/Dropbox/dotfiles/ranger" "$HOME/.config/ranger/rc.conf"
+ln -snf "$HOME/Dropbox/dotfiles/fonts" "$HOME/.fonts"
+ln -snf "$HOME/Dropbox/dotfiles/nvim" "$HOME/.config/nvim"
+ln -snf "$HOME/Dropbox/dotfiles/vimrc" "$HOME/.config/nvim/init.vim"
 
 sudo apt autoremove
 sudo apt autoclean
