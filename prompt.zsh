@@ -22,12 +22,12 @@
 #
 # For example, with a modified file and stashes, in vi normal mode:
 #
-# ~/dotfiles [master ≡ +0 ~1 -0]* ◯
+# dotfiles [master ≡ +0 ~1 -0]* ◯
 # >
 #
 # And, with a clean repo, in vi insert mode:
 #
-# ~/dotfiles [master ≡]
+# dotfiles [master ≡]
 # >
 #
 #############################################################################
@@ -48,11 +48,11 @@ function virtualenv_info {
 function zle-line-init zle-keymap-select {
     NORMAL_MODE="%{$bg[black]$fg[white]%}◯ %{$reset_color%}"
     PROMPT="
-%{$fg[white]%}%1~\
+%{$fg[blue]%}%1~\
 $(__posh_git_echo)\
 %{$fg[magenta]%}\$(virtualenv_info) \
 ${${KEYMAP/vicmd/\$NORMAL_MODE}/(main|viins)/}
-%{$fg[white]%}> \
+%{$fg[magenta]%}❯ \
 %{$reset_color%}"
   zle reset-prompt
 }

@@ -146,8 +146,8 @@ __posh_git_echo () {
     local AfterBackgroundColor=
 
     local BranchIdenticalStatusToSymbol=$'\xE2\x89\xA1' # Three horizontal lines
-    local BranchAheadStatusSymbol=$'\xE2\x86\x91' # Up Arrow
-    local BranchBehindStatusSymbol=$'\xE2\x86\x93' # Down Arrow
+    local BranchAheadStatusSymbol=$'⇡' # Up Arrow
+    local BranchBehindStatusSymbol=$'⇣' # Down Arrow
     local BranchBehindAndAheadStatusSymbol=$'\xE2\x86\x95' # Up and Down Arrow
 
     local BranchForegroundColor=$(__posh_color '$fg[yellow]')
