@@ -72,8 +72,13 @@ fzf-down() {
   fzf --height 50% "$@" --border
 }
 
+# ga - git add
 ga() {
     git add -v $(gs)
+}
+# gd - git diff
+gd() {
+    git d $(gs)
 }
 # gs - git status
 gs() {
