@@ -20,14 +20,35 @@ plugins=(\
     )
 
 source $ZSH/oh-my-zsh.sh
-source ~/dotfiles/git-prompt.sh
-source ~/prompt.zsh
 
-# vi mode in the terminal
+# PROMPT
+#
+# git status
+# https://github.com/lyze/posh-git-sh
+source ~/dotfiles/git-prompt.sh
+# vi mode
+# https://bbs.archlinux.org/viewtopic.php?id=95078
+zle-keymap-select () {
+    if [ $KEYMAP = vicmd ]; then
+        echo -ne "\033]12;deep sky blue\007"
+    else
+        echo -ne "\033]12;slate grey\007"
+    fi
+}
+zle -N zle-keymap-select
+zle-line-init () {
+    zle -K viins
+    echo -ne "\033]12;slate grey\007"
+}
+zle -N zle-line-init
 bindkey -v
 # reduce delay after hitting <ESC>
 export KEYTIMEOUT=1
-bindkey -M viins 'jk' vi-cmd-mode
+PROMPT='
+%{$fg[blue]%}%1~ \
+$(__posh_git_echo)
+%{$fg[magenta]%}❯%{$reset_color%} '
+RPROMPT='%(?,,%{$fg[red]%}[%?]%{$reset_color%})' # exit code
 
 # fancy ctrl-z
 bindkey '^Z' fancy-ctrl-z
