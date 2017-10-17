@@ -20,7 +20,6 @@ Plug 'majutsushi/tagbar'                             " source code browser
 Plug 'mattn/emmet-vim'                               " HTML
 Plug 'mbbill/undotree'                               " undo history visualizer
 Plug 'mhinz/vim-sayonara'                            " easy buffer closing
-Plug 'mhinz/vim-grepper'                             " easy grepping
 Plug 'mhinz/vim-startify'                            " fancy start screen
 Plug 'ntpeters/vim-better-whitespace'                " better whitespace highlighting and removal
 Plug 'pearofducks/ansible-vim'                       " ansible
@@ -346,20 +345,6 @@ let g:ale_sign_column_always = 1
 
 "  }
 
-" --> vim-grepper {
-
-nnoremap <leader>s :Grepper<cr>
-let g:grepper = {}            " initialize g:grepper with empty dictionary
-runtime autoload/grepper.vim  " initialize g:grepper with default values
-let g:grepper.highlight = 1
-let g:grepper.simple_prompt = 1
-let g:grepper.tools = ['rg', 'pt', 'git']
-let g:grepper.dir = 'cwd'
-let g:grepper.side = 1
-let g:grepper.next_tool = '<tab>'
-
-"  }
-
 " --> vim-better-whitespace {
 
 highlight ExtraWhitespace ctermbg=white
@@ -373,6 +358,7 @@ let blacklist = ['markdown', 'md']
 nmap <silent> <leader>f :Files<cr>
 nmap <silent> <leader>b :Buffers<cr>
 nmap <silent> <leader>m :History<cr>
+nmap <silent> <leader>s :Find<cr>
 
 let g:fzf_colors =
 \ { 'fg':      ['fg', 'Normal'],
@@ -388,6 +374,18 @@ let g:fzf_colors =
   \ 'marker':  ['fg', 'Keyword'],
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
+
+" --column: Show column number
+" --line-number: Show line number
+" --no-heading: Do not show file headings in results
+" --fixed-strings: Search term as a literal string
+" --ignore-case: Case insensitive search
+" --no-ignore: Do not respect .gitignore, etc...
+" --hidden: Search hidden files and folders
+" --follow: Follow symlinks
+" --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
+" --color: Search color options
+command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
 
 "  }
 
