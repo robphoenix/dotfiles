@@ -90,6 +90,15 @@
 #          `git-rev-list`
 # git    | _Default_. Always compares `HEAD` to `@{upstream}`
 # svn    | Always compares `HEAD` to `SVN` upstream
+#
+# bash.enableStatusSymbol
+# -----------------------
+
+# Option | Description
+# ------ | -----------
+# true   | _Default_. Status symbols (`≡` `↑` `↓` `↕`) will be shown.
+# false  | No status symbol will be shown, saving some prompt length.
+#
 ###############################################################################
 
 # Convenience function to set PS1 to show git status. Must supply two
@@ -134,44 +143,39 @@ __posh_git_echo () {
     local DefaultForegroundColor=$(__posh_color '\e[m') # Default no color
     local DefaultBackgroundColor=
 
-    local BeforeText=' ['
-    local BeforeForegroundColor=$(__posh_color '$fg[yellow]') # Yellow
+    local BeforeText='['
+    local BeforeForegroundColor=$(__posh_color '\e[1;33m') # Yellow
     local BeforeBackgroundColor=
     local DelimText=' |'
     local DelimForegroundColor=$(__posh_color '\e[1;33m') # Yellow
     local DelimBackgroundColor=
 
     local AfterText=']'
-    local AfterForegroundColor=$(__posh_color '$fg[yellow]') # Yellow
+    local AfterForegroundColor=$(__posh_color '\e[1;33m') # Yellow
     local AfterBackgroundColor=
 
-    local BranchIdenticalStatusToSymbol=$'\xE2\x89\xA1' # Three horizontal lines
-    local BranchAheadStatusSymbol=$'⇡' # Up Arrow
-    local BranchBehindStatusSymbol=$'⇣' # Down Arrow
-    local BranchBehindAndAheadStatusSymbol=$'\xE2\x86\x95' # Up and Down Arrow
-
-    local BranchForegroundColor=$(__posh_color '$fg[yellow]')
+    local BranchForegroundColor=$(__posh_color '\e[1;36m')  # Cyan
     local BranchBackgroundColor=
-    local BranchAheadForegroundColor=$(__posh_color '$fg[cyan]')
+    local BranchAheadForegroundColor=$(__posh_color '\e[1;32m') # Green
     local BranchAheadBackgroundColor=
-    local BranchBehindForegroundColor=$(__posh_color '$fg[red]')
+    local BranchBehindForegroundColor=$(__posh_color '\e[0;31m') # Red
     local BranchBehindBackgroundColor=
-    local BranchBehindAndAheadForegroundColor=$(__posh_color '$fg[magenta]')
+    local BranchBehindAndAheadForegroundColor=$(__posh_color '\e[1;33m') # Yellow
     local BranchBehindAndAheadBackgroundColor=
 
     local BeforeIndexText=''
-    local BeforeIndexForegroundColor=$(__posh_color '$fg[green]') # Dark green
+    local BeforeIndexForegroundColor=$(__posh_color '\e[1;32m') # Dark green
     local BeforeIndexBackgroundColor=
 
-    local IndexForegroundColor=$(__posh_color '$fg[green]') # Dark green
+    local IndexForegroundColor=$(__posh_color '\e[1;32m') # Dark green
     local IndexBackgroundColor=
 
-    local WorkingForegroundColor=$(__posh_color '$fg[cyan]') # Dark red
+    local WorkingForegroundColor=$(__posh_color '\e[0;31m') # Dark red
     local WorkingBackgroundColor=
 
-    local StashForegroundColor=$(__posh_color '$fg[yellow]') # Darker blue
+    local StashForegroundColor=$(__posh_color '\e[0;34m') # Darker blue
     local StashBackgroundColor=
-    local StashText='*'
+    local StashText='$'
 
     local RebaseForegroundColor=$(__posh_color '\e[0m') # reset
     local RebaseBackgroundColor=
@@ -194,6 +198,23 @@ __posh_git_echo () {
         false) ShowStashState=false ;;
         *)     ShowStashState=true ;;
     esac
+    local EnableStatusSymbol=`git config --bool bash.enableStatusSymbol`
+    case "$EnableStatusSymbol" in
+        true)  EnableStatusSymbol=true ;;
+        false) EnableStatusSymbol=false ;;
+        *)     EnableStatusSymbol=true ;;
+    esac
+
+    local BranchIdenticalStatusSymbol=''
+    local BranchAheadStatusSymbol=''
+    local BranchBehindStatusSymbol=''
+    local BranchBehindAndAheadStatusSymbol=''
+    if $EnableStatusSymbol; then
+      BranchIdenticalStatusSymbol=$' \xE2\x89\xA1' # Three horizontal lines
+      BranchAheadStatusSymbol=$' \xE2\x86\x91' # Up Arrow
+      BranchBehindStatusSymbol=$' \xE2\x86\x93' # Down Arrow
+      BranchBehindAndAheadStatusSymbol=$' \xE2\x86\x95' # Up and Down Arrow
+    fi
 
     # these globals are updated by __posh_git_ps1_upstream_divergence
     __POSH_BRANCH_AHEAD_BY=0
@@ -343,13 +364,13 @@ __posh_git_echo () {
 
     # branch
     if (( $__POSH_BRANCH_BEHIND_BY > 0 && $__POSH_BRANCH_AHEAD_BY > 0 )); then
-        gitstring+="$BranchBehindAndAheadBackgroundColor$BranchBehindAndAheadForegroundColor$branchstring $BranchBehindAndAheadStatusSymbol"
+        gitstring+="$BranchBehindAndAheadBackgroundColor$BranchBehindAndAheadForegroundColor$branchstring$BranchBehindAndAheadStatusSymbol"
     elif (( $__POSH_BRANCH_BEHIND_BY > 0 )); then
-        gitstring+="$BranchBehindBackgroundColor$BranchBehindForegroundColor$branchstring $BranchBehindStatusSymbol"
+        gitstring+="$BranchBehindBackgroundColor$BranchBehindForegroundColor$branchstring$BranchBehindStatusSymbol"
     elif (( $__POSH_BRANCH_AHEAD_BY > 0 )); then
-        gitstring+="$BranchAheadBackgroundColor$BranchAheadForegroundColor$branchstring $BranchAheadStatusSymbol"
+        gitstring+="$BranchAheadBackgroundColor$BranchAheadForegroundColor$branchstring$BranchAheadStatusSymbol"
     else
-        gitstring+="$BranchBackgroundColor$BranchForegroundColor$branchstring $BranchIdenticalStatusToSymbol"
+        gitstring+="$BranchBackgroundColor$BranchForegroundColor$branchstring$BranchIdenticalStatusSymbol"
     fi
 
     # index status
