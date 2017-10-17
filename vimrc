@@ -5,7 +5,6 @@ call plug#begin()
 Plug 'airblade/vim-gitgutter'                        " gutter markers for Git
 Plug 'cespare/vim-toml'                              " TOML
 Plug 'chriskempson/base16-vim'                       " base16 colourscheme
-Plug 'ctrlpvim/ctrlp.vim'                            " fuzzy finder
 Plug 'elzr/vim-json'                                 " JSON
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }  " go development
 Plug 'gabrielelana/vim-markdown'                     " markdown support
@@ -15,6 +14,8 @@ Plug 'honza/vim-snippets'                            " code snippets
 Plug 'jmcantrell/vim-virtualenv'                     " python virtualenvs
 Plug 'jreybert/vimagit'                              " emacs magit mode
 Plug 'junegunn/goyo.vim'                             " distraction free writing
+Plug 'junegunn/fzf.vim'                              " fuzzy finder
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'majutsushi/tagbar'                             " source code browser
 Plug 'mattn/emmet-vim'                               " HTML
 Plug 'mbbill/undotree'                               " undo history visualizer
@@ -367,37 +368,28 @@ let blacklist = ['markdown', 'md']
 
 "  }
 
-" --> CtrlP {
+" --> fzf {
 
-" Easy bindings for its various modes
-let g:ctrlp_map = ''
-nmap <silent> <leader>f :CtrlP<cr>
-nmap <silent> <leader>b :CtrlPBuffer<cr>
-nmap <silent> <leader>m :CtrlPMRU<cr>
+nmap <silent> <leader>f :Files<cr>
+nmap <silent> <leader>b :Buffers<cr>
+nmap <silent> <leader>m :History<cr>
 
-let g:ctrlp_by_filename = 0
-let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:40'
-let g:ctrlp_show_hidden = 1
-let g:ctrlp_working_path_mode = 'r'
-let g:ctrlp_switch_buffer = 'et'    " jump to a file if it's open already
-let g:ctrlp_mruf_max=450            " number of recently opened files
-let g:ctrlp_max_files=0             " do not limit the number of searchable files
-let g:ctrlp_clear_cache_on_exit = 0
-let g:ctrlp_cache_dir = $HOME.'/.cache/ctrlp'
-let g:ctrlp_follow_symlinks = 1
-let g:ctrlp_line_prefix = '>'
-let g:ctrlp_buftag_types = {'go' : '--language-force=go --golang-types=ftv'}
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
 
-if executable('rg')
-  " set grepprg=rg\ --color=never
-  set grepprg=rg\ --vimgrep\ --no-heading
-  set grepformat=%f:%l:%c:%m,%f:%l:%m
-  let g:ctrlp_user_command = 'rg %s --files --color=never --hidden --glob ""'
-  let g:ctrlp_use_caching = 0
-endif
-
-" }
+"  }
 
 " --> vim-gitgutter {
 
