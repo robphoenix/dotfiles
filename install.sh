@@ -134,6 +134,8 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 
 # Rust
 curl https://sh.rustup.rs -sSf | sh
+cargo install ripgrep
+cargo install fd-find
 
 # Python
 sudo apt -y install python-pip \
