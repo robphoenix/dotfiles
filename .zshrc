@@ -26,6 +26,36 @@ bindkey '^Z' fancy-ctrl-z
 
 # FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# Use ;; as the trigger sequence instead of the default **
+export FZF_COMPLETION_TRIGGER=';;'
+# Options to fzf command
+export FZF_COMPLETION_OPTS='+c -x'
+# Use ag instead of the default find command for listing path candidates.
+# - The first argument to the function is the base path to start traversal
+# - See the source code (completion.{bash,zsh}) for the details.
+# - ag only lists files, so we use with-dir script to augment the output
+_fzf_compgen_path() {
+  ag -g "" "$1" | with-dir "$1"
+}
+# Use ag to generate the list for directory completion
+_fzf_compgen_dir() {
+  ag -g "" "$1" | only-dir "$1"
+}
+export FZF_DEFAULT_OPTS='--height 70% --reverse'
+export FZF_CTRL_T_OPTS="--select-1 --exit-0 --preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
+export FZF_ALT_C_OPTS="--select-1 --exit-0 --preview 'tree -C {} | head -200'"
+# Setting ag as the default source for fzf
+export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
+# To apply the command to CTRL-T as well
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview'"
+# Directly executing the command (CTRL-X CTRL-R)
+fzf-history-widget-accept() {
+  fzf-history-widget
+  zle accept-line
+}
+zle     -N     fzf-history-widget-accept
+bindkey '^X^R' fzf-history-widget-accept
 
 # Base16 colour schemes
 BASE16_SHELL=$HOME/.config/base16-shell/
