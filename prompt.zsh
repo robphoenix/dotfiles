@@ -1,67 +1,39 @@
-#############################################################################
-#
-# 2016 Rob Phoenix @bordeltabernacle
-# Heavily adapted from Yad Smood's ys.zsh-theme
-#
-## Makes use of #############################################################
-#
-#  - https://github.com/lyze/posh-git-sh
-#       (posh git status info in prompt)
-#  - https://github.com/zanshin/dotfiles/blob/master/zsh/prompt.zsh#L132
-#       (indicates when in Normal mode)
-#
-## Colours ##################################################################
-#
-# black, red, green, yellow, blue, magenta, cyan, and white.
-# Modify the colors and symbols in these variables as desired.
-#
-## Prompt format ############################################################
-#
-# DIRECTORY [git:BRANCH STATE] (VIRTUALENV) VI-MODE
-# > COMMAND
-#
-# For example, with a modified file and stashes, in vi normal mode:
-#
-# dotfiles [master ≡ +0 ~1 -0]* ◯
-# >
-#
-# And, with a clean repo, in vi insert mode:
-#
-# dotfiles [master ≡]
-# >
-#
-#############################################################################
-
-## exit code ################################################################
-
-local exit_code="%(?,,%{$fg[red]%}[%?]%{$reset_color%})"
-
-## python virtualenv info ###################################################
-
-function virtualenv_info {
-    [ $VIRTUAL_ENV ] && echo " ("`basename $VIRTUAL_ENV`")"
+function insert-mode () {
+    echo "
+%{$fg[blue]%}%1~ \
+$(__posh_git_echo) \
+${${KEYMAP/vicmd/\$NORMAL_MODE}/(main|viins)/}
+%{$fg[magenta]%}❯ %{$reset_color%}"
 }
 
-## setup vi-mode indicator in prompt ########################################
-#
+function normal-mode () {
+    echo "
+%{$fg[blue]%}%1~ \
+$(__posh_git_echo) \
+${${KEYMAP/vicmd/\$NORMAL_MODE}/(main|viins)/}
+%{$fg[yellow]%}❯ %{$reset_color%}"
+}
+
+function set-prompt () {
+    case ${KEYMAP} in
+      (vicmd)      PS1="$(normal-mode)" ;;
+      (main|viins) PS1="$(insert-mode)" ;;
+      (*)          PS1="$(insert-mode)" ;;
+    esac
+}
 
 function zle-line-init zle-keymap-select {
-    NORMAL_MODE="%{$fg[blue]%}◯ %{$reset_color%}"
-    PROMPT="
-%{$fg[blue]%}%1~ \
-$(__posh_git_echo)\
-%{$fg[magenta]%}\$(virtualenv_info) \
-${${KEYMAP/vicmd/\$NORMAL_MODE}/(main|viins)/}
-%{$fg[magenta]%}❯ \
-%{$reset_color%}"
-  zle reset-prompt
+    set-prompt
+    zle reset-prompt
 }
 
 zle -N zle-line-init
 zle -N zle-keymap-select
 
-## right prompt #############################################################
-
+local exit_code="%(?,,%{$fg[red]%}[%?]%{$reset_color%})"
 RPROMPT="$exit_code"
 
-#############################################################################
+# posh git status info - https://github.com/lyze/posh-git-sh
+# vi-mode indicator - https://unix.stackexchange.com/a/163645
+#
+# colours - black, red, green, yellow, blue, magenta, cyan, white.
