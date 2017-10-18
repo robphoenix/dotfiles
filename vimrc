@@ -236,6 +236,9 @@ nnoremap <silent> <leader>q :Sayonara<CR>
 " Fast saving
 nmap <leader>w :w!<cr>
 
+" Jump to last edited file
+nnoremap <BS> <C-^>
+
 " Remap L to move to end of line & H to move to beginning
 nnoremap L $
 vnoremap L $h
@@ -359,6 +362,11 @@ nmap <silent> <leader>f :Files<cr>
 nmap <silent> <leader>b :Buffers<cr>
 nmap <silent> <leader>m :History<cr>
 nmap <silent> <leader>s :Find<cr>
+" Insert mode completion
+imap <c-x><c-k> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+imap <c-x><c-j> <plug>(fzf-complete-file)
+imap <c-x><c-l> <plug>(fzf-complete-line)
 
 let g:fzf_colors =
 \ { 'fg':      ['fg', 'Normal'],
