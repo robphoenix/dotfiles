@@ -107,8 +107,7 @@ gb() {
 gc() {
   is_in_git_repo || return
   git log --date=short --format="%C(auto)%h%d %C(green)%ar %C(auto)%s (%an)" --graph --color=always |
-  fzf-down --ansi --no-sort --reverse --multi --bind 'ctrl-s:toggle-sort' \
-    --header 'Press CTRL-S to toggle sort' \
+  fzf-down --ansi --no-sort --reverse --multi \
     --preview 'grep -o "[a-f0-9]\{7,\}" <<< {} | xargs git show --color=always | head -'$LINES |
   grep -o "[a-f0-9]\{7,\}"
 }

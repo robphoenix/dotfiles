@@ -56,7 +56,9 @@
 	dm = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d; git remote -v update -p"
 
     # simple log
-    l = log --oneline --decorate --pretty=format:"\\ %C(green)%<(25,trunc)%an\\ %C(cyan)%<(20,trunc)%ar\\ %C(yellow)%<(70,trunc)%s\\ %C(red)%h"
+    l = log --graph --decorate --pretty=oneline --abbrev-commit
+    ll = log --graph --abbrev-commit --date=relative --pretty=format:'%C(yellow)%h%Creset %C(cyan)%cr%C(green) %an %Creset-%C(auto)%d %s'
+    lp = log -p
     # Color graph detailed log view
 	gl = log --graph --color --decorate --stat --pretty=format:"%C(yellow)%H%C(green)%d%C(reset)%n%x20%cd%n%x20%cn%x20(%ce)%n%x20%s%n"
 
