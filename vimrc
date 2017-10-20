@@ -21,6 +21,7 @@ Plug 'mattn/emmet-vim'                               " HTML
 Plug 'mbbill/undotree'                               " undo history visualizer
 Plug 'mhinz/vim-sayonara'                            " easy buffer closing
 Plug 'mhinz/vim-startify'                            " fancy start screen
+Plug 'munshkr/vim-tidal'
 Plug 'ntpeters/vim-better-whitespace'                " better whitespace highlighting and removal
 Plug 'pearofducks/ansible-vim'                       " ansible
 Plug 'Raimondi/delimitMate'                          " auto-insert closing delimiters

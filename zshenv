@@ -34,3 +34,6 @@ export CDPATH=$GOPATH/src/github.com/robphoenix:$GOPATH/src/github.com/exercism:
 
 # Exodus
 export PATH="/home/rob/Exodus-linux-x64/:$PATH"
+
+# Haskell
+export PATH="/home/rob/.local/bin:$PATH"
