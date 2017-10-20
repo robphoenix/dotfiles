@@ -16,12 +16,13 @@ Plug 'jreybert/vimagit'                              " emacs magit mode
 Plug 'junegunn/goyo.vim'                             " distraction free writing
 Plug 'junegunn/fzf.vim'                              " fuzzy finder
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'kassio/neoterm'                                " terminal REPL
 Plug 'majutsushi/tagbar'                             " source code browser
 Plug 'mattn/emmet-vim'                               " HTML
 Plug 'mbbill/undotree'                               " undo history visualizer
 Plug 'mhinz/vim-sayonara'                            " easy buffer closing
 Plug 'mhinz/vim-startify'                            " fancy start screen
-Plug 'munshkr/vim-tidal'
+Plug 'munshkr/vim-tidal'                             " tidalcycles
 Plug 'ntpeters/vim-better-whitespace'                " better whitespace highlighting and removal
 Plug 'pearofducks/ansible-vim'                       " ansible
 Plug 'Raimondi/delimitMate'                          " auto-insert closing delimiters
@@ -136,10 +137,6 @@ filetype plugin indent on
 if has('nvim')
     " incremental command live feedback
     set inccommand=split
-
-    " integrated zsh terminal
-    nnoremap <A-z> :VTerm<space>
-
     " Prefer Neovim terminal insert mode to normal mode.
     autocmd BufEnter term://* startinsert
 endif
@@ -159,6 +156,8 @@ syntax enable
 set background=dark
 let base16colorspace=256  " Access colors present in 256 colorspace
 colorscheme base16-default-dark
+
+au VimEnter,BufRead,BufNewFile *.tidal set filetype=haskell.tidal
 
 " Markdown settings
 au Bufread,BufNewFile *.md setlocal filetype=markdown textwidth=80 wrap spell wrapmargin=0
@@ -227,6 +226,19 @@ nnoremap <C-J> <C-W>j
 nnoremap <C-K> <C-W>k
 nnoremap <C-L> <C-W>l
 nnoremap <C-H> <C-W>h
+
+" Neovim terminal
+if has('nvim')
+    " integrated zsh terminal
+    nnoremap <A-z> :VTerm<space>
+    " escape from the Neovim terminal.
+    tnoremap <ESC> <C-\><C-n>
+    " Make navigation into and out of Neovim terminal splits nicer.
+    tnoremap <C-h> <C-\><C-N><C-w>h
+    tnoremap <C-j> <C-\><C-N><C-w>j
+    tnoremap <C-k> <C-\><C-N><C-w>k
+    tnoremap <C-l> <C-\><C-N><C-w>l
+endif
 
 " mute highlighting
 nnoremap <silent> <leader>/ :nohlsearch<CR>
@@ -317,6 +329,17 @@ nmap <F5> :Goyo<CR>
 " }
 
 " --> Plugins {
+
+" --> neoterm {
+
+nnoremap <silent> <leader>tt :T tidal<cr>
+nnoremap <silent> <leader>tf :TREPLSendFile<cr>
+nnoremap <silent> <leader>tl :TREPLSendLine<cr>
+vnoremap <silent> <leader>ts :TREPLSendSelection<cr>
+
+let g:neoterm_autoscroll=1
+
+"  }
 
 " --> vimagit {
 
