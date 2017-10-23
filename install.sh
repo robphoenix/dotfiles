@@ -148,6 +148,7 @@ pip3 install -r ~/dotfiles/requirements3.txt
 
 # npm
 sudo npm install -g diff-so-fancy
+sudo npm install -g tldr
 
 # RVM
 gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
