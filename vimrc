@@ -22,6 +22,7 @@ Plug 'mattn/emmet-vim'                               " HTML
 Plug 'mbbill/undotree'                               " undo history visualizer
 Plug 'mhinz/vim-sayonara'                            " easy buffer closing
 Plug 'mhinz/vim-startify'                            " fancy start screen
+Plug 'mileszs/ack.vim'                               " search
 Plug 'munshkr/vim-tidal'                             " tidalcycles
 Plug 'ntpeters/vim-better-whitespace'                " better whitespace highlighting and removal
 Plug 'pearofducks/ansible-vim'                       " ansible
@@ -37,6 +38,7 @@ Plug 'tpope/vim-unimpaired'                          " pairs of handy bracket ma
 Plug 'tpope/vim-capslock'                            " software caps lock
 Plug 'tpope/vim-surround'                            " add quotes/parenthesis etc.
 Plug 'tpope/vim-fugitive'                            " git wrapper
+Plug 'tpope/vim-rhubarb'                             " enable :Gbrowse
 Plug 'vimlab/split-term.vim'                         " easier Neovim :terminal
 Plug 'vim-airline/vim-airline'                       " sweet statusline
 Plug 'vim-airline/vim-airline-themes'                " sweet statusline themes
@@ -77,7 +79,7 @@ set splitright                     " Split vertical windows right to the current
 set splitbelow                     " Split horizontal windows below to the current windows
 set autoread                       " Automatically reread changed files without asking me anything
 set norelativenumber               " no relative line numbers
-set nonumber                       " no line numbers
+set number                         " line numbers
 set wildmenu                       " show list instead of just completing
 set wildmode=longest,list:longest  " zsh-like autcomplete menu for Ex commands
 set wildignore+=*/.git/*,*/tmp/*,*.swp
@@ -330,6 +332,12 @@ nmap <F5> :Goyo<CR>
 
 " --> Plugins {
 
+" --> ack.vim {
+
+let g:ackprg='rg --vimgrep --no-heading'
+
+"  }
+
 " --> neoterm {
 
 nnoremap <silent> <leader>tt :T tidal<cr>
@@ -508,16 +516,18 @@ let g:airline_symbols.maxlinenr = ''
 let g:airline_symbols.spell = 'Ꞩ'
 let g:airline_symbols.paste = 'ρ'
 let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
-let g:airline#extensions#branch#enabled = 1
-let g:airline#extensions#hunks#enabled=0
+let g:airline#extensions#branch#enabled=0
+let g:airline#extensions#hunks#enabled=1
+let g:airline#extensions#hunks#non_zero_only=1
 let g:airline#extensions#syntastic#enabled = 0
 let g:airline_skip_empty_sections = 1
 let g:airline#extensions#tagbar#flags = 'f'
 let g:airline#extensions#ctrlp#show_adjacent_modes = 0
 let g:airline#extensions#ctrlp#color_template = 'normal'
 let g:airline#extensions#capslock#enabled = 1
+let g:airline#extensions#vimagit#enabled=1
+let g:airline#extensions#ale#enabled=1
 
-" let g:airline_section_b = ''
 let g:airline_section_c = '%t'
 let g:airline_section_x = ''
 let g:airline_section_z = ''
