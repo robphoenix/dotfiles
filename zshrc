@@ -2,6 +2,8 @@ export ZSH=$HOME/.oh-my-zsh
 
 HYPHEN_INSENSITIVE="true"
 DISABLE_AUTO_TITLE="true"
+DISABLE_AUTO_UPDATE="true"
+DISABLE_UPDATE_PROMPT="true"
 ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
 HIST_STAMPS="dd.mm.yyyy"
@@ -11,13 +13,11 @@ HISTSIZE=2000
 
 plugins=(\
     colored-man-pages \
-    gpg-agent \
     ssh-agent \
-    tmuxinator \
     z \
     zsh-autosuggestions \
     zsh-syntax-highlighting \
-    )
+)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -97,9 +97,9 @@ autoload -Uz compinit && compinit
 # tmuxinator
 source ~/dotfiles/tmuxinator.zsh
 
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
-source ~/.rvm/scripts/rvm
+# # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+# export PATH="$PATH:$HOME/.rvm/bin"
+# source ~/.rvm/scripts/rvm
 
 # Set Options
 
