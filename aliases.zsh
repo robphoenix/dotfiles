@@ -56,7 +56,7 @@ alias exf="exercism fetch"
 alias exs="exercism submit"
 # vim/neovim
 alias vi="nvim"
-alias df="nvim ~/dotfiles"
+alias dot="nvim ~/dotfiles"
 alias factoryvim="vim -u ~/dotfiles/.vim/essential.vim"
 # ranger
 alias rng="ranger"
