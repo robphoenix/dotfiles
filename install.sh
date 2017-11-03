@@ -4,19 +4,9 @@
 # basically ripped off from the inimitable Jessie Frazelle
 # https://github.com/jfrazelle/dotfiles/blob/master/bin/install.sh
 
-TODO: update dir creation
-# mkdir ~/code
-# mkdir ~/code/go
-# mkdir ~/code/go/src
-# mkdir ~/code/go/pkg
-# mkdir ~/code/go/bin
-# mkdir ~/code/python
-# mkdir ~/code/lua
-# mkdir ~/code/C
-# mkdir ~/code/ansible
-# mkdir -p "${XDG_CONFIG_HOME:=$HOME/.config}"
-# mkdir ~/.config/i3
-# mkdir ~/.config/ranger
+mkdir -p ~/code/go/{src,pkg,bin}
+mkdir ~/code/{python,lua,C}
+mkdir -p "${XDG_CONFIG_HOME:=$HOME/.config}/{i3,ranger}"
 
 # turn off translations, speed up apt-get update
 mkdir -p /etc/apt/apt.conf.d
@@ -102,7 +92,7 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "${ZSH_CUSTOM
 git clone git://github.com/zsh-users/zsh-autosuggestions "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions"
 
 # Go
-export GO_VERSION=1.9
+export GO_VERSION=1.9.2
 curl -O https://storage.googleapis.com/golang/go${GO_VERSION}.linux-amd64.tar.gz
 sudo tar -C /usr/local -xzf go${GO_VERSION}.linux-amd64.tar.gz
 export PATH=$PATH:/usr/local/go/bin
@@ -126,6 +116,7 @@ go get -u golang.org/x/review/git-codereview
 go get -u honnef.co/go/tools/cmd/staticcheck
 go get -u github.com/posener/complete/gocomplete
 gocomplete -y -install
+go get -u github.com/github/hub
 
 # fzf
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
@@ -166,16 +157,6 @@ git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shel
 
 # LuaRocks
 sudo luarocks install busted
-
-# GitHub Hub
-export HUB_VERSION=2.3.0-pre9
-wget https://github.com/github/hub/releases/download/v${HUB_VERSION}/hub-linux-amd64-${HUB_VERSION}.tgz
-tar zxvf hub-linux-amd64-${HUB_VERSION}.tgz
-sudo ./hub-linux-amd64-${HUB_VERSION}/install
-mkdir -p ~/.zsh/completions
-mv ./hub-linux-amd64-${HUB_VERSION}/etc/hub.zsh_completion ~/.zsh/completions/_hub
-rm -rf hub-linux-amd64-${HUB_VERSION}
-rm hub-linux-amd64-${HUB_VERSION}.tgz
 
 # symlinks
 ln -sf "$HOME/Dropbox/dotfiles/zshenv" "$HOME/.zshenv"
