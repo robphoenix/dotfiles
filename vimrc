@@ -23,7 +23,6 @@ Plug 'mhinz/vim-startify'                            " fancy start screen
 Plug 'mileszs/ack.vim'                               " search
 Plug 'munshkr/vim-tidal'                             " tidalcycles
 Plug 'ntpeters/vim-better-whitespace'                " better whitespace highlighting and removal
-Plug 'pearofducks/ansible-vim'                       " ansible
 Plug 'Raimondi/delimitMate'                          " auto-insert closing delimiters
 Plug 'reedes/vim-colors-pencil'                      " colours for markdown
 Plug 'rhysd/vim-clang-format'                        " C formatting
@@ -35,7 +34,6 @@ Plug 'tpope/vim-unimpaired'                          " pairs of handy bracket ma
 Plug 'tpope/vim-capslock'                            " software caps lock
 Plug 'tpope/vim-surround'                            " add quotes/parenthesis etc.
 Plug 'tpope/vim-fugitive'                            " git wrapper
-Plug 'tpope/vim-rhubarb'                             " enable :Gbrowse
 Plug 'vimlab/split-term.vim'                         " easier Neovim :terminal
 Plug 'vim-airline/vim-airline'                       " sweet statusline
 Plug 'vim-airline/vim-airline-themes'                " sweet statusline themes

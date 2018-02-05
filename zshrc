@@ -45,8 +45,8 @@ bindkey -v
 # reduce delay after hitting <ESC>
 export KEYTIMEOUT=1
 PROMPT='
-%{$fg[blue]%}%1~ \
-$(__posh_git_echo)
+%{$fg[green]%}%~\
+ $(__posh_git_echo) \
 %{$fg[magenta]%}❯%{$reset_color%} '
 RPROMPT='%(?,,%{$fg[red]%}[%?]%{$reset_color%})' # exit code
 
