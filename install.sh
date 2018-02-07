@@ -1,16 +1,8 @@
 #!/bin/bash
 
-# This is the beginning attempt to script a linux laptop setup,
-# basically ripped off from the inimitable Jessie Frazelle
-# https://github.com/jfrazelle/dotfiles/blob/master/bin/install.sh
-
 mkdir -p ~/code/go/{src,pkg,bin}
 mkdir ~/code/{python,lua,C}
 mkdir -p "${XDG_CONFIG_HOME:=$HOME/.config}/{i3,ranger}"
-
-# turn off translations, speed up apt-get update
-mkdir -p /etc/apt/apt.conf.d
-echo 'Acquire::Languages "none";' > /etc/apt/apt.conf.d/99translations
 
 # To be able to use add-apt-repository you may need to install software-properties-common
 sudo apt install -y software-properties-common
@@ -18,15 +10,8 @@ sudo apt install -y software-properties-common
 # Neovim repo
 sudo add-apt-repository ppa:neovim-ppa/unstable
 
-# Chrome
-wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
-
-# tlp repo
-sudo add-apt-repository ppa:linrunner/tlp
-
 # NodeJS
-curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 
 # Apt
 sudo apt remove --purge vim # necessary to install vim with lua support
@@ -37,12 +22,9 @@ sudo apt install -y \
      apt-transport-https \
      ca-certificates \
      neovim \
-     feh \
      libxss1 \
      libappindicator1 \
      libindicator7 \
-     rxvt-unicode-256color \
-     ranger \
      caca-utils \
      highlight \
      atool \
@@ -52,36 +34,19 @@ sudo apt install -y \
      xclip \
      exuberant-ctags \
      zsh \
-     i3 \
-     google-chrome-stable \
-     tlp \
-     tlp-rdw \
      tree \
      nodejs \
      htop \
-     zeal \
-     screen \
-     ruby \
-     ruby-dev \
      make \
      gcc \
      bridge-utils \
-     gnupg2 \
-     inetutils-traceroute \
      shellcheck \
-     splint \
      dos2unix \
-     openvpn \
      vim-gnome \
      vim-nox \
-     gdebi \
-     lua5.3 \
-     luarocks \
-     cmus \
      clang \
      libclang-dev \
-     clang-format \
-     rofi
+     clang-format
 
 # ZSH
 # oh-my-zsh
@@ -116,7 +81,6 @@ go get -u golang.org/x/review/git-codereview
 go get -u honnef.co/go/tools/cmd/staticcheck
 go get -u github.com/posener/complete/gocomplete
 gocomplete -y -install
-go get -u github.com/github/hub
 
 # fzf
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
@@ -133,52 +97,23 @@ sudo apt -y install python-pip \
                     build-essential \
                     python3-pip
 sudo -H pip install --upgrade pip
-pip install -r ~/dotfiles/requirements.txt
-pip3 install -r ~/dotfiles/requirements3.txt
+pip3 install neovim
 
 # npm
 sudo npm install -g diff-so-fancy
-sudo npm install -g tldr
-
-# RVM
-gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
-\curl -sSL https://get.rvm.io | bash -s stable
-
-# Rubygems
-sudo gem install tmuxinator
-
-# Private Internet Access VPN
-cd /etc/openvpn
-sudo wget https://www.privateinternetaccess.com/openvpn/openvpn.zip
-sudo unzip openvpn.zip
-
-# Base16 colorscheme
-git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
-
-# LuaRocks
-sudo luarocks install busted
 
 # symlinks
-ln -sf "$HOME/Dropbox/dotfiles/zshenv" "$HOME/.zshenv"
-ln -sf "$HOME/Dropbox/dotfiles/zshrc" "$HOME/.zshrc"
-ln -sf "$HOME/Dropbox/dotfiles/prompt.zsh" "$HOME/prompt.zsh"
-ln -sf "$HOME/Dropbox/dotfiles/xsessionrc" "$HOME/.xsessionrc"
-ln -sf "$HOME/Dropbox/dotfiles/Xresources" "$HOME/.Xresources"
-ln -sf "$HOME/Dropbox/dotfiles/gitconfig" "$HOME/.gitconfig"
-ln -sf "$HOME/Dropbox/dotfiles/i3/config" "$HOME/.config/i3/config"
-ln -sf "$HOME/Dropbox/dotfiles/gitignore" "$HOME/.gitignore"
-ln -sf "$HOME/Dropbox/dotfiles/rc.conf" "$HOME/.config/ranger/rc.conf"
-ln -sf "$HOME/Dropbox/dotfiles/aliases.zsh" "$HOME/.oh-my-zsh/custom/aliases.zsh"
-ln -sf "$HOME/Dropbox/dotfiles/functions.zsh" "$HOME/.oh-my-zsh/custom/functions.zsh"
-ln -sf "$HOME/Dropbox/dotfiles/secrets.zsh" "$HOME/.oh-my-zsh/custom/secrets.zsh"
-ln -sf "$HOME/Dropbox/dotfiles/gnupg/gpg.conf" "$HOME/.gnupg/gpg.conf"
-ln -sf "$HOME/Dropbox/dotfiles/gnupg/gpg-agent.conf" "$HOME/.gnupg/gpg-agent.conf"
-ln -sf "$HOME/Dropbox/dotfiles/tmux.conf" "$HOME/.tmux.conf"
-ln -sf "$HOME/Dropbox/dotfiles/tmuxinator" "$HOME/.tmuxinator"
-ln -sf "$HOME/Dropbox/dotfiles/ranger" "$HOME/.config/ranger/rc.conf"
-ln -snf "$HOME/Dropbox/dotfiles/fonts" "$HOME/.fonts"
-ln -snf "$HOME/Dropbox/dotfiles/nvim" "$HOME/.config/nvim"
-ln -snf "$HOME/Dropbox/dotfiles/vimrc" "$HOME/.config/nvim/init.vim"
+ln -sf "/mnt/c/dotfiles/zshenv" "$HOME/.zshenv"
+ln -sf "/mnt/c/dotfiles/zshrc" "$HOME/.zshrc"
+ln -sf "/mnt/c/dotfiles/git-prompt.sh" "$HOME/git-prompt.sh"
+ln -sf "/mnt/c/dotfiles/prompt.zsh" "$HOME/prompt.zsh"
+ln -sf "/mnt/c/dotfiles/gitconfig" "$HOME/.gitconfig"
+ln -sf "/mnt/c/dotfiles/gitignore" "$HOME/.gitignore"
+ln -sf "/mnt/c/dotfiles/aliases.zsh" "$HOME/.oh-my-zsh/custom/aliases.zsh"
+ln -sf "/mnt/c/dotfiles/functions.zsh" "$HOME/.oh-my-zsh/custom/functions.zsh"
+ln -sf "/mnt/c/dotfiles/tmux.conf" "$HOME/.tmux.conf"
+ln -snf "/mnt/c/dotfiles/nvim" "$HOME/.config/nvim"
+ln -snf "/mnt/c/dotfiles/vimrc" "$HOME/.config/nvim/init.vim"
 
 sudo apt autoremove
 sudo apt autoclean
@@ -186,6 +121,3 @@ sudo apt clean
 
 # change shell to zsh
 chsh -s "$(which zsh)"
-
-# change colourscheme
-base16-eighties
