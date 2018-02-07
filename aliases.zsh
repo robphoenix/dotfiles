@@ -1,7 +1,8 @@
 # Personal aliases
 
 # system
-alias l="LC_COLLATE=C ls -lAhF -I.dropbox -I.dropbox.cache -I.cache -I__pycache__ -I.git -Inode_modules -I.vagrant -I.DS_Store --group-directories-first"
+alias ls=ls
+alias l="LC_COLLATE=C ls -lAhF -I.dropbox -I.dropbox.cache -I.cache -I__pycache__ -I.git -Inode_modules -I.vagrant -I.DS_Store"
 alias mv="mv -ivu"
 alias cp="cp -ivu"
 alias say="sudo apt -y"
@@ -16,19 +17,6 @@ alias restart="sudo reboot now"
 alias open="xdg-open"
 alias gpg="gpg2"
 alias music="cmus"
-# external monitor at home
-alias home="xrandr --output HDMI1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output VIRTUAL1 --off --output eDP1 --mode 3200x1800 --pos 152x2056 --rotate normal"
-alias laptop="xrandr --output eDP1 --dpi 184/eDP1 --mode 3200x1800 --pos 152x2056 --rotate normal"
-# wifi
-alias lswifi="nmcli d wifi list"
-# usb
-alias u="usb"
-alias uu="sudo umount /media/usb"
-# start vpn
-alias vpnu="sudo openvpn /etc/openvpn/pia-london.conf &"
-alias vpnd="sudo killall openvpn"
-# restic backup
-alias backup="restic -r ~/Dropbox/agnesmartin/backup backup ~/Dropbox/code && restic -r ~/Dropbox/agnesmartin/backup backup ~/Dropbox/dotfiles && restic -r ~/Dropbox/agnesmartin/backup backup ~/Dropbox/sites"
 # zsh
 alias relo="source ~/.zshrc"
 # tmux
@@ -36,36 +24,16 @@ alias tls="tmux ls"
 alias tn="tmux new -s"
 alias ta="tmux attach -t"
 alias tk="tmux kill-session -t"
-# ansible
-alias apb="ansible-playbook"
-# python
-alias p="python3"
-alias bpy="bpython"
-alias pty="ptpython"
-alias pyt="py.test"
 # go
 alias gg="go get -u -v"
 alias gt="gotest"
 alias gtv="gotest -v -cover"
 alias gox="gox -output=\"bin/{{.Dir}}_{{.OS}}_{{.Arch}}\""
 # git
-alias git="hub"
 alias g="git"
 # exercism
 alias exf="exercism fetch"
 alias exs="exercism submit"
-# vim/neovim
-alias vi="nvim"
-alias dot="nvim ~/dotfiles"
-alias factoryvim="vim -u ~/dotfiles/.vim/essential.vim"
-# ranger
-alias rng="ranger"
-# cisco console connection
-alias cscon="sudo screen /dev/ttyUSB0 9600"
-# speedtest-cli
-alias st="speedtest-cli"
-# lua
-alias lua="lua5.3"
 # z
 alias j=z
 alias jj=zz

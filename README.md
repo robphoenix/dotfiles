@@ -1,28 +1,6 @@
 # dotfiles
 
-These are the dotfiles I use on my Ubuntu laptop. They include configuration
-files for the following:
-
- * [zsh](http://ohmyz.sh/)
- * [urxvt](https://linux.die.net/man/1/urxvt)
- * [neovim](https://neovim.io/)
- * [i3wm](https://i3wm.org/)
- * [git](https://git-scm.com/)
- * [font](http://input.fontbureau.com/)
-
-![cli screenshot](/images/cli-screenshot.png "Screenshot of cli")
-
-### installation
-
-The `install.sh` script is currently untested, so use caution my
-friend...
-
-```bash
-git clone https://github.com/bordeltabernacle/dotfiles ~/dotfiles
-cd ~/dotfiles
-chmod +x install.sh
-./install.sh
-```
+s/Linux/Windows
 
 ### [giving propers to](https://www.youtube.com/watch?v=cYbs_O_iMfU)
 

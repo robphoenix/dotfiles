@@ -1,7 +1,0 @@
-# ~/.tmuxinator/xgo.yml
-
-name: xgo
-root: ~/
-
-windows:
-  - editor: cd ~/code/go/src/github.com/robphoenix/xgo && g fum && g rum

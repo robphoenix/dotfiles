@@ -1,9 +1,0 @@
-# ~/.tmuxinator/aci.yml
-
-name: aci
-root: ~/
-
-windows:
-  - tapestry: v ~/code/go/src/github.com/robphoenix/tapestry/main.go
-  - go-aci: cd ~/code/go/src/github.com/robphoenix/go-aci && v
-  - music: mocp

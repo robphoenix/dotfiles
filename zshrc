@@ -25,7 +25,7 @@ source $ZSH/oh-my-zsh.sh
 #
 # git status
 # https://github.com/lyze/posh-git-sh
-source ~/dotfiles/git-prompt.sh
+source ~/git-prompt.sh
 # vi mode
 # https://bbs.archlinux.org/viewtopic.php?id=95078
 zle-keymap-select () {
@@ -46,7 +46,7 @@ bindkey -v
 export KEYTIMEOUT=1
 PROMPT='
 %{$fg[green]%}%~\
- $(__posh_git_echo) \
+ $(__posh_git_echo)
 %{$fg[magenta]%}❯%{$reset_color%} '
 RPROMPT='%(?,,%{$fg[red]%}[%?]%{$reset_color%})' # exit code
 
@@ -91,11 +91,8 @@ BASE16_SHELL=$HOME/.config/base16-shell/
 [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 
 # completions
-fpath=(~/dotfiles/completions $fpath)
-autoload -Uz compinit && compinit
-
-# tmuxinator
-source ~/dotfiles/tmuxinator.zsh
+fpath=(~/completions $fpath)
+autoload -Uz compinit && compinit -u
 
 # # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 # export PATH="$PATH:$HOME/.rvm/bin"

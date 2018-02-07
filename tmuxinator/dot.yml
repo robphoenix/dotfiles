@@ -1,7 +1,0 @@
-# ~/.tmuxinator/dot.yml
-
-name: dotfiles
-root: ~/
-windows:
-  - editor: cd ~/dotfiles && v
-  - terminal: cd ~/dotfiles
