@@ -44,11 +44,13 @@ zle -N zle-line-init
 bindkey -v
 # reduce delay after hitting <ESC>
 export KEYTIMEOUT=1
-PROMPT='
-%{$fg[green]%}%~\
- $(__posh_git_echo)
-%{$fg[magenta]%}❯%{$reset_color%} '
-RPROMPT='%(?,,%{$fg[red]%}[%?]%{$reset_color%})' # exit code
+PROMPT='%{$fg[yellow]%}%1~ %{$fg[magenta]%}❯%{$reset_color%} '
+#PROMPT='
+#%{$fg[green]%}%2~\
+ #$(__posh_git_echo)
+#%{$fg[magenta]%}❯%{$reset_color%} '
+#RPROMPT='%(?,,%{$fg[red]%}[%?]%{$reset_color%})' # exit code
+#RPROMPT='$(__posh_git_echo)'
 
 # fancy ctrl-z
 bindkey '^Z' fancy-ctrl-z
@@ -85,10 +87,6 @@ fzf-history-widget-accept() {
 }
 zle     -N     fzf-history-widget-accept
 bindkey '^X^R' fzf-history-widget-accept
-
-# Base16 colour schemes
-BASE16_SHELL=$HOME/.config/base16-shell/
-[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 
 # completions
 fpath=(~/completions $fpath)
@@ -140,3 +138,14 @@ setopt multios # perform implicit tees or cats when multiple redirections are at
 
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /home/rob/Dropbox/code/gopath/bin/gocomplete go
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f /home/robphoenix/.nvm/versions/node/v8.9.4/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /home/robphoenix/.nvm/versions/node/v8.9.4/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[[ -f /home/robphoenix/.nvm/versions/node/v8.9.4/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /home/robphoenix/.nvm/versions/node/v8.9.4/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
