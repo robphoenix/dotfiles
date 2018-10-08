@@ -1,52 +1,24 @@
 #!/bin/bash
 
-mkdir -p ~/code/go/{src,pkg,bin}
-mkdir ~/code/{python,lua,C}
-mkdir -p "${XDG_CONFIG_HOME:=$HOME/.config}/{i3,ranger}"
-
 # To be able to use add-apt-repository you may need to install software-properties-common
 sudo apt install -y software-properties-common
-
-# Neovim repo
-sudo add-apt-repository ppa:neovim-ppa/unstable
 
 # NodeJS
 curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 
 # Apt
-sudo apt remove --purge vim # necessary to install vim with lua support
 sudo apt update
 sudo apt -y upgrade
 
 sudo apt install -y \
      apt-transport-https \
      ca-certificates \
-     neovim \
-     libxss1 \
-     libappindicator1 \
-     libindicator7 \
-     caca-utils \
-     highlight \
-     atool \
-     w3m \
-     poppler-utils \
-     mediainfo \
      xclip \
-     exuberant-ctags \
      zsh \
      tree \
      nodejs \
-     htop \
-     make \
-     gcc \
-     bridge-utils \
      shellcheck \
-     dos2unix \
-     vim-gnome \
-     vim-nox \
-     clang \
-     libclang-dev \
-     clang-format
+     dos2unix
 
 # ZSH
 # oh-my-zsh
@@ -90,14 +62,6 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 curl https://sh.rustup.rs -sSf | sh
 cargo install ripgrep
 cargo install fd-find
-
-# Python
-sudo apt -y install python-pip \
-                    python-dev \
-                    build-essential \
-                    python3-pip
-sudo -H pip install --upgrade pip
-pip3 install neovim
 
 # npm
 sudo npm install -g diff-so-fancy
