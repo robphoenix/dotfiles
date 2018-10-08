@@ -9,6 +9,7 @@
     c = commit -v
     # Commit all changes
     ca = !git add -A && git commit -av
+    cam = !git add -A && git commit -am
     a = add -v
     aa = add --all
     p = push
@@ -65,14 +66,6 @@
     d = "!f() { [ -z \"$GIT_PREFIX\" ] || cd \"$GIT_PREFIX\" && git diff --color \"$@\" | diff-so-fancy  | less --tabs=4 -RFX; }; f"
     dsfl = "!f() { [ -z \"$GIT_PREFIX\" ] || cd \"$GIT_PREFIX\" && git show --color \"$@\" | diff-so-fancy  | less --tabs=4 -RFX; }; f"
 
-    # golang codereview
-    change = codereview change
-    gofmt = codereview gofmt
-    mail = codereview mail
-    pending = codereview pending
-    submit = codereview submit
-    sync = codereview sync
-
 [color]
 
     ui = true
@@ -84,7 +77,6 @@
 [core]
 
     excludesfile = ~/.gitignore
-    editor = vi
     trustctime = false
 
 [github]
@@ -95,10 +87,6 @@
 
     gpgsign = false
     verbose = true
-
-[gpg]
-
-    program = gpg2
 
 [push]
 
