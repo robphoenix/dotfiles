@@ -1,20 +1,22 @@
 [user]
-
     email = rob@robphoenix.com
     name = Rob Phoenix
-
 [alias]
 
     s = status -s
     c = commit -v
     # Commit all changes
     ca = !git add -A && git commit -av
-    cam = !git add -A && git commit -am
+    # fix commit
+    fc = !git add -A && git commit --amend --no-edit && git push origin
     a = add -v
     aa = add --all
     p = push
     po = push origin
+    pof = push origin --force-with-lease
     pl = pull --rebase
+    plr = pull --rebase
+    sync = pull --rebase origin master
     f = fetch
     fu = fetch upstream
     m = merge
@@ -36,16 +38,17 @@
     recommit = commit --amend
     unmerged = diff --name-only --diff-filter=U
     unmerge = reset --merge
+    unrevert = reset --hard HEAD^
     rs = remote -v
+    cp = cherry-pick
 
     # rebase
     # Interactive rebase with the given number of latest commits
-	ri = "!r() { git rebase -i HEAD~$1; }; r"
+	reb = "!r() { git rebase -i HEAD~$1; }; r"
+    # Interactive rebase with given has
+    ri = rebase i
     rca = commit --amend '-S'
     rc = rebase --continue
-    rom = rebase origin/master
-    rum = rebase upstream/master
-    rod = rebase origin/dev
 
     # delete remote branch
     dr = push origin --delete
@@ -53,7 +56,7 @@
     dl = branch -D
     # Remove branches that have already been merged with master
     # a.k.a. ‘delete merged’
-    dm = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d; git remote -v update -p"
+    dm = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
 
     # simple log
     l = log --graph --decorate --pretty=oneline --abbrev-commit
@@ -67,36 +70,31 @@
     dsfl = "!f() { [ -z \"$GIT_PREFIX\" ] || cd \"$GIT_PREFIX\" && git show --color \"$@\" | diff-so-fancy  | less --tabs=4 -RFX; }; f"
 
 [color]
-
     ui = true
-
+[diff]
+    tool = default-difftool
+[difftool "default-difftool"]
+    cmd = code --wait --diff $LOCAL $REMOTE
 [help]
-
     autocorrect = 1
-
 [core]
-
+    editor = code --wait
     excludesfile = ~/.gitignore
     trustctime = false
-
+    autocrlf = false
 [github]
-
     user = robphoenix
-
 [commit]
-
     gpgsign = false
     verbose = true
-
 [push]
-
     default = current
     followTags = true
-
 [status]
-
     showUntrackedFiles = all
-
 [http]
-
     cookiefile = /home/rob/.gitcookies
+[rebase]
+    autoStash = true
+[pull]
+    rebase = true
