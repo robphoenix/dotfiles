@@ -1,8 +1,3 @@
 # dotfiles
 
-s/Linux/Windows
-
-### [giving propers to](https://www.youtube.com/watch?v=cYbs_O_iMfU)
-
- * [Jess Frazelle](https://github.com/jessfraz/dotfiles)
- * [Alex Booker](https://www.youtube.com/watch?v=j1I63wGcvU4)
+[VS Code config](https://gist.github.com/robphoenix/c0cabd52881a5e5e85f2ad73c2572171)
