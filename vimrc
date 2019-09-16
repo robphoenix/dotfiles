@@ -3,12 +3,10 @@
 call plug#begin()
 
 Plug 'honza/vim-snippets'                            " code snippets
-Plug 'jreybert/vimagit'                              " emacs magit mode
 Plug 'mhinz/vim-sayonara'                            " easy buffer closing
 Plug 'mhinz/vim-startify'                            " fancy start screen
 Plug 'ntpeters/vim-better-whitespace'                " better whitespace highlighting and removal
 Plug 'Raimondi/delimitMate'                          " auto-insert closing delimiters
-Plug 'robertmeta/nofrils'                            " minimal syntax highlighting
 Plug 'scrooloose/nerdcommenter'                      " commenting
 Plug 'scrooloose/nerdtree'                           " tree explorer
 Plug 'SirVer/ultisnips'                              " code snippets
@@ -18,7 +16,7 @@ Plug 'tpope/vim-fugitive'                            " git wrapper
 Plug 'vim-airline/vim-airline'                       " sweet statusline
 Plug 'vim-airline/vim-airline-themes'                " sweet statusline themes
 Plug 'w0rp/ale'                                      " linter
-Plug 'Shougo/neocomplete.vim'                    " Vim autocomplete
+Plug 'Shougo/neocomplete.vim'                        " Vim autocomplete
 
 call plug#end()
 
@@ -26,7 +24,7 @@ call plug#end()
 
 " --> Settings {
 
-set nocompatible    " be iMproved, required
+set nocompatible                   " be iMproved, required
 set listchars=eol:$,tab:▸\,
 set modifiable                     " make a buffer modifiable
 set noruler                        " don't show the cursor position all the time
