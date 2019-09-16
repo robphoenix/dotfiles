@@ -2,7 +2,6 @@
     email = rob@robphoenix.com
     name = Rob Phoenix
 [alias]
-
     s = status -s
     c = commit -v
     # Commit all changes

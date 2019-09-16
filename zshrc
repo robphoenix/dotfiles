@@ -11,13 +11,7 @@ HISTCONTROL=ignoredups:ignorespace
 HISTFILE=$HOME/.zsh_history
 HISTSIZE=2000
 
-plugins=(\
-    colored-man-pages \
-    ssh-agent \
-    z \
-    zsh-autosuggestions \
-    zsh-syntax-highlighting \
-)
+plugins=(ssh-agent z)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -26,75 +20,22 @@ source $ZSH/oh-my-zsh.sh
 # git status
 # https://github.com/lyze/posh-git-sh
 source ~/git-prompt.sh
-# vi mode
-# https://bbs.archlinux.org/viewtopic.php?id=95078
-zle-keymap-select () {
-    if [ $KEYMAP = vicmd ]; then
-        echo -ne "\033]12;deep sky blue\007"
-    else
-        echo -ne "\033]12;slate grey\007"
-    fi
-}
-zle -N zle-keymap-select
-zle-line-init () {
-    zle -K viins
-    echo -ne "\033]12;slate grey\007"
-}
-zle -N zle-line-init
-bindkey -v
 # reduce delay after hitting <ESC>
 export KEYTIMEOUT=1
-PROMPT='%{$fg[yellow]%}%1~ %{$fg[magenta]%}❯%{$reset_color%} '
-#PROMPT='
-#%{$fg[green]%}%2~\
- #$(__posh_git_echo)
-#%{$fg[magenta]%}❯%{$reset_color%} '
-#RPROMPT='%(?,,%{$fg[red]%}[%?]%{$reset_color%})' # exit code
+#PROMPT='%{$fg[yellow]%}%1~ %{$fg[magenta]%}❯%{$reset_color%} '
+PROMPT='
+%{$fg[green]%}%2~\
+ $(__posh_git_echo)
+%{$fg[magenta]%}❯%{$reset_color%} '
+RPROMPT='%(?,,%{$fg[red]%}[%?]%{$reset_color%})' # exit code
 #RPROMPT='$(__posh_git_echo)'
 
 # fancy ctrl-z
 bindkey '^Z' fancy-ctrl-z
 
-# FZF
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-# Use ;; as the trigger sequence instead of the default **
-export FZF_COMPLETION_TRIGGER=';;'
-# Options to fzf command
-export FZF_COMPLETION_OPTS='+c -x'
-# Use ag instead of the default find command for listing path candidates.
-# - The first argument to the function is the base path to start traversal
-# - See the source code (completion.{bash,zsh}) for the details.
-# - ag only lists files, so we use with-dir script to augment the output
-_fzf_compgen_path() {
-  ag -g "" "$1" | with-dir "$1"
-}
-# Use ag to generate the list for directory completion
-_fzf_compgen_dir() {
-  ag -g "" "$1" | only-dir "$1"
-}
-export FZF_DEFAULT_OPTS='--height 70% --reverse'
-export FZF_CTRL_T_OPTS="--select-1 --exit-0 --preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
-export FZF_ALT_C_OPTS="--select-1 --exit-0 --preview 'tree -C {} | head -200'"
-# Setting ag as the default source for fzf
-export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
-# To apply the command to CTRL-T as well
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview'"
-# Directly executing the command (CTRL-X CTRL-R)
-fzf-history-widget-accept() {
-  fzf-history-widget
-  zle accept-line
-}
-zle     -N     fzf-history-widget-accept
-bindkey '^X^R' fzf-history-widget-accept
-
 # completions
 fpath=(~/completions $fpath)
 autoload -Uz compinit && compinit -u
-
-# # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-# export PATH="$PATH:$HOME/.rvm/bin"
-# source ~/.rvm/scripts/rvm
 
 # Set Options
 
@@ -137,15 +78,3 @@ unsetopt correct # turn off spelling correction for commands
 setopt multios # perform implicit tees or cats when multiple redirections are attempted
 
 autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /home/rob/Dropbox/code/gopath/bin/gocomplete go
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# tabtab source for serverless package
-# uninstall by removing these lines or running `tabtab uninstall serverless`
-[[ -f /home/robphoenix/.nvm/versions/node/v8.9.4/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /home/robphoenix/.nvm/versions/node/v8.9.4/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
-# tabtab source for sls package
-# uninstall by removing these lines or running `tabtab uninstall sls`
-[[ -f /home/robphoenix/.nvm/versions/node/v8.9.4/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /home/robphoenix/.nvm/versions/node/v8.9.4/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh

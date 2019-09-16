@@ -20,10 +20,6 @@ fi
 
 unset env
 
-# z
-. ~/z.sh
-alias j="z"
-
 # Easier navigation: .., ..., ...., ....., ~ and -
 alias ..="cd .."
 alias ...="cd ../.."
@@ -40,7 +36,5 @@ alias la="ls -laF --color"
 alias mv="mv -ivu"
 alias cp="cp -ivu"
 
-alias relo="source ~/.bashrc"
 
-PS1="\w ❯ "
 
