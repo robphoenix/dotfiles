@@ -1,7 +1,7 @@
 alias ls=ls
 alias l="LC_COLLATE=C ls -lAhF"
-alias mv="mv -ivu"
-alias cp="cp -ivu"
+alias mv="mv -iv"
+alias cp="cp -iv"
 alias sudo="sudo "
 alias su="sudo -i"
 alias rmd="sudo rm -r"
@@ -20,3 +20,17 @@ alias g="git"
 # z
 alias j=z
 alias jj=zz
+# yarn/npm
+alias pd="install-peerdeps -Y"
+alias ya="yarn add --ignore-optional"
+alias yad="yarn add --ignore-optional --dev"
+alias yr="yarn remove --ignore-optional"
+alias ys="yarn start"
+alias yu="yarn upgrade --ignore-optional"
+alias yf="yarn format"
+alias story="yarn storybook"
+alias redep="rm -rf node_modules && yarn --ignore-optional"
+# k8s
+alias k=kubectl
+
+

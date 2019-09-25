@@ -11,7 +11,7 @@ HISTCONTROL=ignoredups:ignorespace
 HISTFILE=$HOME/.zsh_history
 HISTSIZE=2000
 
-plugins=(ssh-agent z)
+plugins=(ssh-agent z zsh-autosuggestions zsh-syntax-highlighting history-substring-search brew npm kubectl vscode)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -24,7 +24,7 @@ source ~/git-prompt.sh
 export KEYTIMEOUT=1
 #PROMPT='%{$fg[yellow]%}%1~ %{$fg[magenta]%}❯%{$reset_color%} '
 PROMPT='
-%{$fg[green]%}%2~\
+%{$fg[cyan]%}%2~\
  $(__posh_git_echo)
 %{$fg[magenta]%}❯%{$reset_color%} '
 RPROMPT='%(?,,%{$fg[red]%}[%?]%{$reset_color%})' # exit code
