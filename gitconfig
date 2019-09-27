@@ -44,7 +44,7 @@
     # Interactive rebase with the given number of latest commits
 	reb = "!r() { git rebase -i HEAD~$1; }; r"
     # Interactive rebase with given has
-    ri = rebase i
+    ri = rebase -i
     rca = commit --amend '-S'
     rc = rebase --continue
 
