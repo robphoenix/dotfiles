@@ -30,11 +30,11 @@ alias yu="yarn upgrade --ignore-optional"
 alias yf="yarn format"
 alias story="yarn storybook"
 alias redep="rm -rf node_modules && yarn --ignore-optional"
-alias serve="npx http-server"
+# alias serve="npx http-server"
 # k8s
 alias k=kubectl
 # VS Code
 alias c="code"
-alias cc="code ."
+alias oc="code ."
 
 
