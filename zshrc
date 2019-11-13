@@ -11,7 +11,7 @@ HISTCONTROL=ignoredups:ignorespace
 HISTFILE=$HOME/.zsh_history
 HISTSIZE=2000
 
-plugins=(ssh-agent z zsh-autosuggestions zsh-syntax-highlighting history-substring-search brew npm kubectl vscode)
+plugins=(ssh-agent z zsh-autosuggestions zsh-syntax-highlighting history-substring-search brew npm kubectl gitgo)
 
 source $ZSH/oh-my-zsh.sh
 

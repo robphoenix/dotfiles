@@ -8,6 +8,7 @@ alias rmd="sudo rm -r"
 alias cpd="sudo cp -r"
 alias p1="ping 1.1.1.1"
 alias p8="ping 8.8.8.8"
+alias vi="nvim"
 # zsh
 alias relo="source ~/.zshrc"
 # go
@@ -28,11 +29,15 @@ alias yr="yarn remove --ignore-optional"
 alias ys="yarn start"
 alias yu="yarn upgrade --ignore-optional"
 alias yf="yarn format"
+alias yl="yarn lint"
+alias yd="yarn dev"
 alias story="yarn storybook"
 alias redep="rm -rf node_modules && yarn --ignore-optional"
 # alias serve="npx http-server"
 # k8s
-alias k=kubectl
+alias k="kubectl"
+alias kgp="kubectl get-pods"
+alias kpf="kubectl port-forwrd"
 # VS Code
 alias c="code"
 alias oc="code ."

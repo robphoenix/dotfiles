@@ -1,5 +1,5 @@
 [user]
-    email = rphoenix@utilitywarehouse.com
+    email = rphoenix@utilitywarehouse.co.uk
     name = Rob Phoenix
 [alias]
     s = status -s
@@ -13,6 +13,7 @@
     p = push
     po = push origin
     pof = push origin --force-with-lease
+    pom = push origin master
     pl = pull --rebase
     sync = pull --rebase origin master
     f = fetch
