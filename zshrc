@@ -22,13 +22,11 @@ source $ZSH/oh-my-zsh.sh
 source ~/git-prompt.sh
 # reduce delay after hitting <ESC>
 export KEYTIMEOUT=1
-#PROMPT='%{$fg[yellow]%}%1~ %{$fg[magenta]%}❯%{$reset_color%} '
 PROMPT='
 %{$fg[cyan]%}%2~\
  $(__posh_git_echo)
 %{$fg[magenta]%}❯%{$reset_color%} '
 RPROMPT='%(?,,%{$fg[red]%}[%?]%{$reset_color%})' # exit code
-#RPROMPT='$(__posh_git_echo)'
 
 # fancy ctrl-z
 bindkey '^Z' fancy-ctrl-z

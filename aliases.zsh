@@ -38,6 +38,7 @@ alias redep="rm -rf node_modules && yarn --ignore-optional"
 alias k="kubectl"
 alias kgp="kubectl get-pods"
 alias kpf="kubectl port-forwrd"
+alias kx="kubectx"
 # VS Code
 alias c="code"
 alias oc="code ."
