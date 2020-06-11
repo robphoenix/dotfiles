@@ -13,10 +13,17 @@ Plug 'SirVer/ultisnips'                              " code snippets
 Plug 'tpope/vim-unimpaired'                          " pairs of handy bracket mappings
 Plug 'tpope/vim-surround'                            " add quotes/parenthesis etc.
 Plug 'tpope/vim-fugitive'                            " git wrapper
-Plug 'vim-airline/vim-airline'                       " sweet statusline
-Plug 'vim-airline/vim-airline-themes'                " sweet statusline themes
+Plug 'itchyny/lightline.vim'                         " statusline
 Plug 'w0rp/ale'                                      " linter
-Plug 'Shougo/neocomplete.vim'                        " Vim autocomplete
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }   " Vim autocomplete
+Plug 'junegunn/fzf.vim'                              " fuzzy finder
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'haishanh/night-owl.vim'                        " syntax highlighting
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
+Plug 'pangloss/vim-javascript'
+Plug 'HerringtonDarkholme/yats.vim'
+Plug 'chriskempson/base16-vim'
 
 call plug#end()
 
@@ -44,7 +51,7 @@ set wildignore+=*/.git/*,*/tmp/*,*.swp
 au FocusLost * :wa                 " Set vim to save the file on focus out
 set fileformats=unix,dos,mac       " prefer Unix over Windows over OS 9 formats
 set showmatch                      " show matching brackets by flickering
-set noshowmode                     " we show the mode with airline
+set noshowmode                     " we show the mode on the statusline
 set incsearch                      " show search matches as you type
 set hlsearch                       " do highlight found searches
 set ch=2                           " command line height
@@ -102,10 +109,21 @@ set omnifunc=syntaxcomplete#Complete
 " save no history or bookmarks in netrw
 let g:netrw_dirhistmax = 0
 
+" colorscheme
+" export TERM=xterm-256color
+if (has("termguicolors"))
+ set termguicolors
+ set t_Co=256
+endif
+syntax enable
+" colorscheme base16-oceanicnext
+colorscheme night-owl
+
+" To enable the lightline theme
+let g:lightline = { 'colorscheme': 'nightowl' }
+
 " Markdown settings
 au Bufread,BufNewFile *.md setlocal filetype=markdown textwidth=80 wrap spell wrapmargin=0
-autocmd BufEnter *.md colorscheme pencil | let g:airline_theme = 'pencil'
-autocmd BufLeave *.md colorscheme base16-default-dark | let g:airline_theme = 'base16'
 
 " gitconfig settings
 au Bufread,BufNewFile gitconfig setlocal filetype=.gitconfig
@@ -113,32 +131,15 @@ au Bufread,BufNewFile gitconfig setlocal filetype=.gitconfig
 " Gitcommit settings
 autocmd FileType gitcommit setlocal spell
 
-" Go settings
-au BufNewFile,BufRead *.go setlocal noet ts=8 sw=8 sts=8
-autocmd BufEnter *.go colorscheme nofrils-dark
-autocmd BufLeave *.go colorscheme base16-default-dark
-
-" C settings
-au BufNewFile,BufRead *.c setlocal noet ts=2 sw=2 sts=2
-autocmd BufEnter *.c colorscheme nofrils-dark
-autocmd BufLeave *.c colorscheme base16-default-dark
-autocmd BufEnter *.h colorscheme nofrils-dark
-autocmd BufLeave *.h colorscheme base16-default-dark
-
-" Python settings
-au BufNewFile,BufRead *.py setlocal et ts=4 sts=4 sw=4 tw=79 list lcs=tab:▸\
-let g:python3_host_prog = '/usr/bin/python3'
-let python_highlight_all=1
-
 " YAML settings
 au BufNewFile,BufRead *.yaml setlocal ts=2 sw=2 sts=2
 au BufNewFile,BufRead *.yml setlocal ts=2 sw=2 sts=2
 
-" lua settings
-au BufNewFile,BufRead *.lua setlocal ts=2 sw=2 sts=2
-
 " JS settings
 au BufNewFile,BufRead *.js setlocal ts=2 sw=2 sts=2
+" autocmd BufEnter *.{js,jsx,ts,tsx} colorscheme night-owl
+" autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
+" autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
 
 " CSV settings
 au! BufNewFile,BufRead *.csv setf csv
@@ -242,6 +243,47 @@ cnoremap <c-j> <Down>
 
 " --> Plugins {
 
+" --> fzf {
+
+nmap <silent> <leader>f :Files<cr>
+nmap <silent> <leader>b :Buffers<cr>
+nmap <silent> <leader>h :History<cr>
+nmap <silent> <leader>s :Find<cr>
+" Insert mode completion
+imap <c-x><c-k> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+imap <c-x><c-j> <plug>(fzf-complete-file)
+imap <c-x><c-l> <plug>(fzf-complete-line)
+
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
+
+" --column: Show column number
+" --line-number: Show line number
+" --no-heading: Do not show file headings in results
+" --fixed-strings: Search term as a literal string
+" --ignore-case: Case insensitive search
+" --no-ignore: Do not respect .gitignore, etc...
+" --hidden: Search hidden files and folders
+" --follow: Follow symlinks
+" --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
+" --color: Search color options
+command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
+
+"  }
+
 " --> NERDTree {
 
 map - :NERDTreeFind<CR>
@@ -281,60 +323,6 @@ let g:NERDTrimTrailingWhitespace = 1
 
 " }
 
-" --> no-frils {
-
-let g:nofrils_strbackgrounds=1
-
-"  }
-
-" --> vim-airline {
-
-let g:airline_left_sep=''
-let g:airline_right_sep=''
-let g:airline_left_alt_sep = '|'
-let g:airline_right_alt_sep = '|'
-let g:airline_powerline_fonts=1
-let g:airline_mode_map = {
-            \ '__' : '-',
-            \ 'n'  : 'N',
-            \ 'i'  : 'I',
-            \ 'R'  : 'R',
-            \ 'c'  : 'C',
-            \ 'v'  : 'V',
-            \ 'V'  : 'V',
-            \ '' : 'V',
-            \ 's'  : 'S',
-            \ 'S'  : 'S',
-            \ '' : 'S',
-            \ }
-
-if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
-endif
-let g:airline_symbols.linenr = ''
-let g:airline_symbols.maxlinenr = ''
-let g:airline_symbols.spell = 'Ꞩ'
-let g:airline_symbols.paste = 'ρ'
-let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
-let g:airline#extensions#branch#enabled=0
-let g:airline#extensions#hunks#enabled=1
-let g:airline#extensions#hunks#non_zero_only=1
-let g:airline#extensions#syntastic#enabled = 0
-let g:airline_skip_empty_sections = 1
-let g:airline#extensions#tagbar#flags = 'f'
-let g:airline#extensions#ctrlp#show_adjacent_modes = 0
-let g:airline#extensions#ctrlp#color_template = 'normal'
-let g:airline#extensions#capslock#enabled = 1
-let g:airline#extensions#vimagit#enabled=1
-let g:airline#extensions#ale#enabled=1
-
-let g:airline_section_c = '%t'
-let g:airline_section_x = ''
-let g:airline_section_z = ''
-" let g:airline_section_z = '%l/%L:%c'
-
-"  }
-
 " --> delimitMate {
 
 let g:delimitMate_expand_cr = 1
@@ -359,10 +347,7 @@ inoremap <c-x><c-k> <c-x><c-k>
 
 " --> Autocompletion {
 
-let g:acp_enableAtStartup = 0 " Disable AutoComplPop.
-let g:neocomplete#enable_at_startup = 1 " Use neocomplete
-let g:neocomplete#enable_auto_delimiter = 1 " insert delimiter automatically
-autocmd Filetype python setlocal omnifunc=pythoncomplete#Complete
+let g:deoplete#enable_at_startup = 1
 
 " }
 

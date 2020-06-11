@@ -18,22 +18,26 @@ alias gtv="gotest -v -cover"
 alias gox="gox -output=\"bin/{{.Dir}}_{{.OS}}_{{.Arch}}\""
 # git
 alias g="git"
+alias gst="git sync trunk"
+alias gsm="git sync master"
 # z
 alias j=z
 alias jj=zz
 # yarn/npm
+alias y="yarn"
 alias pd="install-peerdeps -Y"
 alias ya="yarn add --ignore-optional"
 alias yad="yarn add --ignore-optional --dev"
 alias yr="yarn remove --ignore-optional"
 alias ys="yarn start"
+alias yb="yarn build"
 alias yu="yarn upgrade --ignore-optional"
 alias yf="yarn format"
 alias yl="yarn lint"
 alias yd="yarn dev"
-alias story="yarn storybook"
+alias story="yarn storybook:start"
 alias redep="rm -rf node_modules && yarn --ignore-optional"
-# alias serve="npx http-server"
+alias ma="make api"
 # k8s
 alias k="kubectl"
 alias kgp="kubectl get-pods"

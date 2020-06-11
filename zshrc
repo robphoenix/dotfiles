@@ -23,7 +23,7 @@ source ~/git-prompt.sh
 # reduce delay after hitting <ESC>
 export KEYTIMEOUT=1
 PROMPT='
-%{$fg[cyan]%}%2~\
+%{$fg[cyan]%}%3~\
  $(__posh_git_echo)
 %{$fg[magenta]%}❯%{$reset_color%} '
 RPROMPT='%(?,,%{$fg[red]%}[%?]%{$reset_color%})' # exit code
@@ -76,3 +76,6 @@ unsetopt correct # turn off spelling correction for commands
 setopt multios # perform implicit tees or cats when multiple redirections are attempted
 
 autoload -U +X bashcompinit && bashcompinit
+
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
