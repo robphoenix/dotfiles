@@ -64,6 +64,7 @@
     lp = log -p
     # Color graph detailed log view
     gl = log --graph --color --decorate --stat --pretty=format:"%C(yellow)%H%C(green)%d%C(reset)%n%x20%cd%n%x20%cn%x20(%ce)%n%x20%s%n"
+	new = !git init && git symbolic-ref HEAD refs/heads/main
 
 [color]
     ui = true

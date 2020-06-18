@@ -18,8 +18,8 @@ alias gtv="gotest -v -cover"
 alias gox="gox -output=\"bin/{{.Dir}}_{{.OS}}_{{.Arch}}\""
 # git
 alias g="git"
-alias gst="git sync trunk"
-alias gsm="git sync master"
+alias gs="git sync"
+alias gsm="git sync main"
 # z
 alias j=z
 alias jj=zz
