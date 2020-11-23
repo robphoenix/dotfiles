@@ -1,5 +1,5 @@
 [user]
-    email = rphoenix@utilitywarehouse.co.uk
+    email = rphoenix@uw.co.uk
     name = Rob Phoenix
 [alias]
     s = status -s
@@ -97,3 +97,14 @@
     rebase = true
 [url "git@github.com:"]
 	insteadOf = https://github.com/
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[filter "strongbox"]
+	clean = strongbox -clean %f
+	smudge = strongbox -smudge %f
+	required = true
+[diff "strongbox"]
+	textconv = strongbox -diff

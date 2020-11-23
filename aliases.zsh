@@ -11,18 +11,12 @@ alias p8="ping 8.8.8.8"
 alias vi="nvim"
 # zsh
 alias relo="source ~/.zshrc"
-# go
-alias gg="go get -u -v"
-alias gt="gotest"
-alias gtv="gotest -v -cover"
-alias gox="gox -output=\"bin/{{.Dir}}_{{.OS}}_{{.Arch}}\""
 # git
 alias g="git"
 alias gs="git sync"
 alias gsm="git sync main"
 # z
 alias j=z
-alias jj=zz
 # yarn/npm
 alias y="yarn"
 alias pd="install-peerdeps -Y"
