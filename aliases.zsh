@@ -9,6 +9,8 @@ alias cpd="sudo cp -r"
 alias p1="ping 1.1.1.1"
 alias p8="ping 8.8.8.8"
 alias vi="nvim"
+alias v="nvim"
+alias ...="cd -"
 # zsh
 alias relo="source ~/.zshrc"
 # git
@@ -30,7 +32,7 @@ alias yf="yarn format"
 alias yl="yarn lint"
 alias yd="yarn dev"
 alias story="yarn storybook:start"
-alias redep="rm -rf node_modules && yarn --ignore-optional"
+alias redep="rm -rf node_modules && rm yarn.lock && yarn --ignore-optional"
 alias ma="make api"
 # k8s
 alias k="kubectl"

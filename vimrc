@@ -6,14 +6,23 @@ Plug 'honza/vim-snippets'                            " code snippets
 Plug 'mhinz/vim-sayonara'                            " easy buffer closing
 Plug 'mhinz/vim-startify'                            " fancy start screen
 Plug 'ntpeters/vim-better-whitespace'                " better whitespace highlighting and removal
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}  " multiple cursors
 Plug 'preservim/nerdcommenter'                       " commenting
 Plug 'preservim/nerdtree'                            " tree explorer
+Plug 'Xuyuanp/nerdtree-git-plugin'                   " NERDTree git status
 Plug 'tpope/vim-unimpaired'                          " pairs of handy bracket mappings
 Plug 'tpope/vim-surround'                            " add quotes/parenthesis etc.
 Plug 'tpope/vim-fugitive'                            " git wrapper
 Plug 'itchyny/lightline.vim'                         " statusline
-Plug 'haishanh/night-owl.vim'                        " syntax highlighting
-Plug 'HerringtonDarkholme/yats.vim'                  " TS syntax
+Plug 'haishanh/night-owl.vim'                        " theme
+Plug 'mattn/emmet-vim'                               " emmet
+Plug 'ap/vim-css-color'                              " CSS color highlighting
+Plug 'HerringtonDarkholme/yats.vim'                  " TypeScript syntax
+Plug 'pangloss/vim-javascript'                       " JavaScript support
+Plug 'yuezk/vim-js'                                  " JavaScript syntax
+Plug 'maxmellon/vim-jsx-pretty'                      " JS and JSX syntax
+Plug 'jxnblk/vim-mdx-js'                             " MDX Syntax
+Plug 'jparise/vim-graphql'                           " GraphQL syntax
 Plug 'neoclide/coc.nvim', {'branch': 'release'}      " autocompletion
 Plug 'junegunn/fzf.vim'                              " fuzzy finder
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -24,6 +33,7 @@ call plug#end()
 
 " --> Settings {
 
+set encoding=UTF-8
 set nocompatible                   " be iMproved, required
 set listchars=eol:$,tab:▸\,
 set modifiable                     " make a buffer modifiable
@@ -145,17 +155,29 @@ let g:mapleader = "\<Space>"
 " remap ESC
 inoremap jk <ESC>
 
+" Source Vim configuration file and install plugins
+nnoremap <silent><leader>1 :source ~/.config/nvim/init.vim \| :PlugInstall<CR>
+
 " split navigations
-nnoremap <C-J> <C-W>j
-nnoremap <C-K> <C-W>k
-nnoremap <C-L> <C-W>l
-nnoremap <C-H> <C-W>h
+nnoremap <c-J> <C-W>j
+nnoremap <c-K> <C-W>k
+nnoremap <c-L> <C-W>l
+nnoremap <c-H> <C-W>h
+
+" in terminal mode
+tnoremap <c-h> <c-\><c-n><c-w>h
+tnoremap <c-j> <c-\><c-n><c-w>j
+tnoremap <c-k> <c-\><c-n><c-w>k
+tnoremap <c-l> <c-\><c-n><c-w>l
 
 " mute highlighting
 nnoremap <silent> <leader>/ :nohlsearch<CR>
 
 " Buffer closing
 nnoremap <silent> <leader>q :Sayonara<CR>
+
+" Window closing
+nnoremap <silent> <leader>cw <c-w>c<CR>
 
 " Fast saving
 nmap <leader>w :w!<cr>
@@ -209,27 +231,79 @@ nnoremap <C-s> :%s/<C-r><C-w>//c<left><left>
 nnoremap <leader>a :cclose<CR>
 
 " close location list
-nnoremap <leader>l :lclose<CR>
+" nnoremap <leader>l :lclose<CR>
 
 " Allow using the repeat operator with a visual selection (!)
 " http://stackoverflow.com/a/8064607/127816
 vnoremap . :normal .<CR>
 
 " resizing splits
-nnoremap <silent> <a-h> :vertical resize +10<cr>
-nnoremap <silent> <a-l> :vertical resize -10<cr>
-nnoremap <silent> <a-j> :res +10<cr>
-nnoremap <silent> <a-k> :res -10<cr>
+" Alt-h
+nnoremap <silent> ˙ :vertical resize -10<cr>
+" Alt-l
+nnoremap <silent> ¬ :vertical resize +10<cr>
+" Alt-j
+nnoremap <silent> ∆ :res -10<cr>
+" Alt-k
+nnoremap <silent> ˚ :res +10<cr>
 
 " navigating commands history
-cnoremap <c-k> <Up>
-cnoremap <c-j> <Down>
+" Alt-k
+cnoremap ˚ <Up>
+" Alt-j
+cnoremap ∆ <Down>
+
+" turn terminal to normal mode with ESC
+tnoremap <ESC> <C-\><C-n>
+" start terminal in insert mode
+au BufEnter * if &buftype == 'terminal' | :startinsert | endif
+" open terminal
+fu! OpenTerminal()
+    vsplit term://zsh
+    vertical resize 80
+endf
+nnoremap <leader>tt :terminal<CR>
+nnoremap <leader>tv :call OpenTerminal()<CR>
+" nnoremap <leader>tv :vsplit term://zsh<CR>
+nnoremap <leader>tn :vsplit term://node<CR>
 
 " }
 
 " --> Plugins {
 
-"  --> lighline {
+" --> NERDTree {
+
+map - :NERDTreeFind<CR>
+" close vim if the only window left open is a NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+let NERDTreeChDirMode=2
+let NERDTreeMarkBookmarks=0
+let NERDTreeQuitOnOpen=1
+let NERDTreeWinPos="right"
+let NERDTreeMinimalUI=1
+let NERDTreeMinimalMenu=1
+let NERDTreeAutoDeleteBuffer=1
+let NERDTreeShowHidden=1
+let NERDTreeWinSize=50
+let NERDTreeIgnore=['\.git$', '\~$']
+
+"  }
+
+"  --> vim-emmet {
+
+let g:user_emmet_leader_key='<C-i>'
+
+"  }
+
+"  --> vim-visual-multi {
+
+let g:VM_maps                    = {}
+let g:VM_maps["Add Cursor Down"] = '<C-j>'
+let g:VM_maps["Add Cursor Up"]   = '<C-k>'
+
+" }
+
+"  --> lightline {
 
 " To enable the lightline theme
 let g:lightline = {
@@ -263,13 +337,13 @@ let g:lightline = {
 
 " --> coc {
 
-" Use auocmd to force lightline update.
+" Use autocmd to force lightline update.
 autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
 
 let g:coc_global_extensions = [
-  \ 'coc-tsserver',
-  \ 'coc-eslint',
   \ 'coc-prettier',
+  \ 'coc-eslint',
+  \ 'coc-tsserver',
   \ 'coc-lists',
   \ 'coc-json',
   \ 'coc-html',
@@ -277,6 +351,7 @@ let g:coc_global_extensions = [
   \ 'coc-emmet',
   \ 'coc-snippets',
   \ 'coc-pairs',
+  \ 'coc-tailwindcss'
   \ ]
 
 " TextEdit might fail if hidden is not set.
@@ -381,7 +456,7 @@ nmap <leader>a  <Plug>(coc-codeaction-selected)
 " Remap keys for applying codeAction to the current buffer.
 nmap <leader>ac  <Plug>(coc-codeaction)
 " Apply AutoFix to problem on the current line.
-nmap <leader>qf  <Plug>(coc-fix-current)
+nmap <leader>af  <Plug>(coc-fix-current)
 
 " Map function and class text objects
 " NOTE: Requires 'textDocument.documentSymbol' support from the language server.
@@ -429,66 +504,46 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 
 " Mappings for CoCList
 " Show all diagnostics.
-nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
+nnoremap <silent><nowait> <leader>a  :<C-u>CocList diagnostics<cr>
 " Manage extensions.
-nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
+" nnoremap <silent><nowait> <leader>e  :<C-u>CocList extensions<cr>
 " Show commands.
-nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
+nnoremap <silent><nowait> <leader>c  :<C-u>CocList commands<cr>
 " Find symbol of current document.
-nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
+nnoremap <silent><nowait> <leader>o  :<C-u>CocList outline<cr>
 " Search workspace symbols.
-nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
+nnoremap <silent><nowait> <leader>s  :<C-u>CocList -I symbols<cr>
 " Do default action for next item.
-nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
+nnoremap <silent><nowait> <leader>j  :<C-u>CocNext<CR>
 " Do default action for previous item.
-nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
+nnoremap <silent><nowait> <leader>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
-nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+nnoremap <silent><nowait> <leader>p  :<C-u>CocListResume<CR>
 
 " }
 
 " --> fzf {
 
-nmap <silent> <leader>f :Files<cr>
+let g:fzf_layout = { 'window': { 'width': 1, 'height': 0.4, 'yoffset': 1, 'border': 'top' } }
+
+function! s:find_git_root()
+  return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
+endfunction
+
+command! ProjectFiles execute 'Files' s:find_git_root()
+
+nmap <silent> <leader>f :GFiles! --exclude-standard --others --cached<cr>
+" nmap <silent> <leader>f :ProjectFiles<cr>
 nmap <silent> <leader>b :Buffers<cr>
 nmap <silent> <leader>h :History<cr>
-nmap <silent> <leader>s :Find<cr>
+nmap <silent> <leader>s :Rg<cr>
+nmap <silent> <leader>gc :Commits!<cr>
+
 " Insert mode completion
 imap <c-x><c-k> <plug>(fzf-complete-word)
 imap <c-x><c-f> <plug>(fzf-complete-path)
 imap <c-x><c-j> <plug>(fzf-complete-file)
 imap <c-x><c-l> <plug>(fzf-complete-line)
-
-let g:fzf_colors =
-\ { 'fg':      ['fg', 'Normal'],
-  \ 'bg':      ['bg', 'Normal'],
-  \ 'hl':      ['fg', 'Comment'],
-  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-  \ 'hl+':     ['fg', 'Statement'],
-  \ 'info':    ['fg', 'PreProc'],
-  \ 'border':  ['fg', 'Ignore'],
-  \ 'prompt':  ['fg', 'Conditional'],
-  \ 'pointer': ['fg', 'Exception'],
-  \ 'marker':  ['fg', 'Keyword'],
-  \ 'spinner': ['fg', 'Label'],
-  \ 'header':  ['fg', 'Comment'] }
-
-"  }
-
-" --> NERDTree {
-
-map - :NERDTreeFind<CR>
-" close vim if the only window left open is a NERDTree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-let NERDTreeChDirMode=2
-let NERDTreeMarkBookmarks=0
-let NERDTreeQuitOnOpen=1
-let NERDTreeWinPos="right"
-let NERDTreeMinimalUI=1
-let NERDTreeAutoDeleteBuffer=1
-let NERDTreeShowHidden=1
-let NERDTreeIgnore=['\.git$', '\~$']
 
 "  }
 
@@ -512,6 +567,9 @@ let g:NERDDefaultAlign = 'left'
 let g:NERDCommentEmptyLines = 1
 " Enable trimming of trailing whitespace when uncommenting
 let g:NERDTrimTrailingWhitespace = 1
+" JSX comments
+" use <leader>ca to use alternative set of delimiters
+let g:NERDCustomDelimiters={ 'typescriptreact': { 'left': '//', 'right': '', 'leftAlt': '{/*', 'rightAlt': '*/}' }, 'javascript': { 'left': '//', 'right': '', 'leftAlt': '{/*', 'rightAlt': '*/}' } }
 
 " }
 
@@ -531,7 +589,7 @@ let g:startify_list_order = [
 let g:startify_files_number = 8
 let g:startify_change_to_dir = 1
 let g:startify_enable_special = 0
-let g:startify_custom_indices = map(range(1,100), 'string(v:val)')
+" let g:startify_custom_indices = map(range(1,100), 'string(v:val)')
 let g:startify_custom_header = [""]
 
 " }
