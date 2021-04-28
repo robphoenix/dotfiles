@@ -10,6 +10,7 @@ alias p1="ping 1.1.1.1"
 alias p8="ping 8.8.8.8"
 alias vi="nvim"
 alias v="nvim"
+alias vv="nvim ."
 alias ...="cd -"
 # zsh
 alias relo="source ~/.zshrc"
@@ -17,9 +18,13 @@ alias relo="source ~/.zshrc"
 alias g="git"
 alias gs="git sync"
 alias gsm="git sync main"
+alias hold="git ca -m 'feat: hold'"
 # z
 alias j=z
-# yarn/npm
+# yarn/npm/pnpm
+alias p="pnpm"
+alias pf="pnpm format"
+alias pl="pnpm lint"
 alias y="yarn"
 alias pd="install-peerdeps -Y"
 alias ya="yarn add --ignore-optional"
@@ -34,6 +39,7 @@ alias yd="yarn dev"
 alias story="yarn storybook:start"
 alias redep="rm -rf node_modules && rm yarn.lock && yarn --ignore-optional"
 alias ma="make api"
+alias md="make dev"
 # k8s
 alias k="kubectl"
 alias kgp="kubectl get-pods"

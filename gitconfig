@@ -13,20 +13,17 @@
     p = push
     po = push origin
     pof = push origin --force-with-lease
-    pom = push origin master
+    pom = push origin main
     pl = pull --rebase
     sync = pull --rebase origin
     f = fetch
     fu = fetch upstream
     m = merge
-    mom = merge origin/master
-    mum = merge upstream/master
-    mod = merge origin/dev
     h = reflog
     co = checkout
     cn = checkout -b
     cl = clone
-    b = branch -a
+    bs = branch --sort=-committerdate
     rp = remote prune
     tags = tag
     stashes = stash list
@@ -44,7 +41,7 @@
     # rebase
     # Interactive rebase with the given number of latest commits
 	reb = "!r() { git rebase -i HEAD~$1; }; r"
-    # Interactive rebase with given has
+    # Interactive rebase with given hash
     ri = rebase -i
     rca = commit --amend '-S'
     rc = rebase --continue

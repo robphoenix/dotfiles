@@ -2,6 +2,7 @@
 
 call plug#begin()
 
+Plug 'SirVer/ultisnips'                              " code snippets
 Plug 'honza/vim-snippets'                            " code snippets
 Plug 'mhinz/vim-sayonara'                            " easy buffer closing
 Plug 'mhinz/vim-startify'                            " fancy start screen
@@ -13,10 +14,14 @@ Plug 'Xuyuanp/nerdtree-git-plugin'                   " NERDTree git status
 Plug 'tpope/vim-unimpaired'                          " pairs of handy bracket mappings
 Plug 'tpope/vim-surround'                            " add quotes/parenthesis etc.
 Plug 'tpope/vim-fugitive'                            " git wrapper
+Plug 'stsewd/fzf-checkout.vim'
 Plug 'itchyny/lightline.vim'                         " statusline
 Plug 'haishanh/night-owl.vim'                        " theme
+Plug 'altercation/vim-colors-solarized'
+Plug 'romainl/flattened'
 Plug 'mattn/emmet-vim'                               " emmet
 Plug 'ap/vim-css-color'                              " CSS color highlighting
+" Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'HerringtonDarkholme/yats.vim'                  " TypeScript syntax
 Plug 'pangloss/vim-javascript'                       " JavaScript support
 Plug 'yuezk/vim-js'                                  " JavaScript syntax
@@ -26,6 +31,7 @@ Plug 'jparise/vim-graphql'                           " GraphQL syntax
 Plug 'neoclide/coc.nvim', {'branch': 'release'}      " autocompletion
 Plug 'junegunn/fzf.vim'                              " fuzzy finder
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'preservim/tagbar'
 
 call plug#end()
 
@@ -114,15 +120,19 @@ set omnifunc=syntaxcomplete#Complete
 let g:netrw_dirhistmax = 0
 
 " colorscheme
-if (has("termguicolors"))
- set termguicolors
- set t_Co=256
-endif
+" if (has("termguicolors"))
+"  set termguicolors
+"  set t_Co=256
+" endif
 syntax enable
-colorscheme night-owl
+" colorscheme night-owl
+set background=light
+" colorscheme solarized
+colorscheme flattened_light
 
 " Markdown settings
 au Bufread,BufNewFile *.md setlocal filetype=markdown textwidth=80 wrap spell wrapmargin=0
+" au Bufread,BufNewFile *.mdx setlocal filetype=mdx textwidth=80 wrap spell wrapmargin=0
 
 " gitconfig settings
 au Bufread,BufNewFile gitconfig setlocal filetype=.gitconfig
@@ -194,7 +204,7 @@ vnoremap H ^
 onoremap H ^
 
 " copy & paste to system clipboard
-vmap <Leader>y "+y
+" vmap <Leader>y "+y
 vmap <Leader>d "+d
 nmap <Leader>p "+p
 nmap <Leader>P "+P
@@ -267,9 +277,24 @@ nnoremap <leader>tv :call OpenTerminal()<CR>
 " nnoremap <leader>tv :vsplit term://zsh<CR>
 nnoremap <leader>tn :vsplit term://node<CR>
 
+" yank list
+nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
+
 " }
 
 " --> Plugins {
+
+" --> UltiSnips {
+
+" Trigger configuration.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
+"  }
 
 " --> NERDTree {
 
@@ -289,12 +314,6 @@ let NERDTreeIgnore=['\.git$', '\~$']
 
 "  }
 
-"  --> vim-emmet {
-
-let g:user_emmet_leader_key='<C-i>'
-
-"  }
-
 "  --> vim-visual-multi {
 
 let g:VM_maps                    = {}
@@ -307,7 +326,7 @@ let g:VM_maps["Add Cursor Up"]   = '<C-k>'
 
 " To enable the lightline theme
 let g:lightline = {
-    \ 'colorscheme': 'nightowl',
+    \ 'colorscheme': 'solarized',
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ],
     \             [ 'gitbranch', 'cocstatus', 'readonly', 'filename', 'modified' ] ],
@@ -349,9 +368,11 @@ let g:coc_global_extensions = [
   \ 'coc-html',
   \ 'coc-css',
   \ 'coc-emmet',
-  \ 'coc-snippets',
   \ 'coc-pairs',
-  \ 'coc-tailwindcss'
+  \ 'coc-tailwindcss',
+  \ 'coc-cssmodules',
+  \ 'coc-styled-components',
+  \ 'coc-yank',
   \ ]
 
 " TextEdit might fail if hidden is not set.
@@ -589,7 +610,13 @@ let g:startify_list_order = [
 let g:startify_files_number = 8
 let g:startify_change_to_dir = 1
 let g:startify_enable_special = 0
-" let g:startify_custom_indices = map(range(1,100), 'string(v:val)')
+let g:startify_custom_indices = map(range(1,100), 'string(v:val)')
 let g:startify_custom_header = [""]
+autocmd VimEnter *
+            \   if !argc()
+            \ |   Startify
+            \ |   NERDTree
+            \ |   wincmd w
+            \ | endif
 
 " }
