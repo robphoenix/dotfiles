@@ -6,3 +6,10 @@ export PATH="/Users/robphoenix/Library/Python/3.9/bin:$PATH"
 export BAT_THEME=base16
 export TERM=xterm
 
+# Go development
+export GOPATH="${HOME}/.go"
+export GOROOT="$(brew --prefix golang)/libexec"
+export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
+test -d "${GOPATH}" || mkdir "${GOPATH}"
+test -d "${GOPATH}/src/github.com" || mkdir -p "${GOPATH}/src/github.com"
+

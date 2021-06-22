@@ -5,7 +5,6 @@ call plug#begin()
 Plug 'SirVer/ultisnips'                              " code snippets
 Plug 'honza/vim-snippets'                            " code snippets
 Plug 'mhinz/vim-sayonara'                            " easy buffer closing
-Plug 'mhinz/vim-startify'                            " fancy start screen
 Plug 'ntpeters/vim-better-whitespace'                " better whitespace highlighting and removal
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}  " multiple cursors
 Plug 'preservim/nerdcommenter'                       " commenting
@@ -31,7 +30,7 @@ Plug 'jparise/vim-graphql'                           " GraphQL syntax
 Plug 'neoclide/coc.nvim', {'branch': 'release'}      " autocompletion
 Plug 'junegunn/fzf.vim'                              " fuzzy finder
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'preservim/tagbar'
+Plug 'mhinz/vim-startify'                            " fancy start screen
 
 call plug#end()
 
@@ -153,6 +152,9 @@ au! BufNewFile,BufRead *.csv setf csv
 " HTML settings
 " indent all tags
 let g:html_indent_inctags = "html,body,head"
+" Set HTML syntax for odd filetypes
+autocmd BufNewFile,BufRead *.njk   set syntax=htmldjango
+autocmd BufNewFile,BufRead *.html   set syntax=htmldjango
 
 " }
 
@@ -283,6 +285,25 @@ nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
 " }
 
 " --> Plugins {
+
+" --> Startify {
+
+let g:startify_custom_header = [""]
+let g:startify_lists = [
+          \ { 'type': 'dir',       'header': ['   '. getcwd()] },
+          \ { 'type': 'files',     'header': ['   Recently used']            },
+          \ { 'type': 'sessions',  'header': ['   Sessions']       },
+          \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
+          \ { 'type': 'commands',  'header': ['   Commands']       },
+          \ ]
+autocmd VimEnter *
+            \   if !argc()
+            \ |   Startify
+            \ |   NERDTree
+            \ |   wincmd w
+            \ | endif
+
+"  }
 
 " --> UltiSnips {
 
@@ -594,29 +615,3 @@ let g:NERDCustomDelimiters={ 'typescriptreact': { 'left': '//', 'right': '', 'le
 
 " }
 
-" --> Startify {
-
-let g:startify_session_dir = '~/dotfiles/nvim/session'
-let g:startify_session_persistence = 1
-let g:startify_session_sort = 1
-let g:startify_list_order = [
-            \ ['   Current directory:'],
-            \ 'dir',
-            \ ['   Most recently used'],
-            \ 'files',
-            \ ['   Sessions:'],
-            \ 'sessions',
-            \ ]
-let g:startify_files_number = 8
-let g:startify_change_to_dir = 1
-let g:startify_enable_special = 0
-let g:startify_custom_indices = map(range(1,100), 'string(v:val)')
-let g:startify_custom_header = [""]
-autocmd VimEnter *
-            \   if !argc()
-            \ |   Startify
-            \ |   NERDTree
-            \ |   wincmd w
-            \ | endif
-
-" }
