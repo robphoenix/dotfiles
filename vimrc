@@ -15,8 +15,7 @@ Plug 'tpope/vim-surround'                            " add quotes/parenthesis et
 Plug 'tpope/vim-fugitive'                            " git wrapper
 Plug 'stsewd/fzf-checkout.vim'
 Plug 'itchyny/lightline.vim'                         " statusline
-Plug 'haishanh/night-owl.vim'                        " theme
-Plug 'altercation/vim-colors-solarized'
+" Plug 'haishanh/night-owl.vim'                        " theme
 Plug 'romainl/flattened'
 Plug 'mattn/emmet-vim'                               " emmet
 Plug 'ap/vim-css-color'                              " CSS color highlighting
@@ -65,7 +64,7 @@ set hlsearch                       " do highlight found searches
 set ch=2                           " command line height
 set backspace=2                    " allow backspacing over everything in insert mode
 set whichwrap+=<,>,h,l,[,]         " backspace and cursor keys wrap to
-set shortmess+=filmnrxoOtT         " abbrev. of messages (avoids 'hit enter')
+set shortmess+=filmnrxoOtTc        " abbrev. of messages (avoids 'hit enter')
 set report=0                       " tell us about changes
 set nostartofline                  " don't jump to the start of line when scrolling
 set laststatus=2                   " always show the status line
@@ -274,10 +273,10 @@ fu! OpenTerminal()
     vsplit term://zsh
     vertical resize 80
 endf
-nnoremap <leader>tt :terminal<CR>
-nnoremap <leader>tv :call OpenTerminal()<CR>
-" nnoremap <leader>tv :vsplit term://zsh<CR>
-nnoremap <leader>tn :vsplit term://node<CR>
+" nnoremap <leader>tt :terminal<CR>
+" nnoremap <leader>tv :call OpenTerminal()<CR>
+" " nnoremap <leader>tv :vsplit term://zsh<CR>
+" nnoremap <leader>tn :vsplit term://node<CR>
 
 " yank list
 nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
@@ -396,13 +395,6 @@ let g:coc_global_extensions = [
   \ 'coc-yank',
   \ ]
 
-" TextEdit might fail if hidden is not set.
-set hidden
-
-" Some servers have issues with backup files, see #649.
-set nobackup
-set nowritebackup
-
 " Give more space for displaying messages.
 set cmdheight=2
 
@@ -410,17 +402,9 @@ set cmdheight=2
 " delays and poor user experience.
 set updatetime=300
 
-" Don't pass messages to |ins-completion-menu|.
-set shortmess+=c
-
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.
-if has("patch-8.1.1564")
-  " Recently vim can merge signcolumn and number column into one
-  set signcolumn=number
-else
-  set signcolumn=yes
-endif
+set signcolumn=yes
 
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
@@ -553,8 +537,8 @@ nnoremap <silent><nowait> <leader>a  :<C-u>CocList diagnostics<cr>
 nnoremap <silent><nowait> <leader>c  :<C-u>CocList commands<cr>
 " Find symbol of current document.
 nnoremap <silent><nowait> <leader>o  :<C-u>CocList outline<cr>
-" Search workspace symbols.
-nnoremap <silent><nowait> <leader>s  :<C-u>CocList -I symbols<cr>
+" Search workspace symbols. t for tags
+nnoremap <silent><nowait> <leader>t  :<C-u>CocList -I symbols<cr>
 " Do default action for next item.
 nnoremap <silent><nowait> <leader>j  :<C-u>CocNext<CR>
 " Do default action for previous item.
