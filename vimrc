@@ -12,14 +12,11 @@ Plug 'preservim/nerdtree'                            " tree explorer
 Plug 'Xuyuanp/nerdtree-git-plugin'                   " NERDTree git status
 Plug 'tpope/vim-unimpaired'                          " pairs of handy bracket mappings
 Plug 'tpope/vim-surround'                            " add quotes/parenthesis etc.
-Plug 'tpope/vim-fugitive'                            " git wrapper
-Plug 'stsewd/fzf-checkout.vim'
 Plug 'itchyny/lightline.vim'                         " statusline
-" Plug 'haishanh/night-owl.vim'                        " theme
-Plug 'romainl/flattened'
+Plug 'haishanh/night-owl.vim'                        " night owl colorscheme
+Plug 'romainl/flattened'                             " solarized colorscheme
 Plug 'mattn/emmet-vim'                               " emmet
 Plug 'ap/vim-css-color'                              " CSS color highlighting
-" Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'HerringtonDarkholme/yats.vim'                  " TypeScript syntax
 Plug 'pangloss/vim-javascript'                       " JavaScript support
 Plug 'yuezk/vim-js'                                  " JavaScript syntax
@@ -27,9 +24,9 @@ Plug 'maxmellon/vim-jsx-pretty'                      " JS and JSX syntax
 Plug 'jxnblk/vim-mdx-js'                             " MDX Syntax
 Plug 'jparise/vim-graphql'                           " GraphQL syntax
 Plug 'neoclide/coc.nvim', {'branch': 'release'}      " autocompletion
-Plug 'junegunn/fzf.vim'                              " fuzzy finder
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'mhinz/vim-startify'                            " fancy start screen
+Plug 'ctrlpvim/ctrlp.vim'                            " file/buffer opening
+Plug 'mileszs/ack.vim'                               " search
 
 call plug#end()
 
@@ -118,15 +115,16 @@ set omnifunc=syntaxcomplete#Complete
 let g:netrw_dirhistmax = 0
 
 " colorscheme
-" if (has("termguicolors"))
-"  set termguicolors
-"  set t_Co=256
-" endif
+if (has("termguicolors"))
+ set termguicolors
+ set t_Co=256
+endif
 syntax enable
-" colorscheme night-owl
-set background=light
+colorscheme night-owl
+set background=dark
+" set background=light
 " colorscheme solarized
-colorscheme flattened_light
+" colorscheme flattened_light
 
 " Markdown settings
 au Bufread,BufNewFile *.md setlocal filetype=markdown textwidth=80 wrap spell wrapmargin=0
@@ -285,6 +283,36 @@ nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
 
 " --> Plugins {
 
+"  --> ack/ripgrep {
+
+nnoremap <Leader>s :Ack!<Space>
+" Use ripgrep for searching
+" Options include:
+" --vimgrep -> Needed to parse the rg response properly for ack.vim
+" --smart-case -> Search case insensitive if all lowercase pattern, Search case sensitively otherwise
+let g:ackprg = 'rg --vimgrep --smart-case'
+" Auto close the Quickfix list after pressing '<enter>' on a list item
+let g:ack_autoclose = 1
+" Any empty ack search will search for the work the cursor is on
+let g:ack_use_cword_for_empty_search = 1
+" Don't jump to first match
+cnoreabbrev Ack Ack!
+
+"  }
+
+"  --> Ctrl-P {
+
+nmap <silent> <leader>b :CtrlPBuffer<cr>
+nmap <silent> <leader>h :CtrlPMRU<cr>
+
+"  }
+
+"  --> emmet {
+
+" let g:user_emmet_leader_key='<C-N>'
+
+"  }
+
 " --> Startify {
 
 let g:startify_custom_header = [""]
@@ -346,7 +374,7 @@ let g:VM_maps["Add Cursor Up"]   = '<C-k>'
 
 " To enable the lightline theme
 let g:lightline = {
-    \ 'colorscheme': 'solarized',
+    \ 'colorscheme': 'nightowl',
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ],
     \             [ 'gitbranch', 'cocstatus', 'readonly', 'filename', 'modified' ] ],
@@ -547,31 +575,6 @@ nnoremap <silent><nowait> <leader>k  :<C-u>CocPrev<CR>
 nnoremap <silent><nowait> <leader>p  :<C-u>CocListResume<CR>
 
 " }
-
-" --> fzf {
-
-let g:fzf_layout = { 'window': { 'width': 1, 'height': 0.4, 'yoffset': 1, 'border': 'top' } }
-
-function! s:find_git_root()
-  return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
-endfunction
-
-command! ProjectFiles execute 'Files' s:find_git_root()
-
-nmap <silent> <leader>f :GFiles! --exclude-standard --others --cached<cr>
-" nmap <silent> <leader>f :ProjectFiles<cr>
-nmap <silent> <leader>b :Buffers<cr>
-nmap <silent> <leader>h :History<cr>
-nmap <silent> <leader>s :Rg<cr>
-nmap <silent> <leader>gc :Commits!<cr>
-
-" Insert mode completion
-imap <c-x><c-k> <plug>(fzf-complete-word)
-imap <c-x><c-f> <plug>(fzf-complete-path)
-imap <c-x><c-j> <plug>(fzf-complete-file)
-imap <c-x><c-l> <plug>(fzf-complete-line)
-
-"  }
 
 " --> vim-better-whitespace {
 
