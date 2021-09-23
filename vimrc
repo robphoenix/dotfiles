@@ -17,16 +17,18 @@ Plug 'haishanh/night-owl.vim'                        " night owl colorscheme
 Plug 'romainl/flattened'                             " solarized colorscheme
 Plug 'mattn/emmet-vim'                               " emmet
 Plug 'ap/vim-css-color'                              " CSS color highlighting
+Plug 'neoclide/coc.nvim', {'branch': 'release'}      " autocompletion
+Plug 'mhinz/vim-startify'                            " fancy start screen
+Plug 'nvim-lua/plenary.nvim'                         " for Telescope
+Plug 'nvim-telescope/telescope.nvim'                 " file/buffer opening & search
+Plug 'TimUntersberger/neogit'
+
 Plug 'HerringtonDarkholme/yats.vim'                  " TypeScript syntax
 Plug 'pangloss/vim-javascript'                       " JavaScript support
 Plug 'yuezk/vim-js'                                  " JavaScript syntax
 Plug 'maxmellon/vim-jsx-pretty'                      " JS and JSX syntax
 Plug 'jxnblk/vim-mdx-js'                             " MDX Syntax
 Plug 'jparise/vim-graphql'                           " GraphQL syntax
-Plug 'neoclide/coc.nvim', {'branch': 'release'}      " autocompletion
-Plug 'mhinz/vim-startify'                            " fancy start screen
-Plug 'ctrlpvim/ctrlp.vim'                            " file/buffer opening
-Plug 'mileszs/ack.vim'                               " search
 
 call plug#end()
 
@@ -152,6 +154,7 @@ let g:html_indent_inctags = "html,body,head"
 " Set HTML syntax for odd filetypes
 autocmd BufNewFile,BufRead *.njk   set syntax=htmldjango
 autocmd BufNewFile,BufRead *.html   set syntax=htmldjango
+autocmd BufNewFile,BufRead *.html.twig   set syntax=htmldjango
 
 " }
 
@@ -283,27 +286,13 @@ nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
 
 " --> Plugins {
 
-"  --> ack/ripgrep {
+"  --> Telescope {
 
-nnoremap <Leader>s :Ack!<Space>
-" Use ripgrep for searching
-" Options include:
-" --vimgrep -> Needed to parse the rg response properly for ack.vim
-" --smart-case -> Search case insensitive if all lowercase pattern, Search case sensitively otherwise
-let g:ackprg = 'rg --vimgrep --smart-case'
-" Auto close the Quickfix list after pressing '<enter>' on a list item
-let g:ack_autoclose = 1
-" Any empty ack search will search for the work the cursor is on
-let g:ack_use_cword_for_empty_search = 1
-" Don't jump to first match
-cnoreabbrev Ack Ack!
-
-"  }
-
-"  --> Ctrl-P {
-
-nmap <silent> <leader>b :CtrlPBuffer<cr>
-nmap <silent> <leader>h :CtrlPMRU<cr>
+nnoremap <leader>s <cmd>Telescope live_grep<cr>
+" nnoremap <leader>f <cmd>Telescope find_files<cr>
+nmap <silent> <leader>f :Telescope find_files<cr>
+nnoremap <leader>b <cmd>Telescope buffers<cr>
+nnoremap <leader>h <cmd>Telescope oldfiles<cr>
 
 "  }
 
@@ -316,19 +305,19 @@ nmap <silent> <leader>h :CtrlPMRU<cr>
 " --> Startify {
 
 let g:startify_custom_header = [""]
-let g:startify_lists = [
-          \ { 'type': 'dir',       'header': ['   '. getcwd()] },
-          \ { 'type': 'files',     'header': ['   Recently used']            },
-          \ { 'type': 'sessions',  'header': ['   Sessions']       },
-          \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
-          \ { 'type': 'commands',  'header': ['   Commands']       },
-          \ ]
-autocmd VimEnter *
-            \   if !argc()
-            \ |   Startify
-            \ |   NERDTree
-            \ |   wincmd w
-            \ | endif
+let g:startify_lists = [ { 'type': 'dir',       'header': ['   '. getcwd()] }]
+          " \ { 'type': 'dir',       'header': ['   '. getcwd()] },
+          " \ { 'type': 'files',     'header': ['   Recently used']            },
+          " \ { 'type': 'sessions',  'header': ['   Sessions']       },
+          " \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
+          " \ { 'type': 'commands',  'header': ['   Commands']       },
+          " \ ]
+" autocmd VimEnter *
+"             \   if !argc()
+"             \ |   Startify
+"             \ |   NERDTree
+"             \ |   wincmd w
+"             \ | endif
 
 "  }
 
@@ -490,10 +479,6 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
 
-" Formatting selected code.
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
-
 augroup mygroup
   autocmd!
   " Setup formatexpr specified filetype(s).
@@ -547,8 +532,6 @@ command! -nargs=0 Format :call CocAction('format')
 
 " Prettier
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
-vmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
 
 " Add `:Fold` command to fold current buffer.
 command! -nargs=? Fold :call     CocAction('fold', <f-args>)
