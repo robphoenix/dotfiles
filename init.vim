@@ -22,6 +22,8 @@ Plug 'mhinz/vim-startify'                            " fancy start screen
 Plug 'nvim-lua/plenary.nvim'                         " for Telescope
 Plug 'nvim-telescope/telescope.nvim'                 " file/buffer opening & search
 Plug 'TimUntersberger/neogit'
+Plug 'sindrets/diffview.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
 
 Plug 'HerringtonDarkholme/yats.vim'                  " TypeScript syntax
 Plug 'pangloss/vim-javascript'                       " JavaScript support
