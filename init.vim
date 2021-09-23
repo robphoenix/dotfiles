@@ -21,9 +21,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}      " autocompletion
 Plug 'mhinz/vim-startify'                            " fancy start screen
 Plug 'nvim-lua/plenary.nvim'                         " for Telescope
 Plug 'nvim-telescope/telescope.nvim'                 " file/buffer opening & search
-Plug 'TimUntersberger/neogit'
-Plug 'sindrets/diffview.nvim'
-Plug 'kyazdani42/nvim-web-devicons'
+Plug 'TimUntersberger/neogit'                        " git UI
 
 Plug 'HerringtonDarkholme/yats.vim'                  " TypeScript syntax
 Plug 'pangloss/vim-javascript'                       " JavaScript support
@@ -287,6 +285,18 @@ nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
 " }
 
 " --> Plugins {
+
+"  --> neogit & diffview
+
+lua << EOF
+require("neogit").setup {
+  disable_commit_confirmation = true,
+  integrations = {
+    diffview = true
+    }
+  }
+EOF
+nnoremap <leader>gg :Neogit<cr>
 
 "  --> Telescope {
 
