@@ -288,24 +288,15 @@ nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
 
 "  --> neogit
 
-lua << EOF
-require("neogit").setup {
-  disable_commit_confirmation = true,
-  integrations = {
-    diffview = true
-    }
-  }
-EOF
 nnoremap <leader>gg :Neogit<cr>
 nnoremap <leader>gp :Neogit push<cr>
 
 "  --> Telescope {
 
-nnoremap <leader>s <cmd>Telescope live_grep<cr>
-" nnoremap <leader>f <cmd>Telescope find_files<cr>
 nmap <silent> <leader>f :Telescope find_files<cr>
-nnoremap <leader>b <cmd>Telescope buffers<cr>
-nnoremap <leader>h <cmd>Telescope oldfiles<cr>
+nmap <silent> <leader>s :Telescope live_grep<cr>
+nmap <silent> <leader>b :Telescope buffers<cr>
+nmap <silent> <leader>h :Telescope history<cr>
 
 "  }
 
