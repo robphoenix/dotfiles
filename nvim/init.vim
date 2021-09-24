@@ -22,6 +22,8 @@ Plug 'nvim-lua/plenary.nvim'                         " for Telescope
 Plug 'nvim-telescope/telescope.nvim'                 " file/buffer opening & search
 Plug 'TimUntersberger/neogit'                        " git UI
 Plug 'ggandor/lightspeed.nvim'
+Plug 'sindrets/diffview.nvim'
+
 
 Plug 'HerringtonDarkholme/yats.vim'                  " TypeScript syntax
 Plug 'pangloss/vim-javascript'                       " JavaScript support
@@ -287,6 +289,18 @@ nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
 " --> Plugins {
 
 "  --> neogit
+
+lua << EOF
+require("neogit").setup {
+  disable_commit_confirmation = true,
+  integrations = {
+    diffview = true
+  }
+}
+require("diffview").setup {
+  use_icons = false
+}
+EOF
 
 nnoremap <leader>gg :Neogit<cr>
 nnoremap <leader>gp :Neogit push<cr>
