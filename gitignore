@@ -1,22 +1,2 @@
-*~
-.DS_Store
-tags
-.tags
-_projectnotes.txt
-node_modules/
-.tern-port
-*.class
-*.jar
-npm-debug.log
-_site/
-.sass-cache/
-.bundle/
-.env
-.vagrant/
-*.pyc
-__pycache__
-*.beam
-tags
-.debris/
-secrets.zsh
+nvim/plugged
 

@@ -1,0 +1,23 @@
+{
+  "eslint.autoFixOnSave": true,
+  "coc.preferences.formatOnSaveFiletypes": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "json",
+    "mdx",
+    "css",
+    "markdown.mdx",
+    "html"
+  ],
+  "tsserver.formatOnType": false,
+  "coc.preferences.formatOnType": false,
+  "prettier.eslintIntegration": true,
+  "prettier.tabWidth": 2,
+  "prettier.disableSuccessMessage": true,
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact",
+    "typescript": "typescriptreact"
+  }
+}

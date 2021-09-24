@@ -6,7 +6,6 @@ Plug 'SirVer/ultisnips'                              " code snippets
 Plug 'honza/vim-snippets'                            " code snippets
 Plug 'mhinz/vim-sayonara'                            " easy buffer closing
 Plug 'ntpeters/vim-better-whitespace'                " better whitespace highlighting and removal
-Plug 'mg979/vim-visual-multi', {'branch': 'master'}  " multiple cursors
 Plug 'preservim/nerdcommenter'                       " commenting
 Plug 'preservim/nerdtree'                            " tree explorer
 Plug 'Xuyuanp/nerdtree-git-plugin'                   " NERDTree git status
@@ -22,6 +21,7 @@ Plug 'mhinz/vim-startify'                            " fancy start screen
 Plug 'nvim-lua/plenary.nvim'                         " for Telescope
 Plug 'nvim-telescope/telescope.nvim'                 " file/buffer opening & search
 Plug 'TimUntersberger/neogit'                        " git UI
+Plug 'ggandor/lightspeed.nvim'
 
 Plug 'HerringtonDarkholme/yats.vim'                  " TypeScript syntax
 Plug 'pangloss/vim-javascript'                       " JavaScript support
@@ -286,7 +286,7 @@ nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
 
 " --> Plugins {
 
-"  --> neogit & diffview
+"  --> neogit
 
 lua << EOF
 require("neogit").setup {
@@ -297,6 +297,7 @@ require("neogit").setup {
   }
 EOF
 nnoremap <leader>gg :Neogit<cr>
+nnoremap <leader>gp :Neogit push<cr>
 
 "  --> Telescope {
 
@@ -317,13 +318,13 @@ nnoremap <leader>h <cmd>Telescope oldfiles<cr>
 " --> Startify {
 
 let g:startify_custom_header = [""]
-let g:startify_lists = [ { 'type': 'dir',       'header': ['   '. getcwd()] }]
-          " \ { 'type': 'dir',       'header': ['   '. getcwd()] },
-          " \ { 'type': 'files',     'header': ['   Recently used']            },
+let g:startify_lists = [
+          \ { 'type': 'dir',       'header': ['   '. getcwd()] },
+          \ { 'type': 'files',     'header': ['   Recently used']            },
+          \ ]
           " \ { 'type': 'sessions',  'header': ['   Sessions']       },
           " \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
           " \ { 'type': 'commands',  'header': ['   Commands']       },
-          " \ ]
 " autocmd VimEnter *
 "             \   if !argc()
 "             \ |   Startify
