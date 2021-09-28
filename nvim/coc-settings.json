@@ -8,8 +8,7 @@
     "json",
     "mdx",
     "css",
-    "markdown.mdx",
-    "html"
+    "markdown.mdx"
   ],
   "tsserver.formatOnType": false,
   "coc.preferences.formatOnType": false,
@@ -19,5 +18,6 @@
   "emmet.includeLanguages": {
     "javascript": "javascriptreact",
     "typescript": "typescriptreact"
-  }
+  },
+  "htmldjango.djhtml.tabWidth": 2
 }

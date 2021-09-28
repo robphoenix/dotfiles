@@ -24,7 +24,6 @@ Plug 'TimUntersberger/neogit'                        " git UI
 Plug 'ggandor/lightspeed.nvim'
 Plug 'sindrets/diffview.nvim'
 
-
 Plug 'HerringtonDarkholme/yats.vim'                  " TypeScript syntax
 Plug 'pangloss/vim-javascript'                       " JavaScript support
 Plug 'yuezk/vim-js'                                  " JavaScript syntax
@@ -154,9 +153,13 @@ au! BufNewFile,BufRead *.csv setf csv
 " indent all tags
 let g:html_indent_inctags = "html,body,head"
 " Set HTML syntax for odd filetypes
-autocmd BufNewFile,BufRead *.njk   set syntax=htmldjango
-autocmd BufNewFile,BufRead *.html   set syntax=htmldjango
-autocmd BufNewFile,BufRead *.html.twig   set syntax=htmldjango
+" autocmd BufNewFile,BufRead *.njk   set syntax=htmldjango
+" autocmd BufNewFile,BufRead *.njk   set ft=html
+" autocmd BufNewFile,BufRead *.njk.html   set syntax=htmldjango ft=nunjucks
+autocmd BufNewFile,BufRead *.html set syntax=htmldjango ft=htmldjango ts=2 sw=2 sts=2
+" autocmd BufNewFile,BufRead *.html.twig   set syntax=htmldjango
+" Format on save
+autocmd BufWritePost *.html silent :Format
 
 " }
 
@@ -310,7 +313,7 @@ nnoremap <leader>gp :Neogit push<cr>
 nmap <silent> <leader>f :Telescope find_files<cr>
 nmap <silent> <leader>s :Telescope live_grep<cr>
 nmap <silent> <leader>b :Telescope buffers<cr>
-nmap <silent> <leader>h :Telescope history<cr>
+nmap <silent> <leader>h :Telescope oldfiles<cr>
 
 "  }
 
@@ -330,12 +333,12 @@ let g:startify_lists = [
           " \ { 'type': 'sessions',  'header': ['   Sessions']       },
           " \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
           " \ { 'type': 'commands',  'header': ['   Commands']       },
-" autocmd VimEnter *
-"             \   if !argc()
-"             \ |   Startify
-"             \ |   NERDTree
-"             \ |   wincmd w
-"             \ | endif
+autocmd VimEnter *
+            \   if !argc()
+            \ |   Startify
+            \ |   NERDTree
+            \ |   wincmd w
+            \ | endif
 
 "  }
 
@@ -420,7 +423,6 @@ let g:coc_global_extensions = [
   \ 'coc-tsserver',
   \ 'coc-lists',
   \ 'coc-json',
-  \ 'coc-html',
   \ 'coc-css',
   \ 'coc-emmet',
   \ 'coc-pairs',
@@ -428,6 +430,7 @@ let g:coc_global_extensions = [
   \ 'coc-cssmodules',
   \ 'coc-styled-components',
   \ 'coc-yank',
+  \ 'coc-htmldjango',
   \ ]
 
 " Give more space for displaying messages.
@@ -547,9 +550,13 @@ xmap <silent> <C-s> <Plug>(coc-range-select)
 
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocAction('format')
+nnoremap <silent><nowait> <leader>p  :<C-u>Format<cr>
 
 " Prettier
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
+
+" DjHTML format (11ty/nunjucks)
+command! -nargs=0 Djhtml :CocCommand htmldjango.djhtml.format
 
 " Add `:Fold` command to fold current buffer.
 command! -nargs=? Fold :call     CocAction('fold', <f-args>)
@@ -573,7 +580,9 @@ nnoremap <silent><nowait> <leader>j  :<C-u>CocNext<CR>
 " Do default action for previous item.
 nnoremap <silent><nowait> <leader>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
-nnoremap <silent><nowait> <leader>p  :<C-u>CocListResume<CR>
+" nnoremap <silent><nowait> <leader>p  :<C-u>CocListResume<CR>
+
+let g:coc_filetype_map = { 'html': 'html' }
 
 " }
 
