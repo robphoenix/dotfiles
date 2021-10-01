@@ -17,7 +17,10 @@
   "prettier.disableSuccessMessage": true,
   "emmet.includeLanguages": {
     "javascript": "javascriptreact",
-    "typescript": "typescriptreact"
+    "typescript": "typescriptreact",
+    "htmldjango": "html"
   },
-  "htmldjango.djhtml.tabWidth": 2
+  "snippets.loadFromExtensions": true,
+  "htmldjango.formatting.provider": "djlint",
+  "htmldjango.djlint.indent": 2
 }
