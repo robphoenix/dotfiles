@@ -23,6 +23,7 @@ Plug 'nvim-telescope/telescope.nvim'                 " file/buffer opening & sea
 Plug 'TimUntersberger/neogit'                        " git UI
 Plug 'ggandor/lightspeed.nvim'
 Plug 'sindrets/diffview.nvim'
+Plug 'akinsho/toggleterm.nvim'
 
 Plug 'HerringtonDarkholme/yats.vim'                  " TypeScript syntax
 Plug 'pangloss/vim-javascript'                       " JavaScript support
@@ -289,9 +290,7 @@ nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
 
 " }
 
-" --> Plugins {
-
-"  --> neogit
+" --> Lua {
 
 lua << EOF
 require("neogit").setup {
@@ -303,7 +302,21 @@ require("neogit").setup {
 require("diffview").setup {
   use_icons = false
 }
+require("toggleterm").setup {}
 EOF
+
+"  }
+
+" --> Plugins {
+
+"  --> toggleterm {
+
+nnoremap <leader>tt :ToggleTerm<cr>
+
+"  }
+
+"  --> neogit
+
 
 nnoremap <leader>gg :Neogit<cr>
 nnoremap <leader>gp :Neogit push<cr>
@@ -574,7 +587,7 @@ nnoremap <silent><nowait> <leader>c  :<C-u>CocList commands<cr>
 " Find symbol of current document.
 nnoremap <silent><nowait> <leader>o  :<C-u>CocList outline<cr>
 " Search workspace symbols. t for tags
-nnoremap <silent><nowait> <leader>t  :<C-u>CocList -I symbols<cr>
+" nnoremap <silent><nowait> <leader>t  :<C-u>CocList -I symbols<cr>
 " Do default action for next item.
 nnoremap <silent><nowait> <leader>j  :<C-u>CocNext<CR>
 " Do default action for previous item.
