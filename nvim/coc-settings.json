@@ -8,9 +8,11 @@
     "json",
     "mdx",
     "css",
-    "markdown.mdx"
+    "markdown.mdx",
+    "graphql"
   ],
   "tsserver.formatOnType": false,
+  "tsserver.enableJavascript": false,
   "coc.preferences.formatOnType": false,
   "prettier.eslintIntegration": true,
   "prettier.tabWidth": 2,

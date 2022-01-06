@@ -12,19 +12,22 @@ Plug 'Xuyuanp/nerdtree-git-plugin'                   " NERDTree git status
 Plug 'tpope/vim-unimpaired'                          " pairs of handy bracket mappings
 Plug 'tpope/vim-surround'                            " add quotes/parenthesis etc.
 Plug 'itchyny/lightline.vim'                         " statusline
-Plug 'haishanh/night-owl.vim'                        " night owl colorscheme
-Plug 'romainl/flattened'                             " solarized colorscheme
 Plug 'mattn/emmet-vim'                               " emmet
 Plug 'ap/vim-css-color'                              " CSS color highlighting
 Plug 'neoclide/coc.nvim', {'branch': 'release'}      " autocompletion
 Plug 'mhinz/vim-startify'                            " fancy start screen
-Plug 'nvim-lua/plenary.nvim'                         " for Telescope
-Plug 'nvim-telescope/telescope.nvim'                 " file/buffer opening & search
+Plug 'ctrlpvim/ctrlp.vim'                            " file/buffer opening
+Plug 'mileszs/ack.vim'                               " search
+Plug 'nvim-lua/plenary.nvim'
 Plug 'TimUntersberger/neogit'                        " git UI
-Plug 'ggandor/lightspeed.nvim'
-Plug 'sindrets/diffview.nvim'
-Plug 'akinsho/toggleterm.nvim'
-
+Plug 'sindrets/diffview.nvim'                        " git diff
+Plug 'ggandor/lightspeed.nvim'                       " motion plugin
+Plug 'akinsho/toggleterm.nvim'                       " neovim terminal
+" colorschemes
+Plug 'haishanh/night-owl.vim'
+Plug 'romainl/flattened'
+Plug 'EdenEast/nightfox.nvim'
+" language syntax/support
 Plug 'HerringtonDarkholme/yats.vim'                  " TypeScript syntax
 Plug 'pangloss/vim-javascript'                       " JavaScript support
 Plug 'yuezk/vim-js'                                  " JavaScript syntax
@@ -124,11 +127,12 @@ if (has("termguicolors"))
  set t_Co=256
 endif
 syntax enable
-colorscheme night-owl
 set background=dark
 " set background=light
+colorscheme nightfox
 " colorscheme solarized
 " colorscheme flattened_light
+" colorscheme night-owl
 
 " Markdown settings
 au Bufread,BufNewFile *.md setlocal filetype=markdown textwidth=80 wrap spell wrapmargin=0
@@ -309,6 +313,36 @@ EOF
 
 " --> Plugins {
 
+"  --> ack/ripgrep {
+
+nnoremap <Leader>s :Ack!<Space>
+" Use ripgrep for searching
+" Options include:
+" --vimgrep -> Needed to parse the rg response properly for ack.vim
+" --smart-case -> Search case insensitive if all lowercase pattern, Search case sensitively otherwise
+let g:ackprg = 'rg --vimgrep --smart-case'
+" Auto close the Quickfix list after pressing '<enter>' on a list item
+let g:ack_autoclose = 1
+" Any empty ack search will search for the work the cursor is on
+let g:ack_use_cword_for_empty_search = 1
+" Don't jump to first match
+cnoreabbrev Ack Ack!
+
+"  }
+
+"  --> Ctrl-P {
+
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|node_modules)$'
+" let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+" ignore files in .gitignore
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+
+
+
+nmap <silent> <leader>f :CtrlP<cr>
+nmap <silent> <leader>b :CtrlPBuffer<cr>
+nmap <silent> <leader>h :CtrlPMRU<cr>
+
 "  --> toggleterm {
 
 nnoremap <leader>tt :ToggleTerm<cr>
@@ -317,16 +351,8 @@ nnoremap <leader>tt :ToggleTerm<cr>
 
 "  --> neogit
 
-
 nnoremap <leader>gg :Neogit<cr>
 nnoremap <leader>gp :Neogit push<cr>
-
-"  --> Telescope {
-
-nmap <silent> <leader>f :Telescope find_files<cr>
-nmap <silent> <leader>s :Telescope live_grep<cr>
-nmap <silent> <leader>b :Telescope buffers<cr>
-nmap <silent> <leader>h :Telescope oldfiles<cr>
 
 "  }
 
@@ -397,7 +423,7 @@ let g:VM_maps["Add Cursor Up"]   = '<C-k>'
 
 " To enable the lightline theme
 let g:lightline = {
-    \ 'colorscheme': 'nightowl',
+    \ 'colorscheme': 'nightfox',
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ],
     \             [ 'gitbranch', 'cocstatus', 'readonly', 'filename', 'modified' ] ],
@@ -579,7 +605,7 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 
 " Mappings for CoCList
 " Show all diagnostics.
-nnoremap <silent><nowait> <leader>a  :<C-u>CocList diagnostics<cr>
+nnoremap <silent><nowait> <leader>aa :<C-u>CocList diagnostics<cr>
 " Manage extensions.
 " nnoremap <silent><nowait> <leader>e  :<C-u>CocList extensions<cr>
 " Show commands.
