@@ -21,6 +21,7 @@ Plug 'mileszs/ack.vim'                               " search
 Plug 'nvim-lua/plenary.nvim'
 Plug 'TimUntersberger/neogit'                        " git UI
 Plug 'sindrets/diffview.nvim'                        " git diff
+Plug 'kyazdani42/nvim-web-devicons'
 Plug 'ggandor/lightspeed.nvim'                       " motion plugin
 Plug 'akinsho/toggleterm.nvim'                       " neovim terminal
 " colorschemes
@@ -130,8 +131,8 @@ syntax enable
 set background=dark
 " set background=light
 colorscheme nightfox
-" colorscheme solarized
 " colorscheme flattened_light
+" colorscheme solarized
 " colorscheme night-owl
 
 " Markdown settings
@@ -217,11 +218,11 @@ onoremap H ^
 
 " copy & paste to system clipboard
 " vmap <Leader>y "+y
-vmap <Leader>d "+d
-nmap <Leader>p "+p
-nmap <Leader>P "+P
-vmap <Leader>p "+p
-vmap <Leader>P "+P
+" vmap <Leader>d "+d
+" nmap <Leader>p "+p
+" nmap <Leader>P "+P
+" vmap <Leader>p "+p
+" vmap <Leader>P "+P
 
 " visual shifting (does not exit Visual mode)
 vnoremap < <gv
@@ -304,7 +305,11 @@ require("neogit").setup {
   }
 }
 require("diffview").setup {
-  use_icons = false
+  use_icons = false,
+  win_config = {
+      position = "right",
+      width = 30,
+  }
 }
 require("toggleterm").setup {}
 EOF
@@ -312,6 +317,13 @@ EOF
 "  }
 
 " --> Plugins {
+
+"  --> Diffview {
+
+nmap <silent> <leader>do :DiffviewOpen<cr>
+nmap <silent> <leader>dc :DiffviewClose<cr>
+
+"  }
 
 "  --> ack/ripgrep {
 
@@ -422,6 +434,8 @@ let g:VM_maps["Add Cursor Up"]   = '<C-k>'
 "  --> lightline {
 
 " To enable the lightline theme
+    " \ 'colorscheme': 'solarized',
+    " \ 'colorscheme': 'nightfox',
 let g:lightline = {
     \ 'colorscheme': 'nightfox',
     \ 'active': {
