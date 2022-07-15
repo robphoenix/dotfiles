@@ -11,6 +11,7 @@ Plug 'preservim/nerdtree'                            " tree explorer
 Plug 'Xuyuanp/nerdtree-git-plugin'                   " NERDTree git status
 Plug 'tpope/vim-unimpaired'                          " pairs of handy bracket mappings
 Plug 'tpope/vim-surround'                            " add quotes/parenthesis etc.
+Plug 'tpope/vim-fugitive'
 Plug 'itchyny/lightline.vim'                         " statusline
 Plug 'mattn/emmet-vim'                               " emmet
 Plug 'ap/vim-css-color'                              " CSS color highlighting
@@ -21,6 +22,7 @@ Plug 'mileszs/ack.vim'                               " search
 Plug 'nvim-lua/plenary.nvim'
 Plug 'TimUntersberger/neogit'                        " git UI
 Plug 'sindrets/diffview.nvim'                        " git diff
+Plug 'samoshkin/vim-mergetool'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'ggandor/lightspeed.nvim'                       " motion plugin
 Plug 'akinsho/toggleterm.nvim'                       " neovim terminal
@@ -128,10 +130,10 @@ if (has("termguicolors"))
  set t_Co=256
 endif
 syntax enable
-set background=dark
-" set background=light
-colorscheme nightfox
-" colorscheme flattened_light
+" set background=dark
+set background=light
+" colorscheme nightfox
+colorscheme flattened_light
 " colorscheme solarized
 " colorscheme night-owl
 
@@ -311,12 +313,20 @@ require("diffview").setup {
       width = 30,
   }
 }
-require("toggleterm").setup {}
+require("toggleterm").setup {
+    direction = "horizontal",
+    height = 40
+}
 EOF
 
 "  }
 
 " --> Plugins {
+
+" vim-mergetool {
+let g:mergetool_layout = 'mr'
+let g:mergetool_prefer_revision = 'local'
+" }
 
 "  --> Diffview {
 
@@ -437,31 +447,27 @@ let g:VM_maps["Add Cursor Up"]   = '<C-k>'
     " \ 'colorscheme': 'solarized',
     " \ 'colorscheme': 'nightfox',
 let g:lightline = {
-    \ 'colorscheme': 'nightfox',
+    \ 'colorscheme': 'solarized',
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ],
-    \             [ 'gitbranch', 'cocstatus', 'readonly', 'filename', 'modified' ] ],
+    \             [ 'readonly', 'filename', 'gitbranch', 'modified' ]],
     \   'right': [ [ 'lineinfo' ],
     \              [ 'filetype' ] ]
     \ },
     \ 'component_function': {
-    \   'cocstatus': 'coc#status',
-    \   'gitbranch': 'FugitiveHead'
-    \ },
-    \ 'mode_map': {
-    \ 'n' : 'N',
-    \ 'i' : 'I',
-    \ 'R' : 'R',
-    \ 'v' : 'V',
-    \ 'V' : 'VL',
-    \ "\<C-v>": 'VB',
-    \ 'c' : 'C',
-    \ 's' : 'S',
-    \ 'S' : 'SL',
-    \ "\<C-s>": 'SB',
-    \ 't': 'T',
+    \   'gitbranch': 'FugitiveHead',
+    \   'filename': 'LightlineFilename',
     \ },
 \ }
+
+function! LightlineFilename()
+  let root = fnamemodify(get(b:, 'git_dir'), ':h')
+  let path = expand('%:p')
+  if path[:len(root)-1] ==# root
+    return path[len(root)+1:]
+  endif
+  return expand('%')
+endfunction
 
 " }
 

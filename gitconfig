@@ -69,6 +69,8 @@
     tool = default-difftool
 [difftool "default-difftool"]
     cmd = code --wait --diff $LOCAL $REMOTE
+[merge]
+conflictStyle = diff3
 [help]
     autocorrect = 1
 [core]
@@ -84,6 +86,7 @@
 [push]
     default = current
     followTags = true
+	autoSetupRemote = true
 [status]
     showUntrackedFiles = all
 [http]
