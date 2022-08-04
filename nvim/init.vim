@@ -130,12 +130,24 @@ if (has("termguicolors"))
  set t_Co=256
 endif
 syntax enable
-" set background=dark
-set background=light
-" colorscheme nightfox
-colorscheme flattened_light
+set background=dark
+" set background=light
+colorscheme nightfox
+" colorscheme flattened_light
 " colorscheme solarized
 " colorscheme night-owl
+
+nnoremap <F3> :call ToggleBackground()<CR>
+
+function! ToggleBackground()
+    if &background == "dark"
+        set background=light
+        colorscheme flattened_light
+    else
+        set background=dark
+        colorscheme nightfox
+    endif
+endfunction
 
 " Markdown settings
 au Bufread,BufNewFile *.md setlocal filetype=markdown textwidth=80 wrap spell wrapmargin=0
@@ -202,7 +214,7 @@ nnoremap <silent> <leader>/ :nohlsearch<CR>
 nnoremap <silent> <leader>q :Sayonara<CR>
 
 " Window closing
-nnoremap <silent> <leader>cw <c-w>c<CR>
+" nnoremap <silent> <leader>cw <c-w>c<CR>
 
 " Fast saving
 nmap <leader>w :w!<cr>
@@ -629,7 +641,7 @@ nnoremap <silent><nowait> <leader>aa :<C-u>CocList diagnostics<cr>
 " Manage extensions.
 " nnoremap <silent><nowait> <leader>e  :<C-u>CocList extensions<cr>
 " Show commands.
-nnoremap <silent><nowait> <leader>c  :<C-u>CocList commands<cr>
+" nnoremap <silent><nowait> <leader>c  :<C-u>CocList commands<cr>
 " Find symbol of current document.
 nnoremap <silent><nowait> <leader>o  :<C-u>CocList outline<cr>
 " Search workspace symbols. t for tags

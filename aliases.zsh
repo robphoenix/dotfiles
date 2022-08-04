@@ -48,5 +48,3 @@ alias kx="kubectx"
 # VS Code
 alias c="code"
 alias oc="code ."
-
-
