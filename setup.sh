@@ -27,7 +27,6 @@ brew upgrade
 binaries=(
   bat
   gh
-  iterm
   neovim
   node
   nvm
