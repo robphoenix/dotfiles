@@ -47,7 +47,7 @@ brew tap homebrew/cask-fonts #You only need to do this once for cask-fonts
 brew install --cask font-fantasque-sans-mono
 
 # nvm caveats NVM's working directory to your $HOME path (if it doesn't exist):
-# mkdir ~/.nvm
+mkdir ~/.nvm
 
 # Copy nvm-exec to NVM's working directory
 # cp $(brew --prefix nvm)/nvm-exec ~/.nvm/
@@ -56,7 +56,7 @@ brew install --cask font-fantasque-sans-mono
 brew cleanup
 
 # Install Oh My ZSH
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+# sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 # Symlinks
 ln -sf "$HOME/dotfiles/zshrc" "$HOME/.zshrc"
@@ -69,3 +69,6 @@ ln -sf "$HOME/dotfiles/aliases.zsh" "$HOME/.oh-my-zsh/custom/aliases.zsh"
 ln -sf "$HOME/dotfiles/functions.zsh" "$HOME/.oh-my-zsh/custom/functions.zsh"
 ln -sf "$HOME/dotfiles/secrets.zsh" "$HOME/.oh-my-zsh/custom/secrets.zsh"
 ln -sf "$HOME/dotfiles/vimrc" "$HOME/.config/nvim/init.vim"
+
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
