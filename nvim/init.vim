@@ -11,8 +11,8 @@ Plug 'preservim/nerdtree'                            " tree explorer
 Plug 'Xuyuanp/nerdtree-git-plugin'                   " NERDTree git status
 Plug 'tpope/vim-unimpaired'                          " pairs of handy bracket mappings
 Plug 'tpope/vim-surround'                            " add quotes/parenthesis etc.
-Plug 'tpope/vim-fugitive'
 Plug 'itchyny/lightline.vim'                         " statusline
+Plug 'itchyny/vim-gitbranch'
 Plug 'mattn/emmet-vim'                               " emmet
 Plug 'ap/vim-css-color'                              " CSS color highlighting
 Plug 'neoclide/coc.nvim', {'branch': 'release'}      " autocompletion
@@ -20,12 +20,8 @@ Plug 'mhinz/vim-startify'                            " fancy start screen
 Plug 'ctrlpvim/ctrlp.vim'                            " file/buffer opening
 Plug 'mileszs/ack.vim'                               " search
 Plug 'nvim-lua/plenary.nvim'
-Plug 'TimUntersberger/neogit'                        " git UI
-Plug 'sindrets/diffview.nvim'                        " git diff
-Plug 'samoshkin/vim-mergetool'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'ggandor/lightspeed.nvim'                       " motion plugin
-Plug 'akinsho/toggleterm.nvim'                       " neovim terminal
 " colorschemes
 Plug 'haishanh/night-owl.vim'
 Plug 'romainl/flattened'
@@ -37,6 +33,7 @@ Plug 'yuezk/vim-js'                                  " JavaScript syntax
 Plug 'maxmellon/vim-jsx-pretty'                      " JS and JSX syntax
 Plug 'jxnblk/vim-mdx-js'                             " MDX Syntax
 Plug 'jparise/vim-graphql'                           " GraphQL syntax
+Plug 'preservim/vim-markdown'                        " Markdown syntax
 
 call plug#end()
 
@@ -162,6 +159,7 @@ autocmd FileType gitcommit setlocal spell
 " YAML settings
 au BufNewFile,BufRead *.yaml setlocal ts=2 sw=2 sts=2
 au BufNewFile,BufRead *.yml setlocal ts=2 sw=2 sts=2
+autocmd BufNewFile,BufRead .prettierrc set ft=yaml
 
 " JS settings
 au BufNewFile,BufRead *.js setlocal ts=2 sw=2 sts=2
@@ -309,43 +307,7 @@ nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
 
 " }
 
-" --> Lua {
-
-lua << EOF
-require("neogit").setup {
-  disable_commit_confirmation = true,
-  integrations = {
-    diffview = true
-  }
-}
-require("diffview").setup {
-  use_icons = false,
-  win_config = {
-      position = "right",
-      width = 30,
-  }
-}
-require("toggleterm").setup {
-    direction = "horizontal",
-    height = 40
-}
-EOF
-
-"  }
-
 " --> Plugins {
-
-" vim-mergetool {
-let g:mergetool_layout = 'mr'
-let g:mergetool_prefer_revision = 'local'
-" }
-
-"  --> Diffview {
-
-nmap <silent> <leader>do :DiffviewOpen<cr>
-nmap <silent> <leader>dc :DiffviewClose<cr>
-
-"  }
 
 "  --> ack/ripgrep {
 
@@ -371,24 +333,9 @@ let g:ctrlp_custom_ignore = '\v[\/]\.(git|node_modules)$'
 " ignore files in .gitignore
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 
-
-
 nmap <silent> <leader>f :CtrlP<cr>
 nmap <silent> <leader>b :CtrlPBuffer<cr>
 nmap <silent> <leader>h :CtrlPMRU<cr>
-
-"  --> toggleterm {
-
-nnoremap <leader>tt :ToggleTerm<cr>
-
-"  }
-
-"  --> neogit
-
-nnoremap <leader>gg :Neogit<cr>
-nnoremap <leader>gp :Neogit push<cr>
-
-"  }
 
 "  --> emmet {
 
@@ -441,7 +388,7 @@ let NERDTreeMinimalMenu=1
 let NERDTreeAutoDeleteBuffer=1
 let NERDTreeShowHidden=1
 let NERDTreeWinSize=50
-let NERDTreeIgnore=['\.git$', '\~$']
+let NERDTreeIgnore=['\.git$', '\~$', '\.DS_Store']
 
 "  }
 
@@ -461,13 +408,13 @@ let g:VM_maps["Add Cursor Up"]   = '<C-k>'
 let g:lightline = {
     \ 'colorscheme': 'solarized',
     \ 'active': {
-    \   'left': [ [ 'mode', 'paste' ],
-    \             [ 'readonly', 'filename', 'gitbranch', 'modified' ]],
+     \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
     \   'right': [ [ 'lineinfo' ],
     \              [ 'filetype' ] ]
     \ },
-    \ 'component_function': {
-    \   'gitbranch': 'FugitiveHead',
+ \ 'component_function': {
+      \   'gitbranch': 'gitbranch#name',
     \   'filename': 'LightlineFilename',
     \ },
 \ }

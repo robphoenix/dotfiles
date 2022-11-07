@@ -7,16 +7,13 @@
     "typescriptreact",
     "json",
     "mdx",
-    "css",
     "markdown.mdx",
     "graphql"
   ],
   "tsserver.formatOnType": false,
   "tsserver.enableJavascript": false,
   "coc.preferences.formatOnType": false,
-  "prettier.eslintIntegration": true,
   "prettier.tabWidth": 2,
-  "prettier.disableSuccessMessage": true,
   "emmet.includeLanguages": {
     "htmldjango": "html"
   },

@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# reference: https://github.com/jalexanderfox/dotfiles/blob/master/setup_brew.sh
+
 # Ask for the administrator password upfront.
 sudo -v
 
@@ -53,12 +55,17 @@ brew install ${binaries[@]}
 # Cleanup
 brew cleanup
 
+# Install Oh My ZSH
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
 # Symlinks
 ln -sf "$HOME/dotfiles/zshrc" "$HOME/.zshrc"
+ln -sf "$HOME/dotfiles/zshenv" "$HOME/.zshenv"
 ln -sf "$HOME/dotfiles/git-prompt.sh" "$HOME/git-prompt.sh"
 ln -sf "$HOME/dotfiles/prompt.zsh" "$HOME/prompt.zsh"
 ln -sf "$HOME/dotfiles/gitconfig" "$HOME/.gitconfig"
 ln -sf "$HOME/dotfiles/gitignore" "$HOME/.gitignore"
 ln -sf "$HOME/dotfiles/aliases.zsh" "$HOME/.oh-my-zsh/custom/aliases.zsh"
 ln -sf "$HOME/dotfiles/functions.zsh" "$HOME/.oh-my-zsh/custom/functions.zsh"
+ln -sf "$HOME/dotfiles/secrets.zsh" "$HOME/.oh-my-zsh/custom/secrets.zsh"
 ln -sf "$HOME/dotfiles/vimrc" "$HOME/.config/nvim/init.vim"
