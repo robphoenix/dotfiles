@@ -1,4 +1,3 @@
-export ZSH=$HOME/.oh-my-zsh
 
 HYPHEN_INSENSITIVE="true"
 DISABLE_AUTO_TITLE="true"
@@ -11,8 +10,9 @@ HISTCONTROL=ignoredups:ignorespace
 HISTFILE=$HOME/.zsh_history
 HISTSIZE=2000
 
-plugins=(ssh-agent z zsh-autosuggestions zsh-syntax-highlighting history-substring-search brew npm gitgo)
+plugins=(ssh-agent z zsh-autosuggestions zsh-syntax-highlighting history-substring-search brew npm)
 
+export ZSH=$HOME/.oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
 # PROMPT

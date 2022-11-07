@@ -34,7 +34,6 @@ binaries=(
   ripgrep
   trash
   tree
-  yarn
   z
   zsh-completions
   zsh-syntax-highlighting
@@ -68,7 +67,12 @@ ln -sf "$HOME/dotfiles/gitignore" "$HOME/.gitignore"
 ln -sf "$HOME/dotfiles/aliases.zsh" "$HOME/.oh-my-zsh/custom/aliases.zsh"
 ln -sf "$HOME/dotfiles/functions.zsh" "$HOME/.oh-my-zsh/custom/functions.zsh"
 ln -sf "$HOME/dotfiles/secrets.zsh" "$HOME/.oh-my-zsh/custom/secrets.zsh"
-ln -sf "$HOME/dotfiles/vimrc" "$HOME/.config/nvim/init.vim"
+ln -sf "$HOME/dotfiles/nvim/init.vim" "$HOME/.config/nvim/init.vim"
 
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+
+npm install -g corepack
+pip3 install --upgrade pynvim
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting

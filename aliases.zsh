@@ -19,6 +19,8 @@ alias g="git"
 alias gs="git sync"
 alias gsm="git sync main"
 alias hold="git ca -m 'feat: hold'"
+# gh
+alias ghg="gh browse"
 # z
 alias j=z
 # yarn/npm/pnpm

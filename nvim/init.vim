@@ -450,9 +450,6 @@ let g:coc_global_extensions = [
   \ 'coc-css',
   \ 'coc-emmet',
   \ 'coc-pairs',
-  \ 'coc-tailwindcss',
-  \ 'coc-cssmodules',
-  \ 'coc-styled-components',
   \ 'coc-yank',
   \ 'coc-htmldjango',
   \ ]

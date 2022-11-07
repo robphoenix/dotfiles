@@ -12,7 +12,7 @@
     aa = add --all
     p = push
     po = push origin
-    yolo = push origin --force-with-lease
+    pof = push origin --force-with-lease
     pom = push origin main
     pl = pull --rebase
     sync = pull --rebase origin
