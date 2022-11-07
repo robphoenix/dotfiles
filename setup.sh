@@ -27,7 +27,6 @@ brew upgrade
 binaries=(
   bat
   gh
-  git
   iterm
   neovim
   node
@@ -38,13 +37,15 @@ binaries=(
   tree
   yarn
   z
-  zsh
   zsh-completions
   zsh-syntax-highlighting
 )
 
 echo "installing binaries..."
 brew install ${binaries[@]}
+
+brew tap homebrew/cask-fonts #You only need to do this once for cask-fonts
+brew install --cask font-fantasque-sans-mono
 
 # nvm caveats NVM's working directory to your $HOME path (if it doesn't exist):
 # mkdir ~/.nvm
