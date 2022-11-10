@@ -19,7 +19,7 @@
   "prettier.semi": true,
   "prettier.singleQuote": true,
   "prettier.quoteProps": "as-needed",
-  "prettier.jsxSingleQuote": true,
+  "prettier.jsxSingleQuote": false,
   "prettier.trailingComma": "es5",
   "prettier.bracketSpacing": true,
   "prettier.bracketSameLine": false,
