@@ -14,10 +14,15 @@
   "tsserver.enableJavascript": false,
   "coc.preferences.formatOnType": false,
   "prettier.tabWidth": 2,
-  "emmet.includeLanguages": {
-    "htmldjango": "html"
-  },
-  "snippets.loadFromExtensions": true,
-  "htmldjango.formatting.provider": "djlint",
-  "htmldjango.djlint.indent": 2
+  "prettier.printWidth": 100,
+  "prettier.useTabs": false,
+  "prettier.semi": true,
+  "prettier.singleQuote": true,
+  "prettier.quoteProps": "as-needed",
+  "prettier.jsxSingleQuote": true,
+  "prettier.trailingComma": "es5",
+  "prettier.bracketSpacing": true,
+  "prettier.bracketSameLine": false,
+  "prettier.arrowParens": "avoid",
+  "snippets.loadFromExtensions": true
 }

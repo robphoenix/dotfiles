@@ -68,7 +68,7 @@ ln -sf "$HOME/dotfiles/gitignore" "$HOME/.gitignore"
 ln -sf "$HOME/dotfiles/aliases.zsh" "$HOME/.oh-my-zsh/custom/aliases.zsh"
 ln -sf "$HOME/dotfiles/functions.zsh" "$HOME/.oh-my-zsh/custom/functions.zsh"
 ln -sf "$HOME/dotfiles/secrets.zsh" "$HOME/.oh-my-zsh/custom/secrets.zsh"
-ln -sf "$HOME/dotfiles/nvim/init.vim" "$HOME/.config/nvim/init.vim"
+ln -sf "$HOME/dotfiles/nvim" "$HOME/.config/nvim"
 
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
