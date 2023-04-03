@@ -1,17 +1,6 @@
 {
   "eslint.autoFixOnSave": true,
-  "coc.preferences.formatOnSaveFiletypes": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact",
-    "json",
-    "mdx",
-    "markdown.mdx",
-    "graphql"
-  ],
-  "tsserver.formatOnType": false,
-  "tsserver.enableJavascript": false,
+  "coc.preferences.formatOnSave": true,
   "coc.preferences.formatOnType": false,
   "prettier.tabWidth": 2,
   "prettier.printWidth": 100,

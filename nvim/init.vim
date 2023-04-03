@@ -8,7 +8,7 @@ endif
 
 call plug#begin()
 
-Plug 'SirVer/ultisnips'                              " code snippets
+" Plug 'SirVer/ultisnips'                              " code snippets
 Plug 'honza/vim-snippets'                            " code snippets
 Plug 'mhinz/vim-sayonara'                            " easy buffer closing
 Plug 'ntpeters/vim-better-whitespace'                " better whitespace highlighting and removal
@@ -28,6 +28,10 @@ Plug 'mileszs/ack.vim'                               " search
 Plug 'nvim-lua/plenary.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'ggandor/lightspeed.nvim'                       " motion plugin
+Plug 'heavenshell/vim-jsdoc', {
+  \ 'for': ['javascript', 'javascript.jsx','typescript'],
+  \ 'do': 'make install'
+\}
 " colorschemes
 Plug 'haishanh/night-owl.vim'
 Plug 'romainl/flattened'
@@ -155,6 +159,7 @@ endfunction
 " Markdown settings
 au Bufread,BufNewFile *.md setlocal filetype=markdown textwidth=80 wrap spell wrapmargin=0
 " au Bufread,BufNewFile *.mdx setlocal filetype=mdx textwidth=80 wrap spell wrapmargin=0
+let g:markdown_fenced_languages = ['html', 'css', 'shell', 'console', 'javascript', 'jsx', 'typescript', 'tsx']
 
 " gitconfig settings
 au Bufread,BufNewFile gitconfig setlocal filetype=.gitconfig
@@ -314,6 +319,29 @@ nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
 " }
 
 " --> Plugins {
+"
+" Make <CR> to accept selected completion item or notify coc.nvim to format
+" <C-g>u breaks current undo, please make your own choice
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+" Use <C-l> for trigger snippet expand.
+imap <C-l> <Plug>(coc-snippets-expand)
+
+" Use <C-j> for select text for visual placeholder of snippet.
+vmap <C-j> <Plug>(coc-snippets-select)
+
+" Use <C-j> for jump to next placeholder, it's default of coc.nvim
+let g:coc_snippet_next = '<c-j>'
+
+" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
+let g:coc_snippet_prev = '<c-k>'
+
+" Use <C-j> for both expand and jump (make expand higher priority.)
+imap <C-j> <Plug>(coc-snippets-expand-jump)
+
+" Use <leader>x for convert visual selected code to snippet
+xmap <leader>x  <Plug>(coc-convert-snippet)
 
 "  --> ack/ripgrep {
 
@@ -365,18 +393,6 @@ autocmd VimEnter *
             \ |   NERDTree
             \ |   wincmd w
             \ | endif
-
-"  }
-
-" --> UltiSnips {
-
-" Trigger configuration.
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
-" If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
 
 "  }
 
@@ -450,8 +466,8 @@ let g:coc_global_extensions = [
   \ 'coc-css',
   \ 'coc-emmet',
   \ 'coc-pairs',
-  \ 'coc-yank',
   \ 'coc-htmldjango',
+  \ 'coc-snippets',
   \ ]
 
 " Give more space for displaying messages.

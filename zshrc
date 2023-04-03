@@ -84,3 +84,4 @@ autoload -U +X bashcompinit && bashcompinit
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f ~/.secrets.zsh ] && source ~/.secrets.zsh
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
