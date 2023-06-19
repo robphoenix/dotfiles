@@ -29,7 +29,6 @@ binaries=(
   gh
   neovim
   node
-  nvm
   python
   ripgrep
   trash
@@ -45,17 +44,11 @@ brew install ${binaries[@]}
 brew tap homebrew/cask-fonts #You only need to do this once for cask-fonts
 brew install --cask font-fantasque-sans-mono
 
-# nvm caveats NVM's working directory to your $HOME path (if it doesn't exist):
-mkdir ~/.nvm
-
-# Copy nvm-exec to NVM's working directory
-# cp $(brew --prefix nvm)/nvm-exec ~/.nvm/
-
 # Cleanup
 brew cleanup
 
 # Install Oh My ZSH
-# sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 # Symlinks
 ln -sf "$HOME/dotfiles/zshrc" "$HOME/.zshrc"
@@ -77,5 +70,3 @@ pip3 install --upgrade pynvim
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
-# NVM
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | bash
