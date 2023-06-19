@@ -44,7 +44,6 @@ brew install ${binaries[@]}
 
 brew tap homebrew/cask-fonts #You only need to do this once for cask-fonts
 brew install --cask font-fantasque-sans-mono
-brew install --cask raycast
 
 # nvm caveats NVM's working directory to your $HOME path (if it doesn't exist):
 mkdir ~/.nvm

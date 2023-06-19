@@ -590,7 +590,7 @@ command! -nargs=0 Format :call CocAction('format')
 nnoremap <silent><nowait> <leader>p  :<C-u>Format<cr>
 
 " Prettier
-command! -nargs=0 Prettier :CocCommand prettier.formatFile
+command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
 
 " DjHTML format (11ty/nunjucks)
 command! -nargs=0 Djhtml :CocCommand htmldjango.djhtml.format
