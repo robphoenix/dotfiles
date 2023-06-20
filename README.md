@@ -15,3 +15,5 @@
   - `ssh-keygen`
   - Add to GH
 - Clone dotfiles
+- root .npmrc
+-

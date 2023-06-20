@@ -1,0 +1,5 @@
+init-author-name=Rob Phoenix
+registry=https://registry.npmjs.org/
+@utilitywarehouse:registry=https://registry.npmjs.org/
+//registry.npmjs.org/:_authToken=
+always-auth=true
