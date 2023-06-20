@@ -16,4 +16,4 @@
   - Add to GH
 - Clone dotfiles
 - root .npmrc
--
+- Clone code repos
