@@ -37,6 +37,7 @@
     unrevert = reset --hard HEAD^
     rs = remote -v
     cp = cherry-pick
+    new = !git init && git symbolic-ref HEAD refs/heads/main
 
     # rebase
     # Interactive rebase with the given number of latest commits
@@ -59,9 +60,11 @@
     ll = log --graph --abbrev-commit --date=relative --pretty=format:'%C(yellow)%h%Creset %C(cyan)%cr%C(green) %an %Creset-%C(auto)%d %s'
     lw = log --abbrev-commit --date=relative --pretty=format:'%C(yellow)%h%Creset %C(cyan)<%cr>%C(green) %an %Creset-%C(auto)%d %s'
     lp = log -p
+    lk = log --pretty=format:"%h - %an, %ar : %s" $1..HEAD
+	lk = "!l() { git log --pretty=format:\"%h - %an, %ar : %s\" $1..HEAD; }; l"
+    llk = "!l() { git log --pretty=format:'%C(yellow)%h%Creset %C(cyan)%cr%C(green) %an %Creset-%C(auto)%d %s' $1..HEAD; }; l"
     # Color graph detailed log view
     gl = log --graph --color --decorate --stat --pretty=format:"%C(yellow)%H%C(green)%d%C(reset)%n%x20%cd%n%x20%cn%x20(%ce)%n%x20%s%n"
-	new = !git init && git symbolic-ref HEAD refs/heads/main
 
 [color]
     ui = true

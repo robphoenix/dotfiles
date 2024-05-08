@@ -26,6 +26,8 @@ alias j=z
 # yarn/npm/pnpm
 alias p="pnpm"
 alias pl="pnpm lint:fix"
+alias pf="pnpm format"
+alias pt="pnpm test"
 alias prc="pnpm run checks"
 alias pd="pnpm dev"
 alias redep="pnpm clean && pnpm install"
