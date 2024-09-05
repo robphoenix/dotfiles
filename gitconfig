@@ -80,6 +80,7 @@ conflictStyle = diff3
     excludesfile = ~/.gitignore
     trustctime = false
     autocrlf = false
+    pager = delta
 [github]
     user = robphoenix
 [commit]
