@@ -51,9 +51,12 @@
     dr = push origin --delete
     # delete local branch
     dl = branch -D
-    # Remove branches that have already been merged with master
+    # Remove branches that have already been merged with main
     # a.k.a. ‘delete merged’
     dm = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
+    # Remove all local branches, except main
+    # a.k.a. ‘delete local branches’
+    dlb = "git branch | grep -v 'main' | xargs git branch -D"
 
     # simple log
     l = log --graph --decorate --pretty=oneline --abbrev-commit
