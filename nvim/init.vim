@@ -185,10 +185,10 @@ let g:html_indent_inctags = "html,body,head"
 " autocmd BufNewFile,BufRead *.njk   set syntax=htmldjango
 " autocmd BufNewFile,BufRead *.njk   set ft=html
 " autocmd BufNewFile,BufRead *.njk.html   set syntax=htmldjango ft=nunjucks
-autocmd BufNewFile,BufRead *.html set syntax=htmldjango ft=htmldjango ts=2 sw=2 sts=2
+autocmd BufNewFile, BufRead *.html set syntax=htmldjango ft=htmldjango ts=2 sw=2 sts=2
 " autocmd BufNewFile,BufRead *.html.twig   set syntax=htmldjango
 " Format on save
-autocmd BufWritePost *.html silent :Format
+" autocmd BufWritePost *.html silent :Format
 
 " }
 
@@ -460,6 +460,7 @@ autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
 let g:coc_global_extensions = [
   \ 'coc-prettier',
   \ 'coc-eslint',
+  \ 'coc-stylelint',
   \ 'coc-tsserver',
   \ 'coc-lists',
   \ 'coc-json',
