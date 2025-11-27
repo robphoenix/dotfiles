@@ -28,7 +28,6 @@ Plug 'mileszs/ack.vim'                               " search
 Plug 'nvim-lua/plenary.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'ggandor/lightspeed.nvim'                       " motion plugin
-Plug 'folke/trouble.nvim'
 Plug 'heavenshell/vim-jsdoc', {
   \ 'for': ['javascript', 'javascript.jsx','typescript'],
   \ 'do': 'make install'
@@ -343,12 +342,6 @@ imap <C-j> <Plug>(coc-snippets-expand-jump)
 
 " Use <leader>x for convert visual selected code to snippet
 xmap <leader>x  <Plug>(coc-convert-snippet)
-
-lua << EOF
-  require("trouble").setup {
-    -- Empty
-  }
-EOF
 
 "  --> ack/ripgrep {
 
