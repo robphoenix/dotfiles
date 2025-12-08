@@ -12,39 +12,20 @@ alias vi="nvim"
 alias v="nvim"
 alias vv="nvim ."
 alias ...="cd -"
-# zsh
+
 alias relo="source ~/.zshrc"
-# git
+
 alias g="git"
 alias gs="git sync"
 alias gsm="git sync main"
 alias hold="git ca -m 'hold'"
-# gh
 alias ghg="gh browse"
-# z
 alias j=z
-# yarn/npm/pnpm
 alias p="pnpm"
-alias pl="pnpm lint:fix"
-alias pf="pnpm format"
-alias pt="pnpm test"
-alias pc="pnpm checks"
-alias pd="pnpm dev"
-alias redep="pnpm clean && pnpm install"
-alias gen="pnpm generate"
-alias y="yarn"
-alias ya="yarn add --ignore-optional"
-alias yad="yarn add --ignore-optional --dev"
-alias yr="yarn remove --ignore-optional"
-alias ys="yarn start"
-alias yb="yarn build"
-alias yu="yarn upgrade --ignore-optional"
-alias yf="yarn format"
-alias yl="yarn lint"
-alias yd="yarn dev"
-alias story="yarn storybook:start"
-# figma
+
 alias nfc="npx figma connect"
 alias fcc="npx figma connect create"
 alias fcp="npx figma connect publish"
 alias fcu="npx figma connect unpublish"
+
+alias pods="k9s --context=prod-aws -n design-systems"
