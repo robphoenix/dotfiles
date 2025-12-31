@@ -99,7 +99,6 @@ set shiftwidth=4                   " use indents of 4 spaces
 set tabstop=4                      " an indentation every four columns
 set expandtab                      " tabs are spaces, not tabs
 set softtabstop=4                  " let backspace delete indent
-set pastetoggle=<F2>               " pastetoggle (sane indentation on pastes)
 set smarttab
 set formatoptions+=n               " support for numbered/bullet lists
 set virtualedit=block              " allow virtual edit in visual block
