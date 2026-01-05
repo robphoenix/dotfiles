@@ -29,3 +29,8 @@ alias fcp="npx figma connect publish"
 alias fcu="npx figma connect unpublish"
 
 alias pods="k9s --context=prod-aws -n design-systems"
+
+# Open full interactive Copilot chat
+alias cp='copilot'
+# Fast programmatic mode (usage: ?? "How do I...")
+alias ??='copilot -p'
