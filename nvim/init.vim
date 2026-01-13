@@ -116,6 +116,7 @@ set noundofile                     " no annoying .un~ files
 set modelines=1
 set diffopt+=vertical              " vertical Gdiff
 set re=0                           " yats recommended setting
+set mouse=a                        " mouse support
 " Time out on key codes but not mappings.
 " Basically this makes terminal Vim work sanely.
 set notimeout

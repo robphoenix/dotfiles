@@ -33,4 +33,4 @@ alias pods="k9s --context=prod-aws -n design-systems"
 # Open full interactive Copilot chat
 alias cp='copilot'
 # Fast programmatic mode (usage: ?? "How do I...")
-alias '??'="copilot --allow-tool 'shell' --allow-tool 'python' --allow-tool 'read' --allow-tool 'edit' --allow-tool 'git' -p"
+alias '??'="copilot --allow-tool 'edit' --allow-tool 'read' --allow-tool 'shell' --allow-tool 'git' --allow-tool 'python' -p"
