@@ -30,5 +30,5 @@ alias fcu="npx figma connect unpublish"
 
 alias pods="k9s --context=prod-aws -n design-systems"
 
-# Fast programmatic mode (usage: ?? "How do I...")
-alias '??'="copilot --allow-tool 'edit' --allow-tool 'read' --allow-tool 'shell' --allow-tool 'git' --allow-tool 'python' -p"
+# Fast programmatic mode (usage: ai "How do I...")
+alias ai="copilot --allow-tool 'edit' --allow-tool 'read' --allow-tool 'shell' --allow-tool 'git' --allow-tool 'python' --allow-tool 'cat' --allow-tool 'printf' -p"

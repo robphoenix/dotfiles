@@ -6,6 +6,8 @@
     c = commit -v
     # Commit all changes
     ca = !git add -A && git commit -av
+    # Commit all changes with a message
+    cm = !git add -A && git commit -av -m
     # fix commit
     fc = !git add -A && git commit --amend --no-edit && git push origin
     a = add -v

@@ -96,3 +96,4 @@ esac
 
 # Added by Windsurf
 export PATH="/Users/robphoenix/.codeium/windsurf/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
