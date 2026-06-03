@@ -22,13 +22,16 @@ source ~/git-prompt.sh
 # reduce delay after hitting <ESC>
 export KEYTIMEOUT=1
 PROMPT='
-%{$fg[cyan]%}%3~\
- $(__posh_git_echo)
+%{$fg[cyan]%}%3~ $(__posh_git_echo)
 %{$fg[magenta]%}❯%{$reset_color%} '
 RPROMPT='%(?,,%{$fg[red]%}[%?]%{$reset_color%})' # exit code
 
 # fancy ctrl-z
 bindkey '^Z' fancy-ctrl-z
+
+# move into a claude worktree directory
+# ie. cw hopeful-pare-e2aaf0
+cw() { cd ".claude/worktrees/$1"; }
 
 # completions
 fpath=(~/completions $fpath)

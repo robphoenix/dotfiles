@@ -33,8 +33,7 @@ Plug 'heavenshell/vim-jsdoc', {
   \ 'do': 'make install'
 \}
 " colorschemes
-Plug 'haishanh/night-owl.vim'
-Plug 'romainl/flattened'
+Plug 'maxmx03/solarized.nvim'
 Plug 'EdenEast/nightfox.nvim'
 " language syntax/support
 Plug 'HerringtonDarkholme/yats.vim'                  " TypeScript syntax
@@ -139,19 +138,16 @@ if (has("termguicolors"))
  set t_Co=256
 endif
 syntax enable
+" set background=dark
 set background=dark
-" set background=light
 colorscheme nightfox
-" colorscheme flattened_light
-" colorscheme solarized
-" colorscheme night-owl
 
 nnoremap <F3> :call ToggleBackground()<CR>
 
 function! ToggleBackground()
     if &background == "dark"
         set background=light
-        colorscheme flattened_light
+        colorscheme solarized
     else
         set background=dark
         colorscheme nightfox
@@ -426,9 +422,6 @@ let g:VM_maps["Add Cursor Up"]   = '<C-k>'
 
 "  --> lightline {
 
-" To enable the lightline theme
-    " \ 'colorscheme': 'solarized',
-    " \ 'colorscheme': 'nightfox',
 let g:lightline = {
     \ 'colorscheme': 'solarized',
     \ 'active': {

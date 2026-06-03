@@ -21,7 +21,7 @@ alias gsm="git sync main"
 alias hold="git ca -m 'hold'"
 alias ghg="gh browse"
 alias j=z
-alias p="pnpm --loglevel=info"
+alias p="pnpm"
 
 alias nfc="npx figma connect"
 alias fcc="npx figma connect create"
@@ -30,5 +30,5 @@ alias fcu="npx figma connect unpublish"
 
 alias pods="k9s --context=prod-aws -n design-systems"
 
-# Fast programmatic mode (usage: ai "How do I...")
-alias ai="copilot --allow-tool 'edit' --allow-tool 'read' --allow-tool 'shell' --allow-tool 'git' --allow-tool 'python' --allow-tool 'cat' --allow-tool 'printf' -p"
+# Fast programmatic mode (usage: ?? "How do I...")
+alias '??'="copilot --allow-tool 'edit' --allow-tool 'read' --allow-tool 'shell' --allow-tool 'git' --allow-tool 'python' --allow-tool 'cat' --allow-tool 'printf' -p"
