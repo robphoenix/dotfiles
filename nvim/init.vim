@@ -138,9 +138,9 @@ if (has("termguicolors"))
  set t_Co=256
 endif
 syntax enable
+set background=light
 " set background=dark
-set background=dark
-colorscheme nightfox
+colorscheme solarized
 
 nnoremap <F3> :call ToggleBackground()<CR>
 

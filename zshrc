@@ -29,11 +29,6 @@ RPROMPT='%(?,,%{$fg[red]%}[%?]%{$reset_color%})' # exit code
 # fancy ctrl-z
 bindkey '^Z' fancy-ctrl-z
 
-# move into a claude worktree directory
-# ie. cw hopeful-pare-e2aaf0
-cw() { cd ".claude/worktrees/$1"; }
-
-# completions
 fpath=(~/completions $fpath)
 autoload -Uz compinit && compinit -u
 
@@ -100,3 +95,4 @@ esac
 # Added by Windsurf
 export PATH="/Users/robphoenix/.codeium/windsurf/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="/opt/homebrew/opt/node@22/bin:$PATH"
