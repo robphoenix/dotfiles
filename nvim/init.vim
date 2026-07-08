@@ -33,8 +33,7 @@ Plug 'heavenshell/vim-jsdoc', {
   \ 'do': 'make install'
 \}
 " colorschemes
-Plug 'maxmx03/solarized.nvim'
-Plug 'EdenEast/nightfox.nvim'
+Plug 'calind/selenized.nvim'
 " language syntax/support
 Plug 'HerringtonDarkholme/yats.vim'                  " TypeScript syntax
 Plug 'pangloss/vim-javascript'                       " JavaScript support
@@ -139,18 +138,15 @@ if (has("termguicolors"))
 endif
 syntax enable
 set background=light
-" set background=dark
-colorscheme solarized
+colorscheme selenized
 
 nnoremap <F3> :call ToggleBackground()<CR>
 
 function! ToggleBackground()
     if &background == "dark"
         set background=light
-        colorscheme solarized
     else
         set background=dark
-        colorscheme nightfox
     endif
 endfunction
 
