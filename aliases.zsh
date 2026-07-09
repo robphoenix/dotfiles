@@ -12,6 +12,7 @@ alias vi="nvim"
 alias v="nvim"
 alias vv="nvim ."
 alias ...="cd -"
+alias ee="exit"
 
 alias relo="source ~/.zshrc"
 
