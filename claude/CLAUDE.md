@@ -5,6 +5,7 @@
 - **Iterative over spec-heavy**: Expect successive corrections and refinements rather than one complete upfront spec. Incorporate corrections back into skills and documentation as they emerge.
 - **Plan before executing** on ambiguous or multi-step tasks — confirm the approach and scope before touching files.
 - **Precision over speed**: The user watches tool calls closely and interrupts when things drift. Preview scope on any action that removes, renames, or restructures code before doing it.
+- **YAGNI**: Follow YAGNI principles and prefer one-liner solutions. Emit the minimal code that satisfies the task — don't generate abstractions, options, or error handling for requirements that don't exist yet.
 - **Neutral framing**: Present skill additions and guidelines as neutral considerations unless explicitly asked for a hard rule.
 - **Documentation is a deliverable**: Capture reasoning behind API changes and migration decisions in skills, AGENTS.md, and docs — not just in the code.
 
