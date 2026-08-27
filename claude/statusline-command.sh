@@ -99,16 +99,6 @@ if [ -n "$session_id" ] && [ "$session_id" != "null" ]; then
   fi
 fi
 
-# Estimate session cost: input cost from total context tokens, output cost from
-# accumulated per-session output tokens. Prefix with ~ to signal approximation.
-cost=$(awk -v inp="$total_input" -v out="$cumulative_out" \
-           -v ip="$in_price" -v op="$out_price" \
-  'BEGIN {
-    total = (inp * ip + out * op) / 1000000
-    if (total < 0.01) printf "~$%.4f", total
-    else printf "~$%.2f", total
-  }')
-
 # ANSI colors
 CYAN=$'\033[36m'
 MAGENTA=$'\033[35m'
@@ -120,8 +110,8 @@ DIM=$'\033[2m'
 RESET=$'\033[0m'
 SEP="${DIM} | ${RESET}"
 
-# Line 1: current directory and posh-git-style branch status [branch +A ~M -D | +A ~M -D]
-line1="${CYAN}${display_dir}${RESET}"
+# Line 1: current directory and posh-git-style branch status [branch +A ~M -D | +A ~M -D] | model (context percentage)
+line1="${CYAN}${display_dir}"
 if [ -n "$git_branch" ] && [ "$git_branch" != "HEAD" ]; then
   git_staged_total=$(( git_staged_added + git_staged_modified + git_staged_deleted ))
   git_unstaged_total=$(( git_unstaged_added + git_unstaged_modified + git_unstaged_deleted ))
@@ -144,7 +134,7 @@ if [ -n "$git_branch" ] && [ "$git_branch" != "HEAD" ]; then
   line1="${line1}${SEP}${git_info}"
 fi
 
-# Line 2: model | context progress bar | cost estimate
-line2="${CYAN}${model}${RESET}${SEP}${YELLOW}${bar_display}${RESET}${SEP}${GREEN}${cost}${RESET}"
+line1="${line1}${RESET}${SEP}${YELLOW}${model} (${bar_display})${RESET}"
 
-printf '%s\n%s\n' "$line1" "$line2"
+
+printf '%s\n\n' "$line1"

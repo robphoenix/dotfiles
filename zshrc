@@ -96,3 +96,13 @@ esac
 export PATH="/Users/robphoenix/.codeium/windsurf/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="/opt/homebrew/opt/node@22/bin:$PATH"
+
+# UW residential mobile app development
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
