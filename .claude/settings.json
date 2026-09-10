@@ -1,5 +1,16 @@
 {
   "enabledPlugins": {
     "hearth-ai-toolkit@hearth-plugins": true
+  },
+  "permissions": {
+    "allow": [
+      "Bash(pnpm typecheck *)",
+      "Bash(pnpm lint *)",
+      "Bash(pnpm build *)",
+      "Bash(git status *)",
+      "Bash(git diff *)",
+      "Bash(git add *)",
+      "Bash(git commit *)"
+    ]
   }
 }
