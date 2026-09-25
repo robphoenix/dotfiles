@@ -14,5 +14,8 @@
   "prettier.bracketSameLine": false,
   "prettier.arrowParens": "avoid",
   "snippets.loadFromExtensions": true,
-  "css.lint.unknownAtRules": "ignore"
+  "css.lint.unknownAtRules": "ignore",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  }
 }

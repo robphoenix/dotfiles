@@ -42,7 +42,7 @@ Plug 'maxmellon/vim-jsx-pretty'                      " JS and JSX syntax
 Plug 'jxnblk/vim-mdx-js'                             " MDX Syntax
 Plug 'jparise/vim-graphql'                           " GraphQL syntax
 Plug 'preservim/vim-markdown'                        " Markdown syntax
-" AI *sigh*
+" AI
 Plug 'github/copilot.vim'
 
 call plug#end()
@@ -445,6 +445,11 @@ endfunction
 
 " --> coc {
 
+" coc.nvim's extension host requires Node >=24.12.0 (unrelated to whichever
+" Node version nvm has active for a given project's own tooling), so point it
+" at a separate Node 24+ binary here rather than relying on $PATH.
+let g:coc_node_path = $HOME . '/.nvm/versions/node/v24.18.0/bin/node'
+
 " Use autocmd to force lightline update.
 autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
 
@@ -540,7 +545,7 @@ nmap <leader>rn <Plug>(coc-rename)
 augroup mygroup
   autocmd!
   " Setup formatexpr specified filetype(s).
-  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  autocmd FileType typescript,typescriptreact,javascript,javascriptreact,json setl formatexpr=CocAction('formatSelected')
   " Update signature help on jump placeholder.
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end

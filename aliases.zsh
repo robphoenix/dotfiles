@@ -21,8 +21,13 @@ alias gs="git sync"
 alias gsm="git sync main"
 alias hold="git ca -m 'hold'"
 alias ghg="gh browse"
+alias ghp="gh pr"
+alias prc="gh pr create"
 alias j=z
 alias p="pnpm"
+alias y="yarn"
+alias yn="yarn nx"
+alias nu="nvm use"
 
 alias nfc="npx figma connect"
 alias fcc="npx figma connect create"
