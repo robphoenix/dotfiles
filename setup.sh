@@ -34,6 +34,7 @@ binaries=(
   ripgrep
   trash
   tree
+  tree-sitter
   z
   zsh-completions
   zsh-syntax-highlighting
@@ -65,9 +66,6 @@ ln -sf "$HOME/dotfiles/aliases.zsh" "$HOME/.oh-my-zsh/custom/aliases.zsh"
 ln -sf "$HOME/dotfiles/functions.zsh" "$HOME/.oh-my-zsh/custom/functions.zsh"
 ln -sf "$HOME/dotfiles/secrets.zsh" "$HOME/.oh-my-zsh/custom/secrets.zsh"
 ln -sf "$HOME/dotfiles/nvim" "$HOME/.config/nvim"
-
-sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
 npm install -g corepack
 pip3 install --upgrade pynvim

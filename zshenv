@@ -5,3 +5,4 @@ export BAT_THEME=base16
 export TERM=xterm
 export XDG_CONFIG_HOME="$HOME/.config"
 
+. "$HOME/.cargo/env"
