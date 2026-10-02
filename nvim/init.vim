@@ -42,8 +42,6 @@ Plug 'maxmellon/vim-jsx-pretty'                      " JS and JSX syntax
 Plug 'jxnblk/vim-mdx-js'                             " MDX Syntax
 Plug 'jparise/vim-graphql'                           " GraphQL syntax
 Plug 'preservim/vim-markdown'                        " Markdown syntax
-" AI
-Plug 'github/copilot.vim'
 
 call plug#end()
 
