@@ -25,6 +25,8 @@ Before starting any PR workflow, verify auth is healthy:
 gh auth status && git remote -v
 ```
 
+- **Reading and writing org-scoped private repos** - use Github CLI. Never perform a write action without explicit instruction from the user.
+
 ## File Deletion
 
 Never run `rm` / `rm -rf`. It is denied by permissions in this environment. When a file must be deleted (e.g. legacy `.figma.tsx` after migration), list the exact paths under a '### Files for you to delete' heading and ask the user to remove them.
@@ -41,6 +43,12 @@ Never run `rm` / `rm -rf`. It is denied by permissions in this environment. When
 - If excluding breaks lint resolution, create a `tsconfig.typecheck.json` that includes the excluded files, rather than leaving lint broken.
 - Use `pnpm` for package management.
 - Run `pnpm checks`
+
+## Code Navigation
+
+- When tracing where a symbol is defined or finding all references to it, use LSP (goToDefinition, findReferences, hover) instead of Grep. LSP gives exact results; Grep gives text matches.
+- Use Grep/Glob for discovery (finding files, searching patterns). Use LSP for understanding (definitions, references, type info).
+- After locating a file with Grep/Glob, use LSP to navigate within it rather than reading the whole file.
 
 ## Definition of Done for Ticket Implementation
 
@@ -70,3 +78,5 @@ Component JSDoc belongs on the TypeScript interface props, not on runtime `PropD
 - **Design**: Figma Code Connect
 - **Versioning**: Changesets
 - **Package manager**: pnpm
+
+@RTK.md
