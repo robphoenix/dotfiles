@@ -1,8 +1,11 @@
 {
+  "env": {
+    "ENABLE_LSP_TOOL": "1"
+  },
   "permissions": {
     "defaultMode": "plan"
   },
-  "model": "claude-sonnet-5",
+  "model": "opus",
   "hooks": {
     "PostToolUse": [
       {
@@ -23,6 +26,17 @@
           }
         ]
       }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "rtk hook claude"
+          }
+        ]
+      }
     ]
   },
   "statusLine": {
@@ -37,7 +51,15 @@
     "figma@claude-plugins-official": true,
     "github@claude-plugins-official": true,
     "frontend-design@claude-plugins-official": true,
-    "skill-creator@claude-plugins-official": true
+    "skill-creator@claude-plugins-official": true,
+    "agentic-ai-development-frontend@utilitywarehouse-agentic-ai": true,
+    "agentic-ai-development@utilitywarehouse-agentic-ai": true,
+    "llm-wiki@utilitywarehouse-agentic-ai": true,
+    "agentic-ai-development-common@utilitywarehouse-agentic-ai": true,
+    "agentic-ai-development-delivery@utilitywarehouse-agentic-ai": true,
+    "agentic-ai-development-maintain@utilitywarehouse-agentic-ai": true,
+    "pr-review-toolkit@claude-plugins-official": true,
+    "superpowers@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "hearth-plugins": {
@@ -51,10 +73,21 @@
         "source": "github",
         "repo": "anthropics/claude-plugins-official"
       }
+    },
+    "utilitywarehouse-agentic-ai": {
+      "source": {
+        "source": "github",
+        "repo": "utilitywarehouse/agentic-ai"
+      }
     }
   },
   "tui": "fullscreen",
   "skipWorkflowUsageWarning": true,
   "theme": "auto",
-  "editorMode": "vim"
+  "editorMode": "vim",
+  "modelSettings": {
+    "claude-opus-5-5": {
+      "effortLevel": "medium"
+    }
+  }
 }
