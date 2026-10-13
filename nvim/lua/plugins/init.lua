@@ -2,7 +2,6 @@ vim.pack.add({
   -- kept from the old config
   "https://github.com/tpope/vim-unimpaired",
   "https://github.com/jparise/vim-graphql",
-  "https://github.com/calind/selenized.nvim",
   "https://github.com/nvim-lua/plenary.nvim",
 
   -- snippets
@@ -18,6 +17,7 @@ vim.pack.add({
   -- ui
   "https://github.com/nvim-lualine/lualine.nvim",
   "https://github.com/brenoprata10/nvim-highlight-colors",
+  { src = "https://github.com/catppuccin/nvim", name = "catppuccin" },
 
   -- treesitter
   "https://github.com/nvim-treesitter/nvim-treesitter",
