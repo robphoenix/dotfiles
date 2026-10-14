@@ -103,8 +103,6 @@ conflictStyle = diff3
     autoStash = true
 [pull]
     rebase = true
-[url "git@github.com:"]
-	insteadOf = https://github.com/
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
@@ -118,3 +116,9 @@ conflictStyle = diff3
 	textconv = strongbox -diff
 [init]
 	defaultBranch = main
+[credential "https://github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
