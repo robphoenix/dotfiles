@@ -21,6 +21,7 @@ map("t", "<Esc>", [[<C-\><C-n>]], { desc = "Terminal to normal mode" })
 
 map("n", "<leader>/", "<cmd>nohlsearch<CR>", { desc = "Clear search highlight" })
 map("n", "<leader>w", "<cmd>w!<CR>", { desc = "Save" })
+map("n", "<leader>c", "<cmd>cclose<bar>lclose<CR>", { desc = "Close quickfix / location list" })
 map("n", "<BS>", "<C-^>", { desc = "Alternate buffer" })
 
 -- L/H to end/start of line
@@ -46,7 +47,6 @@ map({ "n", "x" }, "k", "gk")
 -- substitute word under cursor
 map("n", "<C-s>", [[:%s/<C-r><C-w>//c<Left><Left>]], { desc = "Substitute word under cursor" })
 
-map("n", "<leader>a", "<cmd>cclose<CR>", { desc = "Close quickfix" })
 
 -- repeat `.` over a visual selection
 map("x", ".", ":normal .<CR>")
