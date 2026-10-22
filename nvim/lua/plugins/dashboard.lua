@@ -7,7 +7,33 @@ require("snacks").setup({
       { icon = " ", title = "Projects", section = "projects", indent = 2, padding = 1 },
     },
   },
-  picker = {},
+  picker = {
+    sources = {
+      files = { hidden = true },
+      grep = { hidden = true },
+      lsp_symbols = {
+        filter = {
+          default = {
+            "Class",
+            "Constructor",
+            "Enum",
+            "Field",
+            "Function",
+            "Interface",
+            "Method",
+            "Module",
+            "Namespace",
+            "Package",
+            "Property",
+            "Struct",
+            "Trait",
+            "Variable",
+            "Constant",
+          },
+        },
+      },
+    },
+  },
 })
 
 vim.keymap.set("n", "<leader>f", function()
