@@ -5,7 +5,7 @@
   "permissions": {
     "defaultMode": "plan"
   },
-  "model": "opus",
+  "model": "claude-sonnet-5-5",
   "hooks": {
     "PostToolUse": [
       {
@@ -37,13 +37,28 @@
           }
         ]
       }
+    ],
+    "SessionStart": [
+      {
+        "matcher": "^(startup|resume|clear|compact|fork)$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash '/Users/robphoenix/.claude/hooks/herdr-agent-state.sh' session",
+            "timeout": 10
+          }
+        ]
+      }
     ]
   },
   "statusLine": {
     "type": "command",
-    "command": "bash /Users/robphoenix/.claude/statusline-command.sh"
+    "command": "ccstatusline",
+    "padding": 0,
+    "refreshInterval": 10
   },
   "enabledPlugins": {
+    "hearth-ai-toolkit@hearth-plugins": true,
     "chrome-devtools-mcp@claude-plugins-official": true,
     "code-review@claude-plugins-official": true,
     "feature-dev@claude-plugins-official": true,
@@ -59,7 +74,10 @@
     "agentic-ai-development-delivery@utilitywarehouse-agentic-ai": true,
     "agentic-ai-development-maintain@utilitywarehouse-agentic-ai": true,
     "pr-review-toolkit@claude-plugins-official": true,
-    "superpowers@claude-plugins-official": true
+    "superpowers@claude-plugins-official": true,
+    "mattpocock-skills@claude-plugins-official": true,
+    "ux@uw-ux-claude-skills": true,
+    "corex@uw-agentic-coding": true
   },
   "extraKnownMarketplaces": {
     "hearth-plugins": {
@@ -79,15 +97,21 @@
         "source": "github",
         "repo": "utilitywarehouse/agentic-ai"
       }
+    },
+    "uw-ux-claude-skills": {
+      "source": {
+        "source": "github",
+        "repo": "utilitywarehouse/uw-ux-claude-skills"
+      }
+    }
+  },
+  "modelSettings": {
+    "claude-opus-5-5": {
+      "effortLevel": "medium"
     }
   },
   "tui": "fullscreen",
   "skipWorkflowUsageWarning": true,
   "theme": "auto",
-  "editorMode": "vim",
-  "modelSettings": {
-    "claude-opus-5-5": {
-      "effortLevel": "medium"
-    }
-  }
+  "editorMode": "vim"
 }
