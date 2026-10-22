@@ -36,3 +36,6 @@ WRN 2026-10-02T12:03:17.517 ?.68626    server_start:197: Failed to start server:
 WRN 2026-10-02T12:07:39.844 ?.70928    server_start:197: Failed to start server: operation not permitted: /tmp/claude-502/nvim.robphoenix/rrJuiR/nvim.70928.0
 WRN 2026-10-02T12:10:39.438 ?.79065    server_start:197: Failed to start server: operation not permitted: /tmp/claude-502/nvim.robphoenix/hqoDSA/nvim.79065.0
 WRN 2026-10-02T12:44:54.664 ?.2121     server_start:197: Failed to start server: operation not permitted: /tmp/claude-502/nvim.robphoenix/dyyXPY/nvim.2121.0
+WRN 2026-10-13T13:38:16.271 ?.74653    server_start:197: Failed to start server: operation not permitted: /tmp/claude-502/nvim.robphoenix/FK9upI/nvim.74653.0
+WRN 2026-10-13T13:44:02.936 ?.85389    server_start:197: Failed to start server: operation not permitted: /tmp/claude-502/nvim.robphoenix/IKFtkN/nvim.85389.0
+WRN 2026-10-13T13:44:02.975 ?.85400    server_start:197: Failed to start server: operation not permitted: /tmp/claude-502/nvim.robphoenix/C9oDHw/nvim.85400.0
