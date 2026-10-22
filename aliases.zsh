@@ -23,6 +23,7 @@ alias hold="git ca -m 'hold'"
 alias ghg="gh browse"
 alias ghp="gh pr"
 alias prc="gh pr create"
+alias ghs="gh stack"
 alias j=z
 alias p="pnpm"
 alias y="yarn"
