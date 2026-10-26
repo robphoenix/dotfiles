@@ -12,6 +12,8 @@ require("mason-lspconfig").setup({
   automatic_enable = true,
 })
 
+vim.diagnostic.config({ virtual_text = true })
+
 vim.lsp.config("jsonls", {
   settings = {
     json = {
@@ -63,5 +65,11 @@ end
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(ev)
     on_attach(vim.lsp.get_client_by_id(ev.data.client_id), ev.buf)
+  end,
+})
+
+vim.api.nvim_create_autocmd("CursorHold", {
+  callback = function()
+    vim.diagnostic.open_float(nil, { focus = false })
   end,
 })
