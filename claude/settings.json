@@ -5,28 +5,7 @@
   "permissions": {
     "defaultMode": "plan"
   },
-  "model": "claude-sonnet-5-5",
   "hooks": {
-    "PostToolUse": [
-      {
-        "matcher": "Edit|Write",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "pnpm checks"
-          }
-        ]
-      },
-      {
-        "matcher": "Edit|Write",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "pnpm -s lint --fix $CLAUDE_FILE_PATHS 2>&1 | tail -30; pnpm -s typecheck 2>&1 | tail -30"
-          }
-        ]
-      }
-    ],
     "PreToolUse": [
       {
         "matcher": "Bash",
@@ -60,24 +39,18 @@
   "enabledPlugins": {
     "hearth-ai-toolkit@hearth-plugins": true,
     "chrome-devtools-mcp@claude-plugins-official": true,
-    "code-review@claude-plugins-official": true,
-    "feature-dev@claude-plugins-official": true,
+    "feature-dev@claude-plugins-official": false,
     "typescript-lsp@claude-plugins-official": true,
-    "figma@claude-plugins-official": true,
-    "github@claude-plugins-official": true,
-    "frontend-design@claude-plugins-official": true,
+    "github@claude-plugins-official": false,
     "skill-creator@claude-plugins-official": true,
-    "agentic-ai-development-frontend@utilitywarehouse-agentic-ai": true,
-    "agentic-ai-development@utilitywarehouse-agentic-ai": true,
-    "llm-wiki@utilitywarehouse-agentic-ai": true,
-    "agentic-ai-development-common@utilitywarehouse-agentic-ai": true,
-    "agentic-ai-development-delivery@utilitywarehouse-agentic-ai": true,
-    "agentic-ai-development-maintain@utilitywarehouse-agentic-ai": true,
     "pr-review-toolkit@claude-plugins-official": true,
-    "superpowers@claude-plugins-official": true,
+    "superpowers@claude-plugins-official": false,
     "mattpocock-skills@claude-plugins-official": true,
-    "ux@uw-ux-claude-skills": true,
-    "corex@uw-agentic-coding": true
+    "ux@uw-ux-claude-skills": false,
+    "corex@uw-agentic-coding": false,
+    "claude-md-management@claude-plugins-official": true,
+    "commit-commands@claude-plugins-official": true,
+    "cowork-plugin-management@synced": false
   },
   "extraKnownMarketplaces": {
     "hearth-plugins": {
