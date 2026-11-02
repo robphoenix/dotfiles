@@ -19,6 +19,14 @@
 
 `git push` and `gh pr create` work through the `gh` credential helper. Push, open a PR, or write to an org-scoped private repo (via the GitHub CLI) only when the user explicitly asks for it. Run `gh auth status && git remote -v` before starting a PR workflow.
 
+## Code Review
+
+Pick the review skill by situation:
+
+- **Self-review before pushing**: built-in `/code-review` (local diff, effort levels, `--fix`).
+- **Specialist concerns** (error handling, tests, new types): `pr-review-toolkit` agents or `review-pr <aspect>`.
+- **Change tied to a ticket/spec**: `mattpocock-skills:code-review` (Standards vs Spec).
+
 ## File Deletion
 
 Never run `rm` / `rm -rf` (denied by permissions; `trash` is blocked by the sandbox too). When a file must be deleted, list the exact paths under a '### Files for you to delete' heading and ask the user to remove them.
