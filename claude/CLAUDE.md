@@ -6,7 +6,14 @@
 - **Precision over speed**: Preview scope on any action that removes, renames, or restructures code before doing it.
 - **YAGNI**: Emit the minimal code that satisfies the task, preferring one-liners.
 - **Neutral framing**: Present skill additions and guidelines as neutral considerations unless explicitly asked for a hard rule.
-- **Don't retry blocked operations**: If any operation is blocked by permissions or the sandbox, do not retry it. Finish everything else in the task, then output a single 'Commands for you to run' fenced block with the exact commands, and report which parts of the task are unverified as a result.
+- **Answer the question asked**: When the user asks a question, respond directly — don't assume they want code written or changes made unless they say so.
+- **Clarify before acting, not before answering**: If a request is ambiguous and the ambiguity would change what you build, ask first. For low-stakes details, state your assumption and proceed.
+- **Don't silently pivot**: If an approach you already proposed turns out wrong or infeasible mid-implementation, stop and tell the user before switching to a different approach.
+- **Don't retry failing commands repeatedly**: If a command or variations of it keep failing, stop and ask for advice or give options rather than burning tokens on retries.
+- **If the sandbox blocks a command needed to run or verify something, stop and ask the user to run it.** This covers denied file reads, blocked network/SSH, port/socket/IPC errors, or tools behaving differently in the sandbox. Don't work around it (bypassing config, hand-writing files a tool would normally generate, running a substitute/baseline check). State what failed and why, give the exact commands to run outside the sandbox, and wait for results before continuing.
+- **Don't run lint, typechecking, or tests unless explicitly instructed** — prompt the user to run them manually instead.
+- **Disable Watchman when running Jest** (`--watchman=false`): it tries to read/write sandbox-restricted files.
+- **Never present sandbox-limited checks as verification in outward-facing text** (PR descriptions, issues, commit messages). If a check couldn't run, say so rather than describing a workaround as verification.
 
 ## Git & PR Workflow
 
