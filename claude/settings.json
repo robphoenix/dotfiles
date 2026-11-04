@@ -39,17 +39,17 @@
   "enabledPlugins": {
     "hearth-ai-toolkit@hearth-plugins": true,
     "chrome-devtools-mcp@claude-plugins-official": true,
-    "feature-dev@claude-plugins-official": false,
     "typescript-lsp@claude-plugins-official": true,
-    "github@claude-plugins-official": false,
     "skill-creator@claude-plugins-official": true,
     "pr-review-toolkit@claude-plugins-official": true,
-    "superpowers@claude-plugins-official": false,
     "mattpocock-skills@claude-plugins-official": true,
-    "ux@uw-ux-claude-skills": false,
-    "corex@uw-agentic-coding": false,
     "claude-md-management@claude-plugins-official": true,
     "commit-commands@claude-plugins-official": true,
+    "github@claude-plugins-official": false,
+    "superpowers@claude-plugins-official": false,
+    "feature-dev@claude-plugins-official": false,
+    "ux@uw-ux-claude-skills": false,
+    "corex@uw-agentic-coding": false,
     "cowork-plugin-management@synced": false
   },
   "extraKnownMarketplaces": {

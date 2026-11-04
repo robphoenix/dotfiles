@@ -1,0 +1,52 @@
+{
+  "version": 3,
+  "skills": {
+    "herdr": {
+      "source": "herdrdev/herdr",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/herdrdev/herdr.git",
+      "skillPath": "skills/herdr/SKILL.md",
+      "skillFolderHash": "2be0d86d481d1bb29c62e11ef37b78d27d01b478",
+      "installedAt": "2026-11-04T14:13:53.841Z",
+      "updatedAt": "2026-11-04T14:13:53.841Z"
+    },
+    "find-skills": {
+      "source": "vercel-labs/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/vercel-labs/skills.git",
+      "skillPath": "skills/find-skills/SKILL.md",
+      "skillFolderHash": "76a98a285cb0434f3d39e1a873823556330e398b",
+      "installedAt": "2026-11-04T14:14:16.417Z",
+      "updatedAt": "2026-11-04T14:14:16.417Z"
+    },
+    "stack-review-fix": {
+      "source": "robphoenix/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/robphoenix/skills.git",
+      "skillPath": "stack-review-fix/SKILL.md",
+      "skillFolderHash": "673460d857ce4d2b365c8df1372fcf6cacdc75ec",
+      "installedAt": "2026-11-04T14:21:49.223Z",
+      "updatedAt": "2026-11-04T14:24:43.810Z"
+    }
+  },
+  "dismissed": {
+    "findSkillsPrompt": true
+  },
+  "lastSelectedAgents": [
+    "amp",
+    "cline",
+    "codex",
+    "cursor",
+    "droid",
+    "fx",
+    "gemini-cli",
+    "github-copilot",
+    "kilo",
+    "kimi-code-cli",
+    "opencode",
+    "pi",
+    "warp",
+    "zed",
+    "claude-code"
+  ]
+}
