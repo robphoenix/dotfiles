@@ -3,7 +3,12 @@
     "ENABLE_LSP_TOOL": "1"
   },
   "permissions": {
-    "defaultMode": "plan"
+    "defaultMode": "plan",
+    "deny": [
+      "Bash(git stash)",
+      "Bash(git stash push:*)",
+      "Bash(git stash save:*)"
+    ]
   },
   "hooks": {
     "PreToolUse": [

@@ -11,13 +11,13 @@
 - **Don't silently pivot**: If an approach you already proposed turns out wrong or infeasible mid-implementation, stop and tell the user before switching to a different approach.
 - **Don't retry failing commands repeatedly**: If a command or variations of it keep failing, stop and ask for advice or give options rather than burning tokens on retries.
 - **If the sandbox blocks a command needed to run or verify something, stop and ask the user to run it.** This covers denied file reads, blocked network/SSH, port/socket/IPC errors, or tools behaving differently in the sandbox. Don't work around it (bypassing config, hand-writing files a tool would normally generate, running a substitute/baseline check). State what failed and why, give the exact commands to run outside the sandbox, and wait for results before continuing.
-- **Don't run lint, typechecking, or tests unless explicitly instructed** — prompt the user to run them manually instead.
-- **Disable Watchman when running Jest** (`--watchman=false`): it tries to read/write sandbox-restricted files.
+- **Run the touched package's typecheck, tests, and non-mutating lint (`lint:ci`) after changing its code; leave repo-wide `checks`, `lint:fix`, and full test suites to the user** — they run long, rewrite files, or hit the sandbox. Prompt the user to run those manually.
+- **Disable Watchman when running Jest** (`--watchman=false`): it tries to read/write sandbox-restricted files. This is a Jest-only flag; Vitest rejects it, so omit it there.
 - **Never present sandbox-limited checks as verification in outward-facing text** (PR descriptions, issues, commit messages). If a check couldn't run, say so rather than describing a workaround as verification.
 
 ## Git & PR Workflow
 
-`git push` and `gh pr create` work through the `gh` credential helper. Push, open a PR, or write to an org-scoped private repo (via the GitHub CLI) only when the user explicitly asks for it. Run `gh auth status && git remote -v` before starting a PR workflow. Read git stderr unfiltered: piping it through `grep -v` hides errors.
+`git push` and `gh pr create` work through the `gh` credential helper. Push, open a PR, or write to an org-scoped private repo (via the GitHub CLI) only when the user explicitly asks for it. Run `gh auth status && git remote -v` before starting a PR workflow. Read git stderr unfiltered: piping it through `grep -v` hides errors. Before `gh stack init`, run `gh stack view --json`: a branch already in a stack fails `init`, so use `gh stack add` there. Create one Linear ticket per stack layer before coding, with the earlier ticket blocking the later one.
 
 ## Code Review
 
