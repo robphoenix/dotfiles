@@ -20,9 +20,9 @@
       "updatedAt": "2026-11-04T14:14:16.417Z"
     },
     "stack-review-fix": {
-      "source": "robphoenix/skills",
+      "source": "robphoenix/agent-skills",
       "sourceType": "github",
-      "sourceUrl": "https://github.com/robphoenix/skills.git",
+      "sourceUrl": "https://github.com/robphoenix/agent-skills.git",
       "skillPath": "stack-review-fix/SKILL.md",
       "skillFolderHash": "673460d857ce4d2b365c8df1372fcf6cacdc75ec",
       "installedAt": "2026-11-04T14:21:49.223Z",
@@ -69,9 +69,9 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/addyosmani/agent-skills.git",
       "skillPath": "skills/code-review-and-quality/SKILL.md",
-      "skillFolderHash": "3d1a2191446790b81f8e97875806dbbddd5135c8",
+      "skillFolderHash": "d887913952a310aa1c34e1ea7490b29b8ad41a4a",
       "installedAt": "2026-11-06T12:33:07.175Z",
-      "updatedAt": "2026-11-06T12:33:07.175Z"
+      "updatedAt": "2026-11-16T11:23:13.891Z"
     },
     "code-simplification": {
       "source": "addyosmani/agent-skills",
@@ -87,9 +87,9 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/addyosmani/agent-skills.git",
       "skillPath": "skills/constraint-driven-development/SKILL.md",
-      "skillFolderHash": "7b3206ce9770c2a8d41c2daae9a50e111785815c",
+      "skillFolderHash": "650641498643c3c9fc6c567dc2f38ff23811053c",
       "installedAt": "2026-11-06T12:33:07.176Z",
-      "updatedAt": "2026-11-06T12:33:07.176Z"
+      "updatedAt": "2026-11-16T11:23:13.960Z"
     },
     "context-engineering": {
       "source": "addyosmani/agent-skills",
@@ -105,9 +105,9 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/addyosmani/agent-skills.git",
       "skillPath": "skills/debugging-and-error-recovery/SKILL.md",
-      "skillFolderHash": "3335ea444da0852115745f992395d28aa586d05d",
+      "skillFolderHash": "257b0d3681738167d15f67d7120291128159ce32",
       "installedAt": "2026-11-06T12:33:07.177Z",
-      "updatedAt": "2026-11-06T12:33:07.177Z"
+      "updatedAt": "2026-11-16T11:23:14.012Z"
     },
     "deprecation-and-migration": {
       "source": "addyosmani/agent-skills",
@@ -123,9 +123,9 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/addyosmani/agent-skills.git",
       "skillPath": "skills/documentation-and-adrs/SKILL.md",
-      "skillFolderHash": "011bbe7d0bc4576a03795dada8c1c48ee322cd1b",
+      "skillFolderHash": "09b6d9f338a00bdecfc62ba7cad3221c41b48560",
       "installedAt": "2026-11-06T12:33:07.178Z",
-      "updatedAt": "2026-11-06T12:33:07.178Z"
+      "updatedAt": "2026-11-16T11:23:14.067Z"
     },
     "doubt-driven-development": {
       "source": "addyosmani/agent-skills",
@@ -141,9 +141,9 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/addyosmani/agent-skills.git",
       "skillPath": "skills/frontend-ui-engineering/SKILL.md",
-      "skillFolderHash": "984efc18829fe11fad1bb58fa73c28be8aeb2100",
+      "skillFolderHash": "2b9a586e5e0e7b99c43e479bdce6f3300be4c145",
       "installedAt": "2026-11-06T12:33:07.179Z",
-      "updatedAt": "2026-11-06T12:33:07.179Z"
+      "updatedAt": "2026-11-16T11:23:14.114Z"
     },
     "git-workflow-and-versioning": {
       "source": "addyosmani/agent-skills",
@@ -204,18 +204,18 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/addyosmani/agent-skills.git",
       "skillPath": "skills/planning-and-task-breakdown/SKILL.md",
-      "skillFolderHash": "3045f95a156dc71d7b5ac1e29ce795bb5cac2b71",
+      "skillFolderHash": "7a1798a5f848a910c2e29a76cda8374a57b8de0a",
       "installedAt": "2026-11-06T12:33:07.182Z",
-      "updatedAt": "2026-11-06T12:33:07.182Z"
+      "updatedAt": "2026-11-16T11:23:14.162Z"
     },
     "security-and-hardening": {
       "source": "addyosmani/agent-skills",
       "sourceType": "github",
       "sourceUrl": "https://github.com/addyosmani/agent-skills.git",
       "skillPath": "skills/security-and-hardening/SKILL.md",
-      "skillFolderHash": "9fb34870625f80d5cac82625f388c0d81d3b525a",
+      "skillFolderHash": "165116cd1e9e99c64e4015f7257bdd130545e244",
       "installedAt": "2026-11-06T12:33:07.182Z",
-      "updatedAt": "2026-11-06T12:33:07.182Z"
+      "updatedAt": "2026-11-16T11:23:14.227Z"
     },
     "shipping-and-launch": {
       "source": "addyosmani/agent-skills",
@@ -240,18 +240,18 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/addyosmani/agent-skills.git",
       "skillPath": "skills/spec-driven-development/SKILL.md",
-      "skillFolderHash": "857f385f3e91cf22fc7588116fc22aed72476efe",
+      "skillFolderHash": "1f813b40ec5cb162db551fb81e5b8e7d758956b9",
       "installedAt": "2026-11-06T12:33:07.183Z",
-      "updatedAt": "2026-11-06T12:33:07.183Z"
+      "updatedAt": "2026-11-16T11:23:14.275Z"
     },
     "test-driven-development": {
       "source": "addyosmani/agent-skills",
       "sourceType": "github",
       "sourceUrl": "https://github.com/addyosmani/agent-skills.git",
       "skillPath": "skills/test-driven-development/SKILL.md",
-      "skillFolderHash": "0aebb36a48f863bb43b8ff49df76891694d9c035",
+      "skillFolderHash": "29ce2ecea0c69545a9a5002d59e8eb5681a33aa2",
       "installedAt": "2026-11-06T12:33:07.184Z",
-      "updatedAt": "2026-11-06T12:33:07.184Z"
+      "updatedAt": "2026-11-16T11:23:14.328Z"
     },
     "using-agent-skills": {
       "source": "addyosmani/agent-skills",
@@ -263,13 +263,40 @@
       "updatedAt": "2026-11-06T12:33:07.184Z"
     },
     "start-ticket": {
-      "source": "robphoenix/skills",
+      "source": "robphoenix/agent-skills",
       "sourceType": "github",
-      "sourceUrl": "https://github.com/robphoenix/skills.git",
+      "sourceUrl": "https://github.com/robphoenix/agent-skills.git",
       "skillPath": "start-ticket/SKILL.md",
       "skillFolderHash": "946530799ba7bfdfae878688dbc744da095cbd01",
       "installedAt": "2026-11-11T13:25:35.663Z",
       "updatedAt": "2026-11-11T13:25:35.663Z"
+    },
+    "job-application-writer": {
+      "source": "robphoenix/agent-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/robphoenix/agent-skills.git",
+      "skillPath": "job-application-writer/SKILL.md",
+      "skillFolderHash": "b9a1d53a2111ae56a97e89acf0b75cc9f35ce782",
+      "installedAt": "2026-11-13T15:45:10.265Z",
+      "updatedAt": "2026-11-16T11:23:13.844Z"
+    },
+    "show-me": {
+      "source": "humanlayer/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/humanlayer/skills.git",
+      "skillPath": "plugins/show-me/skills/show-me/SKILL.md",
+      "skillFolderHash": "362200ac2fb3c17b765049444e88de73767e6d08",
+      "installedAt": "2026-11-16T12:55:44.178Z",
+      "updatedAt": "2026-11-16T12:55:44.178Z"
+    },
+    "visual-pr": {
+      "source": "humanlayer/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/humanlayer/skills.git",
+      "skillPath": "plugins/visual-pr/skills/visual-pr/SKILL.md",
+      "skillFolderHash": "2104d685d33ba9594a4dfe13241f0f7f02190401",
+      "installedAt": "2026-11-16T12:56:18.377Z",
+      "updatedAt": "2026-11-16T12:56:18.377Z"
     }
   },
   "dismissed": {
