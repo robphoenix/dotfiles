@@ -3,12 +3,12 @@
     "ENABLE_LSP_TOOL": "1"
   },
   "permissions": {
-    "defaultMode": "plan",
     "deny": [
       "Bash(git stash)",
       "Bash(git stash push:*)",
       "Bash(git stash save:*)"
-    ]
+    ],
+    "defaultMode": "plan"
   },
   "hooks": {
     "PreToolUse": [
@@ -49,13 +49,12 @@
     "pr-review-toolkit@claude-plugins-official": true,
     "mattpocock-skills@claude-plugins-official": true,
     "claude-md-management@claude-plugins-official": true,
-    "commit-commands@claude-plugins-official": true,
     "github@claude-plugins-official": false,
     "superpowers@claude-plugins-official": false,
     "feature-dev@claude-plugins-official": false,
-    "ux@uw-ux-claude-skills": false,
     "corex@uw-agentic-coding": false,
-    "cowork-plugin-management@synced": false
+    "cowork-plugin-management@synced": false,
+    "lumen@uw-lumen": true
   },
   "extraKnownMarketplaces": {
     "hearth-plugins": {
@@ -80,6 +79,12 @@
       "source": {
         "source": "github",
         "repo": "utilitywarehouse/uw-ux-claude-skills"
+      }
+    },
+    "uw-lumen": {
+      "source": {
+        "source": "github",
+        "repo": "utilitywarehouse/uw-lumen"
       }
     }
   },

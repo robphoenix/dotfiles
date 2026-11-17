@@ -15,6 +15,10 @@
 - **Disable Watchman when running Jest** (`--watchman=false`): it tries to read/write sandbox-restricted files. This is a Jest-only flag; Vitest rejects it, so omit it there.
 - **Never present sandbox-limited checks as verification in outward-facing text** (PR descriptions, issues, commit messages). If a check couldn't run, say so rather than describing a workaround as verification.
 
+## Session End
+
+- The `mattpocock-skills:retro` skill can only be started by me (`/mattpocock-skills:retro`). When the task is finished and your wrap-up is written, or when I signal I'm done (e.g. "that's all", "thanks", "wrap up"), end with a one-line reminder to run it. Don't remind mid-task.
+
 ## Plans
 
 - Open with the outcome in 1–2 plain sentences, then the steps.
@@ -28,7 +32,7 @@
 
 ## Git & PR Workflow
 
-`git push` and `gh pr create` work through the `gh` credential helper. Push, open a PR, or write to an org-scoped private repo (via the GitHub CLI) only when the user explicitly asks for it. Run `gh auth status && git remote -v` before starting a PR workflow. Whenever you open a PR, invoke the `visual-pr` skill to write its body instead of composing your own `--body`; this is a standing instruction, so it counts as the explicit invocation that skill asks for. A later "commit" or "open PR" from the user is the go-ahead that an earlier "no push until I say" was waiting for; do not ask again. After `gh pr create`, call `ccd_pr` `get_status` and, if it does not report the PR, `bind_pr`. Read git stderr unfiltered: piping it through `grep -v` hides errors. Before `gh stack init`, run `gh stack view --json`: a branch already in a stack fails `init`, so use `gh stack add` there. Create one Linear ticket per stack layer before coding, with the earlier ticket blocking the later one.
+`git push` and `gh pr create` work through the `gh` credential helper. Push, open a PR, or write to an org-scoped private repo (via the GitHub CLI) only when the user explicitly asks for it. Run `gh auth status && git remote -v` before starting a PR workflow. Whenever you commit, push and open a PR, invoke the `open-pr` skill instead of composing your own `--body` or running another commit-push-pr command; this is a standing instruction. It requests the Copilot review itself. A later "commit" or "open PR" from the user is the go-ahead that an earlier "no push until I say" was waiting for; do not ask again. After `gh pr create`, call `ccd_pr` `get_status` and, if it does not report the PR, `bind_pr`. Read git stderr unfiltered: piping it through `grep -v` hides errors. To base a worktree on a branch other than the one it was created from, ask me to run the checkout outside the sandbox: inside it, `git checkout` can't update the write-denied `.claude/skills`, which then keep the old branch's content and show as modified. Before `gh stack init`, run `gh stack view --json`: a branch already in a stack fails `init`, so use `gh stack add` there. Create one Linear ticket per stack layer before coding, with the earlier ticket blocking the later one.
 
 ## Code Review
 

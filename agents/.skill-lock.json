@@ -297,6 +297,15 @@
       "skillFolderHash": "2104d685d33ba9594a4dfe13241f0f7f02190401",
       "installedAt": "2026-11-16T12:56:18.377Z",
       "updatedAt": "2026-11-16T12:56:18.377Z"
+    },
+    "open-pr": {
+      "source": "robphoenix/agent-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/robphoenix/agent-skills.git",
+      "skillPath": "open-pr/SKILL.md",
+      "skillFolderHash": "de0c57ef45ec14cd8919e1eaff0cc93311c866f0",
+      "installedAt": "2026-11-17T13:00:00.786Z",
+      "updatedAt": "2026-11-17T13:00:00.786Z"
     }
   },
   "dismissed": {
