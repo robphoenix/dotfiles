@@ -2,37 +2,36 @@
 
 ## Working Style
 
-- **Iterative over spec-heavy**: Incorporate corrections back into skills and documentation as they emerge.
-- **Precision over speed**: Preview scope on any action that removes, renames, or restructures code before doing it.
-- **YAGNI**: Emit the minimal code that satisfies the task, preferring one-liners.
-- **Neutral framing**: Present skill additions and guidelines as neutral considerations unless explicitly asked for a hard rule.
-- **Answer the question asked**: When the user asks a question, respond directly — don't assume they want code written or changes made unless they say so.
-- **Clarify before acting, not before answering**: If a request is ambiguous and the ambiguity would change what you build, ask first. For low-stakes details, state your assumption and proceed.
-- **Don't silently pivot**: If an approach you already proposed turns out wrong or infeasible mid-implementation, stop and tell the user before switching to a different approach.
-- **Don't retry failing commands repeatedly**: If a command or variations of it keep failing, stop and ask for advice or give options rather than burning tokens on retries.
-- **If the sandbox blocks a command needed to run or verify something, stop and ask the user to run it.** This covers denied file reads, blocked network/SSH, port/socket/IPC errors, or tools behaving differently in the sandbox. Don't work around it (bypassing config, hand-writing files a tool would normally generate, running a substitute/baseline check). State what failed and why, give the exact commands to run outside the sandbox, and wait for results before continuing.
-- **Run the touched package's typecheck, tests, and non-mutating lint (`lint:ci`) after changing its code; leave repo-wide `checks`, `lint:fix`, and full test suites to the user** — they run long, rewrite files, or hit the sandbox. Prompt the user to run those manually.
-- **Disable Watchman when running Jest** (`--watchman=false`): it tries to read/write sandbox-restricted files. This is a Jest-only flag; Vitest rejects it, so omit it there.
-- **Never present sandbox-limited checks as verification in outward-facing text** (PR descriptions, issues, commit messages). If a check couldn't run, say so rather than describing a workaround as verification.
+- **Iterative**: Fold corrections back into skills and docs as they emerge.
+- **Precision over speed**: Preview scope before removing, renaming, or restructuring code.
+- **YAGNI**: Minimal code that satisfies the task, preferring one-liners.
+- **Neutral framing**: Present skill additions and guidelines as considerations, not hard rules, unless I ask for a rule.
+- **Don't silently pivot**: If a proposed approach proves wrong mid-implementation, stop and tell me before switching.
+- **Sandbox blocks or repeated failures: stop and ask me to run it.** Covers denied reads, blocked network/SSH, port/socket/IPC errors, and tools behaving differently in the sandbox; also a command that keeps failing. Don't work around it (bypassing config, hand-writing generated files, substitute checks). State what failed and why, give the exact commands to run outside the sandbox, and wait. Never describe a workaround as verification in PRs, issues, or commits; say the check couldn't run.
+- **Run the touched package's typecheck, tests, and non-mutating lint (`lint:ci`) after changing its code; leave repo-wide `checks`, `lint:fix`, and full test suites to me** — they run long, rewrite files, or hit the sandbox. Prompt me to run them.
+- **Jest: pass `--watchman=false`** (Watchman reads sandbox-restricted files). Vitest rejects it; omit there.
 
 ## Session End
 
-- The `mattpocock-skills:retro` skill can only be started by me (`/mattpocock-skills:retro`). When the task is finished and your wrap-up is written, or when I signal I'm done (e.g. "that's all", "thanks", "wrap up"), end with a one-line reminder to run it. Don't remind mid-task.
+- When the task is finished, or I signal I'm done ("that's all", "thanks", "wrap up"), end with a one-line reminder to run `/mattpocock-skills:retro` (only I can start it). Not mid-task.
 
 ## Plans
 
-- Open with the outcome in 1–2 plain sentences, then the steps.
-- Put decisions I must make at the top, before the steps.
+- Open with the outcome in 1–2 plain sentences, then decisions I must make, then the steps.
 - One line per step: what changes and why. No code unless a step hinges on it.
-- Plain words: say what changes in behaviour, not the mechanism or jargon.
-- Write plainly: no filler, stock phrases ("robust", "seamless", "leverage"), or inflated claims.
-- Name files only where they matter; describe repeated patterns once.
-- Cut what I'd skim past: known background, alternatives not chosen, restated requirements.
-- Aim for under a minute to read; if the task needs more, say why.
+- Plain words about behaviour, not mechanism or jargon. No filler or stock phrases ("robust", "seamless", "leverage").
+- Under a minute to read; if the task needs more, say why.
 
 ## Git & PR Workflow
 
-`git push` and `gh pr create` work through the `gh` credential helper. Push, open a PR, or write to an org-scoped private repo (via the GitHub CLI) only when the user explicitly asks for it. Run `gh auth status && git remote -v` before starting a PR workflow. Whenever you commit, push and open a PR, invoke the `open-pr` skill instead of composing your own `--body` or running another commit-push-pr command; this is a standing instruction. It requests the Copilot review itself. A later "commit" or "open PR" from the user is the go-ahead that an earlier "no push until I say" was waiting for; do not ask again. After `gh pr create`, call `ccd_pr` `get_status` and, if it does not report the PR, `bind_pr`. Read git stderr unfiltered: piping it through `grep -v` hides errors. To base a worktree on a branch other than the one it was created from, ask me to run the checkout outside the sandbox: inside it, `git checkout` can't update the write-denied `.claude/skills`, which then keep the old branch's content and show as modified. Before `gh stack init`, run `gh stack view --json`: a branch already in a stack fails `init`, so use `gh stack add` there. Create one Linear ticket per stack layer before coding, with the earlier ticket blocking the later one.
+- `git push` and `gh pr create` work through the `gh` credential helper. Push, open a PR, or write to an org-scoped private repo only when I explicitly ask.
+- Run `gh auth status && git remote -v` before a PR workflow.
+- To commit, push and open a PR, always invoke the `open-pr` skill (standing instruction; it requests the Copilot review). Don't compose your own `--body`.
+- A later "commit" or "open PR" from me is the go-ahead an earlier "no push until I say" was waiting for; don't ask again.
+- After `gh pr create`, call `ccd_pr` `get_status`; if it doesn't report the PR, `bind_pr`. Call `get_status` before `set_monitor` (it needs the `url` it reports).
+- To base a worktree on a different branch, ask me to run the checkout outside the sandbox: inside it, `git checkout` can't update the write-denied `.claude/skills`, which keep the old content and show as modified.
+- Before `gh stack init`, run `gh stack view --json`: a branch already in a stack fails `init`; use `gh stack add`.
+- Create one Linear ticket per stack layer before coding, the earlier ticket blocking the later.
 
 ## Code Review
 
@@ -57,8 +56,6 @@ Target bash 3.2 (macOS default): no bash 4+ features.
 - Quote globs and `--include`/`--exclude` patterns: zsh aborts on an unmatched glob.
 - Restore files from a saved copy. When a stash is unavoidable, read `git stash list` and apply by explicit ref (`git stash apply stash@{n}`): `git stash pop` applies whichever stash is on top.
 - Set timeouts with the Bash tool's `timeout` parameter: the `timeout` command is not installed.
-- BSD `cat` has no `-A`: use `cat -et` or the Read tool.
-- Call `ccd_pr` `get_status` before `set_monitor`: `set_monitor` needs the PR `url` it reports.
 
 ## Editing Skills and CLAUDE.md
 
@@ -66,7 +63,6 @@ The sandbox's write denylist (`.claude/skills`, `dotfiles/claude/CLAUDE.md`, set
 
 ## Code Navigation
 
-- Use LSP (goToDefinition, findReferences, hover) to trace a symbol's definition, references, or type; use Grep/Glob to discover files and patterns.
-- After locating a file with Grep/Glob, use LSP to navigate within it rather than reading the whole file.
+Use LSP (goToDefinition, findReferences, hover) to trace a symbol's definition, references, or type, and to navigate within a file you've located; use Grep/Glob to discover files and patterns.
 
 @RTK.md
