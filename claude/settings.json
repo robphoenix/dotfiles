@@ -3,12 +3,12 @@
     "ENABLE_LSP_TOOL": "1"
   },
   "permissions": {
-    "deny": [
-      "Bash(git stash)",
-      "Bash(git stash push:*)",
-      "Bash(git stash save:*)"
-    ],
-    "defaultMode": "plan"
+    "deny": ["Bash(git stash)", "Bash(git stash push:*)", "Bash(git stash save:*)"]
+  },
+  "sandbox": {
+    "network": {
+      "allowLocalBinding": true
+    }
   },
   "hooks": {
     "PreToolUse": [

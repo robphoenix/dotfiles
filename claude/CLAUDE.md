@@ -9,6 +9,7 @@
 - **Don't silently pivot**: If a proposed approach proves wrong mid-implementation, stop and tell me before switching.
 - **Sandbox blocks or repeated failures: stop and ask me to run it.** Covers denied reads, blocked network/SSH, port/socket/IPC errors, and tools behaving differently in the sandbox; also a command that keeps failing. Don't work around it (bypassing config, hand-writing generated files, substitute checks). State what failed and why, give the exact commands to run outside the sandbox, and wait. Never describe a workaround as verification in PRs, issues, or commits; say the check couldn't run.
 - **Run the touched package's typecheck, tests, and non-mutating lint (`lint:ci`) after changing its code; leave repo-wide `checks`, `lint:fix`, and full test suites to me** — they run long, rewrite files, or hit the sandbox. Prompt me to run them.
+- **Deferred tools (Linear, Chrome): load every tool the task needs in one `ToolSearch` call** (`select:a,b,c`), not one at a time.
 - **Jest: pass `--watchman=false`** (Watchman reads sandbox-restricted files). Vitest rejects it; omit there.
 
 ## Session End
@@ -60,6 +61,17 @@ Target bash 3.2 (macOS default): no bash 4+ features.
 ## Editing Skills and CLAUDE.md
 
 The sandbox's write denylist (`.claude/skills`, `dotfiles/claude/CLAUDE.md`, settings files) applies to Bash, not the Edit tool. Edit skill files and CLAUDE.md files with Edit (Read first) rather than treating them as blocked or asking the user to apply a patch. The file-deletion rule above still holds.
+
+## Sandbox Triggers
+
+A call stays sandboxed if it has:
+
+- A command starting with `sudo`, `eval`, or `xargs`
+- A `cd`, `pushd`, or `popd` anywhere in the call (use `git -C <dir>`, `make -C <dir>`, `go -C <dir>` instead)
+- A command substitution, subshell, or control-flow block (`if`, `for`)
+- A redirection such as `> file` or `>/dev/null` (`2>&1` is fine)
+- A command name that comes from a variable
+- A pipe (`|`), for example `git push ... 2>&1 | tail -3`. For network git commands (`push`, `fetch`, `pull`) this makes SSH to github.com fail with "Could not read from remote repository" or "Broken pipe". Run them with no pipe. `git -C <dir>` is fine.
 
 ## Code Navigation
 
