@@ -62,6 +62,8 @@ Target bash 3.2 (macOS default): no bash 4+ features.
 
 The sandbox's write denylist (`.claude/skills`, `dotfiles/claude/CLAUDE.md`, settings files) applies to Bash, not the Edit tool. Edit skill files and CLAUDE.md files with Edit (Read first) rather than treating them as blocked or asking the user to apply a patch. The file-deletion rule above still holds.
 
+Skills under `~/.claude/skills` and `~/.agents/skills` are installed copies and can lag the source. The source is the repo at `~/code/agent-skills`. Before editing a skill, resolve the symlink, find that repo's copy (`git -C ~/code/agent-skills status`), edit it there, and name the file you edited when you report back.
+
 ## Sandbox Triggers
 
 A call stays sandboxed if it has:
