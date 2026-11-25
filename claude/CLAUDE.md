@@ -31,6 +31,8 @@
 - A later "commit" or "open PR" from me is the go-ahead an earlier "no push until I say" was waiting for; don't ask again.
 - After `gh pr create`, call `ccd_pr` `get_status`; if it doesn't report the PR, `bind_pr`. Call `get_status` before `set_monitor` (it needs the `url` it reports).
 - To base a worktree on a different branch, ask me to run the checkout outside the sandbox: inside it, `git checkout` can't update the write-denied `.claude/skills`, which keep the old content and show as modified.
+- Create a branch with `git branch --no-track <name> <base>`, then `git switch <name>`: inside the sandbox `git switch -c` can't write upstream config and half-fails, leaving the files switched and HEAD not.
+- After `git push -u`, "unable to write upstream branch configuration" is harmless (the sandbox blocks `.git/config`); confirm the push with `git ls-remote origin <branch>`.
 - Before `gh stack init`, run `gh stack view --json`: a branch already in a stack fails `init`; use `gh stack add`.
 - Create one Linear ticket per stack layer before coding, the earlier ticket blocking the later.
 
